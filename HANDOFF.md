@@ -50,7 +50,7 @@ a6a1eececfee9f4ce521f8b1d83d3fa2f1758a14faca52d9df43566e9f42a49c  checkpoints/CS
 - Data: 383 pages, 0 HTTP errors, 10,275 records. Manifest has one row per request.
 - Latency: 75 samples, p50 15.4 ms, p95 24.5 ms, cold max 456 ms.
 
-The commit hash before the final handoff commit is `cce6de6`. The handoff and verification files are documentation only.
+The last code commit is `47f175d`. Later commits change documentation, report wording, and PDFs only.
 
 ## Before posting
 
