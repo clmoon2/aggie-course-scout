@@ -8,7 +8,7 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 - Report page: https://clmoon2.github.io/aggie-course-scout/report.html
 - Repository: https://github.com/clmoon2/aggie-course-scout
 - Core release: https://github.com/clmoon2/aggie-course-scout/releases/tag/v0.2-core
-- Pages workflow run: https://github.com/clmoon2/aggie-course-scout/actions/runs/45002431535
+- Pages workflow run: https://github.com/clmoon2/aggie-course-scout/actions/runs/45002785126
 
 ## Artifacts
 
@@ -44,7 +44,7 @@ a6a1eececfee9f4ce521f8b1d83d3fa2f1758a14faca52d9df43566e9f42a49c  checkpoints/CS
 - Clean checkout: cloned the public repo to `/tmp/opencode/clean-check`, made a fresh venv, installed `requirements.txt`, and ran `pytest tests/ -q`. Result: `24 passed in 7.42s`.
 - Live page, logged out Chrome context: HTTP 200, title `Aggie Course Scout | TAMU catalog search`, 20 result cards for `computer security`, first result `CSCE 465 · Computer and Network Security`.
 - Live report page: HTTP 200.
-- Pages workflow: run 45002431535, conclusion success, 39 seconds.
+- Pages workflow: run 45002785126, conclusion success, 39 seconds.
 - Release: tag `v0.2-core` pushed and release published.
 - Search CLI: `python3 src/query.py "CSCE 310" --limit 3 --json` returns CSCE 310 first.
 - Data: 383 pages, 0 HTTP errors, 10,275 records. Manifest has one row per request.
