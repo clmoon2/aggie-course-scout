@@ -50,7 +50,7 @@ b526f1277dafa2bf6443543c9db08abad8525ed59210a35c2180da3326a7c7d8  docs/report.pd
 - Data: 383 pages, 0 HTTP errors, 10,277 records. Manifest has one row per request.
 - Latency: 75 samples, p50 14.4 ms, p95 22.2 ms, cold max 381 ms.
 
-The last code commit is `4fd516b`. Later commits change documentation, report wording, and PDFs only.
+The last code commit is `435198d`. Later commits change documentation, report wording, and PDFs only.
 
 ## Before posting
 
