@@ -50,7 +50,7 @@ ac67fadd46af9b3a327faa01781202d6a5281c92165c41ad2af598e09dbd7a86  slides/CSCE470
 - Data: 383 pages, 0 HTTP errors, 10,277 records. Manifest has one row per request.
 - Latency: 75 samples, p50 12.0 ms, p95 24.2 ms, cold max 172 ms.
 
-The last code commit is `08f8dfd`. Later commits change documentation, report wording, and PDFs only.
+The last code commit is `1d1f546`. Later commits change documentation, report wording, and PDFs only.
 
 ## Before posting
 
