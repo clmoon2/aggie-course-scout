@@ -1,6 +1,6 @@
 Verification log, Aggie Course Scout, 2026-11-22
 
-Code under test: cce6de6 (the handoff commit follows and changes docs only).
+Code under test: ab5d664. The verification file was added after that commit and changes docs only.
 
 1. Full test suite
 Command: .venv/bin/python -m pytest tests/ -q
@@ -18,16 +18,15 @@ Result: 24 passed in 7.42s
 URL: https://clmoon2.github.io/aggie-course-scout/
 HTTP: 200
 Title: Aggie Course Scout | TAMU catalog search
-Query: computer security
-Result: 20 cards, first card CSCE 465 Computer and Network Security,
-summary "625 courses match. Ranked by BM25F in 31 ms."
+Query: CSCE 310
+Result: 20 cards, first card CSCE 310 Database Systems.
 
 4. Live report
 URL: https://clmoon2.github.io/aggie-course-scout/report.html
 HTTP: 200
 
 5. Pages workflow
-Run: 45000890495
+Run: 45001181321
 Conclusion: success
 Duration: 39 seconds
 
