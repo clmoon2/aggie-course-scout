@@ -1,6 +1,6 @@
 Verification log, Aggie Course Scout, 2026-11-22
 
-Code under test: ab5d664. The verification file was added after that commit and changes docs only.
+Code under test: 4dbcebf. The verification file was added after that commit and changes docs only.
 
 1. Full test suite
 Command: .venv/bin/python -m pytest tests/ -q
@@ -12,7 +12,7 @@ CLI search, Playwright desktop, typo, facet, empty state, mobile.
 2. Clean checkout
 Command: git clone https://github.com/clmoon2/aggie-course-scout.git /tmp/opencode/clean-check
 then fresh venv, pip install -r requirements.txt, pytest tests/ -q
-Result: 24 passed in 7.42s
+Result: 24 passed in 7.27s
 
 3. Live page, logged out browser context
 URL: https://clmoon2.github.io/aggie-course-scout/
@@ -26,7 +26,7 @@ URL: https://clmoon2.github.io/aggie-course-scout/report.html
 HTTP: 200
 
 5. Pages workflow
-Run: 45001181321
+Run: 45001641335
 Conclusion: success
 Duration: 39 seconds
 
