@@ -16,7 +16,8 @@
 \renewcommand{\headrulewidth}{0pt}
 \hypersetup{colorlinks=true,urlcolor=maroon}
 \newcommand{\slidehead}[1]{{\color{maroon}\rule{\linewidth}{4pt}}\par\vspace{2pt}{\LARGE\bfseries\color{maroon}#1}\par\vspace{4pt}}
-\newcommand{\notes}[1]{\vspace{6pt}{\color{gold}\rule{\linewidth}{1pt}}\\[2pt]{\fontsize{9.5}{11}\selectfont\color{muted}\textbf{Speaker notes.} #1}}
+\newcommand{\callout}[1]{\par\noindent\begin{minipage}{\linewidth}\colorbox{cream}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{3pt}\small #1\vspace{3pt}}}\end{minipage}\par}
+\newcommand{\notes}[1]{\vspace{0.3in}{\color{gold}\rule{\linewidth}{1pt}}\\[2pt]{\fontsize{9.5}{11}\selectfont\color{muted}\textbf{Speaker notes.} #1}}
 \begin{document}
 
 % 1
@@ -59,8 +60,8 @@ Department landing page & MARA 360, Maritime Cybersecurity\\
 \bottomrule
 \end{tabular}
 \vspace{10pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small Catalog search optimizes pages. This index optimizes course records.\vspace{3pt}}}
-\notes{The catalog search is site search, not course search. That distinction is the whole motivation. I'm not replacing the schedule or the audit. Every record links back to the official page. Search should answer topic first and link out for logistics. The form keeps a visible syntax line instead of hiding filters in a menu. The empty state explains what to try instead of just saying zero.}
+\callout{Catalog search wins pages. This index wins course records.}
+\vspace{0.25in}\notes{The catalog search is site search, not course search. That distinction is the whole motivation. I'm not replacing the schedule or the audit. Every record links back to the official page. Search should answer topic first and link out for logistics. The form keeps a visible syntax line instead of hiding filters in a menu. The empty state explains what to try instead of just saying zero.}
 \newpage
 
 % 3
@@ -92,11 +93,11 @@ Crawler: requests + BeautifulSoup, 4 workers, 0.2 s delay, 3 retries, robots.txt
 \textbf{Caveats.} College is hand-mapped. The count is above my proposed range because research and seminar records are real courses.
 \vspace{8pt}
 
-\colorbox{cream}{\parbox{0.9\linewidth}{\vspace{3pt}\small Manifest: URL, status, bytes, page SHA-256. Five records have empty descriptions and are kept.\vspace{3pt}}}
+\callout{Manifest: URL, status, bytes, page SHA-256. Five empty descriptions are kept.}
 \end{minipage}
 \vspace{10pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small The manifest makes the crawl auditable one page at a time.\vspace{3pt}}}
-\notes{No 404s. Seven department pages have zero course blocks, so they contribute no records. The count came in high, and I kept it rather than trimming real courses. That distinction got lost in an earlier slide and is fixed. Five records also have empty descriptions and are kept, which the report discloses. The crawl manifest records bytes and a SHA for every page.}
+\callout{The manifest makes the crawl auditable page by page.}
+\vspace{0.25in}\notes{No 404s. Seven department pages have zero course blocks, so they contribute no records. The count came in high, and I kept it rather than trimming real courses. That distinction got lost in an earlier slide and is fixed. Five records also have empty descriptions and are kept, which the report discloses. The crawl manifest records bytes and a SHA for every page.}
 \newpage
 
 % 4
@@ -130,9 +131,9 @@ Prerequisite & 0.5\\
 
 Quoted phrases get a bonus, doubled in the title. Filters apply after scoring. The same formula runs in Python and the browser.
 \vspace{10pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small The ranking shape matters more than any one weight constant.\vspace{3pt}}}
+\callout{The ranking shape matters more than any one weight constant.}
 \end{minipage}
-\notes{This is standard BM25F. Weighted term frequencies are summed per field and saturated once. The formula has one saturation per term, not per field. That's deliberate: it keeps title and description evidence comparable. Same corpus in, same artifact out. The gzip mtime is zero and terms are sorted, which removes the old nondeterministic hash. The 401,031 postings are all checked against document lengths in a test.}
+\vspace{0.25in}\notes{This is standard BM25F. Weighted term frequencies are summed per field and saturated once. The formula has one saturation per term, not per field. That's deliberate: it keeps title and description evidence comparable. Same corpus in, same artifact out. The gzip mtime is zero and terms are sorted, which removes the old nondeterministic hash. The 401,031 postings are all checked against document lengths in a test.}
 \newpage
 
 % 5
@@ -156,11 +157,11 @@ Quoted phrases get a bonus, doubled in the title. Filters apply after scoring. T
   \item loading, empty, error, retry states
 \end{itemize}
 \vspace{4pt}
-\colorbox{cream}{\parbox{0.9\linewidth}{\vspace{3pt}The Python evaluator and the JavaScript engine share the same terms and tie-break. If the browser drifts from the evaluator, the test fails. Negation now unions all four posting fields, not just descriptions. Quoted one-word phrases now score instead of returning zero.\vspace{3pt}}}
+\callout{Same terms and tie-break in Python and JavaScript. The parity test fails if the browser drifts.}
 \end{minipage}
 \vspace{10pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small The parity test keeps the deployed engine honest.\vspace{3pt}}}
-\notes{The parser fixes matter. Earlier, \texttt{-csce} only removed description matches, a quoted single word returned zero, and two credit filters overwrote each other. College facet values are slugs so names with spaces stay one token. The same stemmer and tokenizer run in both languages, and the parity test compares top-ten ids on all 25 queries.}
+\callout{The parity test keeps the deployed engine honest.}
+\vspace{0.25in}\notes{The parser fixes matter. Earlier, \texttt{-csce} only removed description matches, a quoted single word returned zero, and two credit filters overwrote each other. College facet values are slugs so names with spaces stay one token. The same stemmer and tokenizer run in both languages, and the parity test compares top-ten ids on all 25 queries.}
 \newpage
 
 % 6
@@ -200,7 +201,7 @@ Grade & Rule\\
 Latency: 75 in-page searches, headless Chromium, p50 and p95.
 \vspace{10pt}
 
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small Why 25? Enough to cover four buckets and keep 516 judgments manageable for one grader. A second grader is the next step.\vspace{3pt}}}
+\callout{Why 25? Four buckets, 516 judgments, one grader. A second grader is next.}
 \vspace{6pt}
 
 \begin{tabular}{@{}ll@{}}
@@ -215,7 +216,7 @@ MRR & first relevant rank\\
 \end{tabular}
 \end{minipage}
 \vspace{10pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small Every condition shares the index and the same term set.\vspace{3pt}}}
+\callout{Every condition shares the index and the same term set.}
 \notes{One grader and 25 queries is small, and most labels come from a rule that reuses the query string. So this measures lexical title match more than topical relevance. The labels are rule-generated with four overrides, not human gold. The sign test is exact, so it doesn't assume normality. We kept the per-query deltas in the results folder for inspection. Four manual overrides are listed with notes.}
 \newpage
 
@@ -243,8 +244,7 @@ Equal expansions & 0.752 & 0.771 & 0.754 & 0.853\\
 \vspace{3pt}
 
 {\scriptsize Deduped codes: BM25F 0.756 P@10 / 0.799 NDCG; flat 0.716 / 0.723.}
-\end{minipage}
-\hfill
+\end{minipage}\hfill
 \begin{minipage}[t]{0.42\linewidth}
 \textbf{BM25F minus flat}
 \begin{tabular}{@{}lrr@{}}
@@ -261,20 +261,22 @@ MRR & +0.018 & -0.020 to 0.069\\
 
 Latency p50 12.0 ms, p95 24.2 ms.
 \end{minipage}
-\notes{BM25F is ahead on NDCG. The interval excludes zero, 18 queries win and 4 lose, sign test p equals 0.004. But P@10, AP, and MRR cross zero. Correction is worth 0.139 NDCG inside the system and synonyms 0.057, but the 0.076 gap is the ranking comparison with terms held constant and weights different. It answers whether duplicates drive the gap. The answer is no: the deduped gap is 0.075 NDCG, almost unchanged. MRR is the weakest of the four, +0.018 with an interval across zero; flat is ahead on P@10 and AP only.}
+\vspace{8pt}
+\callout{Shipped recipe: ahead only on NDCG. Equalized gap: 0.046.}
+\notes{BM25F is ahead on NDCG. The interval excludes zero, 18 queries win and 4 lose, sign test p equals 0.004. But P@10, AP, and MRR cross zero. Correction is worth 0.139 NDCG inside the system and synonyms 0.057, but the 0.076 gap is the ranking comparison with terms held constant and weights different. It answers whether duplicates drive the gap. The answer is no: the deduped gap is 0.075 NDCG, almost unchanged. MRR is +0.018 with an interval across zero. Flat is ahead on no metric, and three of the four intervals cross zero.}
 \newpage
 
 % 9
 \slidehead{Where it breaks}
 \begin{itemize}
   \item \textbf{operating vs operations.} Both stem to \texttt{oper}. For \texttt{os}, SCMT 661 Operations Strategy is rank 3.
-  \item \textbf{software is a modifier.} CSCE 429 Software Development and CSCE 713 Software Security sit at ranks 4 and 5 for ``software engineering.''
+  \item \textbf{software is a modifier.} CSCE 429 Software Development is rank 4 and CSCE 713 Software Security is rank 6 for ``software engineering.''
   \item \textbf{sense collision.} ``security'' returns LAW 706 Securities Regulation first, and the rule grades it 0.
   \item \textbf{acronym blast.} \texttt{os} returns 1,908 records because the expansion splits into common terms.
   \item \textbf{label and duplicate limits.} The rule reuses query strings, and 96 cross-level pairs appear twice.
 \end{itemize}
 \vspace{4pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}The 0.076 gap is a ranking recipe, not pure field weighting. Equal expansion weights with no synonym phrase bonus cut it to 0.046. The 0.139 correction effect is a separate within-system comparison.\vspace{3pt}}}
+\callout{0.076 is a recipe gap, not pure field weighting. Equalized: 0.046. Correction is separate: 0.139.}
 \vspace{8pt}
 
 \begin{tabular}{@{}lr@{}}
@@ -287,13 +289,13 @@ Flat BM25 & 0.725\\
 \bottomrule
 \end{tabular}
 \vspace{8pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small A second grader is the next measurement.\vspace{3pt}}}
-\notes{These are the failures I'd fix first. The stemming collision is easy to reproduce. The software example shows term independence. The LAW result shows the labeler and the ranker agree it's the wrong sense, but the stem can't tell. Both are in the error analysis. The known-item label rule also gets a caveat because it reuses the query string. The acronym os still returns 1,908 records, which is too broad.}
+\callout{A second grader is the next measurement.}
+\vspace{0.25in}\notes{These are the failures I'd fix first. The stemming collision is easy to reproduce. The software example shows term independence. The LAW result shows the labeler and the ranker agree it's the wrong sense, but the stem can't tell. Both are in the error analysis. The known-item label rule also gets a caveat because it reuses the query string. The acronym os still returns 1,908 records, which is too broad.}
 \newpage
 
 % 10
 \slidehead{Takeaway}
-\begin{minipage}[t]{0.62\linewidth}
+\begin{minipage}[t]{0.55\linewidth}
 The shipped recipe is ahead on NDCG, but equalizing expansions cuts the gap to 0.046 and the interval touches zero. Title-only still beats it.
 \vspace{8pt}
 
@@ -303,11 +305,11 @@ The useful part isn't the score. It's the inspectable pipeline: public crawl, ha
 Next: title bigrams, dedupe cross-level codes, retune the weights, and get a second grader.
 \vspace{8pt}
 
-\colorbox{cream}{\parbox{0.92\linewidth}{\vspace{3pt}\small Keep: hashed crawl, parity tests, why panel. Cut: duplicate records and the unsupported department weight.\vspace{3pt}}}
-\end{minipage}
-\vspace{10pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small Title bigrams are the first fix.\vspace{3pt}}}\hfill
-\begin{minipage}[t]{0.34\linewidth}
+\callout{Keep: hashed crawl, parity tests, why panel. Cut: duplicate records.}
+\vspace{8pt}
+\callout{Title bigrams are the first fix.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.40\linewidth}
 \textbf{Live}\\
 \url{https://clmoon2.github.io/aggie-course-scout/}
 \vspace{6pt}
@@ -319,6 +321,6 @@ Next: title bigrams, dedupe cross-level codes, retune the weights, and get a sec
 \textbf{Report}\\
 \url{https://clmoon2.github.io/aggie-course-scout/report.html}
 \end{minipage}
-\notes{So the honest takeaway is narrow. The correction and the interface do more visible work than the weights, and most of the headline is feature weighting. The corrected report is linked here. I'd rather defend the narrow version than the first draft. If you take one thing, take the correction method.}
+\vspace{0.25in}\vspace{0.25in}\notes{So the honest takeaway is narrow. The correction and the interface do more visible work than the weights, and most of the headline is feature weighting. The corrected report is linked here. I'd rather defend the narrow version than the first draft. If you take one thing, take the correction method.}
 
 \end{document}
