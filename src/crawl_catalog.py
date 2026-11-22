@@ -96,7 +96,7 @@ def parse_page(html: str, level: str, dept_code: str, url: str) -> list[dict]:
         title = clean(title_text[cm.end():]).strip(" .:-")
         title = re.sub(r"^(?:/\s*[A-Z]{2,5}\s*\d{3,4}[A-Z]?\s*)+", "", title).strip(" .:-")
         if not title:
-            continue
+            title = code
         hours_el = desc_el.select_one(".hours")
         credits = None
         if hours_el:

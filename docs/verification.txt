@@ -38,18 +38,18 @@ Notes: docs/RELEASE-v0.2-core.md
 7. Evaluation
 Command: python3 src/evaluate.py
 Output: eval/results/results.json
-BM25F P@10 0.828, NDCG@10 0.963, MAP 0.789, MRR 0.973
+BM25F P@10 0.828, NDCG@10 0.964, MAP 0.790, MRR 0.973
 Flat BM25 P@10 0.520, NDCG@10 0.663, MAP 0.482, MRR 0.656
 Judged pairs: 513
 
 8. Latency
 Command: .venv/bin/python src/latency.py
-75 samples, p50 15.4 ms, p95 24.5 ms, cold max 456 ms
+75 samples, p50 14.4 ms, p95 21.8 ms, cold max 386 ms
 Output: eval/results/latency.json
 
 9. Data
-383 pages requested, 383 HTTP 200, 0 errors, 10,275 unique records
-courses.jsonl SHA-256 8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e
+383 pages requested, 383 HTTP 200, 0 errors, 10,277 unique records
+courses.jsonl SHA-256 176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f
 
 10. Hash check
 sha256sum on all submission PDFs matches HANDOFF.md.

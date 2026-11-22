@@ -172,14 +172,14 @@ e2,graduate:PSAA-654,PSAA 654,"U.S. Border Security: Policies, Strategies and Is
 e2,undergraduate:SCMT-375,SCMT 375,Supply Chain Security,2,flat_bm25
 e2,graduate:INTA-651,INTA 651,National Security Policy,2,flat_bm25
 e2,graduate:CSCE-713,CSCE 713,Software Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
-e2,graduate:CSCE-715,CSCE 715,Secure Authentication Systems,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e2,graduate:CSCE-765,CSCE 765,Network Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e2,graduate:CSCE-715,CSCE 715,Secure Authentication Systems,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e2,undergraduate:CSCE-413,CSCE 413,Software Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
 e2,graduate:CSCE-665,CSCE 665,Advanced Networking and Security,2,bm25f|ablate_equal_weights|ablate_no_synonyms
 e2,undergraduate:MARA-360,MARA 360,Maritime Cybersecurity Issues,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e2,undergraduate:CSCE-313,CSCE 313,Introduction to Computer Systems,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e2,undergraduate:CSCE-449,CSCE 449,Applied Cryptography,1,bm25f|ablate_no_synonyms
-e2,undergraduate:CSCE-463,CSCE 463,Computer Networks,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e2,undergraduate:CSCE-449,CSCE 449,Applied Cryptography,1,bm25f|ablate_equal_weights|ablate_no_synonyms
+e2,undergraduate:CSCE-463,CSCE 463,Computer Networks,1,bm25f|ablate_no_dept|ablate_no_synonyms
 e2,graduate:CYBR-630,CYBR 630,Hardware Security,2,ablate_title_only
 e2,graduate:ECEN-759,ECEN 759,Hardware Security,2,ablate_title_only
 e2,graduate:FINC-665,FINC 665,Derivative Securities,0,ablate_title_only

@@ -54,9 +54,9 @@ The job is narrow: find a course by topic, show the official text, explain the r
 Department pages & 383\\
 HTTP 200 & 383\\
 HTTP 404 or empty & 0\\
-Unique records & 10,275\\
-Undergrad / grad & 5,260 / 5,015\\
-Departments & 264\\
+Unique records & 10,277\\
+Undergrad / grad & 5,262 / 5,015\\
+Departments & 263\\
 Prereq lines parsed & 8,564\\
 \bottomrule
 \end{tabular}
@@ -71,7 +71,7 @@ Crawler: requests + BeautifulSoup, 4 workers, 0.2 s delay, 3 retries, robots.txt
 \textbf{Cleaning.} strip HTML, collapse spaces, remove hour boilerplate, split prereqs, dedupe level plus code, hash the output.
 \vspace{5pt}
 
-\textbf{Two caveats.} College is hand-mapped because it is not on the page. The count is 10,275, above my proposed 6,000 to 9,000, because I kept research and seminar records.
+\textbf{Two caveats.} College is hand-mapped because it is not on the page. The count is 10,277, above my proposed 6,000 to 9,000, because I kept research and seminar records.
 \end{minipage}
 
 \notes{The crawl is the boring part and it mostly worked. No 404s. The number came in high. I could have trimmed to hit the proposal range, but that would have thrown away real catalog records. The college map is the weakest metadata.}
@@ -198,11 +198,11 @@ Condition & P@10 & NDCG@10 & MAP & MRR\\
 \midrule
 TF-IDF & 0.516 & 0.665 & 0.463 & 0.646\\
 Flat BM25 & 0.520 & 0.663 & 0.482 & 0.656\\
-\textbf{BM25F} & \textbf{0.828} & \textbf{0.963} & \textbf{0.789} & \textbf{0.973}\\
+\textbf{BM25F} & \textbf{0.828} & \textbf{0.964} & \textbf{0.790} & \textbf{0.973}\\
 Title only & 0.788 & 0.969 & 0.787 & 0.980\\
-No dept & 0.812 & 0.965 & 0.780 & 0.980\\
+No dept & 0.808 & 0.961 & 0.772 & 0.973\\
 Equal weights & 0.832 & 0.960 & 0.797 & 0.973\\
-No synonyms & 0.772 & 0.920 & 0.728 & 0.933\\
+No synonyms & 0.772 & 0.921 & 0.729 & 0.933\\
 \bottomrule
 \end{tabular}
 \end{minipage}\hfill
@@ -213,17 +213,17 @@ No synonyms & 0.772 & 0.920 & 0.728 & 0.933\\
  & TF-IDF & Flat & BM25F\\
 \midrule
 Known & 0.840 & 0.924 & 0.922\\
-Exploratory & 0.905 & 0.967 & 0.991\\
+Exploratory & 0.905 & 0.967 & 0.994\\
 Typo & 0.193 & 0.076 & 0.993\\
 Synonym & 0.574 & 0.491 & 0.956\\
 \bottomrule
 \end{tabular}
 \vspace{6pt}
 
-Latency p50 15.4 ms, p95 24.5 ms. Cold max 456 ms.
+Latency p50 14.4 ms, p95 21.8 ms. Cold max 386 ms.
 \end{minipage}
 
-\notes{BM25F wins overall. On known-item it loses by 0.003 NDCG to flat BM25, which is noise. On exploratory it wins by 0.024. The typo and synonym gaps are the real story, and they come from the correction and expansion branches, not from the field weights.}
+\notes{BM25F wins overall. On known-item it loses by 0.003 NDCG to flat BM25, which is noise. On exploratory it wins by 0.027. The typo and synonym gaps are the real story, and they come from the correction and expansion branches, not from the field weights.}
 \newpage
 
 % 9

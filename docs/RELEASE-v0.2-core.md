@@ -7,7 +7,7 @@ This is the core search release. It is the first tagged version with the full cr
 
 ## What works
 
-- 383 department pages crawled, 10,275 unique course records, 0 HTTP errors.
+- 383 department pages crawled, 10,277 unique course records, 0 HTTP errors.
 - Four-field BM25F index with title, department, description, and prerequisite postings.
 - Python and JavaScript stemmers with a parity test.
 - Query parser for phrases, `dept:`, `level:`, `credits:`, negation, synonyms, and spelling suggestions.
@@ -17,19 +17,19 @@ This is the core search release. It is the first tagged version with the full cr
 
 ## Results at this tag
 
-BM25F scored P@10 0.828 and NDCG@10 0.963. Flat BM25 scored 0.520 and 0.663. BM25F loses known-item NDCG to flat BM25 by 0.003. Browser p50 is 15.4 ms and p95 is 24.5 ms.
+BM25F scored P@10 0.828 and NDCG@10 0.964. Flat BM25 scored 0.520 and 0.663. BM25F loses known-item NDCG to flat BM25 by 0.003. Browser p50 is 14.4 ms and p95 is 21.8 ms.
 
 ## Data
 
 `data/processed/courses.jsonl` SHA-256:
-`8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e`
+`176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f`
 
 Index gzip SHA-256 is in `web/data/index_stats.json`.
 
 ## Known limits
 
 - Catalog snapshot only, no schedule or instructor data.
-- College is hand-mapped, 211 records unplaced.
+- College is hand-mapped, 61 records unplaced.
 - Phrase search is a full scan.
 - Evaluation is single-grader and pooled.
 - `os` over-expands because "operating" and "operations" share a stem.

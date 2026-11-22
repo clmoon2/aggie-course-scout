@@ -8,7 +8,7 @@ Report: https://clmoon2.github.io/aggie-course-scout/report.html
 
 ## What it does
 
-- Searches 10,275 undergraduate and graduate course records from the 2026-2027 catalog.
+- Searches 10,277 undergraduate and graduate course records from the 2026-2027 catalog.
 - Supports quoted phrases, `dept:`, `level:`, `credits:` filters, and `-` negation.
 - Expands common acronyms (ml, ai, db, os, security, stats) and suggests spelling fixes.
 - Shows facets, highlighted snippets, and a term-by-term why-this-ranked panel.
@@ -53,8 +53,8 @@ The 25 queries are in `eval/queries.json`. The judgments are pooled from TF-IDF,
 |---|---:|---:|---:|---:|
 | TF-IDF | 0.516 | 0.665 | 0.463 | 0.646 |
 | Flat BM25 | 0.520 | 0.663 | 0.482 | 0.656 |
-| BM25F | 0.828 | 0.963 | 0.789 | 0.973 |
-| BM25F, no synonyms | 0.772 | 0.920 | 0.728 | 0.933 |
+| BM25F | 0.828 | 0.964 | 0.790 | 0.973 |
+| BM25F, no synonyms | 0.772 | 0.921 | 0.729 | 0.933 |
 
 Known-item NDCG is a tie with flat BM25 (0.922 vs 0.924). The report covers that and the other failures.
 
@@ -81,9 +81,9 @@ docs/           release notes
 
 ## Data notes
 
-College is not printed on department pages, so it is mapped by hand from department prefixes. 211 records in professional or unplaced prefixes use "Other/Professional." Descriptions are the published catalog text, stripped of HTML. Prerequisites are regex-extracted and can truncate on unusual punctuation.
+College is not printed on department pages, so it is mapped by hand from department prefixes. 61 records in professional or unplaced prefixes use "Other/Professional." Descriptions are the published catalog text, stripped of HTML. Prerequisites are regex-extracted and can truncate on unusual punctuation. See `DATA-LICENSE.md` for source and reuse notes.
 
-Output hash: `8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e`.
+Output hash: `176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f`.
 
 ## License
 

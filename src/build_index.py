@@ -24,7 +24,7 @@ OUT_DIR = ROOT / "web" / "data"
 OUT = OUT_DIR / "index.json.gz"
 FIELDS = {"title": "t", "department": "d", "description": "x", "prerequisites": "p"}
 WEIGHTS = {"t": 3.0, "d": 2.0, "x": 1.0, "p": 0.5}
-CROSS_RE = re.compile(r"^/\s*[A-Z]{2,5}\s*\d{3}[A-Z]?\s*")
+CROSS_RE = re.compile(r"^/\s*[A-Z]{2,5}\s*\d{3,4}[A-Z]?\s*")
 
 
 def clean_title(t: str) -> str:

@@ -137,7 +137,7 @@
     li.appendChild(h2);
     const meta = document.createElement("p");
     meta.className = "meta";
-    meta.innerHTML = "<span>" + esc(r.department) + " (" + esc(r.dept) + ")</span>" +
+    meta.innerHTML = "<span>" + esc(r.department) + "</span>" +
       "<span class='pill'>" + esc(r.credits || "?") + " credits</span>" +
       "<span>" + esc(r.level) + "</span><span>" + esc(r.college) + "</span>";
     li.appendChild(meta);
@@ -193,8 +193,9 @@
       for (const [val, count] of entries) {
         const b = document.createElement("button");
         b.type = "button"; b.className = "facet";
-        b.innerHTML = "<span>" + esc(val) + "</span><span class='count'>" + count + "</span>";
-        b.setAttribute("aria-label", "Filter " + label + " " + val + ", " + count + " results");
+        const shown = key === "dept" ? (index.docs.find(d => d[3] === val) || [])[4] || val : val;
+        b.innerHTML = "<span>" + esc(shown) + "</span><span class='count'>" + count + "</span>";
+        b.setAttribute("aria-label", "Filter " + label + " by " + shown + ", " + count + " results");
         b.addEventListener("click", () => toggleFacet(key, val));
         wrap.appendChild(b);
       }
@@ -233,7 +234,7 @@
     detailBody.innerHTML =
       "<p class='eyebrow'>" + esc(r.code) + " · " + esc(r.credits || "?") + " credits · " + esc(r.level) + "</p>" +
       "<h2>" + esc(r.title) + "</h2>" +
-      "<p class='meta'>" + esc(r.department) + " (" + esc(r.dept) + "), " + esc(r.college) + "</p>" +
+      "<p class='meta'>" + esc(r.department) + ", " + esc(r.college) + "</p>" +
       "<p class='desc'>" + esc(r.snippet ? r.snippet.replace(/<\/?mark>/g, "") : "") + "</p>" +
       "<h3>Full catalog description</h3><p class='desc'>" + esc(index.text[findDoc(r)][0]) + "</p>" +
       "<h3>Prerequisites</h3><p>" + esc(index.text[findDoc(r)][1] || "None listed") + "</p>" +

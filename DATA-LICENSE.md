@@ -1,19 +1,14 @@
-# Data attribution
+# Data source and reuse
 
-The course records in `data/processed/courses.jsonl`, the raw pages in
-`data/raw/`, and the text shown in the site come from the Texas A&M University
-Catalogs, 2026-2027 edition:
+Course records come from the 2026-2027 Texas A&M University undergraduate and graduate catalogs at https://catalog.tamu.edu/. The catalog text is published by Texas A&M University. This project stores a snapshot for coursework and links every record back to its source URL.
 
-https://catalog.tamu.edu/
+- Source pages: 383 department course-description pages
+- Snapshot date: 2026-11-22
+- Raw archive: `data/raw/<level>/<dept>.html.gz`
+- Processed file: `data/processed/courses.jsonl`
+- Processed SHA-256: `176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f`
+- Crawler user agent: `AggieCourseScout/1.0 (CSCE 470 class project; clmoon2@tamu.edu)`
 
-Copyright belongs to Texas A&M University. The catalog content is reused here
-for a non-commercial class project with attribution. This site is not an
-official Texas A&M publication.
+The catalog's robots.txt allows the course-description paths used here. The raw pages are retained so a reader can check every parsed field. Course descriptions, titles, and credit values remain the property of Texas A&M. The parser, index, UI, evaluation judgments, and report are original work.
 
-Changes made: HTML stripped, whitespace collapsed, meeting-hour boilerplate
-removed, prerequisites split into a separate field, records deduplicated by
-level and course code, and a college label added from a hand-built department
-prefix map.
-
-Crawl date: 2026-11-22. Output SHA-256:
-`a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2`.
+If reusing the snapshot, cite the catalog and this repo, and check the live catalog for changes.

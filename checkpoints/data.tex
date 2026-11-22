@@ -7,13 +7,14 @@
 \setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
 \hypersetup{colorlinks=true,linkcolor=maroon,urlcolor=maroon}
 \pagestyle{empty}
+\setlength{\emergencystretch}{3em}
 \begin{document}
 {\color{maroon}\rule{\linewidth}{3pt}}
 {\bfseries\large\color{maroon} Data checkpoint: Aggie Course Scout}\hfill Carlos Luna-Pena, CSCE 470
 {\color{maroon}\rule{\linewidth}{1pt}}
 
 \section*{Where the data came from}
-I pulled the 2026-2027 Texas A\&M undergraduate and graduate catalogs from \url{https://catalog.tamu.edu/}. I read \texttt{robots.txt} first and stayed out of disallowed paths. I crawled with four workers, a 0.2 second delay per worker, and three retries, under the user agent \texttt{AggieCourseScout/1.0 (CSCE 470 class project; clmoon2@tamu.edu)}. I keep every raw page as gzipped HTML.
+I pulled the 2026-2027 Texas A\&M undergraduate and graduate catalogs from the public catalog site at \texttt{catalog.tamu.edu}. I read \texttt{robots.txt} first and stayed out of disallowed paths. I crawled with four workers, a 0.2 second delay per worker, and three retries, under the user agent \texttt{AggieCourseScout/1.0 (CSCE 470 class project; clmoon2@tamu.edu)}. I keep every raw page as gzipped HTML.
 
 \section*{Counts and hashes}
 \begin{tabular}{@{}lr@{}}
@@ -22,19 +23,19 @@ Department index pages requested & 383\\
 Pages with HTTP 200 and at least one course block & 376\\
 Pages with zero course blocks & 7\\
 HTTP 404 & 0\\
-Unique level + code records & 10,275\\
-Undergraduate / graduate & 5,260 / 5,015\\
+Unique level + code records & 10,277\\
+Undergraduate / graduate & 5,262 / 5,015\\
 Department names represented & 263\\
 \bottomrule
 \end{tabular}
 
 \smallskip
-Output file: \texttt{data/processed/courses.jsonl}, 8.0 MB.\\
-SHA-256: \texttt{8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e}.\\
-Manifest: \texttt{data/processed/crawl\_manifest.json}, 383 rows with URL, status, byte count, and page SHA-256.
+Output file: \texttt{data/processed/courses.jsonl}, 8.2 MB.\\
+SHA-256: \texttt{176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f}.\\
+Manifest: \texttt{data/processed/crawl\_manifest.json}, 383 rows with URL, status, byte count, and page SHA-256. Reuse basis and attribution: \texttt{DATA-LICENSE.md}.
 
 \section*{What's in a record}
-One JSON object per line. Fields: \texttt{id} (level plus code), \texttt{level}, \texttt{code}, \texttt{number}, \texttt{title}, \texttt{credits}, \texttt{description}, \texttt{prerequisites}, \texttt{corequisites}, \texttt{department}, \texttt{dept\_code}, \texttt{college}, \texttt{course\_level}, \texttt{url}, \texttt{source\_title}.
+One JSON object per line, 15 fields: \texttt{id} (level plus code), \texttt{level}, \texttt{code}, \texttt{number}, \texttt{title}, \texttt{credits}, \texttt{description}, \texttt{prerequisites}, \texttt{corequisites}, \texttt{department}, \texttt{dept\_code}, \texttt{college}, \texttt{course\_level}, \texttt{url}, \texttt{source\_title}. The samples below omit the fields that do not fit on the page.
 
 \section*{What I cleaned}
 I stripped HTML with BeautifulSoup and normalized non-breaking and zero-width spaces. I collapsed whitespace, removed credit and meeting-hour boilerplate, split prerequisites out with a label regex, dropped cross-listed title prefixes, and deduped on level plus code. College is mapped from the catalog program index, because the catalog doesn't print college on a department page.
@@ -53,6 +54,6 @@ I stripped HTML with BeautifulSoup and normalized non-breaking and zero-width sp
 }
 
 \section*{What this can't do}
-This is a snapshot. Courses added after 2026-11-22 are absent, and removed courses remain. The catalog has no meeting times, seats, instructors, or modalities, so the tool can't answer ``when does this meet.'' College is mapped from the catalog program index, and 211 records the index does not place use ``Other/Professional.'' Honestly, a dozen or so prerequisite strings with odd punctuation come out cut off. I left them in rather than hand-fix them. Four-digit numbers were missing in the first pass; the code regex now accepts 3 or 4 digits, which brought back all 32 dental hygiene records and 158 law records. Research, seminar, and zero-credit records are kept because they are real catalog entries, which pushes the count above the proposed 6,000 to 9,000 range.
+This is a snapshot. Courses added after 2026-11-22 are absent, and removed courses remain. The catalog has no meeting times, seats, instructors, or modalities, so the tool can't answer ``when does this meet.'' College is mapped from the catalog program index, and 61 professional or continuing-education records use ``Other/Professional.'' Honestly, a dozen or so prerequisite strings with odd punctuation come out cut off. I left them in rather than hand-fix them. Two title-only zero-credit blocks (ENGR 302, UGST 001) were dropped by a title check; they are now kept with the code as the title. Four-digit numbers were missing in the first pass; the regex now accepts 3 or 4 digits, which brought back all 32 dental hygiene records and 158 law records. Research, seminar, and zero-credit records are kept because they are real catalog entries, which pushes the count above the proposed 6,000 to 9,000 range.
 
 \end{document}
