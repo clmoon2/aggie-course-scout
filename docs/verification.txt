@@ -1,6 +1,6 @@
 Verification log, Aggie Course Scout, 2026-11-22
 
-Code under test: 47f175d. The verification file was added after that commit and changes docs only.
+Code under test: 4fd516b. The verification file was added after that commit and changes docs only.
 
 1. Full test suite
 Command: .venv/bin/python -m pytest tests/ -q
@@ -12,21 +12,21 @@ CLI search, Playwright desktop, typo, facet, empty state, mobile.
 2. Clean checkout
 Command: git clone https://github.com/clmoon2/aggie-course-scout.git /tmp/opencode/clean-check
 then fresh venv, pip install -r requirements.txt, pytest tests/ -q
-Result: 25 passed in 8.16s
+Result: 25 passed in 8.13s
 
 3. Live page, logged out browser context
 URL: https://clmoon2.github.io/aggie-course-scout/
 HTTP: 200
 Title: Aggie Course Scout | TAMU catalog search
-Query: CSCE 310
-Result: 20 cards, first card CSCE 310 Database Systems.
+Query: DDHS 3020 and LAW 601
+Result: 20 cards each; first cards DDHS 3020 Theory of Dental Hygiene Practice I and LAW 601 Civil Procedure; department meta shows names, not codes.
 
 4. Live report
 URL: https://clmoon2.github.io/aggie-course-scout/report.html
 HTTP: 200
 
 5. Pages workflow
-Run: 45002785126
+Run: 45004365879
 Conclusion: success
 Duration: 39 seconds
 
