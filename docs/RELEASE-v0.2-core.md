@@ -29,7 +29,7 @@ Index gzip SHA-256 is in `web/data/index_stats.json`.
 ## Known limits
 
 - Catalog snapshot only, no schedule or instructor data.
-- College is hand-mapped, 536 records unplaced.
+- College is hand-mapped, 211 records unplaced.
 - Phrase search is a full scan.
 - Evaluation is single-grader and pooled.
 - `os` over-expands because "operating" and "operations" share a stem.

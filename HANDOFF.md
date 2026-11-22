@@ -35,7 +35,7 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 5ac874c3f12dc3660b1a57a3c11cff16e6a0d09434d0f3a8a8916d244c007153  checkpoints/CSCE470_Project_Proposal_Carlos_Luna-Pena.pdf
 56c9203fff3deefb487ab42d07e1b5acf96509aee0cbb38ca78f9c4fbdb61b5d  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
 a6a1eececfee9f4ce521f8b1d83d3fa2f1758a14faca52d9df43566e9f42a49c  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
-cf01e8033a76f926f4528e644399b0279b30883d2bdade2e08a77599b92b0fc7  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
+21c954f691823e0875c83b1884ed6006c482d676348bbfae2a2f0e06fc3b33bc  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
 ```
 
 ## Verification evidence
@@ -82,7 +82,7 @@ Final submission for Aggie Course Scout, a solo BM25F search engine over 10,275 
 ## Known limits
 
 - Catalog snapshot from 2026-11-22. No schedule, seats, instructors, or modality.
-- College is hand-mapped at department-prefix level. 536 records use "Other/Professional."
+- College is hand-mapped at department-prefix level. 211 records use "Other/Professional."
 - Prerequisite regex can truncate on weird punctuation.
 - Phrase search scans all documents.
 - Single grader, 25 queries, pooled judgments.
