@@ -40,7 +40,7 @@ SYNONYMS = {
     "swe": [["software", "engineering"]],
 }
 
-FILTER_RE = re.compile(r"^(-?)(dept|level|credits):(.+)$", re.I)
+FILTER_RE = re.compile(r"^(-?)(dept|level|credits|college):(.+)$", re.I)
 CREDIT_RE = re.compile(r"^(>=|<=|>|<)?(\d+)$")
 
 
@@ -53,9 +53,12 @@ class Query:
     neg_phrases: list[list[str]] = field(default_factory=list)
     depts: list[str] = field(default_factory=list)
     neg_depts: list[str] = field(default_factory=list)
+    colleges: list[str] = field(default_factory=list)
+    neg_colleges: list[str] = field(default_factory=list)
     levels: list[str] = field(default_factory=list)
     neg_levels: list[str] = field(default_factory=list)
     credits: tuple[str, int] | None = None
+    credit_bucket: str | None = None
     synonyms: dict[str, list[list[str]]] = field(default_factory=dict)
     corrections: dict[str, str] = field(default_factory=dict)
     unknown: list[str] = field(default_factory=list)
@@ -128,15 +131,20 @@ def parse_query(raw: str, index: dict | None = None) -> Query:
             val = fm.group(3).strip().lower()
             if fm.group(2).lower() == "dept":
                 (q.neg_depts if neg else q.depts).append(val.upper())
+            elif fm.group(2).lower() == "college":
+                (q.neg_colleges if neg else q.colleges).append(val.lower())
             elif fm.group(2).lower() == "level":
                 if val in ("undergraduate", "undergrad", "ug"):
                     (q.neg_levels if neg else q.levels).append("undergraduate")
                 elif val in ("graduate", "grad"):
                     (q.neg_levels if neg else q.levels).append("graduate")
             else:
-                cm = CREDIT_RE.match(val)
-                if cm:
-                    q.credits = (cm.group(1) or "=", int(cm.group(2)))
+                if val in CREDIT_BUCKETS:
+                    q.credit_bucket = val
+                else:
+                    cm = CREDIT_RE.match(val)
+                    if cm:
+                        q.credits = (cm.group(1) or "=", int(cm.group(2)))
             continue
         toks = normalize_tokens(body)
         if not toks:
@@ -167,31 +175,60 @@ def parse_query(raw: str, index: dict | None = None) -> Query:
     return q
 
 
+CREDIT_BUCKETS = ("0", "1-2", "3", "4", "5+")
+
+
+def credit_bounds(credits: str) -> tuple[float, float]:
+    nums = sorted(float(x) for x in re.findall(r"\d+(?:\.\d+)?", credits or ""))
+    return (nums[0], nums[-1]) if nums else (0.0, 0.0)
+
+
+def credit_bucket(credits: str) -> str:
+    lo, hi = credit_bounds(credits)
+    if lo <= 0 <= hi:
+        return "0"
+    if lo <= 2 and hi >= 1:
+        return "1-2"
+    if lo <= 3 <= hi:
+        return "3"
+    if lo <= 4 <= hi:
+        return "4"
+    if hi >= 5:
+        return "5+"
+    return "?"
+
+
 def _doc_matches_filters(doc: list, q: Query) -> bool:
-    code, dept, level, credits = doc[1], doc[3], doc[6], str(doc[7])
+    dept, level = doc[3], doc[6]
+    college_slug = doc[9] if len(doc) > 9 else ""
+    lo, hi = (doc[10], doc[11]) if len(doc) > 11 else credit_bounds(str(doc[7]))
     if q.depts and dept not in q.depts:
         return False
     if q.neg_depts and dept in q.neg_depts:
+        return False
+    if q.colleges and college_slug not in q.colleges:
+        return False
+    if q.neg_colleges and college_slug in q.neg_colleges:
         return False
     if q.levels and level not in q.levels:
         return False
     if q.neg_levels and level in q.neg_levels:
         return False
+    if q.credit_bucket:
+        b = credit_bucket(str(doc[7]))
+        if b != q.credit_bucket:
+            return False
     if q.credits:
         op, val = q.credits
-        try:
-            c = float(credits.split("to")[0] or 0)
-        except ValueError:
+        if op == ">=" and hi < val:
             return False
-        if op == ">=" and c < val:
+        if op == "<=" and lo > val:
             return False
-        if op == "<=" and c > val:
+        if op == ">" and hi <= val:
             return False
-        if op == ">" and c <= val:
+        if op == "<" and lo >= val:
             return False
-        if op == "<" and c >= val:
-            return False
-        if op == "=" and c != val:
+        if op == "=" and not (lo <= val <= hi):
             return False
     return True
 
@@ -324,7 +361,7 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
         facets["dept"][d[3]] = facets["dept"].get(d[3], 0) + 1
         facets["level"][d[6]] = facets["level"].get(d[6], 0) + 1
         facets["college"][d[5]] = facets["college"].get(d[5], 0) + 1
-        cr = d[7] or "?"
+        cr = credit_bucket(str(d[7]))
         facets["credits"][cr] = facets["credits"].get(cr, 0) + 1
 
     results = []
@@ -334,7 +371,7 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
         results.append({
             "id": d[0], "code": d[1], "title": title, "dept": d[3],
             "department": d[4], "college": d[5], "level": d[6],
-            "credits": d[7], "url": d[8], "score": round(score, 3),
+            "credits": d[7], "url": d[8], "collegeSlug": d[9] if len(d) > 9 else "", "score": round(score, 3),
             "snippet": snippet(desc, matched_terms.get(did, set())),
             "why": why.get(did, {}) if explain else {},
         })

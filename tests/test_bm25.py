@@ -5,9 +5,9 @@ from query import load_index, parse_query, search
 
 def tiny_index():
     docs = [
-        ["u:A-100", "A 100", "Database Systems", "A", "Computing", "College", "undergraduate", "3", "u"],
-        ["u:A-200", "A 200", "Operating Systems", "A", "Computing", "College", "undergraduate", "3", "u"],
-        ["u:B-300", "B 300", "Organic Chemistry", "B", "Chemistry", "College", "undergraduate", "4", "u"],
+        ["u:A-100", "A 100", "Database Systems", "A", "Computing", "College", "undergraduate", "3", "u", "computing", 3, 3],
+        ["u:A-200", "A 200", "Operating Systems", "A", "Computing", "College", "undergraduate", "3", "u", "computing", 3, 3],
+        ["u:B-300", "B 300", "Organic Chemistry", "B", "Chemistry", "College", "undergraduate", "4", "u", "chemistry", 4, 4],
     ]
     terms = {"databas": {"t": [[0, 1]], "x": [[0, 2]], "d": [], "p": []},
              "system": {"t": [[1, 1]], "x": [[1, 2], [0, 1]], "d": [], "p": []},
@@ -80,3 +80,29 @@ def test_suggestion_and_correction():
     res = search(idx, "databse", 5)
     assert res["total"] > 0
     assert "database" in res["results"][0]["title"].lower()
+
+
+def test_college_filter():
+    idx = tiny_index()
+    res = search(idx, "systems college:computing", 5)
+    assert res["total"] == 2
+    assert all(r["college"] == "College" for r in res["results"])
+
+
+def test_credit_bucket_facets_match_filter_results():
+    idx = tiny_index()
+    res = search(idx, "", 20)
+    for bucket, count in res["facets"]["credits"].items():
+        assert search(idx, f"credits:{bucket}", 20)["total"] == count
+
+
+def test_credit_operator_compares_both_bounds():
+    idx = tiny_index()
+    assert search(idx, "credits:<=3", 20)["total"] == 2
+    assert search(idx, "credits:>=4", 20)["total"] == 1
+
+
+def test_singular_summary_value_is_two_courses():
+    idx = tiny_index()
+    res = search(idx, "database", 20)
+    assert res["total"] == 1

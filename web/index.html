@@ -32,10 +32,10 @@
     <form id="search-form" role="search" autocomplete="off">
       <label class="sr-only" for="q">Search courses</label>
       <div class="search-row">
-        <input id="q" name="q" type="search" placeholder="Try: computer security, CSCE 310, &quot;operating systems&quot;" spellcheck="false" autofocus>
+        <input id="q" name="q" type="search" placeholder="Try: computer security, CSCE 310, &quot;operating systems&quot;" spellcheck="false">
         <button type="submit" class="primary">Search</button>
       </div>
-      <p class="syntax">Filters: <code>dept:csce</code> <code>level:graduate</code> <code>credits:&gt;=3</code>. Prefix a term with <code>-</code> to exclude it.</p>
+      <p class="syntax">Filters: <code>dept:csce</code> <code>college:college-of-engineering</code> <code>level:graduate</code> <code>credits:3</code>. Prefix a term with <code>-</code> to exclude it.</p>
     </form>
   </section>
 
@@ -54,19 +54,25 @@
     </aside>
 
     <section id="results" class="results" aria-label="Search results" tabindex="-1">
-      <div id="summary" class="summary"></div>
+      <div id="summary" class="summary" role="status" aria-live="polite"></div>
       <div id="suggestion"></div>
       <ol id="result-list" class="result-list"></ol>
       <div id="empty" class="empty" hidden>
-        <h2>No courses matched.</h2>
-        <p>Try a shorter phrase, remove a filter, or check the spelling. The catalog only contains published course descriptions, not syllabi or schedules.</p>
+        <h2 id="empty-title">Search the catalog.</h2>
+        <p id="empty-copy">Enter a topic, a course code, or a phrase. The catalog only contains published course descriptions, not syllabi or schedules.</p>
+      </div>
+      <div id="error-panel" class="error-panel" role="alert" hidden>
+        <h2>The search index did not load.</h2>
+        <p id="error-copy">The index request failed. Check the connection and try again.</p>
+        <button id="retry" class="primary" type="button">Retry loading the index</button>
       </div>
       <button id="more" class="more" type="button" hidden>Show 20 more</button>
     </section>
   </div>
 </main>
 
-<aside id="detail" class="detail" aria-label="Course detail" hidden>
+<div id="detail-backdrop" class="detail-backdrop" hidden></div>
+<aside id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>
   <button class="detail-close" id="detail-close" type="button" aria-label="Close detail">Close</button>
   <div id="detail-body"></div>
 </aside>

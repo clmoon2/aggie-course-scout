@@ -32,6 +32,18 @@ def clean_title(t: str) -> str:
     return re.sub(r"\s+", " ", t).strip(" /")
 
 
+def credit_bounds(value: str) -> tuple[float, float]:
+    nums = [float(x) for x in re.findall(r"\d+(?:\.\d+)?", value or "")]
+    if not nums:
+        return (0.0, 0.0)
+    return (min(nums), max(nums))
+
+
+def college_slug(name: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    return s or "other"
+
+
 def main() -> None:
     docs = []
     postings: dict[str, dict[str, list[list[int]]]] = defaultdict(lambda: defaultdict(list))
@@ -56,9 +68,11 @@ def main() -> None:
                 counts[tok] += 1
             for tok, tf in counts.items():
                 postings[tok][short].append([did, tf])
+        lo, hi = credit_bounds(r["credits"])
         docs.append([
             r["id"], r["code"], title, r["dept_code"], r["department"],
             r["college"], r["level"], r["credits"] or "", r["url"],
+            college_slug(r["college"]), lo, hi,
         ])
     n = len(docs)
     avglen = {f: (mean(v) if v else 1.0) for f, v in doclen.items()}

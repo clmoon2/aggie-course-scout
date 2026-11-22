@@ -84,13 +84,157 @@ def test_mobile_no_horizontal_scroll(browser, server):
     page.close()
 
 
-def test_credit_range_facet(browser, server):
+def test_credit_bucket_facet(browser, server):
     page = browser.new_page()
     load(page, server)
-    page.fill("#q", "dept:csce")
+    page.fill("#q", "dental hygiene")
+    page.wait_for_selector(".card")
+    button = page.locator(".facet", has_text="1-2").first
+    async_count = int(button.locator(".count").inner_text())
+    button.click()
+    page.wait_for_timeout(500)
+    assert "credits:1-2" in page.input_value("#q")
+    assert page.locator(".card").count() == min(async_count, 20)
+    page.close()
+
+
+def test_college_facet_filters_and_selected_state(browser, server):
+    page = browser.new_page()
+    load(page, server)
+    page.fill("#q", "dental hygiene")
+    page.wait_for_selector(".card")
+    before = int(page.locator("#summary strong").inner_text())
+    button = page.locator(".facet", has_text="College of Dentistry").first
+    advertised = int(button.locator(".count").inner_text())
+    assert advertised < before
+    button.click()
+    page.wait_for_timeout(600)
+    assert "college:college-of-dentistry" in page.input_value("#q")
+    assert int(page.locator("#summary strong").inner_text()) == advertised
+    assert page.locator(".facet.selected").count() == 1
+    assert page.locator(".facet.selected").get_attribute("aria-pressed") == "true"
+    page.close()
+
+
+def test_credits_facet_counts_match_all_buckets(browser, server):
+    page = browser.new_page()
+    load(page, server)
+    page.fill("#q", "dental hygiene")
     page.wait_for_selector(".facet")
-    page.locator(".facet", has_text="0to4").first.click()
-    page.wait_for_timeout(400)
-    assert "credits:>=0 credits:<=4" in page.input_value("#q")
-    assert page.locator(".card").count() > 0
+    for label in ["0", "1-2", "3", "4", "5+"]:
+        button = page.locator(".facet", has_text=label).first
+        advertised = int(button.locator(".count").inner_text())
+        button.click()
+        page.wait_for_timeout(500)
+        assert int(page.locator("#summary strong").inner_text()) == advertised, label
+        page.locator(".facet.selected").click()
+        page.wait_for_timeout(400)
+    page.close()
+
+
+def test_initial_empty_is_full_width(browser, server):
+    page = browser.new_page(viewport={"width": 1280, "height": 900})
+    load(page, server)
+    assert page.locator("#facet-panel").is_hidden()
+    assert page.locator("#empty").is_visible()
+    assert page.locator("#empty").bounding_box()["width"] > 600
+    assert page.locator("#empty-title").inner_text() == "Search the catalog."
+    page.fill("#q", "zzzznotacourse")
+    page.wait_for_timeout(700)
+    assert page.locator("#summary").inner_text() == ""
+    assert page.locator("#empty").bounding_box()["width"] > 600
+    assert page.get_by_text("No courses matched.", exact=True).count() == 1
+    page.close()
+
+
+def test_mobile_scrolls_to_results(browser, server):
+    page = browser.new_page(viewport={"width": 390, "height": 844})
+    load(page, server)
+    page.fill("#q", "dental hygiene")
+    page.press("#q", "Enter")
+    page.wait_for_selector(".card")
+    page.wait_for_timeout(800)
+    assert page.evaluate("window.scrollY") > 300
+    assert page.locator("#results").bounding_box()["y"] < 844
+    page.close()
+
+
+def test_detail_backdrop_and_focus_restore(browser, server):
+    page = browser.new_page()
+    load(page, server)
+    page.fill("#q", "dental hygiene")
+    page.wait_for_selector(".card")
+    trigger = page.locator(".card h2 button").first
+    trigger.focus()
+    trigger.click()
+    assert page.locator("#detail-backdrop").is_visible()
+    page.locator("#detail-close").click()
+    assert not page.locator("#detail-backdrop").is_visible()
+    assert page.evaluate("document.activeElement === document.querySelector('.card h2 button')")
+    page.close()
+
+
+def test_query_typed_during_boot_is_queued(browser, server):
+    page = browser.new_page()
+    import time as _time
+    def slow(route):
+        _time.sleep(1.2)
+        route.continue_()
+    page.route("**/data/index.json.gz", slow)
+    page.goto(server, wait_until="domcontentloaded")
+    page.fill("#q", "computer security")
+    page.press("#q", "Enter")
+    page.wait_for_function("window.__ready === true", timeout=30000)
+    page.wait_for_selector(".card")
+    assert page.input_value("#q") == "computer security"
+    assert page.locator(".card").count() == 20
+    page.close()
+
+
+def test_error_panel_and_retry(browser, server):
+    page = browser.new_page()
+    failed = {"done": False}
+    def fail_once(route):
+        if not failed["done"]:
+            failed["done"] = True
+            route.abort()
+        else:
+            route.continue_()
+    page.route("**/data/index.json.gz", fail_once)
+    page.goto(server, wait_until="networkidle")
+    page.wait_for_selector("#error-panel:not([hidden])")
+    assert page.locator("#retry").is_visible()
+    page.fill("#q", "dental hygiene")
+    page.press("#q", "Enter")
+    page.wait_for_timeout(200)
+    assert page.locator("#error-panel").is_visible()
+    page.locator("#retry").click()
+    page.wait_for_function("window.__ready === true", timeout=30000)
+    page.wait_for_selector(".card")
+    assert page.locator(".card").count() == 20
+    page.close()
+
+
+def test_loading_state_paints_before_search(browser, server):
+    page = browser.new_page()
+    load(page, server)
+    page.evaluate("""
+      window.__sawLoading = false;
+      const el = document.querySelector('#loading');
+      new MutationObserver(() => { if (!el.hidden) window.__sawLoading = true; })
+        .observe(el, { attributes: true, attributeFilter: ['hidden'] });
+    """)
+    page.fill("#q", "dental hygiene")
+    page.press("#q", "Enter")
+    page.wait_for_selector(".card")
+    assert page.evaluate("window.__sawLoading") is True
+    page.close()
+
+
+def test_singular_summary(browser, server):
+    page = browser.new_page()
+    load(page, server)
+    page.fill("#q", 'dept:DDHS "Preclinical Dental Hygiene"')
+    page.wait_for_selector(".card")
+    assert "1 course matches" in page.locator("#summary").inner_text()
     page.close()

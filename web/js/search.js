@@ -16,7 +16,7 @@
     chem: [["chemistry"]], econ: [["economics"]], psych: [["psychology"]],
     swe: [["software","engineering"]]
   };
-  const FILTER_RE = /^(-?)(dept|level|credits):(.+)$/i;
+  const FILTER_RE = /^(-?)(dept|level|credits|college):(.+)$/i;
   const CREDIT_RE = /^(>=|<=|>|<)?(\d+)$/;
 
   function loadIndex(url) {
@@ -82,8 +82,8 @@
 
   function parseQuery(raw, index) {
     const q = {raw, terms: [], phrases: [], negTerms: [], negPhrases: [],
-      depts: [], negDepts: [], levels: [], negLevels: [], credits: null,
-      synonyms: {}, corrections: {}, unknown: []};
+      depts: [], negDepts: [], colleges: [], negColleges: [], levels: [], negLevels: [],
+      credits: null, creditBucket: null, synonyms: {}, corrections: {}, unknown: []};
     const pieces = raw.match(/-?"[^"]+"|\S+/g) || [];
     for (const piece of pieces) {
       const neg = piece.startsWith("-");
@@ -97,12 +97,16 @@
       if (fm) {
         const val = fm[3].trim().toLowerCase();
         if (fm[2].toLowerCase() === "dept") (neg ? q.negDepts : q.depts).push(val.toUpperCase());
+        else if (fm[2].toLowerCase() === "college") (neg ? q.negColleges : q.colleges).push(val.toLowerCase());
         else if (fm[2].toLowerCase() === "level") {
           if (["undergraduate","undergrad","ug"].includes(val)) (neg ? q.negLevels : q.levels).push("undergraduate");
           if (["graduate","grad"].includes(val)) (neg ? q.negLevels : q.levels).push("graduate");
         } else {
-          const cm = val.match(CREDIT_RE);
-          if (cm) q.credits = [cm[1] || "=", parseInt(cm[2], 10)];
+          if (CREDIT_BUCKETS.includes(val)) q.creditBucket = val;
+          else {
+            const cm = val.match(CREDIT_RE);
+            if (cm) q.credits = [cm[1] || "=", parseInt(cm[2], 10)];
+          }
         }
         continue;
       }
@@ -130,21 +134,38 @@
     return q;
   }
 
+  const CREDIT_BUCKETS = ["0", "1-2", "3", "4", "5+"];
+  function creditBounds(credits) {
+    const nums = (String(credits || "").match(/\d+(?:\.\d+)?/g) || []).map(Number).sort((a,b) => a-b);
+    return nums.length ? [nums[0], nums[nums.length - 1]] : [0, 0];
+  }
+  function creditBucket(credits) {
+    const [lo, hi] = creditBounds(credits);
+    if (lo <= 0 && hi >= 0) return "0";
+    if (lo <= 2 && hi >= 1) return "1-2";
+    if (lo <= 3 && hi >= 3) return "3";
+    if (lo <= 4 && hi >= 4) return "4";
+    if (hi >= 5) return "5+";
+    return "?";
+  }
   function docMatchesFilters(doc, q) {
-    const dept = doc[3], level = doc[6], credits = String(doc[7] || "");
+    const dept = doc[3], level = doc[6], credits = String(doc[7] || "", 10);
+    const college = doc[9] || "";
+    const [lo, hi] = doc.length > 11 ? [doc[10], doc[11]] : creditBounds(credits);
     if (q.depts.length && !q.depts.includes(dept)) return false;
     if (q.negDepts.length && q.negDepts.includes(dept)) return false;
+    if (q.colleges.length && !q.colleges.includes(college)) return false;
+    if (q.negColleges.length && q.negColleges.includes(college)) return false;
     if (q.levels.length && !q.levels.includes(level)) return false;
     if (q.negLevels.length && q.negLevels.includes(level)) return false;
+    if (q.creditBucket && creditBucket(credits) !== q.creditBucket) return false;
     if (q.credits) {
       const [op, val] = q.credits;
-      const c = parseFloat(credits.split("to")[0] || "0");
-      if (Number.isNaN(c)) return false;
-      if (op === ">=" && c < val) return false;
-      if (op === "<=" && c > val) return false;
-      if (op === ">" && c <= val) return false;
-      if (op === "<" && c >= val) return false;
-      if (op === "=" && c !== val) return false;
+      if (op === ">=" && hi < val) return false;
+      if (op === "<=" && lo > val) return false;
+      if (op === ">" && hi <= val) return false;
+      if (op === "<" && lo >= val) return false;
+      if (op === "=" && !(lo <= val && val <= hi)) return false;
     }
     return true;
   }
@@ -298,7 +319,7 @@
     const facets = {dept: {}, level: {}, college: {}, credits: {}};
     for (const [, did] of ranked) {
       const d = index.docs[did];
-      for (const [key, val] of [["dept", d[3]], ["level", d[6]], ["college", d[5]], ["credits", d[7] || "?"]]) {
+      for (const [key, val] of [["dept", d[3]], ["level", d[6]], ["college", d[9] || "other"], ["credits", creditBucket(d[7])]]) {
         facets[key][val] = (facets[key][val] || 0) + 1;
       }
     }
@@ -308,7 +329,7 @@
     const results = ranked.slice(0, limit).map(([score, did]) => {
       const d = index.docs[did];
       return {id: d[0], code: d[1], title: index.text[did][2], dept: d[3],
-        department: d[4], college: d[5], level: d[6], credits: d[7], url: d[8],
+        department: d[4], college: d[5], collegeSlug: d[9], level: d[6], credits: d[7], url: d[8],
         score: Math.round(score * 1000) / 1000,
         snippet: snippet(index.text[did][0], matched.get(did) || new Set()),
         why: (why.get(did) || {})};

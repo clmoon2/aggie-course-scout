@@ -9,36 +9,50 @@
 \pagestyle{empty}
 \begin{document}
 {\color{maroon}\rule{\linewidth}{4pt}}
-{\bfseries\large\color{maroon} UI checkpoint: Aggie Course Scout}\hfill Carlos Luna-Pena, CSCE 470
+{\bfseries\large\color{maroon} UI checkpoint: Aggie Course Scout}\hfill Carlos Luna-Pena, CSCE 470\\
+{\footnotesize \url{https://clmoon2.github.io/aggie-course-scout/} \hfill 2026-11-22}
 {\color{maroon}\rule{\linewidth}{1pt}}
 
 \section*{Design direction}
-Maroon and cream, drawn from TAMU print materials but kept quiet. Results read like catalog cards: serif title, small metadata, highlighted snippet, rank score. The search syntax is visible under the box instead of hidden in a help page. Facets sit to the left on desktop and stack above results on mobile. The detail drawer shows the full description, prerequisites, and the term-level ranking table.
+Maroon and cream, drawn from TAMU print materials but kept quiet. Results read like catalog cards: serif title, small metadata, highlighted snippet, rank score. The search syntax is visible under the box instead of hidden in a help page. Department, level, credit, and college facets come from the current filtered set. The detail drawer shows the full description, prerequisites, and the term-level ranking table over a dimmed page.
 
 \section*{Desktop results}
-\includegraphics[width=\linewidth]{../web/assets/screenshots/desktop-results.png}
-\smallskip
-{\footnotesize The query \texttt{dental hygiene} returns 176 records. Clinical Dental Hygiene I is first, and the snippet marks both query terms. Department facets show names, not codes. The facet counts come from the filtered result set, not the whole index.}
+\includegraphics[width=0.82\linewidth]{../web/assets/screenshots/desktop-results.png}
+
+{\footnotesize The query \texttt{dental hygiene} returns 176 records. Clinical Dental Hygiene I is first, and the snippet marks both terms. Department facets show names, not codes. The College of Dentistry facet advertises 159 and returns 159. Credit buckets are 0, 1-2, 3, 4, and 5+, and each count matches the records it returns.}
+
+\section*{Empty, loading, and error states}
+\begin{minipage}[t]{0.32\linewidth}
+\includegraphics[width=\linewidth]{../web/assets/screenshots/state-empty.png}\\
+{\scriptsize Initial empty state spans the results area.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\includegraphics[width=\linewidth]{../web/assets/screenshots/state-loading.png}\\
+{\scriptsize Loading paints with a progress bar and index size. A query typed now is queued.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}
+\includegraphics[width=\linewidth]{../web/assets/screenshots/state-error.png}\\
+{\scriptsize Index failure gets a styled panel and a real retry button.}
+\end{minipage}
 
 \newpage
 \section*{Mobile layout and detail panel}
-\begin{minipage}[t]{0.36\linewidth}
+\begin{minipage}[t]{0.28\linewidth}
 \includegraphics[width=\linewidth]{../web/assets/screenshots/mobile-results.png}
 \end{minipage}\hfill
-\begin{minipage}[t]{0.60\linewidth}
-\includegraphics[width=\linewidth]{../web/assets/screenshots/detail-panel.png}
+\begin{minipage}[t]{0.36\linewidth}
+\includegraphics[width=\linewidth]{../web/assets/screenshots/detail-drawer.png}
 \end{minipage}
 
-\smallskip
-{\footnotesize Left: 390 px viewport, one column, no horizontal scroll. Right: detail panel with the department name, full catalog text, prerequisites, and the why-this-ranked table.}
+{\footnotesize Left: 390 px viewport after Enter. The page scrolls to the result summary, the facet list is capped at 42 vh, and there is no horizontal scroll. Right: desktop detail panel over a backdrop, with the duplicate description removed and Close held at the top.}
 
-\section*{States and accessibility}
-There are explicit loading, empty, and index-error states. The loading state names the index size. The empty state suggests removing a filter or fixing spelling. The status region is an ARIA live region. Markup uses a skip link, real buttons, visible focus rings, 4.5:1 or better body contrast, and a reduced-motion media query. Escape closes the detail panel and slash focuses search.
+\section*{What the audit changed}
+College is now a parsed filter, field, and filtered facet. Credit filters compare both bounds and the facet counts use the same bucket predicate as the results. Initial and zero-result empty states span the grid instead of falling into the 230 px sidebar. A query typed during index load survives and runs on ready. The error state stays visible through typing and retries the index. Mobile jumps to results after a search. The drawer restores focus, traps Tab, and closes from the backdrop or Escape.
 
-\section*{What changed after testing}
-The first detail view looked up the description by the result's position in the ranked list instead of its document id, so it could show the wrong course. The browser test caught it. The why table also repeated one term score on every field row; it now shows weighted TF per field and the term score once. The mobile facet column originally stayed sticky and ate the viewport, so it was set to static below 780 px.
+\section*{Accessibility and tests}
+Facets expose \texttt{aria-pressed}, change their label to Remove filter, keep a selected style, and restore focus after rerender. The result count is a live region, the loading state paints for at least two frames, and the skip link is first in tab order. Fourteen browser tests cover college and credit counts, empty width, load queueing, loading paint, error retry, mobile scroll, backdrop, and focus restore. The full suite is 38 tests.
 
 \section*{Known rough edges}
-The result cards still show raw credit strings such as \texttt{0to4}. Long department names wrap awkwardly at 390 px. The detail drawer covers the results with no backdrop on mobile, so the context behind it is only partly visible.
+The card body is still not clickable; only the title is. Raw credit strings such as \texttt{0to4} remain in cards. Selecting a facet recomputes its option list from the narrower result set, so switching departments takes two clicks. The detail panel covers most of the page on mobile.
 
 \end{document}
