@@ -31,7 +31,7 @@ Department names represented & 263\\
 
 \smallskip
 Output file: \texttt{data/processed/courses.jsonl}, 8.2 MB.\\
-SHA-256: \texttt{176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f}.\\
+SHA-256: \texttt{e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206}.\\
 Manifest: \texttt{data/processed/crawl\_manifest.json}, 383 rows with URL, status, byte count, and page SHA-256. Reuse basis and attribution: \texttt{DATA-LICENSE.md}.
 
 \section*{What's in a record}
@@ -54,6 +54,6 @@ I stripped HTML with BeautifulSoup and normalized non-breaking and zero-width sp
 }
 
 \section*{What this can't do}
-This is a snapshot. Courses added after 2026-11-22 are absent, and removed courses remain. The catalog has no meeting times, seats, instructors, or modalities, so the tool can't answer ``when does this meet.'' College is mapped from the catalog program index, and 61 professional or continuing-education records use ``Other/Professional.'' Honestly, a dozen or so prerequisite strings with odd punctuation come out cut off. I left them in rather than hand-fix them. Two title-only zero-credit blocks (ENGR 302, UGST 001) were dropped by a title check; they are now kept with the code as the title. Four-digit numbers were missing in the first pass; the regex now accepts 3 or 4 digits, which brought back all 32 dental hygiene records and 158 law records. Research, seminar, and zero-credit records are kept because they are real catalog entries, which pushes the count above the proposed 6,000 to 9,000 range.
+This is a snapshot. Courses added after 2026-11-22 are absent, and removed courses remain. The catalog has no meeting times, seats, instructors, or modalities, so the tool can't answer ``when does this meet.'' College is mapped from the catalog program index, and 36 professional or continuing-education records use ``Other/Professional.'' Honestly, a dozen or so prerequisite strings with odd punctuation come out cut off. I left them in rather than hand-fix them. Two title-only zero-credit blocks (ENGR 302, UGST 001) were dropped by a title check; they are now kept with the code as the title. Four-digit numbers were missing in the first pass; the regex now accepts 3 or 4 digits, which brought back all 32 dental hygiene records and 158 law records. Research, seminar, and zero-credit records are kept because they are real catalog entries, which pushes the count above the proposed 6,000 to 9,000 range.
 
 \end{document}

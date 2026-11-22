@@ -17,19 +17,19 @@ This is the core search release. It is the first tagged version with the full cr
 
 ## Results at this tag
 
-BM25F scored P@10 0.828 and NDCG@10 0.964. Flat BM25 scored 0.520 and 0.663. BM25F loses known-item NDCG to flat BM25 by 0.003. Browser p50 is 14.4 ms and p95 is 21.8 ms.
+BM25F scored P@10 0.828 and NDCG@10 0.964. Flat BM25 scored 0.520 and 0.663. BM25F loses known-item NDCG to flat BM25 by 0.003. Browser p50 is 14.4 ms and p95 is 22.2 ms.
 
 ## Data
 
 `data/processed/courses.jsonl` SHA-256:
-`176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f`
+`e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206`
 
 Index gzip SHA-256 is in `web/data/index_stats.json`.
 
 ## Known limits
 
 - Catalog snapshot only, no schedule or instructor data.
-- College is hand-mapped, 61 records unplaced.
+- College is hand-mapped, 36 records unplaced.
 - Phrase search is a full scan.
 - Evaluation is single-grader and pooled.
 - `os` over-expands because "operating" and "operations" share a stem.

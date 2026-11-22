@@ -14,9 +14,9 @@ def _add(college, prefixes):
 
 _add("College of Agriculture and Life Sciences", """
 AGCJ AGEC AGLS AGSC AGSM ALEC ALED ANSC BESC BICH BOTN DASC ECCB ENTO FIVS
-FSCI FSTC GENE HORT HMGT MEPS MICR NUTR PLPA POSC RPTS RWFM SCSC WFSC
+FSTC GENE HORT HMGT MEPS MICR NUTR PLPA POSC RPTS RWFM SCSC WFSC
 """)
-_add("College of Architecture", "ARCH CARC COSC ENDS LAND PLAN URPN URSC")
+_add("College of Architecture", "ARCH CARC COSC ENDS LAND LDEV PLAN URPN URSC")
 _add("Mays Business School", """
 ACCT ANLY BUAD BUSN ECMT ENTR FINC FINP IBUS ISTM MGMT MKTG SCMT SPBA
 """)
@@ -44,20 +44,20 @@ BIMS VLCS VMID VPAR VPAT VSCS VTMI VTPB VTPP VIBS
 _add("School of Public Health", """
 HBEH HLTH PHEB PHEO PHLT PHPM SOPH WMHS
 """)
-_add("College of Nursing", "NURS NRPR")
+_add("College of Nursing", "FORS NURS NRPR")
 _add("College of Pharmacy", "PHAR PHSC")
 _add("College of Dentistry", """
 AEGD DDHS DDDS DPHS ENDO OBIO OMFP OMFR OMFS ORTH PEDD PERI PROS
 """)
 _add("School of Medicine", """
-AAMD ANES CPSY EMED FSCI HCPI HHUM IMED MCMD MEID MFCM MHUM MPAT MPED MPHY MPIM
+AAMD ANES EMED FSCI HCPI HHUM IMED MCMD MEID MFCM MHUM MPAT MPED MPHY MPIM
 MPSY MRAD MSCI NEXT NRSC OBGY SURG
 """)
 _add("Bush School of Government and Public Service", "BUSH INTA POLS PSAA")
 _add("School of Military Sciences", "AERS MLSC NVSC SOMS")
 _add("School of Law", "LAW")
 _add("Galveston Campus", """
-GALV MARA MARB MARE MARR MARS MART MASC MASE MAST
+FSCI GALV MARA MARB MARE MARR MARS MART MASC MASE MAST
 """)
 _add("General and Interdisciplinary", """
 ASCC FYEX HONR ITsv ITSV MSTC MUST TAMU TCMG TCMT UGST

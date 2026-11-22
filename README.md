@@ -81,9 +81,9 @@ docs/           release notes
 
 ## Data notes
 
-College is not printed on department pages, so it is mapped by hand from department prefixes. 61 records in professional or unplaced prefixes use "Other/Professional." Descriptions are the published catalog text, stripped of HTML. Prerequisites are regex-extracted and can truncate on unusual punctuation. See `DATA-LICENSE.md` for source and reuse notes.
+College is not printed on department pages, so it is mapped by hand from department prefixes. 36 records in professional or unplaced prefixes use "Other/Professional." Descriptions are the published catalog text, stripped of HTML. Prerequisites are regex-extracted and can truncate on unusual punctuation. See `DATA-LICENSE.md` for source and reuse notes.
 
-Output hash: `176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f`.
+Output hash: `e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206`.
 
 ## License
 

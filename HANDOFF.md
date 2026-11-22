@@ -29,13 +29,13 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 ## Hashes
 
 ```
-176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f  data/processed/courses.jsonl
-6c88e318addf72b0ed37033715be69ed62c59f19dc6bc9ff139d0899569d289f  web/data/index.json.gz
-00b7b75026be9fd353a77d06b8d77c25be2de0b9607ccb5484c032b319bd923b  docs/report.pdf
+e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206  data/processed/courses.jsonl
+2dd6ae564bd36d6e1201a4ceb69c079fcf0a6007922a452a32c771238bec64bd  web/data/index.json.gz
+b526f1277dafa2bf6443543c9db08abad8525ed59210a35c2180da3326a7c7d8  docs/report.pdf
 34159461b4003418ec808ae7231f2e8f4bc07d5c4c65944893c9fc8cc5e2a145  checkpoints/CSCE470_Project_Proposal_Carlos_Luna-Pena.pdf
-d141959bdebcc878aa784f7637dde9628f468569d25f0db2469ce670506f0bce  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
+886cbd355f2d50d07ad386c341e6f38af4ff3d48d4ed2fb807e1fa3dd933eaa5  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
 244004093a96ffd0663592412a1862db03b649c4ccec28b6c2447ceb1553e2f8  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
-4f17d9e199ed9395acf95b8e393f2f58fec6169cafef37b0e785cc5210017834  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
+6170a9c60b649f6e9454507607293bd256f12d5344b8e25f25e60dde53f40bd4  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
 ```
 
 ## Verification evidence
@@ -48,7 +48,7 @@ d141959bdebcc878aa784f7637dde9628f468569d25f0db2469ce670506f0bce  checkpoints/CS
 - Release: tag `v0.2-core` pushed and release published.
 - Search CLI: `python3 src/query.py "CSCE 310" --limit 3 --json` returns CSCE 310 first.
 - Data: 383 pages, 0 HTTP errors, 10,277 records. Manifest has one row per request.
-- Latency: 75 samples, p50 14.4 ms, p95 21.8 ms, cold max 386 ms.
+- Latency: 75 samples, p50 14.4 ms, p95 22.2 ms, cold max 381 ms.
 
 The last code commit is `4fd516b`. Later commits change documentation, report wording, and PDFs only.
 
@@ -65,7 +65,7 @@ Late proposal for my CSCE 470 project, Aggie Course Scout. It is a search engine
 
 ## Canvas: data checkpoint
 
-Late data checkpoint. I crawled the 2026-2027 TAMU undergraduate and graduate catalog course-description indexes: 383 department pages, 4 workers, 0.2 second delay, three retries, robots.txt respected. All 383 returned 200. I parsed 10,277 unique course records with code, title, credits, description, prerequisites, department, college, and level. HTML is stripped and records are deduplicated by level plus code. The output JSONL has SHA-256 176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f and a manifest with every page hash and status. One-page data PDF attached. Limits: snapshot only, no schedule data, college is hand-mapped, and the count is 10,277, above my proposed range. Repo: https://github.com/clmoon2/aggie-course-scout.
+Late data checkpoint. I crawled the 2026-2027 TAMU undergraduate and graduate catalog course-description indexes: 383 department pages, 4 workers, 0.2 second delay, three retries, robots.txt respected. All 383 returned 200. I parsed 10,277 unique course records with code, title, credits, description, prerequisites, department, college, and level. HTML is stripped and records are deduplicated by level plus code. The output JSONL has SHA-256 e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206 and a manifest with every page hash and status. One-page data PDF attached. Limits: snapshot only, no schedule data, college is hand-mapped, and the count is 10,277, above my proposed range. Repo: https://github.com/clmoon2/aggie-course-scout.
 
 ## Canvas: core release
 
@@ -77,12 +77,12 @@ Late UI checkpoint, two pages with desktop, mobile, and detail screenshots. The 
 
 ## Canvas: final submission
 
-Final submission for Aggie Course Scout, a solo BM25F search engine over 10,277 public TAMU catalog records. Live site: https://clmoon2.github.io/aggie-course-scout/. Report: https://clmoon2.github.io/aggie-course-scout/report.html. Repo: https://github.com/clmoon2/aggie-course-scout. The project includes the crawl and manifest, a four-field index, a browser query layer, a static UI, 25 queries with 513 pooled judgments, three baselines, four ablations, a 7-page report, a 10-slide deck with notes, and 25 passing tests. BM25F gets NDCG@10 0.964 against 0.663 for flat BM25, but the win is concentrated in typo and synonym queries. Known-item NDCG is a 0.003 loss to flat BM25. Browser latency is p50 14.4 ms and p95 21.8 ms. Report PDF: docs/report.pdf. Slides: slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf. Everything is public and logged out.
+Final submission for Aggie Course Scout, a solo BM25F search engine over 10,277 public TAMU catalog records. Live site: https://clmoon2.github.io/aggie-course-scout/. Report: https://clmoon2.github.io/aggie-course-scout/report.html. Repo: https://github.com/clmoon2/aggie-course-scout. The project includes the crawl and manifest, a four-field index, a browser query layer, a static UI, 25 queries with 513 pooled judgments, three baselines, four ablations, a 7-page report, a 10-slide deck with notes, and 25 passing tests. BM25F gets NDCG@10 0.964 against 0.663 for flat BM25, but the win is concentrated in typo and synonym queries. Known-item NDCG is a 0.003 loss to flat BM25. Browser latency is p50 14.4 ms and p95 22.2 ms. Report PDF: docs/report.pdf. Slides: slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf. Everything is public and logged out.
 
 ## Known limits
 
 - Catalog snapshot from 2026-11-22. No schedule, seats, instructors, or modality.
-- College is hand-mapped at department-prefix level. 61 records use "Other/Professional."
+- College is hand-mapped at department-prefix level. 36 records use "Other/Professional."
 - Prerequisite regex can truncate on weird punctuation.
 - Phrase search scans all documents.
 - Single grader, 25 queries, pooled judgments.
