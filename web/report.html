@@ -190,7 +190,7 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 <ul>
   <li>The catalog is a snapshot, not a live feed. A course added after 2026-11-22 is missing.</li>
   <li>No schedule data, seat counts, instructors, or modality. Those live in a different system.</li>
-  <li>College is hand-mapped at the prefix level and 536 records are unplaced.</li>
+  <li>College is hand-mapped at the prefix level and 211 records are unplaced.</li>
   <li>Prerequisites are extracted with a regex; free-text prereqs with unusual punctuation can truncate.</li>
   <li>Phrase search scans every document at query time. It is fine at 10k docs and would not be at 10 million.</li>
   <li>The browser index exposes full descriptions, so a first load downloads 2.2 MB.</li>
@@ -200,7 +200,7 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 
 <h2>10. What I'd do next</h2>
 <p>Three concrete changes. First, index title bigrams so "operating system" outranks "operations strategy" without leaning on the phrase branch. Second, add a learned or tuned field weight instead of my hand-picked 3/2/1/0.5; the no-department ablation says 2.0 is wasted. Third, get a second grader and 75 more queries, including queries with no relevant answer, so the zero-result behavior gets measured.</p>
-<p>I would also move from a full scan for phrases to a positional index. At 356,512 postings that is a day of work, not a redesign, and it makes phrase queries cheap.</p>
+<p>I would also move from a full scan for phrases to a positional index. At 392,637 postings that is a day of work, not a redesign, and it makes phrase queries cheap.</p>
 
 <h2>11. Conclusion</h2>
 <p>Field weights and query help beat a flat baseline by a lot on this catalog. BM25F with title emphasis and synonym expansion gets the right course into the top ten for 20.7 of 25 queries on average, against 13.0 for flat BM25. But the wins are concentrated in exactly the places where the extra machinery operates: typos and acronyms. On plain known-item lookups, the simple baseline is already good, and the field weights mostly decorate a title match. The project is useful and the ranking is explainable. The evaluation is small enough that I would call the size of the win provisional, not settled.</p>

@@ -31,7 +31,7 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 ```
 8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e  data/processed/courses.jsonl
 4cd7031c4e6aa2c018c63eae1e6d81351a800cf5580f95ec4be3ca79a415fc6c  web/data/index.json.gz
-2cd203f89e1afc490c8de0ff67b39de97cc0ea1c69019ce67b74ea9f8c6662b7  docs/report.pdf
+236595d22a4b8b9b54a43972644e10e8e0d5410f02456a45acfca9c1ff0bac93  docs/report.pdf
 5ac874c3f12dc3660b1a57a3c11cff16e6a0d09434d0f3a8a8916d244c007153  checkpoints/CSCE470_Project_Proposal_Carlos_Luna-Pena.pdf
 56c9203fff3deefb487ab42d07e1b5acf96509aee0cbb38ca78f9c4fbdb61b5d  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
 a6a1eececfee9f4ce521f8b1d83d3fa2f1758a14faca52d9df43566e9f42a49c  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
