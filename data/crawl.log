@@ -1,0 +1,14 @@
+undergraduate: 197 departments
+graduate: 186 departments
+crawling 383 department pages with 4 workers
+  40/383 pages, 1095 unique courses
+  80/383 pages, 2091 unique courses
+  120/383 pages, 3067 unique courses
+  160/383 pages, 4338 unique courses
+  200/383 pages, 5293 unique courses
+  240/383 pages, 6308 unique courses
+  280/383 pages, 7328 unique courses
+  320/383 pages, 8475 unique courses
+  360/383 pages, 9621 unique courses
+wrote 10082 courses, sha256 a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2
+manifest pages ok=383 404=0 error=0

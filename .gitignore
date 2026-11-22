@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+checkpoints/*.aux
+checkpoints/*.log
+checkpoints/*.out
+slides/*.aux
+slides/*.log
+slides/*.out
+.DS_Store
