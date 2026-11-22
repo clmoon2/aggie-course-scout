@@ -1,0 +1,27 @@
+{
+  "docs": 10082,
+  "terms": 10201,
+  "postings": 376558,
+  "plain_bytes": 9651792,
+  "gzip_bytes": 2132219,
+  "plain_sha256": "a7b67915924c125649939d9d7173eca4d3fa6ef1c4ab71d82e02e73c6c2f7d57",
+  "gzip_sha256": "02b9388dcb708f96a22384a7fc4acd3821b3d8a3a6b64ce7345a755e85cb4fd8",
+  "avglen": {
+    "t": 5.022515373933743,
+    "d": 5.302816901408451,
+    "x": 27.9753025193414,
+    "p": 4.925014878000397
+  },
+  "fields": {
+    "title": "t",
+    "department": "d",
+    "description": "x",
+    "prerequisites": "p"
+  },
+  "weights": {
+    "t": 3.0,
+    "d": 2.0,
+    "x": 1.0,
+    "p": 0.5
+  }
+}
