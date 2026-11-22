@@ -17,7 +17,7 @@ This is the core search release. It is the first tagged version with the full cr
 
 ## Results at this tag
 
-BM25F scored P@10 0.816 and NDCG@10 0.967. Flat BM25 scored 0.520 and 0.666. BM25F loses known-item NDCG to flat BM25 by 0.006. Browser p50 is 10.9 ms and p95 is 22.8 ms.
+BM25F scored P@10 0.824 and NDCG@10 0.967. Flat BM25 scored 0.532 and 0.665. BM25F loses known-item NDCG to flat BM25 by 0.005. Browser p50 is 10.9 ms and p95 is 22.8 ms.
 
 ## Data
 

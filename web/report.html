@@ -52,7 +52,7 @@
 </header>
 
 <h2>Abstract</h2>
-<p class="abstract">Aggie Course Scout is a fielded BM25F search engine over 10,082 published Texas A&amp;M course descriptions. It runs entirely in the browser on GitHub Pages, with no backend and no tracking. I crawled 383 department pages from the 2026-2027 catalog, parsed structured course records, built a four-field inverted index, and compared BM25F against TF-IDF cosine and flat BM25 on 25 pooled queries. BM25F scored 0.816 P@10 and 0.967 NDCG@10, against 0.520 and 0.666 for flat BM25. The interesting part is where it still loses: known-item queries are a near tie with flat BM25, the department weight barely matters, and acronym expansion drags "operations" courses into "os" results. The report gives the full build, the judgments, the ablations, and those failures.</p>
+<p class="abstract">Aggie Course Scout is a fielded BM25F search engine over 10,082 published Texas A&amp;M course descriptions. It runs entirely in the browser on GitHub Pages, with no backend and no tracking. I crawled 383 department pages from the 2026-2027 catalog, parsed structured course records, built a four-field inverted index, and compared BM25F against TF-IDF cosine and flat BM25 on 25 pooled queries. BM25F scored 0.824 P@10 and 0.967 NDCG@10, against 0.532 and 0.665 for flat BM25. The interesting part is where it still loses: known-item queries are a near tie with flat BM25, the department weight barely matters, and acronym expansion drags "operations" courses into "os" results. The report gives the full build, the judgments, the ablations, and those failures.</p>
 
 <h2>1. Why this tool exists</h2>
 <p>Course search at TAMU is split in a bad way. The catalog publishes descriptions in one place, the schedule of classes in another, and degree audits somewhere else. Students who half-remember a title ("that networks class") get a department list and a browser find box. Advisors get the same. The catalog's own search is a general site search, not a course search, so a query like <code>security</code> can surface policy pages before it surfaces CSCE 465.</p>
@@ -77,7 +77,7 @@
   <tr><td>Departments represented</td><td class="num">264</td></tr>
   <tr><td>Records with a prerequisite line</td><td class="num">8,424</td></tr>
 </table>
-<p>The parsed schema is one JSON object per line: <code>id</code>, <code>level</code>, <code>code</code>, <code>title</code>, <code>credits</code>, <code>description</code>, <code>prerequisites</code>, <code>corequisites</code>, <code>department</code>, <code>dept_code</code>, <code>college</code>, <code>course_level</code>, <code>url</code>. HTML is stripped, whitespace collapsed, and hour boilerplate removed from descriptions. Duplicate cross-listings are removed by level plus code, keeping the first occurrence. The output file has SHA-256 <code>a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2</code> and a manifest with every request, byte count, page hash, and status.</p>
+<p>The parsed schema is one JSON object per line: <code>id</code>, <code>level</code>, <code>code</code>, <code>title</code>, <code>credits</code>, <code>description</code>, <code>prerequisites</code>, <code>corequisites</code>, <code>department</code>, <code>dept_code</code>, <code>college</code>, <code>course_level</code>, <code>url</code>. HTML is stripped, whitespace collapsed, and hour boilerplate removed from descriptions. Records are deduplicated by level plus code, keeping the first occurrence. The output file has SHA-256 <code>a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2</code> and a manifest with every request, byte count, page hash, and status.</p>
 <p>Two data caveats. College is not on department pages, so I mapped prefixes to colleges by hand; 536 records in professional and unplaced prefixes sit under "Other/Professional." And the crawl has 10,082 records, a little above my 6,000 to 9,000 target. I kept them rather than trimming a quarter of the catalog to hit a round number.</p>
 
 <h2>4. Architecture</h2>
@@ -141,16 +141,16 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 <p>Browser latency came from 75 searches in headless Chrome against a local server, three passes over the 25 queries, measured inside the page around the ranking call. The hosted site is the same code and index.</p>
 
 <h2>7. Results</h2>
-<p>BM25F wins overall by a wide margin. Flat BM25 and TF-IDF both collapse on misspellings because they have no corrector, and both do worse on acronyms because they have no expansion. The known-item bucket is a near tie: flat BM25 actually edges BM25F by 0.006 NDCG, which is noise at this query count. The exploratory bucket favors BM25F by 0.018 NDCG over flat BM25 and by 0.081 over TF-IDF.</p>
+<p>BM25F wins overall by a wide margin. Flat BM25 and TF-IDF both collapse on misspellings because they have no corrector, and both do worse on acronyms because they have no expansion. The known-item bucket is a near tie: flat BM25 actually edges BM25F by 0.005 NDCG, which is noise at this query count. The exploratory bucket favors BM25F by 0.020 NDCG over flat BM25 and by 0.076 over TF-IDF.</p>
 <table>
   <tr><th>Condition</th><th class="num">P@10</th><th class="num">NDCG@10</th><th class="num">MAP</th><th class="num">MRR</th></tr>
-  <tr><td>TF-IDF cosine</td><td class="num">0.516</td><td class="num">0.661</td><td class="num">0.463</td><td class="num">0.651</td></tr>
-  <tr><td>Flat BM25</td><td class="num">0.520</td><td class="num">0.666</td><td class="num">0.487</td><td class="num">0.652</td></tr>
-  <tr class="win"><td><strong>BM25F, full</strong></td><td class="num"><strong>0.816</strong></td><td class="num"><strong>0.967</strong></td><td class="num"><strong>0.784</strong></td><td class="num"><strong>0.980</strong></td></tr>
-  <tr><td>BM25F, title only</td><td class="num">0.776</td><td class="num">0.969</td><td class="num">0.776</td><td class="num">0.980</td></tr>
+  <tr><td>TF-IDF cosine</td><td class="num">0.532</td><td class="num">0.662</td><td class="num">0.479</td><td class="num">0.651</td></tr>
+  <tr><td>Flat BM25</td><td class="num">0.532</td><td class="num">0.665</td><td class="num">0.496</td><td class="num">0.652</td></tr>
+  <tr class="win"><td><strong>BM25F, full</strong></td><td class="num"><strong>0.824</strong></td><td class="num"><strong>0.967</strong></td><td class="num"><strong>0.792</strong></td><td class="num"><strong>0.980</strong></td></tr>
+  <tr><td>BM25F, title only</td><td class="num">0.788</td><td class="num">0.969</td><td class="num">0.787</td><td class="num">0.980</td></tr>
   <tr><td>BM25F, no department field</td><td class="num">0.812</td><td class="num">0.965</td><td class="num">0.780</td><td class="num">0.980</td></tr>
-  <tr><td>BM25F, equal field weights</td><td class="num">0.816</td><td class="num">0.952</td><td class="num">0.788</td><td class="num">0.960</td></tr>
-  <tr><td>BM25F, no synonyms or correction</td><td class="num">0.760</td><td class="num">0.912</td><td class="num">0.719</td><td class="num">0.940</td></tr>
+  <tr><td>BM25F, equal field weights</td><td class="num">0.824</td><td class="num">0.952</td><td class="num">0.795</td><td class="num">0.960</td></tr>
+  <tr><td>BM25F, no synonyms or correction</td><td class="num">0.768</td><td class="num">0.911</td><td class="num">0.726</td><td class="num">0.940</td></tr>
 </table>
 <figure>
 <svg viewBox="0 0 700 220" role="img" aria-label="Bar chart of NDCG at 10 by query category for TF-IDF, flat BM25, and BM25F">
@@ -177,7 +177,7 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 <figcaption>Figure 2. NDCG@10 by category. BM25F (dark) dominates the typo and synonym buckets. Known-item is a tie.</figcaption>
 </figure>
 <p>Latency was p50 10.9 ms and p95 22.8 ms over 75 searches. The worst single call was 254 ms on a cold first query. The gzipped index is 2.1 MB and the page is ready in a few hundred milliseconds on localhost.</p>
-<p>The ablations say something useful and a little embarrassing. Removing the department field costs almost nothing (0.965 vs 0.967 NDCG). The title is doing most of the work, and a title-only ranker ties NDCG while losing P@10. Equal weights mostly hold P@10 but lose NDCG and MRR. Synonyms and correction are the only ablation with a big drop, 0.967 to 0.912 NDCG. The department weight of 2.0 is hard to defend on these 25 queries.</p>
+<p>The ablations say something useful and a little embarrassing. Removing the department field costs almost nothing (0.965 vs 0.967 NDCG). The title is doing most of the work, and a title-only ranker ties NDCG while losing P@10. Equal weights mostly hold P@10 but lose NDCG and MRR. Synonyms and correction are the only ablation with a big drop, 0.967 to 0.911 NDCG. The department weight of 2.0 is hard to defend on these 25 queries.</p>
 
 <h2>8. Error analysis</h2>
 <p><strong>Stemming conflates operating with operations.</strong> The stemmer maps both to <code>oper</code>. For <code>os</code>, SCMT 661 Operations Strategy lands at rank 3, above Unix System Administration. It is not an operating systems course. A domain stemmer that keeps "operating" intact, or a title bigram feature, would fix it.</p>
@@ -203,7 +203,7 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 <p>I would also move from a full scan for phrases to a positional index. At 356,512 postings that is a day of work, not a redesign, and it makes phrase queries cheap.</p>
 
 <h2>11. Conclusion</h2>
-<p>Field weights and query help beat a flat baseline by a lot on this catalog. BM25F with title emphasis and synonym expansion gets the right course into the top ten for 20.4 of 25 queries on average, against 13.0 for flat BM25. But the wins are concentrated in exactly the places where the extra machinery operates: typos and acronyms. On plain known-item lookups, the simple baseline is already good, and the field weights mostly decorate a title match. The project is useful and the ranking is explainable. The evaluation is small enough that I would call the size of the win provisional, not settled.</p>
+<p>Field weights and query help beat a flat baseline by a lot on this catalog. BM25F with title emphasis and synonym expansion gets the right course into the top ten for 20.6 of 25 queries on average, against 13.3 for flat BM25. But the wins are concentrated in exactly the places where the extra machinery operates: typos and acronyms. On plain known-item lookups, the simple baseline is already good, and the field weights mostly decorate a title match. The project is useful and the ranking is explainable. The evaluation is small enough that I would call the size of the win provisional, not settled.</p>
 
 <h2>References</h2>
 <ol class="links">

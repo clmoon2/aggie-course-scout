@@ -196,13 +196,13 @@ Latency: 75 in-page searches, headless Chrome, local server, p50 and p95.
 \toprule
 Condition & P@10 & NDCG@10 & MAP & MRR\\
 \midrule
-TF-IDF & 0.516 & 0.661 & 0.463 & 0.651\\
-Flat BM25 & 0.520 & 0.666 & 0.487 & 0.652\\
-\textbf{BM25F} & \textbf{0.816} & \textbf{0.967} & \textbf{0.784} & \textbf{0.980}\\
-Title only & 0.776 & 0.969 & 0.776 & 0.980\\
+TF-IDF & 0.532 & 0.662 & 0.479 & 0.651\\
+Flat BM25 & 0.532 & 0.665 & 0.496 & 0.652\\
+\textbf{BM25F} & \textbf{0.824} & \textbf{0.967} & \textbf{0.792} & \textbf{0.980}\\
+Title only & 0.788 & 0.969 & 0.787 & 0.980\\
 No dept & 0.812 & 0.965 & 0.780 & 0.980\\
-Equal weights & 0.816 & 0.952 & 0.788 & 0.960\\
-No synonyms & 0.760 & 0.912 & 0.719 & 0.940\\
+Equal weights & 0.824 & 0.952 & 0.795 & 0.960\\
+No synonyms & 0.768 & 0.911 & 0.726 & 0.940\\
 \bottomrule
 \end{tabular}
 \end{minipage}\hfill
@@ -213,7 +213,7 @@ No synonyms & 0.760 & 0.912 & 0.719 & 0.940\\
  & TF-IDF & Flat & BM25F\\
 \midrule
 Known & 0.833 & 0.925 & 0.919\\
-Exploratory & 0.910 & 0.974 & 0.992\\
+Exploratory & 0.915 & 0.971 & 0.991\\
 Typo & 0.155 & 0.076 & 0.993\\
 Synonym & 0.590 & 0.496 & 0.972\\
 \bottomrule
@@ -223,7 +223,7 @@ Synonym & 0.590 & 0.496 & 0.972\\
 Latency p50 10.9 ms, p95 22.8 ms. Cold max 254 ms.
 \end{minipage}
 
-\notes{BM25F wins overall. On known-item it loses by 0.006 NDCG to flat BM25, which is noise. On exploratory it wins by 0.018. The typo and synonym gaps are the real story, and they come from the correction and expansion branches, not from the field weights.}
+\notes{BM25F wins overall. On known-item it loses by 0.005 NDCG to flat BM25, which is noise. On exploratory it wins by 0.020. The typo and synonym gaps are the real story, and they come from the correction and expansion branches, not from the field weights.}
 \newpage
 
 % 9
@@ -243,7 +243,7 @@ Latency p50 10.9 ms, p95 22.8 ms. Cold max 254 ms.
 % 10
 \slidehead{Takeaway}
 \begin{minipage}[t]{0.6\linewidth}
-Field weighting and query help beat a flat baseline by a lot on this catalog: 20.4 relevant results in the top 10 per query on average, against 13.0.
+Field weighting and query help beat a flat baseline by a lot on this catalog: 20.6 relevant results in the top 10 per query on average, against 13.3.
 \vspace{8pt}
 
 But the win is concentrated in typo and acronym handling. On plain known-item lookup, the dumb baseline already works.

@@ -51,10 +51,10 @@ The 25 queries are in `eval/queries.json`. The judgments are pooled from TF-IDF,
 
 | Condition | P@10 | NDCG@10 | MAP | MRR |
 |---|---:|---:|---:|---:|
-| TF-IDF | 0.516 | 0.661 | 0.463 | 0.651 |
-| Flat BM25 | 0.520 | 0.666 | 0.487 | 0.652 |
-| BM25F | 0.816 | 0.967 | 0.784 | 0.980 |
-| BM25F, no synonyms | 0.760 | 0.912 | 0.719 | 0.940 |
+| TF-IDF | 0.532 | 0.662 | 0.479 | 0.651 |
+| Flat BM25 | 0.532 | 0.665 | 0.496 | 0.652 |
+| BM25F | 0.824 | 0.967 | 0.792 | 0.980 |
+| BM25F, no synonyms | 0.768 | 0.911 | 0.726 | 0.940 |
 
 Known-item NDCG is a tie with flat BM25 (0.919 vs 0.925). The report covers that and the other failures.
 

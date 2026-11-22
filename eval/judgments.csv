@@ -229,9 +229,9 @@ e4,graduate:CSCE-636,CSCE 636,Deep Learning,1,ablate_equal_weights
 e5,graduate:CSCE-606,CSCE 606,Software Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:CSCE-429,CSCE 429,"Software Development, Globalization and Culture Abroad",0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:CSCE-431,CSCE 431,Software Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e5,undergraduate:CSCE-413,CSCE 413,Software Security,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e5,undergraduate:CSCE-413,CSCE 413,Software Security,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:MARE-112,MARE 112,Graphics for Engineering Technology,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e5,graduate:CSCE-713,CSCE 713,Software Security,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e5,graduate:CSCE-713,CSCE 713,Software Security,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
 e5,graduate:GEOG-676,GEOG 676,GIS Programming,0,tfidf
 e5,undergraduate:CSCE-331,CSCE 331,Foundations of Software Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:ISTM-415,ISTM 415,Information Systems Capstone Project,0,tfidf
@@ -271,10 +271,10 @@ e7,graduate:LAND-655,LAND 655,Landscape Architectural Graphic Communication,1,tf
 e7,undergraduate:MMET-307,MMET 307,Computer Design Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,undergraduate:HORT-332,HORT 332,Horticulture Landscape Graphics,2,tfidf|flat_bm25
 e7,undergraduate:ENGL-220,ENGL 220,Graphic Novel,0,tfidf|ablate_title_only
-e7,undergraduate:ARTS-303,ARTS 303,Graphic Design I,0,tfidf|flat_bm25|ablate_title_only
+e7,undergraduate:ARTS-303,ARTS 303,Graphic Design I,1,tfidf|flat_bm25|ablate_title_only
 e7,undergraduate:CSCE-441,CSCE 441,Computer Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,undergraduate:URPN-320,URPN 320,Digital Communication II,1,tfidf|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e7,undergraduate:ARTS-342,ARTS 342,History of Graphic Design,0,tfidf
+e7,undergraduate:ARTS-342,ARTS 342,History of Graphic Design,1,tfidf
 e7,graduate:VIZA-672,VIZA 672,Computer Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,graduate:VIZA-652,VIZA 652,Computing for Visualization I,1,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,undergraduate:STAT-404,STAT 404,Statistical Computing,1,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms

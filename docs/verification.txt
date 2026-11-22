@@ -1,0 +1,56 @@
+Verification log, Aggie Course Scout, 2026-11-22
+
+Code under test: cce6de6 (the handoff commit follows and changes docs only).
+
+1. Full test suite
+Command: .venv/bin/python -m pytest tests/ -q
+Result: 24 passed in 6.76s
+Suites: tokenizer, Python/JS stemmer parity, BM25 math, phrase adjacency,
+query parser, filters, negation, suggestion, index hash and integrity,
+CLI search, Playwright desktop, typo, facet, empty state, mobile.
+
+2. Clean checkout
+Command: git clone https://github.com/clmoon2/aggie-course-scout.git /tmp/opencode/clean-check
+then fresh venv, pip install -r requirements.txt, pytest tests/ -q
+Result: 24 passed in 7.42s
+
+3. Live page, logged out browser context
+URL: https://clmoon2.github.io/aggie-course-scout/
+HTTP: 200
+Title: Aggie Course Scout | TAMU catalog search
+Query: computer security
+Result: 20 cards, first card CSCE 465 Computer and Network Security,
+summary "625 courses match. Ranked by BM25F in 31 ms."
+
+4. Live report
+URL: https://clmoon2.github.io/aggie-course-scout/report.html
+HTTP: 200
+
+5. Pages workflow
+Run: 45000890495
+Conclusion: success
+Duration: 39 seconds
+
+6. Release
+Tag: v0.2-core
+URL: https://github.com/clmoon2/aggie-course-scout/releases/tag/v0.2-core
+Notes: docs/RELEASE-v0.2-core.md
+
+7. Evaluation
+Command: python3 src/evaluate.py
+Output: eval/results/results.json
+BM25F P@10 0.824, NDCG@10 0.967, MAP 0.792, MRR 0.980
+Flat BM25 P@10 0.532, NDCG@10 0.665, MAP 0.496, MRR 0.652
+Judged pairs: 514
+
+8. Latency
+Command: .venv/bin/python src/latency.py
+75 samples, p50 10.9 ms, p95 22.8 ms, cold max 254 ms
+Output: eval/results/latency.json
+
+9. Data
+383 pages requested, 383 HTTP 200, 0 errors, 10,082 unique records
+courses.jsonl SHA-256 a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2
+
+10. Hash check
+sha256sum on all submission PDFs matches HANDOFF.md.
