@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aggie Course Scout | TAMU catalog search</title>
+<meta name="description" content="A fielded BM25F search engine over the public Texas A&M course catalog.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#results">Skip to results</a>
+<header class="masthead">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">ACS</span>
+    <div>
+      <p class="wordmark">Aggie Course Scout</p>
+      <p class="tagline">CSCE 470 project, Fall 2026</p>
+    </div>
+  </div>
+  <nav aria-label="Project links">
+    <a href="report.html">Report</a>
+    <a href="https://github.com/clmoon2/aggie-course-scout">Code</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="search-heading">
+    <p class="eyebrow">Public TAMU catalog, 2026-2027</p>
+    <h1 id="search-heading">Find the course behind the keyword.</h1>
+    <p class="lede">Full-text search over every published course description. Filters, quoted phrases, and spelling help included.</p>
+    <form id="search-form" role="search" autocomplete="off">
+      <label class="sr-only" for="q">Search courses</label>
+      <div class="search-row">
+        <input id="q" name="q" type="search" placeholder="Try: computer security, CSCE 310, &quot;operating systems&quot;" spellcheck="false" autofocus>
+        <button type="submit" class="primary">Search</button>
+      </div>
+      <p class="syntax">Filters: <code>dept:csce</code> <code>level:graduate</code> <code>credits:&gt;=3</code>. Prefix a term with <code>-</code> to exclude it.</p>
+    </form>
+  </section>
+
+  <div id="status" class="status" role="status" aria-live="polite">
+    <div class="loading-bar" hidden id="loading"><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="layout">
+    <aside id="facet-panel" class="facets" aria-label="Filters" hidden>
+      <div class="facet-head">
+        <h2>Narrow</h2>
+        <button id="clear-facets" class="linkish" type="button">Clear all</button>
+      </div>
+      <p class="facet-help">Click a value to add it to the query. Click again to remove.</p>
+      <div id="facets"></div>
+    </aside>
+
+    <section id="results" class="results" aria-label="Search results" tabindex="-1">
+      <div id="summary" class="summary"></div>
+      <div id="suggestion"></div>
+      <ol id="result-list" class="result-list"></ol>
+      <div id="empty" class="empty" hidden>
+        <h2>No courses matched.</h2>
+        <p>Try a shorter phrase, remove a filter, or check the spelling. The catalog only contains published course descriptions, not syllabi or schedules.</p>
+      </div>
+      <button id="more" class="more" type="button" hidden>Show 20 more</button>
+    </section>
+  </div>
+</main>
+
+<aside id="detail" class="detail" aria-label="Course detail" hidden>
+  <button class="detail-close" id="detail-close" type="button" aria-label="Close detail">Close</button>
+  <div id="detail-body"></div>
+</aside>
+
+<footer class="foot">
+  <p>Built by Carlos Luna-Pena for CSCE 470. Course data from the <a href="https://catalog.tamu.edu/">Texas A&amp;M University Catalogs</a>, 2026-2027 edition. Not an official TAMU tool.</p>
+  <p><a href="report.html">Read the report</a> for the method, evaluation, and limits.</p>
+</footer>
+<script src="js/stemmer.js"></script>
+<script src="js/search.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

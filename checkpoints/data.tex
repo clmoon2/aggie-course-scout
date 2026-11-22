@@ -1,0 +1,48 @@
+\documentclass[9.5pt]{article}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{times,xcolor,titlesec,booktabs,hyperref}
+\definecolor{maroon}{HTML}{500000}
+\titleformat{\section}{\normalsize\bfseries\color{maroon}}{}{0pt}{}
+\titlespacing{\section}{0pt}{5pt}{2pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\hypersetup{colorlinks=true,linkcolor=maroon,urlcolor=maroon}
+\pagestyle{empty}
+\begin{document}
+{\color{maroon}\rule{\linewidth}{3pt}}
+{\bfseries\large\color{maroon} Data checkpoint: Aggie Course Scout}\hfill Carlos Luna-Pena, CSCE 470
+{\color{maroon}\rule{\linewidth}{1pt}}
+
+\section*{Source and access}
+The 2026-2027 Texas A\&M undergraduate and graduate catalogs at \url{https://catalog.tamu.edu/}. I read \texttt{robots.txt} first and stayed out of disallowed paths. The crawler used four workers, a 0.2 second delay per worker, three retries, and a descriptive user agent. Every raw page is kept as gzipped HTML.
+
+\section*{Counts and hashes}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Department index pages requested & 383\\
+Pages with HTTP 200 and at least one course block & 383\\
+HTTP 404 or empty & 0\\
+Unique level + code records & 10,082\\
+Undergraduate / graduate & 5,228 / 4,854\\
+Departments represented & 264\\
+\bottomrule
+\end{tabular}
+
+\smallskip
+Output file: \texttt{data/processed/courses.jsonl}, 8.0 MB.\\
+SHA-256: \texttt{a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2}.\\
+Manifest: \texttt{data/processed/crawl\_manifest.json}, 383 rows with URL, status, byte count, and page SHA-256.
+
+\section*{Schema}
+One JSON object per line. Fields: \texttt{id} (level plus code), \texttt{level}, \texttt{code}, \texttt{number}, \texttt{title}, \texttt{credits}, \texttt{description}, \texttt{prerequisites}, \texttt{corequisites}, \texttt{department}, \texttt{dept\_code}, \texttt{college}, \texttt{course\_level}, \texttt{url}, \texttt{source\_title}.
+
+\section*{Cleaning}
+HTML stripped with BeautifulSoup. Non-breaking and zero-width spaces normalized. Whitespace collapsed. Credit and meeting-hour boilerplate removed from descriptions. Prerequisites split out with a label regex and removed from the description. Cross-listed title prefixes removed. Duplicate level plus code records dropped. College mapped by department prefix, because the catalog does not print college on a department page.
+
+\section*{Samples (truncated)}
+\texttt{\{"code": "CSCE 310", "title": "Database Systems", "credits": "3", "description": "Introduction to database systems; data models; ...", "prerequisites": "Grade of C or better in CSCE 221..."\}}\\
+\texttt{\{"code": "MATH 151", "title": "Engineering Mathematics I", "credits": "4", "description": "Rectangular coordinates, vectors, functions ...", "prerequisites": "..." \}}
+
+\section*{Limits}
+This is a snapshot. Courses added after 2026-11-22 are absent, and removed courses remain. There are no meetings, seats, instructors, or modalities. College is hand-mapped and 536 records in professional or unplaced prefixes use ``Other/Professional.'' Free-text prerequisites with odd punctuation can truncate. Research, seminar, and zero-credit records are kept because they are real catalog entries, which pushes the count above the proposed 6,000 to 9,000 range.
+
+\end{document}

@@ -1,0 +1,60 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\definecolor{maroon}{HTML}{500000}
+\titleformat{\section}{\large\bfseries\color{maroon}}{}{0pt}{}
+\titlespacing{\section}{0pt}{8pt}{3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\hypersetup{colorlinks=true,linkcolor=maroon,urlcolor=maroon}
+\pagestyle{empty}
+\begin{document}
+
+{\color{maroon}\rule{\linewidth}{4pt}}
+\begin{center}
+{\Large\bfseries\color{maroon} Aggie Course Scout}\\[2pt]
+{\large A fielded BM25F search engine over the public TAMU course catalog}\\[5pt]
+Carlos Luna-Pena \quad CSCE 470, Fall 2026 \quad Solo project
+\end{center}
+{\color{maroon}\rule{\linewidth}{1pt}}
+
+\section*{What the tool does}
+Aggie Course Scout is a search engine for the official Texas A\&M course catalog. A student types a topic, a course code, or a half-remembered title and gets ranked course records with highlighted snippets, department and level facets, and a panel that shows which query term and which field produced the score. Quoted phrases, field filters, negation, acronym expansion, and spelling suggestions are supported. The site is static, runs in the browser, and has no backend.
+
+The scope is one job: finding a course by what it covers. It does not replace the schedule of classes, degree audit, or advisor. It links back to the official catalog page for every record.
+
+\section*{Why it is needed and who benefits}
+The catalog publishes course descriptions, but its search is a general site search. A query like \texttt{security} can return policy pages before CSCE 465. Students who remember ``that networks class'' get a long department list and a browser find box. Advisors do the same lookup by hand. The schedule of classes answers when a section meets, not which course covers a topic.
+
+The people who benefit are TAMU students planning a term, advisors doing a quick lookup, and anyone building a degree plan who needs the official description text. The tool is also a worked example for the course: a real corpus, a real ranking function, a real evaluation, and an interface that shows its work.
+
+\section*{Existing tools}
+General search engines index catalog pages but optimize for pages, not course records. They have no department filter and no field-level explanation. The catalog's site search has the same page-level problem. Grade-distribution sites answer who teaches a course and how grades fall, not what the course is about. None of these publish relevance judgments.
+
+The closest research base is BM25F, the field-weighted form of BM25 used in structured document retrieval. The project borrows the ranking model and adds a small, inspectable implementation rather than a search framework.
+
+\section*{How it will be built}
+\begin{enumerate}[leftmargin=1.3em,itemsep=1pt]
+  \item Crawl the undergraduate and graduate course-description indexes with Python, requests, and BeautifulSoup. Four workers, 0.2 second delay, retries, robots.txt respected. Keep raw pages.
+  \item Parse code, title, credits, description, prerequisites, department, college, and level. Strip HTML, dedupe by level plus code, and write JSONL with a SHA-256 and crawl manifest.
+  \item Build a four-field inverted index with a shared Python and JavaScript tokenizer and conservative Porter stemmer. Export a gzipped JSON index.
+  \item Implement BM25F with $k_1=1.2$, $b=0.75$, and field weights 3.0 title, 2.0 department, 1.0 description, 0.5 prerequisite. Add phrases, filters, negation, synonyms, edit-distance suggestions, facets, snippets, and the why panel.
+  \item Build the static UI and report page, then compare against TF-IDF cosine and flat BM25.
+\end{enumerate}
+
+\section*{Resources}
+A Linux laptop, Python 3.12, requests, BeautifulSoup, Chrome, and Playwright for tests and screenshots. GitHub Pages hosts the site and the workflow. No GPU, paid API, or private data. The catalog is public and the crawl stays under 400 requests.
+
+\section*{How it will be evaluated}
+Twenty-five queries in four buckets: known-item, exploratory, misspelling, and synonym. Pool the top 10 from TF-IDF, flat BM25, and BM25F, grade each pair 0, 1, or 2 from the actual record, and report P@10, NDCG@10, MAP, and MRR. Run field-weight and synonym ablations. Measure browser p50 and p95 latency. If BM25F loses, report it.
+
+Success means BM25F beats both baselines overall, the ablations show which parts matter, and a new user can find a course and understand why it ranked. The main risk is a catalog layout change, which the raw-page archive and parser tests are meant to catch.
+
+\section*{Deliverables}
+Public repository and live site, crawl and index code, 25-query judgments and metrics, report page and PDF, ten slides, proposal/data/UI checkpoint PDFs, and a handoff with exact URLs and hashes.
+
+\end{document}

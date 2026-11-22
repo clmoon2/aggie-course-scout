@@ -1,0 +1,268 @@
+\documentclass[10pt]{article}
+\usepackage[paperwidth=13.333in,paperheight=7.5in,margin=0.55in]{geometry}
+\usepackage{times,xcolor,graphicx,booktabs,tikz,hyperref}
+\usetikzlibrary{positioning}
+\definecolor{maroon}{HTML}{500000}
+\definecolor{cream}{HTML}{FFF8E7}
+\definecolor{gold}{HTML}{C9A24B}
+\definecolor{muted}{HTML}{5D554C}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+\hypersetup{colorlinks=true,urlcolor=maroon}
+\newcommand{\slidehead}[1]{{\color{maroon}\rule{\linewidth}{4pt}}\par\vspace{2pt}{\LARGE\bfseries\color{maroon}#1}\par\vspace{3pt}}
+\newcommand{\notes}[1]{\vfill{\color{gold}\rule{\linewidth}{1.2pt}}\\[2pt]{\footnotesize\color{muted}\textbf{Speaker notes.} #1}}
+\newcommand{\footline}{{\footnotesize\color{muted}Aggie Course Scout \hfill Carlos Luna-Pena \hfill CSCE 470}}
+\begin{document}
+
+% 1
+\begin{center}
+\vspace{1.4in}
+{\color{maroon}\rule{0.8\linewidth}{6pt}}\\[12pt]
+{\Huge\bfseries\color{maroon} Aggie Course Scout}\\[8pt]
+{\Large A fielded BM25F search engine over the public TAMU course catalog}\\[18pt]
+{\large Carlos Luna-Pena \quad CSCE 470 \quad Fall 2026}\\[4pt]
+{\large \url{https://clmoon2.github.io/aggie-course-scout/}}
+\end{center}
+\notes{This is a solo project. The whole thing is public data and a static site. I will spend most of the time on the ranking and the evaluation, because that is where the interesting failure is.}
+\newpage
+
+% 2
+\slidehead{The lookup problem}
+\begin{minipage}[t]{0.58\linewidth}
+The catalog has the descriptions. It does not have a course search.
+\vspace{6pt}
+\begin{itemize}
+  \item Searching \texttt{security} on the catalog can return policy pages before CSCE 465.
+  \item A student who remembers ``that networks class'' gets a department list and browser find.
+  \item Advisors do the same lookup by hand.
+  \item The schedule answers \emph{when}. It does not answer \emph{what the course covers}.
+\end{itemize}
+\vspace{4pt}
+The job is narrow: find a course by topic, show the official text, explain the rank.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\linewidth}
+\colorbox{cream}{\parbox{0.92\linewidth}{\vspace{4pt}\textbf{Who benefits}\\[3pt]Students planning a term. Advisors doing a fast lookup. Anyone building a degree plan who needs the description.\vspace{4pt}}}
+\end{minipage}
+\notes{The catalog search is site search, not course search. That distinction is the whole motivation. I am not replacing the schedule or the audit. The tool links back to the official page for every record.}
+\newpage
+
+% 3
+\slidehead{Data, and what it cost}
+\begin{minipage}[t]{0.52\linewidth}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Department pages & 383\\
+HTTP 200 & 383\\
+HTTP 404 or empty & 0\\
+Unique records & 10,082\\
+Undergrad / grad & 5,228 / 4,854\\
+Departments & 264\\
+Prereq lines parsed & 8,424\\
+\bottomrule
+\end{tabular}
+\vspace{6pt}
+
+Crawler: requests + BeautifulSoup, 4 workers, 0.2 s delay, 3 retries, robots.txt checked first, raw pages gzipped.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.44\linewidth}
+\textbf{Fields.} code, title, credits, description, prerequisites, department, college, level, URL.
+\vspace{5pt}
+
+\textbf{Cleaning.} strip HTML, collapse spaces, remove hour boilerplate, split prereqs, dedupe level plus code, hash the output.
+\vspace{5pt}
+
+\textbf{Two caveats.} College is hand-mapped because it is not on the page. The count is 10,082, above my proposed 6,000 to 9,000, because I kept research and seminar records.
+\end{minipage}
+
+\notes{The crawl is the boring part and it mostly worked. No 404s. The number came in high. I could have trimmed to hit the proposal range, but that would have thrown away real catalog records. The college map is the weakest metadata.}
+\newpage
+
+% 4
+\slidehead{Architecture: static all the way down}
+\begin{center}
+\begin{tikzpicture}[font=\small,node distance=8mm]
+\tikzset{box/.style={draw=maroon,thick,fill=cream,minimum height=18mm,text width=32mm,align=center}}
+\node[box] (crawl) {crawl 383 pages};
+\node[box,right=of crawl] (parse) {parse and dedupe};
+\node[box,right=of parse] (index) {four-field index};
+\node[box,right=of index] (gz) {gzipped JSON, 2.1 MB};
+\node[box,below=14mm of gz] (query) {browser BM25F};
+\node[box,left=of query] (ui) {static UI};
+\node[box,left=of ui,fill=white,dashed] (eval) {25-query evaluation};
+\draw[->,thick,maroon] (crawl)--(parse); \draw[->,thick,maroon] (parse)--(index);
+\draw[->,thick,maroon] (index)--(gz); \draw[->,thick,maroon] (gz)--(query);
+\draw[->,thick,maroon] (query)--(ui); \draw[->,thick,dashed,maroon] (eval)--(ui);
+\end{tikzpicture}
+\end{center}
+\vspace{4pt}
+No backend. GitHub Pages serves HTML, CSS, JS, and a 2.1 MB index. The evaluation reads the same index the browser uses.
+\notes{The important property is that the evaluation and the product share the index. There is no separate research build that can drift. The cost is a 2.1 MB first load.}
+\newpage
+
+% 5
+\slidehead{BM25F, four fields}
+\begin{minipage}[t]{0.56\linewidth}
+\[
+\mathrm{score}(q,d)=\sum_{t\in q}\mathrm{idf}(t)\frac{S_{t,d}(k_1+1)}{k_1+S_{t,d}}
+\]
+\[
+S_{t,d}=\sum_f w_f\frac{\mathrm{tf}_{t,d,f}}{1-b+b|d_f|/\mathrm{avg}_f}
+\]
+\[
+\mathrm{idf}(t)=\ln\left(1+\frac{N-\mathrm{df}(t)+0.5}{\mathrm{df}(t)+0.5}\right)
+\]
+\(k_1=1.2\), \(b=0.75\).
+\end{minipage}\hfill
+\begin{minipage}[t]{0.40\linewidth}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Field & Weight\\
+\midrule
+Title & 3.0\\
+Department & 2.0\\
+Description & 1.0\\
+Prerequisite & 0.5\\
+\bottomrule
+\end{tabular}
+\vspace{8pt}
+
+Quoted phrases get a bonus, doubled when the phrase is in the title. Filters apply after scoring.
+\end{minipage}
+\notes{This is standard BM25F. Weighted term frequencies are summed per field and saturated once. The title weight is doing most of the work, which the ablation later confirms. Department is nearly useless, which the ablation also confirms.}
+\newpage
+
+% 6
+\slidehead{Query layer}
+\begin{minipage}[t]{0.47\linewidth}
+\textbf{Parsing}
+\begin{itemize}
+  \item quoted phrases
+  \item \texttt{dept:csce}, \texttt{level:graduate}, \texttt{credits:>=3}
+  \item \texttt{-term} and \texttt{-dept:} negation
+  \item synonym expansion: ml, ai, db, os, security, stats
+  \item Damerau-Levenshtein suggestion, 1 edit short, 2 long
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\linewidth}
+\textbf{Presentation}
+\begin{itemize}
+  \item facets from the filtered set
+  \item highlighted snippets
+  \item why panel with term, field, TF, weighted TF, term score
+  \item loading, empty, error states
+\end{itemize}
+\vspace{4pt}
+\colorbox{cream}{\parbox{0.9\linewidth}{\vspace{3pt}\texttt{os} expands to ``operating system'' at reduced weight. The literal acronym gets 0.5, the expansion 0.5, the phrase a title bonus.\vspace{3pt}}}
+\end{minipage}
+
+\notes{The why panel is not a post-hoc explanation. It prints the IDF and field TFs the scorer used. The acronym weights are a hand-tuned compromise, and the next slide shows where they break.}
+\newpage
+
+% 7
+\slidehead{Evaluation method}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{itemize}
+  \item 25 queries: 7 known-item, 7 exploratory, 5 typo, 6 synonym
+  \item pool top 10 from TF-IDF, flat BM25, BM25F, and four ablations
+  \item 514 unique pairs, graded 0/1/2 from the record
+  \item binary at grade 1 for P@10, MAP, MRR
+  \item NDCG@10 with gains 0/1/2
+  \item pooled metrics, unpooled counts as 0
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\textbf{Grading examples}
+\begin{tabular}{@{}cl@{}}
+\toprule
+Grade & Rule\\
+\midrule
+2 & requested code or intent phrase in title\\
+1 & intent phrase in description\\
+0 & otherwise\\
+\bottomrule
+\end{tabular}
+\vspace{8pt}
+
+Latency: 75 in-page searches, headless Chrome, local server, p50 and p95.
+\end{minipage}
+
+\notes{One grader, 25 queries. That is small. The judgments are in the repo so someone can redo them. Pooling means a system that contributes more documents has a slightly easier job, and I say that in the report.}
+\newpage
+
+% 8
+\slidehead{Results}
+\begin{minipage}[t]{0.55\linewidth}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Condition & P@10 & NDCG@10 & MAP & MRR\\
+\midrule
+TF-IDF & 0.516 & 0.661 & 0.463 & 0.651\\
+Flat BM25 & 0.520 & 0.666 & 0.487 & 0.652\\
+\textbf{BM25F} & \textbf{0.816} & \textbf{0.967} & \textbf{0.784} & \textbf{0.980}\\
+Title only & 0.776 & 0.969 & 0.776 & 0.980\\
+No dept & 0.812 & 0.965 & 0.780 & 0.980\\
+Equal weights & 0.816 & 0.952 & 0.788 & 0.960\\
+No synonyms & 0.760 & 0.912 & 0.719 & 0.940\\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\linewidth}
+\textbf{By category, NDCG@10}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+ & TF-IDF & Flat & BM25F\\
+\midrule
+Known & 0.833 & 0.925 & 0.919\\
+Exploratory & 0.910 & 0.974 & 0.992\\
+Typo & 0.155 & 0.076 & 0.993\\
+Synonym & 0.590 & 0.496 & 0.972\\
+\bottomrule
+\end{tabular}
+\vspace{6pt}
+
+Latency p50 10.9 ms, p95 22.8 ms. Cold max 254 ms.
+\end{minipage}
+
+\notes{BM25F wins overall. On known-item it loses by 0.006 NDCG to flat BM25, which is noise. On exploratory it wins by 0.018. The typo and synonym gaps are the real story, and they come from the correction and expansion branches, not from the field weights.}
+\newpage
+
+% 9
+\slidehead{Where it breaks}
+\begin{itemize}
+  \item \textbf{operating vs operations.} Both stem to \texttt{oper}. For \texttt{os}, SCMT 661 Operations Strategy is rank 3.
+  \item \textbf{software is a modifier.} CSCE 713 Software Security is rank 4 for ``software engineering'' and is graded 0.
+  \item \textbf{sense collision.} ``security'' returns LAW 706 Securities Regulation first.
+  \item \textbf{acronym blast.} \texttt{os} returns 1,854 records because the expansion splits into common terms.
+  \item \textbf{small pool.} One grader, 25 queries, no production log.
+\end{itemize}
+\vspace{4pt}
+\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}The department weight of 2.0 is not justified by the data. Removing it costs 0.002 NDCG. Title bigrams and a tuned weight are the next changes.\vspace{3pt}}}
+\notes{These are the slides I would normally sand off. The stemming collision is real and easy to reproduce. The software example shows the term-independence bug. I would fix bigrams first.}
+\newpage
+
+% 10
+\slidehead{Takeaway}
+\begin{minipage}[t]{0.6\linewidth}
+Field weighting and query help beat a flat baseline by a lot on this catalog: 20.4 relevant results in the top 10 per query on average, against 13.0.
+\vspace{8pt}
+
+But the win is concentrated in typo and acronym handling. On plain known-item lookup, the dumb baseline already works.
+\vspace{8pt}
+
+The useful artifact is not the score. It is the inspectable pipeline: public crawl, hashed data, shared index, judgments, ablations, and a why panel a person can argue with.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.36\linewidth}
+\textbf{Live}\\
+\url{https://clmoon2.github.io/aggie-course-scout/}
+\vspace{6pt}
+
+\textbf{Code}\\
+\url{https://github.com/clmoon2/aggie-course-scout}
+\vspace{6pt}
+
+\textbf{Report}\\
+\url{https://clmoon2.github.io/aggie-course-scout/report.html}
+\end{minipage}
+\notes{The honest conclusion is that the extra machinery helps exactly where the baseline has no answer. That is still a real result, but it is narrower than ``BM25F is better.'' The evaluation size keeps me from claiming more.}
+
+\end{document}
