@@ -31,11 +31,11 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 ```
 e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206  data/processed/courses.jsonl
 4be7bf684c58383dbfbf6641f4b40fee2e3247aa699c148ad35a1c2f25d8c49b  web/data/index.json.gz
-cc491c7f1dd76dfc1a35a54dabd2f636a7e7db3b1610fbe468f2b04d216ae6d9  docs/report.pdf
+ac165612cece74935bea0f8289015db14d8ae9a716462be79517b75928a5df1f  docs/report.pdf
 d037d073c9ae60439cf4dd44d029615b73ca0066d96b66195ad427159311f4fe  checkpoints/CSCE470_Project_Proposal_Carlos_Luna-Pena.pdf
 886cbd355f2d50d07ad386c341e6f38af4ff3d48d4ed2fb807e1fa3dd933eaa5  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
 f9f86f1cc0b8db2f7321da0de029e22944ba691acd3cf211f85631cb6c25d74b  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
-e8170ffc2ef134e32ced6b915d1815a2c0ec82dbabbb59fa00a24c760154637b  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
+ac67fadd46af9b3a327faa01781202d6a5281c92165c41ad2af598e09dbd7a86  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
 ```
 
 ## Verification evidence

@@ -17,7 +17,7 @@
 \hypersetup{colorlinks=true,urlcolor=maroon}
 \newcommand{\slidehead}[1]{{\color{maroon}\rule{\linewidth}{4pt}}\par\vspace{2pt}{\LARGE\bfseries\color{maroon}#1}\par\vspace{4pt}}
 \newcommand{\callout}[1]{\par\noindent\begin{minipage}{\linewidth}\colorbox{cream}{\parbox{\dimexpr\linewidth-2\fboxsep}{\vspace{3pt}\small #1\vspace{3pt}}}\end{minipage}\par}
-\newcommand{\notes}[1]{\vspace{0.3in}{\color{gold}\rule{\linewidth}{1pt}}\\[2pt]{\fontsize{9.5}{11}\selectfont\color{muted}\textbf{Speaker notes.} #1}}
+\newcommand{\notes}[1]{\vspace{0.3in}\par\noindent{\color{gold}\rule{\linewidth}{1pt}}\par\vspace{2pt}{\fontsize{9.5}{11}\selectfont\color{muted}\textbf{Speaker notes.} #1}}
 \begin{document}
 
 % 1
@@ -222,6 +222,7 @@ MRR & first relevant rank\\
 
 % 8
 \slidehead{Results}
+\vspace{8pt}
 \begin{minipage}[t]{0.55\linewidth}
 \footnotesize
 \renewcommand{\arraystretch}{1.3}
@@ -269,9 +270,9 @@ Latency p50 12.0 ms, p95 24.2 ms.
 % 9
 \slidehead{Where it breaks}
 \begin{itemize}
-  \item \textbf{operating vs operations.} Both stem to \texttt{oper}. For \texttt{os}, SCMT 661 Operations Strategy is rank 3.
+  \item \textbf{operating vs operations.} Both stem to \texttt{oper}. For \texttt{os}, SCMT 661 Operations Strategy is rank 4.
   \item \textbf{software is a modifier.} CSCE 429 Software Development is rank 4 and CSCE 713 Software Security is rank 6 for ``software engineering.''
-  \item \textbf{sense collision.} ``security'' returns LAW 706 Securities Regulation first, and the rule grades it 0.
+  \item \textbf{sense collision.} ``security'' returns ECEN 426 first and LAW 706 second, and the rule grades both 0.
   \item \textbf{acronym blast.} \texttt{os} returns 1,908 records because the expansion splits into common terms.
   \item \textbf{label and duplicate limits.} The rule reuses query strings, and 96 cross-level pairs appear twice.
 \end{itemize}
