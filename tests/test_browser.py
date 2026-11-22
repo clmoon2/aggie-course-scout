@@ -82,3 +82,15 @@ def test_mobile_no_horizontal_scroll(browser, server):
     width = page.evaluate("document.documentElement.scrollWidth")
     assert width <= 390
     page.close()
+
+
+def test_credit_range_facet(browser, server):
+    page = browser.new_page()
+    load(page, server)
+    page.fill("#q", "dept:csce")
+    page.wait_for_selector(".facet")
+    page.locator(".facet", has_text="0to4").first.click()
+    page.wait_for_timeout(400)
+    assert "credits:>=0 credits:<=4" in page.input_value("#q")
+    assert page.locator(".card").count() > 0
+    page.close()

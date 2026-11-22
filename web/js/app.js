@@ -203,11 +203,25 @@
   }
 
   function toggleFacet(key, val) {
-    const token = key + ":" + val;
+    if (val === "?") return;
     let q = input.value;
-    const re = new RegExp("(^|\\s)" + key + ":" + val.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?=\\s|$)", "i");
-    if (re.test(q)) q = q.replace(re, " ").trim();
-    else q = (q + " " + token).trim();
+    let token;
+    let re;
+    if (key === "credits" && val.includes("to")) {
+      const [lo, hi] = val.split("to");
+      token = "credits:>=" + lo + " credits:<=" + hi;
+      re = /(^|\s)credits:>=\d+ credits:<=\d+(?=\s|$)/i;
+      if (re.test(q)) {
+        q = q.replace(re, " ").trim();
+      } else {
+        q = (q + " " + token).trim();
+      }
+    } else {
+      token = key + ":" + val;
+      re = new RegExp("(^|\\s)" + key + ":" + val.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?=\\s|$)", "i");
+      if (re.test(q)) q = q.replace(re, " ").trim();
+      else q = (q + " " + token).trim();
+    }
     input.value = q;
     runSearch(q);
   }

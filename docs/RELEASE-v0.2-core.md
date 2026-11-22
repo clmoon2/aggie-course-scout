@@ -13,7 +13,7 @@ This is the core search release. It is the first tagged version with the full cr
 - Query parser for phrases, `dept:`, `level:`, `credits:`, negation, synonyms, and spelling suggestions.
 - Static UI with facets, snippets, detail drawer, why panel, and loading, empty, and error states.
 - 25-query pooled evaluation with 513 judgments and four ablations.
-- 24 passing Python, CLI, and Playwright tests.
+- 25 passing Python, CLI, and Playwright tests.
 
 ## Results at this tag
 
