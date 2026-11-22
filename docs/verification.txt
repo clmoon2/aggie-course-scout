@@ -4,7 +4,7 @@ Code under test: 47f2054. The verification file was added after that commit and 
 
 1. Full test suite
 Command: .venv/bin/python -m pytest tests/ -q
-Result: 47 passed in 36.30s
+Result: 47 passed in 36.34s
 Suites: tokenizer, Python/JS stemmer parity, BM25 math, phrase adjacency,
 query parser, filters, negation, suggestion, index hash, index/corpus binding,
 Python/JS search parity, CLI search, Playwright desktop, typo, facet, empty, mobile.
@@ -12,7 +12,7 @@ Python/JS search parity, CLI search, Playwright desktop, typo, facet, empty, mob
 2. Clean checkout
 Command: git clone https://github.com/clmoon2/aggie-course-scout.git /tmp/opencode/clean-check
 then fresh venv, pip install -r requirements.txt, pytest tests/ -q
-Result: 47 passed in 36.30s
+Result: 47 passed in 36.34s
 
 3. Live page, logged out browser context
 URL: https://clmoon2.github.io/aggie-course-scout/
@@ -38,8 +38,9 @@ Notes: docs/RELEASE-v0.2-core.md
 7. Evaluation
 Command: python3 src/evaluate.py
 Output: eval/results/results.json
-BM25F P@10 0.776, NDCG@10 0.793, AP@10 0.767, MRR 0.841
-Flat BM25 P@10 0.740, NDCG@10 0.723, AP@10 0.724, MRR 0.853
+BM25F P@10 0.776, NDCG@10 0.801, AP@10 0.773, MRR 0.871
+Flat BM25 P@10 0.740, NDCG@10 0.725, AP@10 0.725, MRR 0.853
+Equalized expansion condition NDCG@10 0.771, interval -0.000 to 0.099, p 0.035
 Judged pairs: 514
 
 8. Latency

@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[14pt]{article}
 \usepackage[paperwidth=13.333in,paperheight=7.5in,margin=0.55in]{geometry}
 \usepackage{times,xcolor,graphicx,booktabs,tikz,hyperref,fancyhdr}
 \usetikzlibrary{positioning}
@@ -7,13 +7,15 @@
 \definecolor{gold}{HTML}{C9A24B}
 \definecolor{muted}{HTML}{5D554C}
 \setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{2.0}
+\linespread{1.08}
 \pagestyle{fancy}
 \fancyhf{}
 \cfoot{\footnotesize\color{muted}\thepage\,/\,10}
 \renewcommand{\headrulewidth}{0pt}
 \hypersetup{colorlinks=true,urlcolor=maroon}
 \newcommand{\slidehead}[1]{{\color{maroon}\rule{\linewidth}{4pt}}\par\vspace{2pt}{\LARGE\bfseries\color{maroon}#1}\par\vspace{4pt}}
-\newcommand{\notes}[1]{\vfill{\color{gold}\rule{\linewidth}{1pt}}\\[2pt]{\fontsize{8.5}{10}\selectfont\color{muted}\textbf{Speaker notes.} #1}}
+\newcommand{\notes}[1]{\vfill{\color{gold}\rule{\linewidth}{1pt}}\\[2pt]{\fontsize{9.5}{11}\selectfont\color{muted}\textbf{Speaker notes.} #1}}
 \begin{document}
 
 % 1
@@ -25,7 +27,7 @@
 {\large Carlos Luna-Pena \quad CSCE 470 \quad Fall 2026}\\[4pt]
 {\large \url{https://clmoon2.github.io/aggie-course-scout/}}
 \end{center}
-\notes{Hi. This is Aggie Course Scout, a search engine over the official TAMU catalog. I built it solo. It's static, public-data only, and the whole thing is on GitHub Pages. I'll show the data, the ranking, the deployed UI, and the corrected evaluation. It's a class project, not an official TAMU tool, and the data is public. The repo has the crawler, the index builder, and every judgment so you can rerun it. The measured latency and the exact test commands are in the handoff.}
+\notes{Hi. This is Aggie Course Scout, a search engine over the official TAMU catalog. I built it solo. It's static, public-data only, and the whole thing is on GitHub Pages. I'll show the data, the ranking, the deployed UI, and the corrected evaluation. It's a class project, not an official TAMU tool, and the data is public. The repo has the crawler, the index builder, and every judgment so you can rerun it. The measured latency, the exact test commands, and every hash are in the handoff.}
 \newpage
 
 % 2
@@ -45,6 +47,16 @@ The job is narrow: find a course by topic, show the official text, explain the r
 \begin{minipage}[t]{0.38\linewidth}
 \colorbox{cream}{\parbox{0.92\linewidth}{\vspace{4pt}\textbf{Who benefits}\\[3pt]Students planning a term. Advisors doing a fast lookup. Anyone building a degree plan who needs the description.\vspace{4pt}}}
 \end{minipage}
+\vspace{10pt}
+\begin{tabular}{@{}p{0.4\linewidth}p{0.55\linewidth}@{}}
+\toprule
+Catalog site search & Course index\\
+\midrule
+National Security program page & CSCE 465, Computer and Network Security\\
+Policy page & CSCE 413, Software Security\\
+Department landing page & MARA 360, Maritime Cybersecurity\\
+\bottomrule
+\end{tabular}
 \notes{The catalog search is site search, not course search. That distinction is the whole motivation. I'm not replacing the schedule or the audit. Every record links back to the official page. Search should answer topic first and link out for logistics. The form keeps a visible syntax line instead of hiding filters in a menu. The empty state explains what to try instead of just saying zero.}
 \newpage
 
@@ -74,9 +86,12 @@ Crawler: requests + BeautifulSoup, 4 workers, 0.2 s delay, 3 retries, robots.txt
 \textbf{Cleaning.} strip HTML, collapse spaces, remove hour boilerplate, split prereqs, dedupe level plus code, hash the output.
 \vspace{5pt}
 
-\textbf{Caveats.} College is hand-mapped because it isn't on the page. The count is above my proposed range because research and seminar records are real courses.
+\textbf{Caveats.} College is hand-mapped. The count is above my proposed range because research and seminar records are real courses.
+\vspace{8pt}
+
+\colorbox{cream}{\parbox{0.9\linewidth}{\vspace{3pt}\small Manifest: URL, status, bytes, page SHA-256. Five records have empty descriptions and are kept.\vspace{3pt}}}
 \end{minipage}
-\notes{No 404s. Seven department pages have zero course blocks, so they contribute no records. The count came in high, and I kept it rather than trimming real courses. That distinction got lost in an earlier slide and is fixed. Eight records also have empty descriptions and are kept, which the report discloses. The crawl manifest records bytes and a SHA for every page.}
+\notes{No 404s. Seven department pages have zero course blocks, so they contribute no records. The count came in high, and I kept it rather than trimming real courses. That distinction got lost in an earlier slide and is fixed. Five records also have empty descriptions and are kept, which the report discloses. The crawl manifest records bytes and a SHA for every page.}
 \newpage
 
 % 4
@@ -139,17 +154,10 @@ Quoted phrases get a bonus, doubled in the title. Filters apply after scoring. T
 
 % 6
 \slidehead{What it looks like}
-\begin{minipage}[t]{0.54\linewidth}
-\includegraphics[height=4.3in,keepaspectratio]{../web/assets/screenshots/desktop-results.png}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.43\linewidth}
-\includegraphics[height=4.3in,keepaspectratio]{../web/assets/screenshots/detail-drawer.png}
-\vspace{4pt}
-
-{\footnotesize Left: filtered facets, marked snippets, score, and a why-this-rank control on every card. Right: detail drawer with prerequisites and the term-by-term score table over a backdrop.}\vspace{4pt}
-
-\colorbox{cream}{\parbox{0.95\linewidth}{\vspace{3pt}\small The why table is the ranking evidence: field, TF, weighted TF, and the term score. Facet counts come from the filtered set, not the whole index.\vspace{3pt}}}
-\end{minipage}
+\begin{center}
+\includegraphics[height=4.5in,keepaspectratio]{../web/assets/screenshots/ui-why.png}
+\end{center}
+{\small The why table is the ranking evidence: field, TF, weighted TF, and the term score. Facet counts come from the filtered set, not the whole index. The detail drawer adds prerequisites and the full description over a backdrop.}
 \notes{This is the actual product, not a mock. The College of Dentistry facet advertises 159 and returns 159. Credit buckets match their counts. The drawer traps focus, restores it on close, and the backdrop closes it. The page auto-scrolls to the summary on a phone, and the detail sheet is a real modal with Escape and backdrop close. The mobile jump and focus restore are covered too. The facet buttons expose pressed state and selected styling. The detail view no longer prints the snippet twice.}
 \newpage
 
@@ -182,6 +190,18 @@ Latency: 75 in-page searches, headless Chromium, p50 and p95.
 \vspace{10pt}
 
 \colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}\small Why 25? Enough to cover four buckets and keep 514 judgments manageable for one grader. A second grader is the next step.\vspace{3pt}}}
+\vspace{6pt}
+
+\begin{tabular}{@{}ll@{}}
+\toprule
+Metric & What it counts\\
+\midrule
+P@10 & binary relevant in top 10\\
+NDCG@10 & graded gain, global ideal\\
+AP@10 & precision, denominator min(10,R)\\
+MRR & first relevant rank\\
+\bottomrule
+\end{tabular}
 \end{minipage}
 \notes{One grader and 25 queries is small, and most labels come from a rule that reuses the query string. So this measures lexical title match more than topical relevance. The labels are rule-generated with four overrides, not human gold. The sign test is exact, so it doesn't assume normality. We kept the per-query deltas in the results folder for inspection. Four manual overrides are listed with notes.}
 \newpage
@@ -193,20 +213,21 @@ Latency: 75 in-page searches, headless Chromium, p50 and p95.
 \toprule
 Condition & P@10 & NDCG@10 & AP@10 & MRR\\
 \midrule
-TF-IDF, same terms & 0.700 & 0.671 & 0.669 & 0.794\\
-Flat BM25, same terms & 0.740 & 0.723 & 0.724 & 0.853\\
-\textbf{BM25F} & \textbf{0.776} & \textbf{0.793} & \textbf{0.767} & \textbf{0.841}\\
-No correction & 0.652 & 0.652 & 0.638 & 0.717\\
-No synonyms & 0.720 & 0.734 & 0.708 & 0.798\\
-No syn.\ or corr. & 0.596 & 0.593 & 0.580 & 0.673\\
+TF-IDF, same terms & 0.700 & 0.674 & 0.670 & 0.794\\
+Flat BM25, same terms & 0.740 & 0.725 & 0.725 & 0.853\\
+\textbf{BM25F} & \textbf{0.776} & \textbf{0.801} & \textbf{0.773} & \textbf{0.871}\\
+No correction & 0.660 & 0.662 & 0.644 & 0.743\\
+No synonyms & 0.728 & 0.744 & 0.719 & 0.808\\
+No syn.\ or corr. & 0.612 & 0.606 & 0.590 & 0.680\\
 Title only & 0.716 & 0.806 & 0.716 & 0.873\\
-No dept & 0.748 & 0.771 & 0.727 & 0.842\\
-Equal weights & 0.788 & 0.795 & 0.794 & 0.868\\
+No dept & 0.744 & 0.777 & 0.730 & 0.872\\
+Equal weights & 0.776 & 0.786 & 0.791 & 0.893\\
+Equal expansions & 0.752 & 0.771 & 0.754 & 0.853\\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 
-{\scriptsize Deduped codes: BM25F 0.756 P@10 / 0.790 NDCG; flat 0.716 / 0.722.}
+{\scriptsize Deduped codes: BM25F 0.756 P@10 / 0.799 NDCG; flat 0.716 / 0.723.}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.42\linewidth}
 \textbf{BM25F minus flat}
@@ -215,16 +236,16 @@ Equal weights & 0.788 & 0.795 & 0.794 & 0.868\\
 Metric & Mean & 95\% CI\\
 \midrule
 P@10 & +0.036 & -0.004 to 0.080\\
-NDCG & +0.070 & 0.020 to 0.126\\
-AP@10 & +0.042 & -0.018 to 0.112\\
-MRR & -0.012 & -0.043 to 0.018\\
+NDCG & +0.076 & 0.026 to 0.132\\
+AP@10 & +0.048 & -0.013 to 0.118\\
+MRR & +0.018 & -0.020 to 0.069\\
 \bottomrule
 \end{tabular}
 \vspace{6pt}
 
 Latency p50 12.0 ms, p95 24.2 ms.
 \end{minipage}
-\notes{BM25F is ahead on NDCG. The interval excludes zero, 17 queries win and 5 lose, sign test p equals 0.017. But P@10 and AP cross zero, and MRR is a small loss. Correction is worth 0.141 NDCG inside the system and synonyms 0.059, but the 0.070 gap is the ranking comparison with both features held constant. It answers whether duplicates drive the gap. The answer is no: the deduped gap is 0.068 NDCG, almost unchanged. MRR is the one metric where flat BM25 is ahead.}
+\notes{BM25F is ahead on NDCG. The interval excludes zero, 18 queries win and 4 lose, sign test p equals 0.004. But P@10, AP, and MRR cross zero. Correction is worth 0.141 NDCG inside the system and synonyms 0.059, but the 0.070 gap is the ranking comparison with both features held constant. It answers whether duplicates drive the gap. The answer is no: the deduped gap is 0.068 NDCG, almost unchanged. MRR is the one metric where flat BM25 is ahead.}
 \newpage
 
 % 9
@@ -237,20 +258,34 @@ Latency p50 12.0 ms, p95 24.2 ms.
   \item \textbf{label and duplicate limits.} The rule reuses query strings, and 96 cross-level pairs appear twice.
 \end{itemize}
 \vspace{4pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}The 0.070 NDCG gap is field weighting with features held constant. The 0.141 correction effect is inside BM25F with features removed. They aren't pieces of each other.\vspace{3pt}}}
-\notes{These are the failures I'd fix first. The stemming collision is easy to reproduce. The software example shows term independence. The LAW result shows the labeler and the ranker agree it's the wrong sense, but the stem can't tell. Both are in the limitations. The known-item label rule also gets a caveat because it reuses the query string. The acronym os still returns 1,908 records, which is too broad.}
+\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}The 0.070 gap is a ranking recipe, not pure field weighting. Equal expansion weights with no synonym phrase bonus cut it to 0.046. The 0.141 correction effect is a separate within-system comparison.\vspace{3pt}}}
+\vspace{8pt}
+
+\begin{tabular}{@{}lr@{}}
+\toprule
+Condition & NDCG@10\\
+\midrule
+BM25F, shipped & 0.801\\
+BM25F, equal expansions & 0.771\\
+Flat BM25 & 0.725\\
+\bottomrule
+\end{tabular}
+\notes{These are the failures I'd fix first. The stemming collision is easy to reproduce. The software example shows term independence. The LAW result shows the labeler and the ranker agree it's the wrong sense, but the stem can't tell. Both are in the error analysis. The known-item label rule also gets a caveat because it reuses the query string. The acronym os still returns 1,908 records, which is too broad.}
 \newpage
 
 % 10
 \slidehead{Takeaway}
 \begin{minipage}[t]{0.62\linewidth}
-BM25F is ahead on NDCG, ties on P@10 and AP, and loses MRR. The title-only variant beats it. That's narrower than my first draft claimed.
+The shipped recipe is ahead on NDCG, but equalizing expansions cuts the gap to 0.046 and the interval touches zero. Title-only still beats it.
 \vspace{8pt}
 
 The useful part isn't the score. It's the inspectable pipeline: public crawl, hashed data, one index shared by the evaluator and the browser, paired intervals, and a why panel a person can argue with.
 \vspace{8pt}
 
 Next: title bigrams, dedupe cross-level codes, retune the weights, and get a second grader.
+\vspace{8pt}
+
+\colorbox{cream}{\parbox{0.92\linewidth}{\vspace{3pt}\small Keep: hashed crawl, parity tests, why panel. Cut: duplicate records and the unsupported department weight.\vspace{3pt}}}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.34\linewidth}
 \textbf{Live}\\
@@ -264,6 +299,6 @@ Next: title bigrams, dedupe cross-level codes, retune the weights, and get a sec
 \textbf{Report}\\
 \url{https://clmoon2.github.io/aggie-course-scout/report.html}
 \end{minipage}
-\notes{So the honest takeaway is narrow. The weights help NDCG on a small set, most of the product value is correction and filters, and the other metrics won't back a stronger claim. The corrected report is linked here. I'd rather defend the narrow version than the first draft. If you take one thing, take the correction method.}
+\notes{So the honest takeaway is narrow. The correction and the interface do more visible work than the weights, and most of the headline is feature weighting. The corrected report is linked here. I'd rather defend the narrow version than the first draft. If you take one thing, take the correction method.}
 
 \end{document}

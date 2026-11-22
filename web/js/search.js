@@ -323,7 +323,7 @@
       if (!docMatchesFilters(doc, q)) continue;
       ranked.push([score, did]);
     }
-    ranked.sort((a,b) => b[0] - a[0] || index.docs[a[1]][1].localeCompare(index.docs[b[1]][1]));
+    ranked.sort((a,b) => (Math.round(b[0] * 10) - Math.round(a[0] * 10)) || index.docs[a[1]][1].localeCompare(index.docs[b[1]][1]));
     const facets = {dept: {}, level: {}, college: {}, credits: {}};
     for (const [, did] of ranked) {
       const d = index.docs[did];

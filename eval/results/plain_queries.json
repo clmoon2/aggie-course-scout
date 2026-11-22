@@ -1,11 +1,12 @@
 {
   "tfidf": 0.6456096600160092,
   "flat_bm25": 0.716383612854611,
-  "bm25f": 0.7941089492081196,
-  "ablate_no_correction": 0.7941089492081196,
-  "ablate_no_synonyms": 0.796826555299132,
-  "ablate_no_synonyms_no_correction": 0.796826555299132,
+  "bm25f": 0.794493895781614,
+  "ablate_no_correction": 0.794493895781614,
+  "ablate_no_synonyms": 0.797093816910048,
+  "ablate_no_synonyms_no_correction": 0.797093816910048,
   "ablate_title_only": 0.8209690788491446,
-  "ablate_no_dept": 0.7551170086067458,
-  "ablate_equal_weights": 0.788791242450292
+  "ablate_no_dept": 0.7512111123121402,
+  "ablate_equal_weights": 0.7670901376030062,
+  "equal_expansion_no_phrase": 0.7915898033175723
 }

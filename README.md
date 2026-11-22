@@ -47,19 +47,20 @@ python3 evaluate.py              # writes eval/judgments.csv and eval/results/
 python3 latency.py               # writes eval/results/latency.json
 ```
 
-The 25 queries are in `eval/queries.json`. The judgments are pooled from two baselines and seven BM25F conditions, then graded 0/1/2 from the actual records. Every system gets the same correction and synonym preprocessing unless an ablation removes it. NDCG uses a global ideal from the full judged pool. Current results:
+The 25 queries are in `eval/queries.json`. The judgments are pooled from two baselines and seven BM25F conditions, then graded 0/1/2 from the actual records. Every system gets the same correction and synonym terms, though not the same weights unless the equalized condition sets them. NDCG uses a global ideal from the full judged pool. Current results:
 
 | Condition | P@10 | NDCG@10 | AP@10 | MRR |
 |---|---:|---:|---:|---:|
 | TF-IDF, same terms | 0.700 | 0.671 | 0.669 | 0.794 |
-| Flat BM25, same terms | 0.740 | 0.723 | 0.724 | 0.853 |
-| BM25F | 0.776 | 0.793 | 0.767 | 0.841 |
-| BM25F, no correction | 0.652 | 0.652 | 0.638 | 0.717 |
-| BM25F, no synonyms | 0.720 | 0.734 | 0.708 | 0.798 |
-| BM25F, no synonyms or correction | 0.596 | 0.593 | 0.580 | 0.673 |
+| Flat BM25, same terms | 0.740 | 0.725 | 0.725 | 0.853 |
+| BM25F | 0.776 | 0.801 | 0.773 | 0.871 |
+| BM25F, no correction | 0.660 | 0.662 | 0.644 | 0.743 |
+| BM25F, no synonyms | 0.728 | 0.744 | 0.719 | 0.808 |
+| BM25F, no synonyms or correction | 0.612 | 0.606 | 0.590 | 0.680 |
 | BM25F, title only | 0.716 | 0.806 | 0.716 | 0.873 |
+| BM25F, equal expansions | 0.752 | 0.771 | 0.754 | 0.853 |
 
-The field-weight result is weak: title-only beats the full model on NDCG. The 0.070 gap is the field-weighting comparison with terms held constant; the 0.141 correction effect is a separate within-system comparison. The report covers that and the other failures.
+The field-weight result is weak: title-only beats the full model on NDCG. The 0.070 gap is the field-weighting comparison with terms held constant; the 0.141 correction effect is a separate within-system comparison, and the equalized gap is 0.046. The report covers that and the other failures.
 
 ## Tests
 

@@ -88,6 +88,7 @@ def main() -> int:
         "ablate_title_only": {"weights": {"t": 3.0, "d": 0.0, "x": 0.0, "p": 0.0}},
         "ablate_no_dept": {"weights": {"t": 3.0, "d": 0.0, "x": 1.0, "p": 0.5}},
         "ablate_equal_weights": {"weights": {"t": 1.0, "d": 1.0, "x": 1.0, "p": 1.0}},
+        "equal_expansion_no_phrase": {"correction_weight": 1.0, "synonym_weight": 1.0, "synonym_phrase_bonus": False},
     }
     names = ["tfidf", "flat_bm25", *bm_conditions]
     pool: dict[str, list[int]] = {}
@@ -171,11 +172,12 @@ def main() -> int:
             per_q.append(metrics(gs, ideal_dedup[q["id"]]))
         results[name + "_deduped"] = {k: sum(m[k] for m in per_q) / len(per_q) for k in per_q[0]}
 
-    sig = {}
-    for metric in ("P@10", "NDCG@10", "AP@10", "MRR"):
+    def paired_significance(name: str):
+      sig = {}
+      for metric in ("P@10", "NDCG@10", "AP@10", "MRR"):
         diffs = []
         for q in QUERIES:
-            a = metrics([grades.get((q["id"], i), 0) for i in system_ids["bm25f"][q["id"]]], ideal[q["id"]])[metric]
+            a = metrics([grades.get((q["id"], i), 0) for i in system_ids[name][q["id"]]], ideal[q["id"]])[metric]
             b = metrics([grades.get((q["id"], i), 0) for i in system_ids["flat_bm25"][q["id"]]], ideal[q["id"]])[metric]
             diffs.append(a - b)
         wins = sum(d > 1e-12 for d in diffs)
@@ -199,7 +201,11 @@ def main() -> int:
             "ci95": [boot[int(0.025 * len(boot))], boot[int(0.975 * len(boot))]],
             "sign_test_p": p,
         }
-    (OUT / "significance.json").write_text(json.dumps(sig, indent=2) + "\n")
+      return sig
+    (OUT / "significance.json").write_text(json.dumps({
+        "shipped": paired_significance("bm25f"),
+        "equalized": paired_significance("equal_expansion_no_phrase"),
+    }, indent=2) + "\n")
 
     (OUT / "results.json").write_text(json.dumps(results, indent=2) + "\n")
     with (OUT / "results.csv").open("w", newline="") as f:

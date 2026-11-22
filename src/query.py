@@ -275,7 +275,8 @@ def _phrase_docs(index: dict, phrase: list[str]) -> dict[int, int]:
 
 def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
            use_synonyms: bool = True, use_correction: bool = True,
-           explain: bool = True) -> dict:
+           correction_weight: float = 0.55, synonym_weight: float = 0.5,
+           synonym_phrase_bonus: bool = True, explain: bool = True) -> dict:
     q = parse_query(raw, index)
     weights = weights or index["weights"]
     n = index["n"]
@@ -327,23 +328,27 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
     for term in q.terms:
         add_term(term, 0.5 if len(term) <= 3 else 1.0, term)
         if use_correction and term in q.corrections:
-            add_term(q.corrections[term], 0.55, f"~{q.corrections[term]}")
+            add_term(q.corrections[term], correction_weight, f"~{q.corrections[term]}")
         if use_synonyms:
             for phrase in q.synonyms.get(term, []):
                 if len(phrase) == 1:
-                    add_term(phrase[0], 0.55, f"{term}~{phrase[0]}")
+                    add_term(phrase[0], synonym_weight, f"{term}~{phrase[0]}")
                 else:
                     toks = normalize_tokens(" ".join(phrase))
                     for t in toks:
-                        add_term(t, 0.5, f"{term}~{' '.join(phrase)}")
+                        add_term(t, synonym_weight, f"{term}~{' '.join(phrase)}")
 
     phrase_info = []
-    for phrase in q.phrases + [normalize_tokens(" ".join(p)) for p in synonym_phrases]:
+    phrase_sets = [(p, False) for p in q.phrases]
+    phrase_sets += [(normalize_tokens(" ".join(p)), True) for p in synonym_phrases]
+    for phrase, from_synonym in phrase_sets:
+        if from_synonym and not synonym_phrase_bonus:
+            continue
         ph = [t for t in phrase if t]
         if not ph:
             continue
         if len(ph) == 1:
-            add_term(ph[0], 1.8, f'"{ph[0]}"')
+            add_term(ph[0], 1.8 if not from_synonym else synonym_weight, f'"{ph[0]}"')
             continue
         hits = _phrase_docs(index, ph)
         if not hits:
@@ -382,7 +387,7 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
         if not _doc_matches_filters(doc, q):
             continue
         ranked.append((score, did))
-    ranked.sort(key=lambda x: (-x[0], index["docs"][x[1]][1]))
+    ranked.sort(key=lambda x: (-round(x[0], 1), index["docs"][x[1]][1]))
     total = len(ranked)
     page = ranked[:limit]
 

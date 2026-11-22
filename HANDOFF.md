@@ -31,11 +31,11 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 ```
 e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206  data/processed/courses.jsonl
 4be7bf684c58383dbfbf6641f4b40fee2e3247aa699c148ad35a1c2f25d8c49b  web/data/index.json.gz
-dc1596551cf6c3ed6fcbd040a92e50881d45d55cacd24e3298aa48b87baf0592  docs/report.pdf
+e4a74f0ee870a456c15fd0687e74f852d25619cf1a8fd840fc9d94efd9ecb8bb  docs/report.pdf
 d037d073c9ae60439cf4dd44d029615b73ca0066d96b66195ad427159311f4fe  checkpoints/CSCE470_Project_Proposal_Carlos_Luna-Pena.pdf
 886cbd355f2d50d07ad386c341e6f38af4ff3d48d4ed2fb807e1fa3dd933eaa5  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
 f9f86f1cc0b8db2f7321da0de029e22944ba691acd3cf211f85631cb6c25d74b  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
-387731ce76086863b82e6f834046be06fcf907b2877908e265c9f55cb71c7468  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
+1eca8a9e0c2e363aebc16ff6e5aebf8b1bc67d06a29f89bc6deb9024904f6add  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
 ```
 
 ## Verification evidence
@@ -69,7 +69,7 @@ Late data checkpoint. I crawled the 2026-2027 TAMU undergraduate and graduate ca
 
 ## Canvas: core release
 
-Late core release checkpoint, tagged v0.2-core. The crawl, four-field index, browser query layer, UI, and evaluation are working. BM25F uses title 3.0, department 2.0, description 1.0, prerequisite 0.5 with k1 1.2 and b 0.75. The query layer has phrases, dept/level/credits filters, negation, synonym expansion, spelling suggestions, facets, snippets, and a why panel. Evaluation is 25 queries and 514 pooled judgments. BM25F gets P@10 0.776 and NDCG@10 0.793, flat BM25 gets 0.740 and 0.723 under the same terms and global-ideal NDCG. Tests: 47 passing, including a clean-checkout run. Tag and release notes: https://github.com/clmoon2/aggie-course-scout/releases/tag/v0.2-core. Live: https://clmoon2.github.io/aggie-course-scout/.
+Late core release checkpoint, tagged v0.2-core. The crawl, four-field index, browser query layer, UI, and evaluation are working. BM25F uses title 3.0, department 2.0, description 1.0, prerequisite 0.5 with k1 1.2 and b 0.75. The query layer has phrases, dept/level/credits filters, negation, synonym expansion, spelling suggestions, facets, snippets, and a why panel. Evaluation is 25 queries and 514 pooled judgments. BM25F gets P@10 0.776 and NDCG@10 0.801, flat BM25 gets 0.740 and 0.725 under the same terms and global-ideal NDCG. Tests: 47 passing, including a clean-checkout run. Tag and release notes: https://github.com/clmoon2/aggie-course-scout/releases/tag/v0.2-core. Live: https://clmoon2.github.io/aggie-course-scout/.
 
 ## Canvas: UI checkpoint
 
@@ -77,7 +77,7 @@ Late UI checkpoint, two pages with desktop, mobile, and detail screenshots. The 
 
 ## Canvas: final submission
 
-Final submission for Aggie Course Scout, a solo BM25F search engine over 10,277 public TAMU catalog records. Live site: https://clmoon2.github.io/aggie-course-scout/. Report: https://clmoon2.github.io/aggie-course-scout/report.html. Repo: https://github.com/clmoon2/aggie-course-scout. The project includes the crawl and manifest, a four-field index, a browser query layer, a static UI, 25 queries with 514 pooled judgments, two baselines, seven conditions, a 7-page report, a 10-slide deck with notes, and 47 passing tests. With matching terms BM25F gets NDCG@10 0.793 against 0.723 for flat BM25; title-only beats full. Browser latency is p50 12.0 ms and p95 24.2 ms. Report PDF: docs/report.pdf. Slides: slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf. Everything is public and logged out.
+Final submission for Aggie Course Scout, a solo BM25F search engine over 10,277 public TAMU catalog records. Live site: https://clmoon2.github.io/aggie-course-scout/. Report: https://clmoon2.github.io/aggie-course-scout/report.html. Repo: https://github.com/clmoon2/aggie-course-scout. The project includes the crawl and manifest, a four-field index, a browser query layer, a static UI, 25 queries with 514 pooled judgments, two baselines, seven conditions, a 7-page report, a 10-slide deck with notes, and 47 passing tests. With matching terms BM25F gets NDCG@10 0.801 against 0.725 for flat BM25; title-only beats full. Browser latency is p50 12.0 ms and p95 24.2 ms. Report PDF: docs/report.pdf. Slides: slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf. Everything is public and logged out.
 
 ## Known limits
 
@@ -87,7 +87,7 @@ Final submission for Aggie Course Scout, a solo BM25F search engine over 10,277 
 - Phrase search scans all documents.
 - Single grader, 25 queries, pooled judgments.
 - The `os` acronym over-expands because "operating" and "operations" share a stem.
-- Department weight is not supported by the ablation.
+- The 2.0 department weight is not isolated; the 0.022 NDCG effect is small and untested.
 - The live site has no production query log. Latency is local headless Chrome.
 - Index first load is 2.2 MB gzipped.
 
