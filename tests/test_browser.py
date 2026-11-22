@@ -89,7 +89,8 @@ def test_credit_bucket_facet(browser, server):
     load(page, server)
     page.fill("#q", "dental hygiene")
     page.wait_for_selector(".card")
-    button = page.locator(".facet", has_text="1-2").first
+    group = page.locator(".facet-group").filter(has=page.locator("h3", has_text="Credits"))
+    button = group.locator('[data-facet-value="1-2"]')
     async_count = int(button.locator(".count").inner_text())
     button.click()
     page.wait_for_timeout(500)
@@ -104,7 +105,7 @@ def test_college_facet_filters_and_selected_state(browser, server):
     page.fill("#q", "dental hygiene")
     page.wait_for_selector(".card")
     before = int(page.locator("#summary strong").inner_text())
-    button = page.locator(".facet", has_text="College of Dentistry").first
+    button = page.locator('[data-facet-value="college-of-dentistry"]')
     advertised = int(button.locator(".count").inner_text())
     assert advertised < before
     button.click()
@@ -121,8 +122,9 @@ def test_credits_facet_counts_match_all_buckets(browser, server):
     load(page, server)
     page.fill("#q", "dental hygiene")
     page.wait_for_selector(".facet")
+    group = page.locator(".facet-group").filter(has=page.locator("h3", has_text="Credits"))
     for label in ["0", "1-2", "3", "4", "5+"]:
-        button = page.locator(".facet", has_text=label).first
+        button = group.locator(f'[data-facet-value="{label}"]')
         advertised = int(button.locator(".count").inner_text())
         button.click()
         page.wait_for_timeout(500)
