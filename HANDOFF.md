@@ -50,7 +50,7 @@ d141959bdebcc878aa784f7637dde9628f468569d25f0db2469ce670506f0bce  checkpoints/CS
 - Data: 383 pages, 0 HTTP errors, 10,277 records. Manifest has one row per request.
 - Latency: 75 samples, p50 14.4 ms, p95 21.8 ms, cold max 386 ms.
 
-The last code commit is `47f175d`. Later commits change documentation, report wording, and PDFs only.
+The last code commit is `4fd516b`. Later commits change documentation, report wording, and PDFs only.
 
 ## Before posting
 
