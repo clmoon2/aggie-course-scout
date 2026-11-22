@@ -17,7 +17,7 @@ This is the core search release. It is the first tagged version with the full cr
 
 ## Results at this tag
 
-With matching correction and synonym preprocessing and global-ideal NDCG, BM25F scored P@10 0.828 and NDCG@10 0.898. Flat BM25 scored 0.788 and 0.827. Title-only BM25F scored 0.905 NDCG, above the full model. Browser p50 is 12.0 ms and p95 is 24.2 ms.
+With matching correction and synonym preprocessing and global-ideal NDCG, BM25F scored P@10 0.776 and NDCG@10 0.793. Flat BM25 scored 0.740 and 0.723. Title-only BM25F scored 0.806 NDCG, above the full model. Browser p50 is 12.0 ms and p95 is 24.2 ms.
 
 ## Data
 

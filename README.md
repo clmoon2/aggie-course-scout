@@ -51,15 +51,15 @@ The 25 queries are in `eval/queries.json`. The judgments are pooled from two bas
 
 | Condition | P@10 | NDCG@10 | AP@10 | MRR |
 |---|---:|---:|---:|---:|
-| TF-IDF, same preprocessing | 0.740 | 0.761 | 0.670 | 0.911 |
-| Flat BM25, same preprocessing | 0.788 | 0.827 | 0.746 | 0.980 |
-| BM25F | 0.828 | 0.898 | 0.788 | 0.973 |
-| BM25F, no correction | 0.664 | 0.712 | 0.620 | 0.789 |
-| BM25F, no synonyms | 0.772 | 0.843 | 0.726 | 0.933 |
-| BM25F, no synonyms or correction | 0.608 | 0.657 | 0.558 | 0.749 |
-| BM25F, title only | 0.788 | 0.905 | 0.770 | 0.980 |
+| TF-IDF, same terms | 0.700 | 0.671 | 0.669 | 0.794 |
+| Flat BM25, same terms | 0.740 | 0.723 | 0.724 | 0.853 |
+| BM25F | 0.776 | 0.793 | 0.767 | 0.841 |
+| BM25F, no correction | 0.652 | 0.652 | 0.638 | 0.717 |
+| BM25F, no synonyms | 0.720 | 0.734 | 0.708 | 0.798 |
+| BM25F, no synonyms or correction | 0.596 | 0.593 | 0.580 | 0.673 |
+| BM25F, title only | 0.716 | 0.806 | 0.716 | 0.873 |
 
-The field-weight result is weak: title-only beats the full model on NDCG, and the correction branch supplies most of the overall gap. The report covers that and the other failures.
+The field-weight result is weak: title-only beats the full model on NDCG. The 0.070 gap is the field-weighting comparison with terms held constant; the 0.141 correction effect is a separate within-system comparison. The report covers that and the other failures.
 
 ## Tests
 

@@ -32,11 +32,19 @@
   .note { font-size:.9rem; color:var(--muted); }
   .links a { color:var(--maroon); }
   footer { border-top:2px solid var(--maroon); margin-top:2rem; padding-top:.8rem; font:.82rem/1.5 "Segoe UI", system-ui, sans-serif; color:var(--muted); }
+  ol.links { font-size: 8.5pt; line-height: 1.18; }
+  ol.links li { margin: .1rem 0; }
+  h2#ai-use-note + p, .ai-note { font-size: 10.5pt; }
   @media print {
-    body { background:#fff; font-size:10.5pt; }
+    body { background:#fff; font-size:10.5pt; line-height:1.45; }
     .sheet { box-shadow:none; margin:0; max-width:none; padding:0; }
-    h2 { page-break-after:avoid; }
-    table, figure { page-break-inside:avoid; }
+    h2 { page-break-after:avoid; margin:1.1rem 0 .35rem; }
+    p { margin:.35rem 0; }
+    header { margin-bottom:.8rem; padding-bottom:.6rem; }
+    table { page-break-inside:auto; }
+    thead { display: table-header-group; }
+    tr { page-break-inside:avoid; }
+    figure { page-break-inside:avoid; }
     a { color:inherit; text-decoration:none; }
     @page { margin: 18mm 17mm; }
   }
@@ -52,20 +60,20 @@
 </header>
 
 <h2>Abstract</h2>
-<p class="abstract">Aggie Course Scout is a fielded BM25F search engine over 10,277 published Texas A&amp;M course descriptions. It runs entirely in the browser on GitHub Pages, with no backend and no tracking. I crawled 383 department pages from the 2026-2027 catalog, parsed structured course records, built a four-field inverted index, and compared BM25F against TF-IDF cosine and flat BM25 on 25 pooled queries. With both systems getting the same correction and synonym preprocessing, and with a global NDCG ideal, BM25F scores 0.828 P@10 and 0.898 NDCG@10 against 0.788 and 0.827 for flat BM25. The gap is 0.071, not the 0.301 in the first draft. Correction alone is worth 0.186 NDCG, a title-only ranker beats the full model, and acronym expansion still drags "operations" courses into "os" results. The report gives the corrected comparison and those failures.</p>
+<p class="abstract">Aggie Course Scout is a fielded BM25F search engine over 10,277 published Texas A&amp;M course descriptions. It runs entirely in the browser on GitHub Pages, with no backend and no tracking. I crawled 383 department pages from the 2026-2027 catalog, parsed structured records, built a four-field index, and compared BM25F with TF-IDF and flat BM25 on 25 pooled queries. Both baselines get the same correction and synonym terms, and NDCG uses a global ideal. BM25F scores 0.776 P@10 and 0.793 NDCG@10 against 0.740 and 0.723 for flat BM25. It's ahead on NDCG (95% bootstrap interval 0.020 to 0.126), but P@10 and AP intervals cross zero and flat BM25 wins MRR. The 0.070 NDCG gap is the field-weighting comparison with features held constant. Correction is a separate within-system effect worth 0.141. Title-only still beats the full model, and stemming still drags "operations" courses into "os."</p>
 
 <h2>1. Why this tool exists</h2>
 <p>Course search at TAMU is split in a bad way. The catalog publishes descriptions in one place, the schedule of classes in another, and degree audits somewhere else. Students who half-remember a title ("that networks class") get a department list and a browser find box. Advisors get the same. The catalog's own search is a general site search, not a course search, so a query like <code>security</code> can surface policy pages before it surfaces CSCE 465.</p>
-<p>A good course search should do four things: match titles strongly, understand department and level filters, tolerate a misspelling, and show why a result ranked where it did. That last one matters for trust. If the engine puts Securities Regulation above Computer Security for "security," I want to see that it matched the wrong sense of the word, not guess.</p>
-<p>The tool is for TAMU students planning a term, advisors doing a quick lookup, and anyone building a degree plan who needs the official description text. It is read-only. It does not know seat counts, meeting times, or instructors, because the catalog does not publish those.</p>
+<p>And a good course search should do four things: match titles strongly, understand department and level filters, tolerate a misspelling, and show why a result ranked where it did. That last one matters for trust. If the engine puts Securities Regulation above Computer Security for "security," I want to see that it matched the wrong sense of the word, not guess.</p>
+<p>The tool is for TAMU students planning a term, advisors doing a quick lookup, and anyone building a degree plan who needs the official description text. It is read-only. It doesn't know seat counts, meeting times, or instructors, because the catalog doesn't publish those.</p>
 
 <h2>2. What already exists</h2>
-<p>General web search engines index the catalog, but they optimize for pages, not course records. They do not expose <code>dept:</code> filters, they mix in program and policy pages, and they give no field-level ranking explanation. The catalog's built-in search has the same problem at a smaller scale.</p>
-<p>On campus, the closest useful things are the unofficial grade-distribution sites and the official schedule of classes. Those answer "who teaches it" and "when is it," not "which course is about this topic." None of them publishes a relevance evaluation. That gap is the project.</p>
-<p>On the IR side, BM25F is the standard field-weighted extension of BM25 (Robertson and Zaragoza, 2009). It has been used in structured document retrieval for two decades, including web and product search. The implementation here is deliberately small and readable: four fields, fixed weights, one saturation function. That makes the ranking inspectable and the ablation honest.</p>
+<p>General web search engines index the catalog, but they optimize for pages, not course records. They don't expose <code>dept:</code> filters, they mix in program and policy pages, and they give no field-level ranking explanation. The catalog's built-in search has the same problem at a smaller scale.</p>
+<p>On campus, the closest useful things are the unofficial grade-distribution sites, Aggie Grades and TAMU Grade Distributions (Aggie Grades, 2026; TAMU Grade Distributions, 2026), and the official schedule of classes. Those answer "who teaches it" and "when is it," not "which course is about this topic." None of them publishes a relevance evaluation. That gap is the project.</p>
+<p>On the IR side, BM25F is the standard field-weighted extension of BM25 (Zaragoza et al., 2004). It has been used in structured document retrieval for two decades, including web and product search. The implementation here is deliberately small and readable: four fields, fixed weights, one saturation function. That makes the ranking inspectable and the ablation honest.</p>
 
-<h2>3. Data</h2>
-<p>Source: <code>https://catalog.tamu.edu/undergraduate/course-descriptions/</code> and the graduate equivalent, 2026-2027 edition. The crawler read <code>robots.txt</code> first and stayed out of disallowed paths. It made 383 requests with 4 workers and a 0.2 second delay per worker, retried up to three times, and kept every raw page gzipped.</p>
+<h2>3. What the catalog gave me</h2>
+<p>Source: <code>https://catalog.tamu.edu/undergraduate/course-descriptions/</code> and the graduate equivalent, 2026-2027 edition, accessed 2026-11-22 (Texas A&amp;M University, 2026). The crawler read <code>robots.txt</code> first and stayed out of disallowed paths. It made 383 requests with 4 workers and a 0.2 second delay per worker, retried up to three times, and kept every raw page gzipped.</p>
 <table>
   <tr><th>Item</th><th class="num">Count</th></tr>
   <tr><td>Department index links discovered</td><td class="num">383</td></tr>
@@ -79,9 +87,9 @@
   <tr><td>Records with a prerequisite line</td><td class="num">8,564</td></tr>
 </table>
 <p>The parsed schema is one JSON object per line: <code>id</code>, <code>level</code>, <code>code</code>, <code>title</code>, <code>credits</code>, <code>description</code>, <code>prerequisites</code>, <code>corequisites</code>, <code>department</code>, <code>dept_code</code>, <code>college</code>, <code>course_level</code>, <code>url</code>. HTML is stripped, whitespace collapsed, and hour boilerplate removed from descriptions. Records are deduplicated by level plus code, keeping the first occurrence. The output file has SHA-256 <code>e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206</code> and a manifest with every request, byte count, page hash, and status.</p>
-<p>Two data caveats. College is not on department pages, so I mapped prefixes to colleges by hand; 36 records in professional and unplaced prefixes sit under "Other/Professional." And the crawl has 10,277 records, above my 6,000 to 9,000 target. I kept them rather than trimming a quarter of the catalog to hit a round number.</p>
+<p>Two data caveats. College isn't on department pages, so I mapped prefixes to colleges by hand; 36 records in professional and unplaced prefixes sit under "Other/Professional." And the crawl has 10,277 records, above my 6,000 to 9,000 target. I kept them rather than trimming a quarter of the catalog to hit a round number.</p>
 
-<h2>4. Architecture</h2>
+<h2>4. How the pieces fit</h2>
 <figure>
 <svg viewBox="0 0 760 300" role="img" aria-label="Diagram: crawler to JSONL to index builder to gzipped index to browser query layer to UI, with evaluation scripts beside it">
   <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#500000"/></marker></defs>
@@ -124,37 +132,51 @@
 </svg>
 <figcaption>Figure 1. Build and serving path. Evaluation reads the same index the browser uses.</figcaption>
 </figure>
-<p>The pipeline has four steps. <code>src/crawl_catalog.py</code> fetches and parses pages. <code>src/build_index.py</code> tokenizes four fields and writes a gzipped JSON postings file. <code>web/js/search.js</code> ranks in the browser. <code>src/evaluate.py</code> runs the baselines and the ablations over the same index. Nothing needs a server after the index is built.</p>
+<p>GitHub Pages serves the static files (GitHub, 2026). The pipeline has four steps. <code>src/crawl_catalog.py</code> fetches and parses pages. <code>src/build_index.py</code> tokenizes four fields and writes a gzipped JSON postings file. <code>web/js/search.js</code> ranks in the browser. <code>src/evaluate.py</code> runs the baselines and the ablations over the same index. Nothing needs a server after the index is built.</p>
 
-<h2>5. Ranking</h2>
-<p>Documents are tokenized with <code>[a-z0-9]+</code>, lowercased, stopped, and stemmed with a conservative Porter variant. The same stemmer is implemented in Python and JavaScript, and a test checks the two on a fixed word list. Fields are title, department, description, and prerequisites. Query terms score each field separately, the weighted term frequencies are summed and saturated once, and the result is multiplied by inverse document frequency.</p>
+<h2>5. How ranking works</h2>
+<p>Documents are tokenized with <code>[a-z0-9]+</code>, lowercased, stopped, and stemmed with a conservative Porter variant (Porter, 1980). The same stemmer is implemented in Python and JavaScript, and a test checks the two on a fixed word list. Fields are title, department, description, and prerequisites. Query terms score each field separately, the weighted term frequencies are summed and saturated once, and the result is multiplied by inverse document frequency.</p>
 <div class="formula">
 score(q, d) = Σ<sub>t∈q</sub> idf(t) · (S<sub>t,d</sub> · (k<sub>1</sub> + 1)) / (k<sub>1</sub> + S<sub>t,d</sub>)<br><br>
 S<sub>t,d</sub> = Σ<sub>f</sub> w<sub>f</sub> · tf<sub>t,d,f</sub> / (1 − b + b · |d<sub>f</sub>| / avg<sub>f</sub>)<br><br>
 idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 </div>
-<p>Weights are title 3.0, department 2.0, description 1.0, prerequisite 0.5. Constants are k<sub>1</sub> = 1.2 and b = 0.75. Quoted phrases earn a bonus, with an extra bonus when the phrase is in the title. Filters apply after scoring, so they cannot inflate a score. A leading minus excludes a term, department, or level. Synonyms add terms at reduced weight: <code>ml</code> expands to "machine learning," <code>db</code> to "database," <code>os</code> to "operating system." An unknown term gets a Damerau-Levenshtein suggestion within one edit for short words or two for long ones, and the correction is searched at 0.55 weight.</p>
-<p>The why panel reports the IDF, raw term frequency, field, and contribution for every positive match. That is the same data the ranker used, not a post-hoc guess.</p>
+<p>Weights are title 3.0, department 2.0, description 1.0, prerequisite 0.5. Constants are k<sub>1</sub> = 1.2 and b = 0.75. Quoted phrases earn a bonus, with an extra bonus when the phrase is in the title. Filters apply after scoring, so they can't inflate a score. A leading minus excludes a term, department, or level. Synonyms add terms at reduced weight: <code>ml</code> expands to "machine learning," <code>db</code> to "database," <code>os</code> to "operating system." An unknown term gets a Damerau-Levenshtein suggestion (Damerau, 1964; Levenshtein, 1966) within one edit for short words or two for long ones, and the correction is searched at 0.55 weight.</p>
+<p>The why panel reports the IDF, raw term frequency, field, and contribution for every positive match. That's the same data the ranker used, not a post-hoc guess.</p>
 
-<h2>6. Evaluation method</h2>
+<h2>6. How I tested it</h2>
 <p>The first version of this evaluation compared BM25F with correction and synonym expansion against baselines that had neither. That inflated the headline. Every condition below now gets the same query preprocessing unless an ablation removes it. TF-IDF and flat BM25 receive the same corrected and expanded terms BM25F sees. There are separate ablations for correction and synonyms, plus a condition with both off.</p>
-<p>I wrote 25 queries in four buckets: 7 known-item (a code or exact title), 7 exploratory topic queries, 5 misspellings, and 6 acronym or synonym queries. For each query I pooled the top 10 from two baselines and seven BM25F conditions. That produced 514 unique query-document pairs. Each pair got a grade from the actual record: 2 when the requested code or intent phrase was in the title, 1 when the phrase appeared in the description, 0 otherwise. I read the pooled titles, spot-checked the top tens, and fixed clear misses in <code>eval/overrides.csv</code>.</p>
-<p>Relevance is binary at grade 1 or higher for P@10, AP@10, and MRR. NDCG@10 uses gains of 0, 1, and 2. The ideal DCG for NDCG comes from every judged document for that query, sorted by grade. The earlier version used each system's own top ten as its ideal, which ignored recall and produced 13 perfect scores. AP is AP@10, not full MAP. Because this is a pooled evaluation, every metric is computed only over documents some system retrieved, and unpooled documents count as 0.</p>
+<p>I wrote 25 queries in four buckets: 7 known-item (a code or exact title), 7 exploratory topic queries, 5 misspellings, and 6 acronym or synonym queries. For each query I pooled the top 10 from two baselines and seven BM25F conditions. That produced 514 unique query-document pairs. The design follows pooled test-collection evaluation (Sanderson, 2010). Each pair got a grade from the actual record: 2 when the requested code or intent phrase was in the title, 1 when the phrase appeared in the description, 0 otherwise. The labels are rule-generated, with four manual overrides out of 514 pairs in <code>eval/overrides.csv</code>. The rule reuses the query string, so it mostly measures lexical title match, not topical relevance.</p>
+<p>Relevance is binary at grade 1 or higher for P@10, AP@10, and MRR. NDCG@10 uses gains of 0, 1, and 2 (Järvelin and Kekäläinen, 2002). The ideal DCG for NDCG comes from every judged document for that query, sorted by grade. The earlier version used each system's own top ten as its ideal, which ignored recall and produced 13 perfect scores. AP@10 divides by min(10, judged relevant) for the query, not by all relevant documents. Because this is a pooled evaluation, every metric is computed only over documents some system retrieved, and unpooled documents count as 0.</p>
 <p>Browser latency came from 75 searches in headless Chromium against a local server, three passes over the 25 queries, measured inside the page around the ranking call. The hosted site uses the same query code and index as the Python evaluator, and a 25-query parity test compares their result ids.</p>
 
-<h2>7. Results</h2>
-<p>With the same preprocessing on both sides, BM25F still wins overall: 0.898 NDCG@10 against 0.827 for flat BM25 and 0.761 for TF-IDF. The gap is 0.071, not the 0.301 in the first draft. Correction is doing most of the work. Turning it off drops BM25F to 0.712, while turning off synonyms drops it to 0.843. With both off it scores 0.657.</p>
+<h2>7. What the numbers say</h2>
+<p>With the same terms on both sides, BM25F is ahead on NDCG: 0.793 against 0.723 for flat BM25 and 0.671 for TF-IDF. The gap is 0.070, not the 0.301 in the first draft. Elsewhere it's a tie or a loss. P@10 is 0.776 against 0.740, but the paired interval crosses zero. AP@10 is 0.767 against 0.724, also with an interval across zero. MRR is 0.841 against 0.853, so flat BM25 wins that one. NDCG is the only metric with a paired bootstrap interval above zero (0.020 to 0.126) and a sign test under 0.05 (p = 0.017, 17 wins, 5 losses).</p>
 <table>
-  <tr><th>Condition</th><th class="num">P@10</th><th class="num">NDCG@10</th><th class="num">AP@10</th><th class="num">MRR</th></tr>
-  <tr><td>TF-IDF cosine, same preprocessing</td><td class="num">0.740</td><td class="num">0.761</td><td class="num">0.670</td><td class="num">0.911</td></tr>
-  <tr><td>Flat BM25, same preprocessing</td><td class="num">0.788</td><td class="num">0.827</td><td class="num">0.746</td><td class="num">0.980</td></tr>
-  <tr class="win"><td><strong>BM25F, full</strong></td><td class="num"><strong>0.828</strong></td><td class="num"><strong>0.898</strong></td><td class="num"><strong>0.788</strong></td><td class="num"><strong>0.973</strong></td></tr>
-  <tr><td>BM25F, no correction</td><td class="num">0.664</td><td class="num">0.712</td><td class="num">0.620</td><td class="num">0.789</td></tr>
-  <tr><td>BM25F, no synonyms</td><td class="num">0.772</td><td class="num">0.843</td><td class="num">0.726</td><td class="num">0.933</td></tr>
-  <tr><td>BM25F, no synonyms or correction</td><td class="num">0.608</td><td class="num">0.657</td><td class="num">0.558</td><td class="num">0.749</td></tr>
-  <tr><td>BM25F, title only</td><td class="num">0.788</td><td class="num">0.905</td><td class="num">0.770</td><td class="num">0.980</td></tr>
-  <tr><td>BM25F, no department field</td><td class="num">0.808</td><td class="num">0.879</td><td class="num">0.771</td><td class="num">0.973</td></tr>
-  <tr><td>BM25F, equal field weights</td><td class="num">0.840</td><td class="num">0.884</td><td class="num">0.806</td><td class="num">0.973</td></tr>
+  <thead><tr><th>Condition</th><th class="num">P@10</th><th class="num">NDCG@10</th><th class="num">AP@10</th><th class="num">MRR</th></tr></thead>
+  <tbody>
+  <tr><td>TF-IDF, same terms</td><td class="num">0.700</td><td class="num">0.671</td><td class="num">0.669</td><td class="num">0.794</td></tr>
+  <tr><td>Flat BM25, same terms</td><td class="num">0.740</td><td class="num">0.723</td><td class="num">0.724</td><td class="num">0.853</td></tr>
+  <tr class="win"><td><strong>BM25F, full</strong></td><td class="num"><strong>0.776</strong></td><td class="num"><strong>0.793</strong></td><td class="num"><strong>0.767</strong></td><td class="num"><strong>0.841</strong></td></tr>
+  <tr><td>BM25F, no correction</td><td class="num">0.652</td><td class="num">0.652</td><td class="num">0.638</td><td class="num">0.717</td></tr>
+  <tr><td>BM25F, no synonyms</td><td class="num">0.720</td><td class="num">0.734</td><td class="num">0.708</td><td class="num">0.798</td></tr>
+  <tr><td>BM25F, no synonyms or correction</td><td class="num">0.596</td><td class="num">0.593</td><td class="num">0.580</td><td class="num">0.673</td></tr>
+  <tr><td>BM25F, title only</td><td class="num">0.716</td><td class="num">0.806</td><td class="num">0.716</td><td class="num">0.873</td></tr>
+  <tr><td>BM25F, no department field</td><td class="num">0.748</td><td class="num">0.771</td><td class="num">0.727</td><td class="num">0.842</td></tr>
+  <tr><td>BM25F, equal field weights</td><td class="num">0.788</td><td class="num">0.795</td><td class="num">0.794</td><td class="num">0.868</td></tr>
+  <tr><td>Flat BM25, duplicates collapsed</td><td class="num">0.716</td><td class="num">0.722</td><td class="num">0.711</td><td class="num">0.853</td></tr>
+  <tr><td>BM25F, duplicates collapsed</td><td class="num">0.756</td><td class="num">0.790</td><td class="num">0.756</td><td class="num">0.841</td></tr>
+  </tbody>
+</table>
+<p>The paired deltas below come from the same 25 queries. The interval is a 5,000-resample bootstrap over queries with a fixed seed; the sign test is exact and two-sided.</p>
+<table>
+  <thead><tr><th>Metric, BM25F minus flat</th><th class="num">Mean</th><th class="num">W / L / T</th><th class="num">95% interval</th><th class="num">Sign p</th></tr></thead>
+  <tbody>
+  <tr><td>P@10</td><td class="num">+0.036</td><td class="num">8 / 4 / 13</td><td class="num">-0.004 to 0.080</td><td class="num">0.388</td></tr>
+  <tr><td>NDCG@10</td><td class="num">+0.070</td><td class="num">17 / 5 / 3</td><td class="num">0.020 to 0.126</td><td class="num">0.017</td></tr>
+  <tr><td>AP@10</td><td class="num">+0.042</td><td class="num">8 / 7 / 10</td><td class="num">-0.018 to 0.112</td><td class="num">1.000</td></tr>
+  <tr><td>MRR</td><td class="num">-0.012</td><td class="num">1 / 3 / 21</td><td class="num">-0.043 to 0.018</td><td class="num">0.625</td></tr>
+  </tbody>
 </table>
 <figure>
 <svg viewBox="0 0 700 220" role="img" aria-label="Bar chart of global-ideal NDCG at 10 by query category for TF-IDF and BM25F">
@@ -176,54 +198,61 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
     <rect x="570" y="20" width="10" height="10" fill="#7a1f2b"/><text x="585" y="29">BM25F</text>
   </g>
 </svg>
-<figcaption>Figure 2. Global-ideal NDCG@10 by category, TF-IDF (light) against BM25F (dark). BM25F is ahead in every bucket, but the known-item margin is small.</figcaption>
+<figcaption>Figure 2. Global-ideal NDCG@10 by category, TF-IDF (light) against BM25F (dark). BM25F is ahead in every bucket. The known-item margin is the smallest.</figcaption>
 </figure>
 <p>Latency was p50 12.0 ms and p95 24.2 ms over 75 searches. The worst single call was 172 ms on a cold first query. The gzipped index is 2.2 MB and the page is ready in a few hundred milliseconds on localhost.</p>
-<p>The field-weight story is weaker than the feature story. A title-only ranker beats the full model on NDCG, 0.905 to 0.898, while giving up P@10. Equal weights get higher P@10 and AP@10 but lower NDCG. Removing the department field costs 0.019 NDCG. On the 14 non-typo, non-synonym queries, full BM25F scores 0.863 against flat BM25's 0.799. The department weight of 2.0 still is not supported by the ablations.</p>
+<p>The field-weight story is weaker than the feature story. A title-only ranker beats the full model on NDCG, 0.806 to 0.793, while giving up P@10. Equal weights get higher P@10, AP@10, and MRR but about the same NDCG. Removing the department field costs 0.022 NDCG. On the 14 non-typo, non-synonym queries, full BM25F scores 0.794 against flat BM25's 0.716. The 2.0 department weight isn't isolated; the 0.022 effect is small and untested.</p>
 
-<h2>8. Error analysis</h2>
-<p><strong>Stemming conflates operating with operations.</strong> The stemmer maps both to <code>oper</code>. For <code>os</code>, SCMT 661 Operations Strategy lands at rank 3, above Unix System Administration. It is not an operating systems course. A domain stemmer that keeps "operating" intact, or a title bigram feature, would fix it.</p>
-<p><strong>Software is a modifier, not a topic.</strong> The top results for "software engineering" include four software courses that are not engineering courses. CSCE 713 Software Security is grade 1 and sits at rank 5. The query parser treats "software" and "engineering" as independent terms, so a course with one strong term but not the phrase still scores. Requiring the phrase by default when two content words appear together would help.</p>
-<p><strong>The broad security sense wins.</strong> "computer security" puts CSCE 465 first, which is right, then CSCE 413 Software Security and MARA 360 Maritime Cybersecurity. Query "security" alone returns LAW 706 Securities Regulation first because "securities" tokenizes to the same stem as "security." That is a defensible false friend, not a bug I can fix without a sense model.</p>
-<p><strong>Correction carries the result.</strong> The no-correction ablation drops 0.186 NDCG. Five typo queries are too small a sample to support that size of claim on its own, and the corrector can turn a real term into a neighbor. The evaluator now applies the same correction to the baselines, so this is a feature comparison, not a ranking-model comparison.</p>
-<p><strong>Known-item labels are loose.</strong> The bucket is really "short query with a code sometimes." Six records get grade 2 for CSCE 310, the intended Programming I is grade 2 at rank 7 for one query, and no title contains "microeconomics" for another. The near-tie with flat BM25 is real, but the absolute number is not a strict known-item measure.</p>
+<h2>8. Where it breaks</h2>
+<p><strong>Stemming conflates operating with operations.</strong> The stemmer maps both to <code>oper</code>. For <code>os</code>, SCMT 661 Operations Strategy lands at rank 3, above Unix System Administration. It isn't an operating systems course. A domain stemmer that keeps "operating" intact, or a title bigram feature, would fix it.</p>
+<p><strong>Software is a modifier, not a topic.</strong> The top results for "software engineering" include four software courses that aren't engineering courses. CSCE 429 Software Development and CSCE 713 Software Security are both manual grade-1 overrides, and CSCE 713 sits at rank 5. The query parser treats "software" and "engineering" as independent terms, so a course with one strong term but not the phrase still scores. Requiring the phrase by default when two content words appear together would help.</p>
+<p><strong>The broad security sense wins.</strong> "computer security" puts CSCE 465 first, which is right, then CSCE 413 Software Security and MARA 360 Maritime Cybersecurity. Query "security" alone returns LAW 706 Securities Regulation first because "securities" tokenizes to the same stem as "security." That's a defensible false friend, not a bug I can fix without a sense model.</p>
+<p><strong>Correction and ranking are two different comparisons.</strong> The 0.070 gap is BM25F against flat BM25 with correction and synonyms held constant, so it's the field-weighting and ranking-shape comparison. The 0.141 no-correction effect is within BM25F, where the corrector is removed from a system that otherwise has it. Synonyms account for 0.059. Those numbers aren't pieces of the 0.070, and the abstract used to imply they were.</p>
+<p><strong>The known-item bucket isn't a strict known-item test.</strong> Six records get grade 2 for CSCE 310. The grade rule now matches "microeconomic" by word boundary, so ECON 323 and ECON 607 get the grade 2 they deserve for the microeconomics query. But CSCE 110 Programming I doesn't appear in the full BM25F top ten at all, even though it gets grade 2. The bucket is really "short query, sometimes with a code."</p>
 <p><strong>Cross-level duplicates count twice.</strong> There are 96 code pairs with identical text across undergraduate and graduate levels. Five duplicate slots appear in the BM25F top ten across four queries. P@10 is inflated by roughly 0.02 overall.</p>
-<p><strong>The pool is small.</strong> One grader, 25 queries, 514 pairs, no confidence intervals. The typo bucket has five queries. A second grader would probably move NDCG by several points. The judgments are reproducible from <code>eval/judgments.csv</code>, but they are not gold-standard TREC judgments.</p>
+<p><strong>The pool is small.</strong> One grader, 25 queries, 514 pairs, no confidence intervals. The typo bucket has five queries. A second grader would probably move NDCG by several points. The judgments are reproducible from <code>eval/judgments.csv</code>, but they aren't gold-standard TREC judgments.</p>
 
-<h2>9. Limitations</h2>
+<h2>9. What it can't do</h2>
 <ul>
   <li>The catalog is a snapshot, not a live feed. A course added after 2026-11-22 is missing.</li>
   <li>No schedule data, seat counts, instructors, or modality. Those live in a different system.</li>
   <li>College is hand-mapped at the prefix level and 36 records are unplaced.</li>
   <li>Prerequisites are extracted with a regex; free-text prereqs with unusual punctuation can truncate.</li>
-  <li>Phrase search scans every document at query time. It is fine at 10k docs and would not be at 10 million.</li>
+  <li>Phrase search scans every document at query time. It is fine at 10k docs and wouldn't be at 10 million.</li>
   <li>The browser index exposes full descriptions, so a first load downloads 2.2 MB.</li>
   <li>Evaluation is pooled and single-grader. Known-item labels are weak and duplicate cross-level records are counted twice.</li>
-  <li>The corrector is worth more than the ranking changes, so this is not clean evidence for BM25F field weights.</li>
+  <li>The corrector is worth more than the ranking changes, so this isn't clean evidence for BM25F field weights.</li>
   <li>GitHub Pages has no server-side logging, so I have no production query log. All latency is local.</li>
 </ul>
 
 <h2>10. What I'd do next</h2>
-<p>Three concrete changes. First, index title bigrams so "operating system" outranks "operations strategy" without leaning on the phrase branch. Second, collapse duplicate cross-level codes and tune field weights on the remaining corpus; the no-department and equal-weight ablations say my 3/2/1/0.5 split is not earning its keep. Third, get a second grader and 75 more queries, including queries with no relevant answer, so the zero-result behavior and the correction claim get measured.</p>
+<p>Three concrete changes. First, index title bigrams so "operating system" outranks "operations strategy" without leaning on the phrase branch. Second, collapse duplicate cross-level codes and tune field weights on the remaining corpus; the no-department and equal-weight ablations say my 3/2/1/0.5 split'sn't earning its keep. Third, get a second grader and 75 more queries, including queries with no relevant answer, so the zero-result behavior and the correction claim get measured.</p>
 <p>I would also move from a full scan for phrases to a positional index. At 401,031 postings that is a day of work, not a redesign, and it makes phrase queries cheap.</p>
 
-<h2>11. Conclusion</h2>
-<p>With a fair comparison, BM25F scores 0.898 NDCG@10 against 0.827 for flat BM25. That is a real win, but it is 0.071, and most of it comes from correction and synonym expansion rather than field weighting. A title-only ranker beats the full model on NDCG. On plain queries both models are close (0.863 vs 0.799), and equal weights beat the full model on known-item NDCG.</p>
-<p>The project is useful because the query layer handles typos, acronyms, filters, and explanations, and because the evaluation is now honest about what those pieces contribute. The ranking model itself is the weaker half of the story. BM25F gives 8.28 relevant slots in the top ten per query on average; flat BM25 gives 7.88. The difference is real at this sample size but not large, and the evaluation is too small to call it settled.</p>
+<h2>11. Takeaway</h2>
+<p>BM25F is ahead on NDCG, ties on P@10 and AP, and loses MRR. That's the shape of the result, not a blowout. The title-only variant beats it on NDCG, and duplicates barely move the gap (0.790 to 0.722 after collapsing them).</p>
+<p>So the honest takeaway is narrow: the field weighting helps NDCG on a 25-query, one-grader set, and the product's correction and filters do more visible work than the weights. But the interval is wide and the other metrics won't back a stronger claim.</p>
 
 <h2>References</h2>
 <ol class="links">
-  <li>S. Robertson and H. Zaragoza. "The Probabilistic Relevance Framework: BM25 and Beyond." <em>Foundations and Trends in Information Retrieval</em> 3(4), 2009.</li>
-  <li>M. F. Porter. "An Algorithm for Suffix Stripping." <em>Program</em> 14(3), 1980.</li>
+  <li>Aggie Grades and TAMU Grade Distributions. Grade distribution sites. https://aggiegrades.com/ and https://tamugrades.com/, accessed 2026-11-22.</li>
+  <li>F. J. Damerau. "A Technique for Computer Detection and Correction of Spelling Errors." <em>Communications of the ACM</em> 7(3), 1964.</li>
+  <li>GitHub. "GitHub Pages." https://docs.github.com/en/pages, accessed 2026-11-22.</li>
+  <li>K. Järvelin and J. Kekäläinen. "Cumulated Gain-Based Evaluation of IR Techniques." <em>ACM Transactions on Information Systems</em> 20(4), 2002.</li>
   <li>V. I. Levenshtein. "Binary Codes Capable of Correcting Deletions, Insertions, and Reversals." <em>Soviet Physics Doklady</em> 10, 1966.</li>
-  <li>Texas A&amp;M University. <em>2026-2027 Undergraduate and Graduate Catalogs</em>. https://catalog.tamu.edu/</li>
+  <li>M. F. Porter. "An Algorithm for Suffix Stripping." <em>Program</em> 14(3), 1980.</li>
+  <li>M. Sanderson. "Test Collection Based Evaluation of Information Retrieval Systems." <em>Foundations and Trends in Information Retrieval</em> 4(4), 2010.</li>
+  <li>Texas A&amp;M University. <em>2026-2027 Undergraduate and Graduate Catalogs</em>. https://catalog.tamu.edu/, accessed 2026-11-22.</li>
   <li>H. Zaragoza, N. Craswell, M. Taylor, S. Saria, and S. Robertson. "Microsoft Cambridge at TREC 13: Web and Hard Tracks." <em>TREC</em>, 2004.</li>
-  <li>GitHub. "GitHub Pages." https://docs.github.com/pages</li>
 </ol>
 
+<figure>
+  <img src="assets/screenshots/desktop-results.png" alt="Desktop result cards with highlighted snippets and facet counts" style="width:40%; border:1px solid var(--line)">
+  <figcaption>Figure 3. The shipped result page: filtered facet counts, marked snippets, and a why-this-rank panel on every card.</figcaption>
+</figure>
+
 <h2>AI-use note</h2>
-<p>I used an AI coding agent in OpenCode as a pair programmer for the crawler, the Python and JavaScript stemmer, the query layer, the tests, and the first draft of this report. The division was roughly: I set the topic, field weights, query set, and grade rules; the assistant wrote boilerplate and caught parity bugs between the two stemmer copies. I ran every command and checked the outputs against the catalog. Two things changed because of that checking: the first phrase implementation matched across field boundaries, so "systems database" falsely matched a record whose title ended in "systems" and description began with "database"; and the first index did not include course codes, so "CSCE 121" could not find CSCE 121. Both are fixed and covered by tests.</p>
-<p>The evaluation numbers come from <code>eval/results/results.json</code>, generated by <code>src/evaluate.py</code>. The latency numbers come from <code>eval/results/latency.json</code>. Nothing in the tables is hand-typed from memory.</p>
+<p class="ai-note">I used an AI coding agent for boilerplate and first drafts, set the topic and grade rules myself, and ran every command. Checking it caught two bugs (cross-field phrase matches and missing course-code tokens); both are fixed and tested.</p>
 
 <footer>
   <p>Code: <a href="https://github.com/clmoon2/aggie-course-scout">github.com/clmoon2/aggie-course-scout</a> · Live: <a href="https://clmoon2.github.io/aggie-course-scout/">clmoon2.github.io/aggie-course-scout</a></p>

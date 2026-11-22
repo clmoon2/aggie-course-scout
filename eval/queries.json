@@ -61,7 +61,6 @@
   "intent": "intro programming course",
   "must": "",
   "title_terms": [
-   "introduction to programming",
    "programming i"
   ],
   "rel_terms": [
@@ -89,9 +88,10 @@
   "intent": "intro microeconomics course",
   "must": "",
   "title_terms": [
-   "microeconomics"
+   "microeconomic"
   ],
   "rel_terms": [
+   "microeconomic",
    "microeconomics",
    "economics"
   ]

@@ -8,7 +8,7 @@ Complete. Built, tested, deployed, tagged, and handed off on 2026-11-22.
 - BM25F index and browser query layer working.
 - 47 tests passing, clean-checkout run passing.
 - 25 queries, 514 judgments, two baselines, seven conditions.
-- BM25F NDCG@10 0.898, flat BM25 0.827, title-only 0.905.
+- BM25F NDCG@10 0.793, flat BM25 0.723, title-only 0.806.
 - Live on GitHub Pages, report live, tag v0.2-core pushed.
 - Proposal, data, UI, report, and slides PDFs built.
 - HANDOFF.md has URLs, hashes, evidence, and Canvas texts.

@@ -38,8 +38,8 @@ Notes: docs/RELEASE-v0.2-core.md
 7. Evaluation
 Command: python3 src/evaluate.py
 Output: eval/results/results.json
-BM25F P@10 0.828, NDCG@10 0.898, AP@10 0.788, MRR 0.973
-Flat BM25 P@10 0.788, NDCG@10 0.827, AP@10 0.746, MRR 0.980
+BM25F P@10 0.776, NDCG@10 0.793, AP@10 0.767, MRR 0.841
+Flat BM25 P@10 0.740, NDCG@10 0.723, AP@10 0.724, MRR 0.853
 Judged pairs: 514
 
 8. Latency

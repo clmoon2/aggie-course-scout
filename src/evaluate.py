@@ -11,6 +11,8 @@ from __future__ import annotations
 import csv
 import json
 import math
+import random
+import re
 import sys
 from pathlib import Path
 
@@ -24,27 +26,32 @@ OUT = EVAL / "results"
 OUT.mkdir(exist_ok=True)
 
 
+def has_term(text: str, term: str) -> bool:
+    return re.search(r"(?<![a-z0-9])" + re.escape(term.lower()) + r"(?![a-z0-9])", text.lower()) is not None
+
+
 def grade(q: dict, doc: list, desc: str = "") -> int:
     code, title = doc[1].lower(), doc[2].lower()
     if q["must"] and q["must"] in code:
         return 2
-    if any(t in title for t in q["title_terms"]):
+    if any(has_term(title, t) for t in q["title_terms"]):
         return 2
-    if any(t in title for t in q["rel_terms"]):
+    if any(has_term(title, t) for t in q["rel_terms"]):
         return 1
-    if any(t in desc.lower() for t in q["rel_terms"]):
+    if any(has_term(desc, t) for t in q["rel_terms"]):
         return 1
     return 0
 
 
-def ap_at_10(grades: list[int]) -> float:
+def ap_at_10(grades: list[int], ideal_grades: list[int]) -> float:
     hits = 0
     total = 0.0
+    relevant = sum(1 for g in ideal_grades if g >= 1)
     for i, g in enumerate(grades[:10], 1):
         if g >= 1:
             hits += 1
             total += hits / i
-    return total / 10
+    return total / max(1, min(10, relevant))
 
 
 def ndcg_at_10(grades: list[int], ideal_grades: list[int]) -> float:
@@ -65,7 +72,7 @@ def metrics(ranked_grades: list[int], ideal_grades: list[int]) -> dict:
     return {
         "P@10": sum(1 for g in ranked_grades[:10] if g >= 1) / 10,
         "NDCG@10": ndcg_at_10(ranked_grades, ideal_grades),
-        "AP@10": ap_at_10(ranked_grades),
+        "AP@10": ap_at_10(ranked_grades, ideal_grades),
         "MRR": reciprocal_rank(ranked_grades),
     }
 
@@ -138,6 +145,62 @@ def main() -> int:
         return {k: sum(m[k] for m in per_q) / len(per_q) for k in per_q[0]}
 
     results = {name: run_metrics(name) for name in names}
+
+    def dedupe(ids: list[str]) -> list[str]:
+        seen, out = set(), []
+        for doc_id in ids:
+            code = by_id[doc_id][1]
+            if code in seen:
+                continue
+            seen.add(code)
+            out.append(doc_id)
+        return out
+
+    ideal_dedup = {}
+    for qid, gs in ideal.items():
+        best = {}
+        for doc_id in pool[qid]:
+            code = by_id[doc_id][1]
+            best[code] = max(best.get(code, 0), grades[(qid, doc_id)])
+        ideal_dedup[qid] = list(best.values())
+    for name in ("flat_bm25", "bm25f"):
+        per_q = []
+        for q in QUERIES:
+            ids = dedupe(system_ids[name][q["id"]])
+            gs = [grades.get((q["id"], i), 0) for i in ids]
+            per_q.append(metrics(gs, ideal_dedup[q["id"]]))
+        results[name + "_deduped"] = {k: sum(m[k] for m in per_q) / len(per_q) for k in per_q[0]}
+
+    sig = {}
+    for metric in ("P@10", "NDCG@10", "AP@10", "MRR"):
+        diffs = []
+        for q in QUERIES:
+            a = metrics([grades.get((q["id"], i), 0) for i in system_ids["bm25f"][q["id"]]], ideal[q["id"]])[metric]
+            b = metrics([grades.get((q["id"], i), 0) for i in system_ids["flat_bm25"][q["id"]]], ideal[q["id"]])[metric]
+            diffs.append(a - b)
+        wins = sum(d > 1e-12 for d in diffs)
+        losses = sum(d < -1e-12 for d in diffs)
+        ties = len(diffs) - wins - losses
+        rng = random.Random(470)
+        boot = []
+        for _ in range(5000):
+            sample = [diffs[rng.randrange(len(diffs))] for _ in diffs]
+            boot.append(sum(sample) / len(sample))
+        boot.sort()
+        n = wins + losses
+        if n:
+            tail = sum(math.comb(n, k) for k in range(0, min(wins, losses) + 1)) / (2 ** n)
+            p = min(1.0, 2 * tail)
+        else:
+            p = 1.0
+        sig[metric] = {
+            "mean_diff": sum(diffs) / len(diffs),
+            "wins": wins, "losses": losses, "ties": ties,
+            "ci95": [boot[int(0.025 * len(boot))], boot[int(0.975 * len(boot))]],
+            "sign_test_p": p,
+        }
+    (OUT / "significance.json").write_text(json.dumps(sig, indent=2) + "\n")
+
     (OUT / "results.json").write_text(json.dumps(results, indent=2) + "\n")
     with (OUT / "results.csv").open("w", newline="") as f:
         w = csv.writer(f)
