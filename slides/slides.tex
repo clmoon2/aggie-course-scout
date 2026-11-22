@@ -247,7 +247,7 @@ Equal expansions & 0.752 & 0.771 & 0.754 & 0.853\\
 {\scriptsize Deduped codes: BM25F 0.756 P@10 / 0.799 NDCG; flat 0.716 / 0.723.}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.42\linewidth}
-\textbf{BM25F minus flat}
+\textbf{BM25F minus flat}\par\vspace{2pt}
 \begin{tabular}{@{}lrr@{}}
 \toprule
 Metric & Mean & 95\% CI\\
@@ -272,7 +272,7 @@ Latency p50 12.0 ms, p95 24.2 ms.
 \begin{itemize}
   \item \textbf{operating vs operations.} Both stem to \texttt{oper}. For \texttt{os}, SCMT 661 Operations Strategy is rank 4.
   \item \textbf{software is a modifier.} CSCE 429 Software Development is rank 4 and CSCE 713 Software Security is rank 6 for ``software engineering.''
-  \item \textbf{sense collision.} ``security'' returns ECEN 426 first and LAW 706 second, and the rule grades both 0.
+  \item \textbf{sense collision.} ``security'' returns ECEN 426 first and LAW 706 second, and the rule grades LAW 706 0.
   \item \textbf{acronym blast.} \texttt{os} returns 1,908 records because the expansion splits into common terms.
   \item \textbf{label and duplicate limits.} The rule reuses query strings, and 96 cross-level pairs appear twice.
 \end{itemize}
