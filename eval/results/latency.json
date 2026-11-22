@@ -1,0 +1,15 @@
+{
+  "samples": 75,
+  "p50_ms": 10.9,
+  "p95_ms": 22.8,
+  "min_ms": 3.4,
+  "max_ms": 254.2,
+  "mean_ms": 17.56,
+  "index_load_ms": 159.1,
+  "index_fetch_ms": 5.6,
+  "index_gzip_bytes": 2132219,
+  "environment": "Chrome stable, Playwright, localhost, 1280x900, headless",
+  "hardware_concurrency": 48,
+  "queries": 25,
+  "repetitions": 3
+}

@@ -1,0 +1,336 @@
+[
+ {
+  "id": "k1",
+  "category": "known-item",
+  "query": "CSCE 121",
+  "intent": "Introduction to Program Design and Concepts",
+  "must": "csce 121",
+  "title_terms": [
+   "program design"
+  ],
+  "rel_terms": [
+   "program design",
+   "programming",
+   "computer science"
+  ]
+ },
+ {
+  "id": "k2",
+  "category": "known-item",
+  "query": "CSCE 310 Database Systems",
+  "intent": "the database systems course",
+  "must": "csce 310",
+  "title_terms": [
+   "database systems"
+  ],
+  "rel_terms": [
+   "database"
+  ]
+ },
+ {
+  "id": "k3",
+  "category": "known-item",
+  "query": "MATH 151 Engineering Mathematics I",
+  "intent": "first calculus course for engineers",
+  "must": "math 151",
+  "title_terms": [
+   "engineering mathematics"
+  ],
+  "rel_terms": [
+   "calculus",
+   "engineering mathematics"
+  ]
+ },
+ {
+  "id": "k4",
+  "category": "known-item",
+  "query": "Operating Systems",
+  "intent": "operating systems course",
+  "must": "",
+  "title_terms": [
+   "operating system"
+  ],
+  "rel_terms": [
+   "operating system"
+  ]
+ },
+ {
+  "id": "k5",
+  "category": "known-item",
+  "query": "Introduction to Programming",
+  "intent": "intro programming course",
+  "must": "",
+  "title_terms": [
+   "introduction to programming",
+   "programming i"
+  ],
+  "rel_terms": [
+   "programming"
+  ]
+ },
+ {
+  "id": "k6",
+  "category": "known-item",
+  "query": "Organic Chemistry",
+  "intent": "organic chemistry course",
+  "must": "",
+  "title_terms": [
+   "organic chemistry"
+  ],
+  "rel_terms": [
+   "organic chemistry",
+   "chemistry"
+  ]
+ },
+ {
+  "id": "k7",
+  "category": "known-item",
+  "query": "Principles of Microeconomics",
+  "intent": "intro microeconomics course",
+  "must": "",
+  "title_terms": [
+   "microeconomics"
+  ],
+  "rel_terms": [
+   "microeconomics",
+   "economics"
+  ]
+ },
+ {
+  "id": "e1",
+  "category": "exploratory",
+  "query": "machine learning",
+  "intent": "courses that teach machine learning",
+  "must": "",
+  "title_terms": [
+   "machine learning"
+  ],
+  "rel_terms": [
+   "machine learning"
+  ]
+ },
+ {
+  "id": "e2",
+  "category": "exploratory",
+  "query": "computer security",
+  "intent": "security courses",
+  "must": "",
+  "title_terms": [
+   "security"
+  ],
+  "rel_terms": [
+   "security"
+  ]
+ },
+ {
+  "id": "e3",
+  "category": "exploratory",
+  "query": "database systems",
+  "intent": "database courses",
+  "must": "",
+  "title_terms": [
+   "database"
+  ],
+  "rel_terms": [
+   "database"
+  ]
+ },
+ {
+  "id": "e4",
+  "category": "exploratory",
+  "query": "computer networks",
+  "intent": "networking courses",
+  "must": "",
+  "title_terms": [
+   "network"
+  ],
+  "rel_terms": [
+   "network"
+  ]
+ },
+ {
+  "id": "e5",
+  "category": "exploratory",
+  "query": "software engineering",
+  "intent": "software engineering courses",
+  "must": "",
+  "title_terms": [
+   "software engineering",
+   "software design"
+  ],
+  "rel_terms": [
+   "software engineering",
+   "software design"
+  ]
+ },
+ {
+  "id": "e6",
+  "category": "exploratory",
+  "query": "artificial intelligence",
+  "intent": "AI courses",
+  "must": "",
+  "title_terms": [
+   "artificial intelligence"
+  ],
+  "rel_terms": [
+   "artificial intelligence"
+  ]
+ },
+ {
+  "id": "e7",
+  "category": "exploratory",
+  "query": "computer graphics",
+  "intent": "graphics courses",
+  "must": "",
+  "title_terms": [
+   "graphics"
+  ],
+  "rel_terms": [
+   "graphics"
+  ]
+ },
+ {
+  "id": "t1",
+  "category": "typo",
+  "query": "algoritms",
+  "intent": "algorithms",
+  "must": "",
+  "title_terms": [
+   "algorithm"
+  ],
+  "rel_terms": [
+   "algorithm"
+  ]
+ },
+ {
+  "id": "t2",
+  "category": "typo",
+  "query": "databse",
+  "intent": "database",
+  "must": "",
+  "title_terms": [
+   "database"
+  ],
+  "rel_terms": [
+   "database"
+  ]
+ },
+ {
+  "id": "t3",
+  "category": "typo",
+  "query": "operatng systems",
+  "intent": "operating systems",
+  "must": "",
+  "title_terms": [
+   "operating system"
+  ],
+  "rel_terms": [
+   "operating system"
+  ]
+ },
+ {
+  "id": "t4",
+  "category": "typo",
+  "query": "machne learning",
+  "intent": "machine learning",
+  "must": "",
+  "title_terms": [
+   "machine learning"
+  ],
+  "rel_terms": [
+   "machine learning"
+  ]
+ },
+ {
+  "id": "t5",
+  "category": "typo",
+  "query": "calclus",
+  "intent": "calculus",
+  "must": "",
+  "title_terms": [
+   "calculus"
+  ],
+  "rel_terms": [
+   "calculus"
+  ]
+ },
+ {
+  "id": "s1",
+  "category": "synonym",
+  "query": "ml",
+  "intent": "machine learning",
+  "must": "",
+  "title_terms": [
+   "machine learning"
+  ],
+  "rel_terms": [
+   "machine learning"
+  ]
+ },
+ {
+  "id": "s2",
+  "category": "synonym",
+  "query": "ai",
+  "intent": "artificial intelligence",
+  "must": "",
+  "title_terms": [
+   "artificial intelligence"
+  ],
+  "rel_terms": [
+   "artificial intelligence"
+  ]
+ },
+ {
+  "id": "s3",
+  "category": "synonym",
+  "query": "db",
+  "intent": "database",
+  "must": "",
+  "title_terms": [
+   "database"
+  ],
+  "rel_terms": [
+   "database"
+  ]
+ },
+ {
+  "id": "s4",
+  "category": "synonym",
+  "query": "os",
+  "intent": "operating systems",
+  "must": "",
+  "title_terms": [
+   "operating system"
+  ],
+  "rel_terms": [
+   "operating system"
+  ]
+ },
+ {
+  "id": "s5",
+  "category": "synonym",
+  "query": "security",
+  "intent": "security",
+  "must": "",
+  "title_terms": [
+   "security"
+  ],
+  "rel_terms": [
+   "security"
+  ]
+ },
+ {
+  "id": "s6",
+  "category": "synonym",
+  "query": "stats",
+  "intent": "statistics",
+  "must": "",
+  "title_terms": [
+   "statistic"
+  ],
+  "rel_terms": [
+   "statistics",
+   "statistical"
+  ]
+ }
+]
