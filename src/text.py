@@ -18,8 +18,6 @@ only or other our ours ourselves out over own same she should so some such than 
 their theirs them themselves then there these they this those through to too under until
 up very was we were what when where which while who whom why will with would you your
 yours yourself yourselves
-course courses credit credits hour hours lecture lab laboratory recitation seminar
-student students semester fall spring summer catalog
 """.split())
 
 VOWELS = set("aeiou")
@@ -143,7 +141,14 @@ def stem(word: str) -> str:
 
 
 def normalize_tokens(text: str) -> list[str]:
-    return [stem(t) for t in tokenize(text) if t not in STOPWORDS and len(t) > 1]
+    out = []
+    for token in tokenize(text):
+        if token in STOPWORDS:
+            continue
+        s = stem(token)
+        if s and s not in STOPWORDS:
+            out.append(s)
+    return out
 
 
 if __name__ == "__main__":

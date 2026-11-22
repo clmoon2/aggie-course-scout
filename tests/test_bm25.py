@@ -51,7 +51,7 @@ def test_parser_quotes_and_filters():
     assert q.phrases == [["oper", "system"]]
     assert q.depts == ["A"]
     assert q.neg_levels == ["graduate"]
-    assert q.credits == (">=", 3)
+    assert q.credit_ops == [(">=", 3)]
 
 
 def test_filters_exclude():
@@ -106,3 +106,48 @@ def test_singular_summary_value_is_two_courses():
     idx = tiny_index()
     res = search(idx, "database", 20)
     assert res["total"] == 1
+
+
+def test_single_word_phrase_works():
+    idx = load_index()
+    quoted = search(idx, '"security"', 5)
+    plain = search(idx, "security", 5)
+    assert quoted["total"] > 0
+    assert [r["id"] for r in quoted["results"]] == [r["id"] for r in plain["results"]]
+
+
+def test_negation_checks_all_fields():
+    idx = load_index()
+    total = search(idx, "dept:csce", 1)["total"]
+    assert search(idx, "dept:csce -csce", 5000)["total"] == 0
+    minus = search(idx, "-csce", 5000)
+    assert minus["total"] < idx["n"]
+    assert all(r["dept"] != "CSCE" for r in minus["results"])
+    assert minus["total"] <= idx["n"] - total
+    neg = search(idx, "systems -operating", 20)
+    assert neg["total"] > 0
+    assert all("operating" not in r["title"].lower() for r in neg["results"])
+
+
+def test_repeated_credit_filters_intersect():
+    idx = load_index()
+    a = search(idx, "credits:>=3 credits:<=1", 20)
+    b = search(idx, "credits:<=1 credits:>=3", 20)
+    assert a["total"] == b["total"]
+    assert a["total"] > 0
+    from query import credit_bounds
+    assert all(credit_bounds(r["credits"])[0] <= 3 and credit_bounds(r["credits"])[1] >= 1 for r in a["results"])
+
+
+def test_hyphen_credit_range_and_zero_one_records():
+    idx = load_index()
+    res = search(idx, "credits:0-1", 100)
+    assert res["total"] > 0
+    assert res["total"] < idx["n"]
+    ids = {r["id"] for r in res["results"]}
+    assert ids
+
+
+def test_credit_lower_bound_keeps_zero_one_records():
+    idx = load_index()
+    assert search(idx, "credits:>=0", 1)["total"] == idx["n"]

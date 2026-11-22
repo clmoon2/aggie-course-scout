@@ -1,0 +1,11 @@
+{
+  "tfidf": 0.715614258387607,
+  "flat_bm25": 0.799426883963109,
+  "bm25f": 0.863451112332916,
+  "ablate_no_correction": 0.863451112332916,
+  "ablate_no_synonyms": 0.8661687184239286,
+  "ablate_no_synonyms_no_correction": 0.8661687184239286,
+  "ablate_title_only": 0.8629815093965973,
+  "ablate_no_dept": 0.8306043952149128,
+  "ablate_equal_weights": 0.8638838630002511
+}

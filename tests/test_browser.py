@@ -23,7 +23,7 @@ def server():
 @pytest.fixture(scope="module")
 def browser():
     with sync_playwright() as p:
-        b = p.chromium.launch(channel="chrome")
+        b = p.chromium.launch()
         yield b
         b.close()
 
@@ -50,13 +50,17 @@ def test_desktop_search_and_detail(browser, server):
     page.close()
 
 
-def test_typo_suggestion(browser, server):
+def test_typo_suggestion_and_correction_only(browser, server):
     page = browser.new_page()
     load(page, server)
     page.fill("#q", "databse")
     page.wait_for_selector(".suggest")
     assert "database" in page.locator(".suggest").inner_text().lower()
     assert page.locator(".card").count() > 0
+    page.locator(".suggest .linkish").click()
+    page.wait_for_timeout(600)
+    assert page.input_value("#q") == "database"
+    assert page.locator(".suggest").count() == 0
     page.close()
 
 

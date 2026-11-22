@@ -96,8 +96,7 @@ def main() -> None:
     }
     blob = json.dumps(index, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    with gzip.open(OUT, "wb", compresslevel=9) as f:
-        f.write(blob)
+    OUT.write_bytes(gzip.compress(blob, compresslevel=9, mtime=0))
     plain_hash = hashlib.sha256(blob).hexdigest()
     disk_hash = hashlib.sha256(OUT.read_bytes()).hexdigest()
     stats = {

@@ -1,16 +1,16 @@
 {
   "docs": 10277,
-  "terms": 10474,
-  "postings": 392929,
-  "plain_bytes": 10409596,
-  "gzip_bytes": 2193883,
-  "plain_sha256": "0abc1915a15342eeeee74c9c1b2aa8b44813793ce001b1e7596c1e55df294ba7",
-  "gzip_sha256": "c4c2d79b99485b3a855e2a31e622751ecb8864b126b8e40932b2f36997a180fa",
+  "terms": 10499,
+  "postings": 401031,
+  "plain_bytes": 10483030,
+  "gzip_bytes": 2213722,
+  "plain_sha256": "07707b15cb4d720e93d28ac9bfdbb91264c4ec59b56f1c76c7703c51f9f180a7",
+  "gzip_sha256": "4be7bf684c58383dbfbf6641f4b40fee2e3247aa699c148ad35a1c2f25d8c49b",
   "avglen": {
-    "t": 5.01673640167364,
-    "d": 6.007784372871461,
-    "x": 27.94210372676851,
-    "p": 4.94891505303104
+    "t": 5.083779313029094,
+    "d": 6.012065777950764,
+    "x": 28.62352826700399,
+    "p": 5.166488274788362
   },
   "fields": {
     "title": "t",

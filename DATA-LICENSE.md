@@ -6,7 +6,7 @@ Course records come from the 2026-2027 Texas A&M University undergraduate and gr
 - Snapshot date: 2026-11-22
 - Raw archive: `data/raw/<level>/<dept>.html.gz`
 - Processed file: `data/processed/courses.jsonl`
-- Processed SHA-256: `176cd0fde5ea33c5ce3a169f3521510285eddc07a845cc72d59c3192c5d5ec8f`
+- Processed SHA-256: `e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206`
 - Crawler user agent: `AggieCourseScout/1.0 (CSCE 470 class project; clmoon2@tamu.edu)`
 
 The catalog's robots.txt allows the course-description paths used here. The raw pages are retained so a reader can check every parsed field. Course descriptions, titles, and credit values remain the property of Texas A&M. The parser, index, UI, evaluation judgments, and report are original work.

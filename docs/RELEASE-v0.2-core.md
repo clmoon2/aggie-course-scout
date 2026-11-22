@@ -12,19 +12,19 @@ This is the core search release. It is the first tagged version with the full cr
 - Python and JavaScript stemmers with a parity test.
 - Query parser for phrases, `dept:`, `level:`, `credits:`, negation, synonyms, and spelling suggestions.
 - Static UI with facets, snippets, detail drawer, why panel, and loading, empty, and error states.
-- 25-query pooled evaluation with 513 judgments and four ablations.
-- 38 passing Python, CLI, and Playwright tests.
+- 25-query pooled evaluation with 514 judgments and seven conditions; baselines get the same preprocessing.
+- 47 passing Python, CLI, parity, index, and Playwright tests.
 
 ## Results at this tag
 
-BM25F scored P@10 0.828 and NDCG@10 0.964. Flat BM25 scored 0.520 and 0.663. BM25F loses known-item NDCG to flat BM25 by 0.003. Browser p50 is 14.4 ms and p95 is 22.2 ms.
+With matching correction and synonym preprocessing and global-ideal NDCG, BM25F scored P@10 0.828 and NDCG@10 0.898. Flat BM25 scored 0.788 and 0.827. Title-only BM25F scored 0.905 NDCG, above the full model. Browser p50 is 12.0 ms and p95 is 24.2 ms.
 
 ## Data
 
 `data/processed/courses.jsonl` SHA-256:
 `e16567db30e1aef9770dd3399792ece696c4e321fbda333cce8a508051196206`
 
-Index gzip SHA-256 is in `web/data/index_stats.json`.
+Index builds are byte-deterministic; the gzip SHA-256 is in `web/data/index_stats.json`.
 
 ## Known limits
 

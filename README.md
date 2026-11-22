@@ -37,7 +37,7 @@ python3 src/crawl_catalog.py     # 383 pages, writes data/processed/courses.json
 python3 src/build_index.py       # writes web/data/index.json.gz
 ```
 
-The crawler checks `robots.txt`, uses 4 workers with a 0.2 second delay, retries three times, and keeps gzipped raw pages in `data/raw/`.
+The crawler checks `robots.txt`, uses 4 workers with a 0.2 second delay, retries three times, and keeps gzipped raw pages in `data/raw/`. Index builds use a zero gzip mtime, so the same corpus produces the same artifact hash.
 
 ## Evaluation
 
@@ -47,16 +47,19 @@ python3 evaluate.py              # writes eval/judgments.csv and eval/results/
 python3 latency.py               # writes eval/results/latency.json
 ```
 
-The 25 queries are in `eval/queries.json`. The judgments are pooled from TF-IDF, flat BM25, BM25F, and four ablations, then graded 0/1/2 from the actual records. Current results:
+The 25 queries are in `eval/queries.json`. The judgments are pooled from two baselines and seven BM25F conditions, then graded 0/1/2 from the actual records. Every system gets the same correction and synonym preprocessing unless an ablation removes it. NDCG uses a global ideal from the full judged pool. Current results:
 
-| Condition | P@10 | NDCG@10 | MAP | MRR |
+| Condition | P@10 | NDCG@10 | AP@10 | MRR |
 |---|---:|---:|---:|---:|
-| TF-IDF | 0.516 | 0.665 | 0.463 | 0.646 |
-| Flat BM25 | 0.520 | 0.663 | 0.482 | 0.656 |
-| BM25F | 0.828 | 0.964 | 0.790 | 0.973 |
-| BM25F, no synonyms | 0.772 | 0.921 | 0.729 | 0.933 |
+| TF-IDF, same preprocessing | 0.740 | 0.761 | 0.670 | 0.911 |
+| Flat BM25, same preprocessing | 0.788 | 0.827 | 0.746 | 0.980 |
+| BM25F | 0.828 | 0.898 | 0.788 | 0.973 |
+| BM25F, no correction | 0.664 | 0.712 | 0.620 | 0.789 |
+| BM25F, no synonyms | 0.772 | 0.843 | 0.726 | 0.933 |
+| BM25F, no synonyms or correction | 0.608 | 0.657 | 0.558 | 0.749 |
+| BM25F, title only | 0.788 | 0.905 | 0.770 | 0.980 |
 
-Known-item NDCG is a tie with flat BM25 (0.922 vs 0.924). The report covers that and the other failures.
+The field-weight result is weak: title-only beats the full model on NDCG, and the correction branch supplies most of the overall gap. The report covers that and the other failures.
 
 ## Tests
 

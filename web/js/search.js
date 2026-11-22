@@ -17,7 +17,7 @@
     swe: [["software","engineering"]]
   };
   const FILTER_RE = /^(-?)(dept|level|credits|college):(.+)$/i;
-  const CREDIT_RE = /^(>=|<=|>|<)?(\d+)$/;
+  const CREDIT_RE = /^(>=|<=|>|<)?(\d+)(?:-(\d+))?$/;
 
   function loadIndex(url) {
     return fetch(url).then(r => {
@@ -83,7 +83,8 @@
   function parseQuery(raw, index) {
     const q = {raw, terms: [], phrases: [], negTerms: [], negPhrases: [],
       depts: [], negDepts: [], colleges: [], negColleges: [], levels: [], negLevels: [],
-      credits: null, creditBucket: null, synonyms: {}, corrections: {}, unknown: []};
+      creditOps: [], creditRange: null, creditBucket: null, synonyms: {},
+      corrections: {}, rawCorrections: {}, unknown: []};
     const pieces = raw.match(/-?"[^"]+"|\S+/g) || [];
     for (const piece of pieces) {
       const neg = piece.startsWith("-");
@@ -95,17 +96,21 @@
       }
       const fm = body.match(FILTER_RE);
       if (fm) {
-        const val = fm[3].trim().toLowerCase();
+        const val = fm[3].trim().replace(/^"|"$/g, "").toLowerCase();
         if (fm[2].toLowerCase() === "dept") (neg ? q.negDepts : q.depts).push(val.toUpperCase());
         else if (fm[2].toLowerCase() === "college") (neg ? q.negColleges : q.colleges).push(val.toLowerCase());
         else if (fm[2].toLowerCase() === "level") {
           if (["undergraduate","undergrad","ug"].includes(val)) (neg ? q.negLevels : q.levels).push("undergraduate");
           if (["graduate","grad"].includes(val)) (neg ? q.negLevels : q.levels).push("graduate");
+          else if (val !== "undergraduate" && val !== "undergrad" && val !== "ug") (neg ? q.negLevels : q.levels).push(val);
         } else {
           if (CREDIT_BUCKETS.includes(val)) q.creditBucket = val;
           else {
             const cm = val.match(CREDIT_RE);
-            if (cm) q.credits = [cm[1] || "=", parseInt(cm[2], 10)];
+            if (cm) {
+              if (cm[3] !== undefined) q.creditRange = [parseInt(cm[2], 10), parseInt(cm[3], 10)];
+              else q.creditOps.push([cm[1] || "=", parseInt(cm[2], 10)]);
+            }
           }
         }
         continue;
@@ -124,11 +129,11 @@
       if (term.length < 4) continue;
       const rawTerm = (pairs.find(p => p[0] === term) || [term, term])[1];
       const s = suggest(rawTerm, index._vocab);
-      if (s.length) q.corrections[term] = s[0];
+      if (s.length) { q.corrections[term] = s[0]; q.rawCorrections[rawTerm] = s[0]; }
     }
     for (const term of q.terms.slice()) {
       for (const phrase of (SYNONYMS[term] || [])) {
-        (q.synonyms[term] = q.synonyms[term] || []).push(phrase);
+        (q.synonyms[term] = q.synonyms[term] || []).push(S.normalizeTokens(phrase.join(" ")));
       }
     }
     return q;
@@ -159,8 +164,10 @@
     if (q.levels.length && !q.levels.includes(level)) return false;
     if (q.negLevels.length && q.negLevels.includes(level)) return false;
     if (q.creditBucket && creditBucket(credits) !== q.creditBucket) return false;
-    if (q.credits) {
-      const [op, val] = q.credits;
+    if (q.creditRange) {
+      if (hi < q.creditRange[0] || lo > q.creditRange[1]) return false;
+    }
+    for (const [op, val] of q.creditOps) {
       if (op === ">=" && hi < val) return false;
       if (op === "<=" && lo > val) return false;
       if (op === ">" && hi <= val) return false;
@@ -267,7 +274,7 @@
     }
     for (const term of q.terms) {
       addTerm(term, term.length <= 3 ? 0.5 : 1, term);
-      if (q.corrections[term]) addTerm(q.corrections[term], 0.55, "~" + q.corrections[term]);
+      if (opts.useCorrection !== false && q.corrections[term]) addTerm(q.corrections[term], 0.55, "~" + q.corrections[term]);
       for (const phrase of (q.synonyms[term] || [])) {
         if (phrase.length === 1) addTerm(phrase[0], 0.55, term + "~" + phrase[0]);
         else for (const t of S.normalizeTokens(phrase.join(" "))) addTerm(t, 0.5, term + "~" + phrase.join(" "));
@@ -275,7 +282,8 @@
     }
     for (const phrase of q.phrases.concat(synonymPhrases)) {
       const ph = phrase.filter(Boolean);
-      if (ph.length < 2) continue;
+      if (!ph.length) continue;
+      if (ph.length === 1) { addTerm(ph[0], 1.8, '"' + ph[0] + '"'); continue; }
       const hits = phraseDocs(index, ph);
       if (!hits.size) continue;
       const idf = Math.log(1 + (n - hits.size + 0.5) / (hits.size + 0.5));
@@ -304,7 +312,7 @@
     const banned = new Set();
     for (const term of q.negTerms) {
       const post = index.terms[term];
-      if (post) for (const [did] of (post.x || [])) banned.add(did);
+      if (post) for (const entries of Object.values(post)) for (const [did] of entries) banned.add(did);
     }
     for (const phrase of q.negPhrases) for (const did of phraseDocs(index, phrase)) banned.add(did);
 
@@ -315,7 +323,7 @@
       if (!docMatchesFilters(doc, q)) continue;
       ranked.push([score, did]);
     }
-    ranked.sort((a,b) => b[0] - a[0] || a[1] - b[1]);
+    ranked.sort((a,b) => b[0] - a[0] || index.docs[a[1]][1].localeCompare(index.docs[b[1]][1]));
     const facets = {dept: {}, level: {}, college: {}, credits: {}};
     for (const [, did] of ranked) {
       const d = index.docs[did];
@@ -335,7 +343,7 @@
         why: (why.get(did) || {})};
     });
     return {query: raw, total: ranked.length, suggestion: Object.values(q.corrections)[0] || null,
-      correctionMap: q.corrections, synonyms: Object.fromEntries(Object.entries(q.synonyms).map(([k,v]) => [k, v.map(x => x.join(" "))])),
+      correctionMap: q.corrections, rawCorrections: q.rawCorrections, synonyms: Object.fromEntries(Object.entries(q.synonyms).map(([k,v]) => [k, v.map(x => x.join(" "))])),
       results, facets, parsed: q};
   }
 

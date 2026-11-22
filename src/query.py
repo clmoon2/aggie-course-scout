@@ -41,7 +41,7 @@ SYNONYMS = {
 }
 
 FILTER_RE = re.compile(r"^(-?)(dept|level|credits|college):(.+)$", re.I)
-CREDIT_RE = re.compile(r"^(>=|<=|>|<)?(\d+)$")
+CREDIT_RE = re.compile(r"^(>=|<=|>|<)?(\d+)(?:-(\d+))?$")
 
 
 @dataclass
@@ -57,10 +57,12 @@ class Query:
     neg_colleges: list[str] = field(default_factory=list)
     levels: list[str] = field(default_factory=list)
     neg_levels: list[str] = field(default_factory=list)
-    credits: tuple[str, int] | None = None
+    credit_ops: list[tuple[str, int]] = field(default_factory=list)
+    credit_range: tuple[int, int] | None = None
     credit_bucket: str | None = None
     synonyms: dict[str, list[list[str]]] = field(default_factory=dict)
     corrections: dict[str, str] = field(default_factory=dict)
+    raw_corrections: dict[str, str] = field(default_factory=dict)
     unknown: list[str] = field(default_factory=list)
 
 
@@ -128,7 +130,7 @@ def parse_query(raw: str, index: dict | None = None) -> Query:
             continue
         fm = FILTER_RE.match(body)
         if fm:
-            val = fm.group(3).strip().lower()
+            val = fm.group(3).strip().strip('"').lower()
             if fm.group(2).lower() == "dept":
                 (q.neg_depts if neg else q.depts).append(val.upper())
             elif fm.group(2).lower() == "college":
@@ -138,13 +140,18 @@ def parse_query(raw: str, index: dict | None = None) -> Query:
                     (q.neg_levels if neg else q.levels).append("undergraduate")
                 elif val in ("graduate", "grad"):
                     (q.neg_levels if neg else q.levels).append("graduate")
+                else:
+                    (q.neg_levels if neg else q.levels).append(val)
             else:
                 if val in CREDIT_BUCKETS:
                     q.credit_bucket = val
                 else:
                     cm = CREDIT_RE.match(val)
                     if cm:
-                        q.credits = (cm.group(1) or "=", int(cm.group(2)))
+                        if cm.group(3) is not None:
+                            q.credit_range = (int(cm.group(2)), int(cm.group(3)))
+                        else:
+                            q.credit_ops.append((cm.group(1) or "=", int(cm.group(2))))
             continue
         toks = normalize_tokens(body)
         if not toks:
@@ -169,6 +176,7 @@ def parse_query(raw: str, index: dict | None = None) -> Query:
         s = suggest(raw_term, vocab)
         if s:
             q.corrections[term] = s[0]
+            q.raw_corrections[raw_term] = s[0]
     for term in list(q.terms):
         for phrase in SYNONYMS.get(term, []):
             q.synonyms.setdefault(term, []).append(phrase)
@@ -198,6 +206,21 @@ def credit_bucket(credits: str) -> str:
     return "?"
 
 
+def expansion_terms(index: dict, raw: str, use_synonyms: bool = True,
+                    use_correction: bool = True) -> list[str]:
+    """The same correction/synonym terms BM25F sees, for the baselines."""
+    q = parse_query(raw, index)
+    terms = list(q.terms)
+    if use_correction:
+        for corr in q.corrections.values():
+            terms.extend(normalize_tokens(corr))
+    if use_synonyms:
+        for phrases in q.synonyms.values():
+            for phrase in phrases:
+                terms.extend(normalize_tokens(" ".join(phrase)))
+    return terms
+
+
 def _doc_matches_filters(doc: list, q: Query) -> bool:
     dept, level = doc[3], doc[6]
     college_slug = doc[9] if len(doc) > 9 else ""
@@ -218,8 +241,11 @@ def _doc_matches_filters(doc: list, q: Query) -> bool:
         b = credit_bucket(str(doc[7]))
         if b != q.credit_bucket:
             return False
-    if q.credits:
-        op, val = q.credits
+    if q.credit_range:
+        c_lo, c_hi = q.credit_range
+        if hi < c_lo or lo > c_hi:
+            return False
+    for op, val in q.credit_ops:
         if op == ">=" and hi < val:
             return False
         if op == "<=" and lo > val:
@@ -248,7 +274,8 @@ def _phrase_docs(index: dict, phrase: list[str]) -> dict[int, int]:
 
 
 def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
-           use_synonyms: bool = True, explain: bool = True) -> dict:
+           use_synonyms: bool = True, use_correction: bool = True,
+           explain: bool = True) -> dict:
     q = parse_query(raw, index)
     weights = weights or index["weights"]
     n = index["n"]
@@ -299,7 +326,7 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
     synonym_phrases = [ph for vals in q.synonyms.values() for ph in vals if len(ph) > 1]
     for term in q.terms:
         add_term(term, 0.5 if len(term) <= 3 else 1.0, term)
-        if term in q.corrections:
+        if use_correction and term in q.corrections:
             add_term(q.corrections[term], 0.55, f"~{q.corrections[term]}")
         if use_synonyms:
             for phrase in q.synonyms.get(term, []):
@@ -313,7 +340,10 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
     phrase_info = []
     for phrase in q.phrases + [normalize_tokens(" ".join(p)) for p in synonym_phrases]:
         ph = [t for t in phrase if t]
-        if len(ph) < 2:
+        if not ph:
+            continue
+        if len(ph) == 1:
+            add_term(ph[0], 1.8, f'"{ph[0]}"')
             continue
         hits = _phrase_docs(index, ph)
         if not hits:
@@ -338,8 +368,9 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
 
     banned = set()
     for term in q.neg_terms:
-        for did, _ in index["terms"].get(term, {}).get("x", []):
-            banned.add(did)
+        for entries in index["terms"].get(term, {}).values():
+            for did, _ in entries:
+                banned.add(did)
     for phrase in q.neg_phrases:
         banned.update(_phrase_docs(index, phrase))
 
@@ -379,12 +410,13 @@ def search(index: dict, raw: str, limit: int = 10, weights: dict | None = None,
         "query": raw, "total": total,
         "suggestion": next(iter(q.corrections.values()), None),
         "correction_map": q.corrections,
+        "raw_correction_map": q.raw_corrections,
         "synonyms": {k: [" ".join(v) for v in vals] for k, vals in q.synonyms.items()},
         "results": results,
         "facets": {k: dict(sorted(v.items(), key=lambda kv: -kv[1])[:12]) for k, v in facets.items()},
         "parsed": {"terms": q.terms, "phrases": [" ".join(p) for p in q.phrases],
                    "depts": q.depts, "levels": q.levels,
-                   "credits": q.credits, "unknown": q.unknown},
+                   "credits": q.credit_ops, "credit_range": q.credit_range, "credit_bucket": q.credit_bucket, "unknown": q.unknown},
     }
 
 

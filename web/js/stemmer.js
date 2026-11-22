@@ -87,14 +87,19 @@
 before being below between both but by can could did do does doing down during each few for from further had has have having he her here hers herself him himself his how
 i if in into is it its itself just me more most my myself no nor not now of off on once only or other our ours ourselves out over own same she should so some such than that the
 their theirs them themselves then there these they this those through to too under until up very was we were what when where which while who whom why will with would you your
-yours yourself yourselves course courses credit credits hour hours lecture lab laboratory recitation seminar
-student students semester fall spring summer catalog`.split(/\s+/));
+yours yourself yourselves`.split(/\s+/));
 
   function tokenize(text) {
     return (text.toLowerCase().match(/[a-z0-9]+/g) || []);
   }
   function normalizeTokens(text) {
-    return tokenize(text).filter(t => !STOPWORDS.has(t) && t.length > 1).map(stem);
+    const out = [];
+    for (const token of tokenize(text)) {
+      if (STOPWORDS.has(token)) continue;
+      const s = stem(token);
+      if (s && !STOPWORDS.has(s)) out.push(s);
+    }
+    return out;
   }
   global.ACSStem = { stem, tokenize, normalizeTokens, STOPWORDS };
 })(window);

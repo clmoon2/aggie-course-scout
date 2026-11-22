@@ -4,7 +4,7 @@ Code under test: 2d62544. The verification file was added after that commit and 
 
 1. Full test suite
 Command: .venv/bin/python -m pytest tests/ -q
-Result: 38 passed in 23.47s
+Result: 47 passed in 36.30s
 Suites: tokenizer, Python/JS stemmer parity, BM25 math, phrase adjacency,
 query parser, filters, negation, suggestion, index hash and integrity,
 CLI search, Playwright desktop, typo, facet, empty state, mobile.
@@ -12,7 +12,7 @@ CLI search, Playwright desktop, typo, facet, empty state, mobile.
 2. Clean checkout
 Command: git clone https://github.com/clmoon2/aggie-course-scout.git /tmp/opencode/clean-check
 then fresh venv, pip install -r requirements.txt, pytest tests/ -q
-Result: 38 passed in 23.47s
+Result: 47 passed in 36.30s
 
 3. Live page, logged out browser context
 URL: https://clmoon2.github.io/aggie-course-scout/
@@ -38,13 +38,13 @@ Notes: docs/RELEASE-v0.2-core.md
 7. Evaluation
 Command: python3 src/evaluate.py
 Output: eval/results/results.json
-BM25F P@10 0.828, NDCG@10 0.964, MAP 0.790, MRR 0.973
-Flat BM25 P@10 0.520, NDCG@10 0.663, MAP 0.482, MRR 0.656
-Judged pairs: 513
+BM25F P@10 0.828, NDCG@10 0.898, AP@10 0.788, MRR 0.973
+Flat BM25 P@10 0.788, NDCG@10 0.827, AP@10 0.746, MRR 0.980
+Judged pairs: 514
 
 8. Latency
 Command: .venv/bin/python src/latency.py
-75 samples, p50 14.4 ms, p95 22.2 ms, cold max 381 ms
+75 samples, p50 12.0 ms, p95 24.2 ms, cold max 172 ms
 Output: eval/results/latency.json
 
 9. Data

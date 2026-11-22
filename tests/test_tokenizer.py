@@ -12,8 +12,8 @@ def test_tokenizer_lowercases_and_splits():
 
 
 def test_stopwords_removed():
-    assert normalize_tokens("the course of operating systems") == ["oper", "system"]
-    assert "course" in STOPWORDS
+    assert normalize_tokens("the course of operating systems") == ["cours", "oper", "system"]
+    assert "the" in STOPWORDS
 
 
 def test_stemmer_known_pairs():

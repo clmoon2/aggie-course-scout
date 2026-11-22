@@ -22,8 +22,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install requests beautifulsoup4 pytest
-      - run: python -m pytest tests/test_tokenizer.py tests/test_bm25.py tests/test_index.py tests/test_cli.py -q
+      - run: pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: python -m pytest tests/ -q
 
   deploy:
     needs: test

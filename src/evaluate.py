@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Pool three systems, create graded judgments, and report metrics.
+"""Pool systems, create graded judgments, and report pooled metrics.
 
-Judgments start from title and description rules against the actual pooled
-documents (grade 2 = intent phrase in the title or exact course code asked for,
-1 = intent phrase somewhere in the description, 0 otherwise). eval/overrides.csv
-holds hand corrections. This is a pooled evaluation, so every metric is computed
-only over documents that at least one system put in its top 10.
+Every condition sees the same query preprocessing unless an ablation turns a
+step off, and every baseline gets the same correction and synonym terms as
+BM25F. NDCG@10 uses a global ideal built from all judged documents for that
+query, not from each system's own top 10.
 """
 from __future__ import annotations
 
@@ -16,7 +15,7 @@ import sys
 from pathlib import Path
 
 from baselines import FlatBM25, Tfidf
-from query import load_index, search
+from query import expansion_terms, load_index, search
 
 ROOT = Path(__file__).resolve().parents[1]
 EVAL = ROOT / "eval"
@@ -38,81 +37,73 @@ def grade(q: dict, doc: list, desc: str = "") -> int:
     return 0
 
 
-def ap_at_k(grades: list[int]) -> float:
+def ap_at_10(grades: list[int]) -> float:
     hits = 0
     total = 0.0
-    for i, g in enumerate(grades, 1):
+    for i, g in enumerate(grades[:10], 1):
         if g >= 1:
             hits += 1
             total += hits / i
-    return total / max(1, min(len(grades), 10))
+    return total / 10
 
 
-def ndcg_at_k(grades: list[int], k: int = 10) -> float:
-    dcg = sum((2 ** g - 1) / math.log2(i + 1) for i, g in enumerate(grades[:k], 1))
-    ideal = sorted(grades, reverse=True)[:k]
+def ndcg_at_10(grades: list[int], ideal_grades: list[int]) -> float:
+    dcg = sum((2 ** g - 1) / math.log2(i + 1) for i, g in enumerate(grades[:10], 1))
+    ideal = sorted(ideal_grades, reverse=True)[:10]
     idcg = sum((2 ** g - 1) / math.log2(i + 1) for i, g in enumerate(ideal, 1))
     return dcg / idcg if idcg else 0.0
 
 
-def mrr(grades: list[int]) -> float:
-    for i, g in enumerate(grades, 1):
+def reciprocal_rank(grades: list[int]) -> float:
+    for i, g in enumerate(grades[:10], 1):
         if g >= 1:
             return 1 / i
     return 0.0
 
 
-def metrics(ranked_grades: list[int]) -> dict:
+def metrics(ranked_grades: list[int], ideal_grades: list[int]) -> dict:
     return {
         "P@10": sum(1 for g in ranked_grades[:10] if g >= 1) / 10,
-        "NDCG@10": ndcg_at_k(ranked_grades),
-        "MAP": ap_at_k(ranked_grades),
-        "MRR": mrr(ranked_grades),
+        "NDCG@10": ndcg_at_10(ranked_grades, ideal_grades),
+        "AP@10": ap_at_10(ranked_grades),
+        "MRR": reciprocal_rank(ranked_grades),
     }
 
 
 def main() -> int:
     index = load_index()
-    systems = {
-        "tfidf": Tfidf(index),
-        "flat_bm25": FlatBM25(index),
-    }
-    ablations = {
+    baselines = {"tfidf": Tfidf(index), "flat_bm25": FlatBM25(index)}
+    bm_conditions = {
+        "bm25f": {},
+        "ablate_no_correction": {"use_correction": False},
+        "ablate_no_synonyms": {"use_synonyms": False},
+        "ablate_no_synonyms_no_correction": {"use_synonyms": False, "use_correction": False},
         "ablate_title_only": {"weights": {"t": 3.0, "d": 0.0, "x": 0.0, "p": 0.0}},
         "ablate_no_dept": {"weights": {"t": 3.0, "d": 0.0, "x": 1.0, "p": 0.5}},
         "ablate_equal_weights": {"weights": {"t": 1.0, "d": 1.0, "x": 1.0, "p": 1.0}},
-        "ablate_no_synonyms": {"use_synonyms": False},
     }
+    names = ["tfidf", "flat_bm25", *bm_conditions]
     pool: dict[str, list[int]] = {}
-    system_ids: dict[str, dict[str, list[str]]] = {n: {} for n in ["tfidf", "flat_bm25", "bm25f", *ablations]}
+    system_ids: dict[str, dict[str, list[str]]] = {n: {} for n in names}
+
     for q in QUERIES:
         qid = q["id"]
-        seen = []
-        for name, sys_obj in systems.items():
-            hits = sys_obj.search(q["query"], 10)
-            ids = [index["docs"][did][0] for did, _ in hits]
+        seen: list[str] = []
+        expanded = expansion_terms(index, q["query"], True, True)
+        for name, obj in baselines.items():
+            ids = [index["docs"][did][0] for did, _ in obj.search_terms(expanded, 10)]
             system_ids[name][qid] = ids
-            for i in ids:
-                if i not in seen:
-                    seen.append(i)
-        hits = search(index, q["query"], 10, explain=False)["results"]
-        system_ids["bm25f"][qid] = [r["id"] for r in hits]
-        for r in hits:
-            if r["id"] not in seen:
-                seen.append(r["id"])
-        for name, kwargs in ablations.items():
+            seen.extend(i for i in ids if i not in seen)
+        for name, kwargs in bm_conditions.items():
             res = search(index, q["query"], 10, explain=False, **kwargs)
             ids = [r["id"] for r in res["results"]]
             system_ids[name][qid] = ids
-            for i in ids:
-                if i not in seen:
-                    seen.append(i)
+            seen.extend(i for i in ids if i not in seen)
         pool[qid] = seen
 
     by_id = {d[0]: d for d in index["docs"]}
     idx_by_id = {d[0]: i for i, d in enumerate(index["docs"])}
 
-    # Overrides are keyed by query and doc id.
     overrides = {}
     op = EVAL / "overrides.csv"
     if op.exists():
@@ -127,57 +118,55 @@ def main() -> int:
             g = overrides.get((qid, doc_id))
             if g is None:
                 g = grade(qmap[qid], doc, index["text"][idx_by_id[doc_id]][0])
-            pool_systems = [n for n in system_ids if doc_id in system_ids[n].get(qid, [])]
+            sources = [n for n in names if doc_id in system_ids[n].get(qid, [])]
             rows.append({"qid": qid, "doc_id": doc_id, "code": doc[1], "title": doc[2],
-                         "grade": g, "pooled_from": "|".join(pool_systems)})
+                         "grade": g, "pooled_from": "|".join(sources)})
     with (EVAL / "judgments.csv").open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["qid", "doc_id", "code", "title", "grade", "pooled_from"])
         w.writeheader()
         w.writerows(rows)
 
     grades = {(r["qid"], r["doc_id"]): r["grade"] for r in rows}
+    ideal = {qid: [r["grade"] for r in rows if r["qid"] == qid] for qid in pool}
 
-    def run_metrics(system: str, weight_override=None, use_synonyms=True,
-                    synonym_map: dict | None = None, cached: bool = True) -> dict:
+    def run_metrics(system: str) -> dict:
         per_q = []
         for q in QUERIES:
-            ids = system_ids.get(system, {}).get(q["id"]) if cached else None
-            if ids is None:
-                res = search(index, q["query"], 10, weights=weight_override,
-                             use_synonyms=use_synonyms, explain=False)
-                ids = [r["id"] for r in res["results"]]
-            # pooled rank: judged docs in this system's order, docs outside pool
-            # were judged 0 by construction.
+            ids = system_ids[system][q["id"]]
             gs = [grades.get((q["id"], i), 0) for i in ids]
-            per_q.append(metrics(gs))
+            per_q.append(metrics(gs, ideal[q["id"]]))
         return {k: sum(m[k] for m in per_q) / len(per_q) for k in per_q[0]}
 
-    results = {}
-    for name in ["tfidf", "flat_bm25", "bm25f", *ablations]:
-        results[name] = run_metrics(name)
-
+    results = {name: run_metrics(name) for name in names}
     (OUT / "results.json").write_text(json.dumps(results, indent=2) + "\n")
     with (OUT / "results.csv").open("w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["condition", "P@10", "NDCG@10", "MAP", "MRR"])
+        w.writerow(["condition", "P@10", "NDCG@10", "AP@10", "MRR"])
         for name, m in results.items():
-            w.writerow([name, f"{m['P@10']:.4f}", f"{m['NDCG@10']:.4f}", f"{m['MAP']:.4f}", f"{m['MRR']:.4f}"])
-    md = ["| Condition | P@10 | NDCG@10 | MAP | MRR |", "|---|---:|---:|---:|---:|"]
+            w.writerow([name, f"{m['P@10']:.4f}", f"{m['NDCG@10']:.4f}", f"{m['AP@10']:.4f}", f"{m['MRR']:.4f}"])
+    md = ["| Condition | P@10 | NDCG@10 | AP@10 | MRR |", "|---|---:|---:|---:|---:|"]
     for name, m in results.items():
-        md.append(f"| {name} | {m['P@10']:.3f} | {m['NDCG@10']:.3f} | {m['MAP']:.3f} | {m['MRR']:.3f} |")
+        md.append(f"| {name} | {m['P@10']:.3f} | {m['NDCG@10']:.3f} | {m['AP@10']:.3f} | {m['MRR']:.3f} |")
     (OUT / "results.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
+
     per_cat = {}
-    for name in ["tfidf", "flat_bm25", "bm25f"]:
-        vals = []
+    for name in names:
+        cats: dict[str, list[float]] = {}
         for q in QUERIES:
             gs = [grades.get((q["id"], i), 0) for i in system_ids[name][q["id"]]]
-            vals.append((q["category"], metrics(gs)["NDCG@10"]))
-        cats = {}
-        for c, v in vals:
-            cats.setdefault(c, []).append(v)
+            cats.setdefault(q["category"], []).append(metrics(gs, ideal[q["id"]])["NDCG@10"])
         per_cat[name] = {c: sum(v) / len(v) for c, v in cats.items()}
     (OUT / "by_category.json").write_text(json.dumps(per_cat, indent=2) + "\n")
+    plain_qids = [q["id"] for q in QUERIES if q["category"] not in ("typo", "synonym")]
+    plain = {}
+    for name in names:
+        vals = []
+        for qid in plain_qids:
+            gs = [grades.get((qid, i), 0) for i in system_ids[name][qid]]
+            vals.append(metrics(gs, ideal[qid])["NDCG@10"])
+        plain[name] = sum(vals) / len(vals)
+    (OUT / "plain_queries.json").write_text(json.dumps(plain, indent=2) + "\n")
     print("wrote", EVAL / "judgments.csv", "and", OUT / "results.json")
     return 0
 

@@ -163,11 +163,11 @@ Quoted phrases get a bonus, doubled when the phrase is in the title. Filters app
 \begin{minipage}[t]{0.48\linewidth}
 \begin{itemize}
   \item 25 queries: 7 known-item, 7 exploratory, 5 typo, 6 synonym
-  \item pool top 10 from TF-IDF, flat BM25, BM25F, and four ablations
-  \item 513 unique pairs, graded 0/1/2 from the record
-  \item binary at grade 1 for P@10, MAP, MRR
-  \item NDCG@10 with gains 0/1/2
-  \item pooled metrics, unpooled counts as 0
+  \item same correction and synonyms for baselines and BM25F
+  \item pool top 10 from 2 baselines and 7 BM25F conditions
+  \item 514 unique pairs, graded 0/1/2 from the record
+  \item binary at grade 1 for P@10, AP@10, MRR
+  \item global NDCG ideal from the full judged pool
 \end{itemize}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.48\linewidth}
@@ -183,10 +183,10 @@ Grade & Rule\\
 \end{tabular}
 \vspace{8pt}
 
-Latency: 75 in-page searches, headless Chrome, local server, p50 and p95.
+Latency: 75 in-page searches, headless Chromium, local server, p50 and p95.
 \end{minipage}
 
-\notes{One grader, 25 queries. That is small. The judgments are in the repo so someone can redo them. Pooling means a system that contributes more documents has a slightly easier job, and I say that in the report.}
+\notes{One grader, 25 queries. That is small. The judgments are in the repo so someone can redo them. The first version gave features only to BM25F and used a self-ideal NDCG. Both are fixed here.}
 \newpage
 
 % 8
@@ -194,15 +194,15 @@ Latency: 75 in-page searches, headless Chrome, local server, p50 and p95.
 \begin{minipage}[t]{0.55\linewidth}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-Condition & P@10 & NDCG@10 & MAP & MRR\\
+Condition & P@10 & NDCG@10 & AP@10 & MRR\\
 \midrule
-TF-IDF & 0.516 & 0.665 & 0.463 & 0.646\\
-Flat BM25 & 0.520 & 0.663 & 0.482 & 0.656\\
-\textbf{BM25F} & \textbf{0.828} & \textbf{0.964} & \textbf{0.790} & \textbf{0.973}\\
-Title only & 0.788 & 0.969 & 0.787 & 0.980\\
-No dept & 0.808 & 0.961 & 0.772 & 0.973\\
-Equal weights & 0.832 & 0.960 & 0.797 & 0.973\\
-No synonyms & 0.772 & 0.921 & 0.729 & 0.933\\
+TF-IDF, same prep & 0.740 & 0.761 & 0.670 & 0.911\\
+Flat BM25, same prep & 0.788 & 0.827 & 0.746 & 0.980\\
+\textbf{BM25F} & \textbf{0.828} & \textbf{0.898} & \textbf{0.788} & \textbf{0.973}\\
+No correction & 0.664 & 0.712 & 0.620 & 0.789\\
+No synonyms & 0.772 & 0.843 & 0.726 & 0.933\\
+Title only & 0.788 & 0.905 & 0.770 & 0.980\\
+Equal weights & 0.840 & 0.884 & 0.806 & 0.973\\
 \bottomrule
 \end{tabular}
 \end{minipage}\hfill
@@ -212,41 +212,41 @@ No synonyms & 0.772 & 0.921 & 0.729 & 0.933\\
 \toprule
  & TF-IDF & Flat & BM25F\\
 \midrule
-Known & 0.840 & 0.924 & 0.922\\
-Exploratory & 0.905 & 0.967 & 0.994\\
-Typo & 0.193 & 0.076 & 0.993\\
-Synonym & 0.574 & 0.491 & 0.956\\
+Known & 0.609 & 0.730 & 0.805\\
+Exploratory & 0.823 & 0.869 & 0.922\\
+Typo & 0.820 & 0.872 & 0.958\\
+Synonym & 0.819 & 0.855 & 0.927\\
 \bottomrule
 \end{tabular}
 \vspace{6pt}
 
-Latency p50 14.4 ms, p95 22.2 ms. Cold max 381 ms.
+Latency p50 12.0 ms, p95 24.2 ms. Cold max 172 ms.
 \end{minipage}
 
-\notes{BM25F wins overall. On known-item it loses by 0.003 NDCG to flat BM25, which is noise. On exploratory it wins by 0.027. The typo and synonym gaps are the real story, and they come from the correction and expansion branches, not from the field weights.}
+\notes{The fair gap is 0.071, not 0.30. Correction is worth 0.186 and synonyms 0.055. Title-only beats full NDCG, so the field weights are not the main story.}
 \newpage
 
 % 9
 \slidehead{Where it breaks}
 \begin{itemize}
   \item \textbf{operating vs operations.} Both stem to \texttt{oper}. For \texttt{os}, SCMT 661 Operations Strategy is rank 3.
-  \item \textbf{software is a modifier.} CSCE 713 Software Security is rank 4 for ``software engineering'' and is graded 0.
+  \item \textbf{software is a modifier.} CSCE 713 Software Security is rank 5 for ``software engineering'' and is graded 1.
   \item \textbf{sense collision.} ``security'' returns LAW 706 Securities Regulation first.
-  \item \textbf{acronym blast.} \texttt{os} returns 1,854 records because the expansion splits into common terms.
+  \item \textbf{acronym blast.} \texttt{os} returns 1,908 records because the expansion splits into common terms.
   \item \textbf{small pool.} One grader, 25 queries, no production log.
 \end{itemize}
 \vspace{4pt}
-\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}The department weight of 2.0 is not justified by the data. Removing it costs 0.002 NDCG. Title bigrams and a tuned weight are the next changes.\vspace{3pt}}}
+\colorbox{cream}{\parbox{0.94\linewidth}{\vspace{3pt}The department weight of 2.0 is not justified by the data. Removing it costs 0.019 NDCG. Title bigrams and a tuned weight are the next changes.\vspace{3pt}}}
 \notes{These are the slides I would normally sand off. The stemming collision is real and easy to reproduce. The software example shows the term-independence bug. I would fix bigrams first.}
 \newpage
 
 % 10
 \slidehead{Takeaway}
 \begin{minipage}[t]{0.6\linewidth}
-Field weighting and query help beat a flat baseline by a lot on this catalog: 20.7 relevant results in the top 10 per query on average, against 13.0.
+BM25F with matching features scores 0.898 NDCG against 0.827 for flat BM25. That is 8.28 relevant slots in the top ten per query against 7.88, not a blowout.
 \vspace{8pt}
 
-But the win is concentrated in typo and acronym handling. On plain known-item lookup, the dumb baseline already works.
+But most of the win is correction, not field weighting. Title-only beats the full model, and equal weights beat it on known-item NDCG.
 \vspace{8pt}
 
 The useful artifact is not the score. It is the inspectable pipeline: public crawl, hashed data, shared index, judgments, ablations, and a why panel a person can argue with.

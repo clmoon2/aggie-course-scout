@@ -6,9 +6,9 @@ Complete. Built, tested, deployed, tagged, and handed off on 2026-11-22.
 ## Current state
 - 383 catalog pages crawled, 10,277 records, 0 HTTP errors.
 - BM25F index and browser query layer working.
-- 38 tests passing, clean-checkout run passing.
-- 25 queries, 513 judgments, three baselines, four ablations.
-- BM25F NDCG@10 0.964, flat BM25 0.663. Known-item is a 0.003 loss.
+- 47 tests passing, clean-checkout run passing.
+- 25 queries, 514 judgments, two baselines, seven conditions.
+- BM25F NDCG@10 0.898, flat BM25 0.827, title-only 0.905.
 - Live on GitHub Pages, report live, tag v0.2-core pushed.
 - Proposal, data, UI, report, and slides PDFs built.
 - HANDOFF.md has URLs, hashes, evidence, and Canvas texts.

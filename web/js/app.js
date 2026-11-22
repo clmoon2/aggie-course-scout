@@ -84,11 +84,8 @@
       const btn = document.createElement("button");
       btn.type = "button"; btn.className = "linkish"; btn.textContent = " use only the correction";
       btn.addEventListener("click", () => {
-        let fixed = q;
-        for (const [bad, good] of Object.entries(res.correctionMap)) {
-          fixed = fixed.replace(new RegExp("\\b" + bad.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "gi"), good);
-        }
-        input.value = fixed; runSearch(fixed);
+        input.value = res.suggestion;
+        runSearch(res.suggestion);
       });
       div.appendChild(btn);
       suggestion.appendChild(div);
