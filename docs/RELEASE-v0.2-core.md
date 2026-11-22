@@ -12,7 +12,7 @@ This is the core search release. It is the first tagged version with the full cr
 - Python and JavaScript stemmers with a parity test.
 - Query parser for phrases, `dept:`, `level:`, `credits:`, negation, synonyms, and spelling suggestions.
 - Static UI with facets, snippets, detail drawer, why panel, and loading, empty, and error states.
-- 25-query pooled evaluation with 514 judgments and seven conditions; baselines get the same preprocessing.
+- 25-query pooled evaluation with 516 judgments and eight conditions; baselines get the same preprocessing.
 - 47 passing Python, CLI, parity, index, and Playwright tests.
 
 ## Results at this tag

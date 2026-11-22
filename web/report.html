@@ -31,8 +31,9 @@
   .formula { background:#f8eeda; border:1px solid var(--line); padding:.8rem 1rem; font: 1rem/1.6 "Cambria Math", Georgia, serif; }
   .note { font-size:.9rem; color:var(--muted); }
   .links a { color:var(--maroon); }
+  ul.next { font-size:10.5pt; line-height:1.3; margin:.2rem 0 .5rem; }
   footer { border-top:2px solid var(--maroon); margin-top:2rem; padding-top:.8rem; font:.82rem/1.5 "Segoe UI", system-ui, sans-serif; color:var(--muted); }
-  ol.links { font-size: 8pt; line-height: 1.12; }
+  ol.links { font-size: 7.5pt; line-height: 1.08; }
   ol.links li { margin: .1rem 0; }
   h2#ai-use-note + p, .ai-note { font-size: 10.5pt; }
   @media print {
@@ -61,7 +62,7 @@
 </header>
 
 <h2>Abstract</h2>
-<p class="abstract">Aggie Course Scout is a fielded BM25F search engine over 10,277 published Texas A&amp;M course descriptions. It runs entirely in the browser on GitHub Pages, with no backend and no tracking. I crawled 383 department pages from the 2026-2027 catalog, parsed structured records, built a four-field index, and compared BM25F with TF-IDF and flat BM25 on 25 pooled queries. Both baselines get the same correction and synonym terms, and NDCG uses a global ideal. BM25F scores 0.776 P@10 and 0.801 NDCG@10 against 0.740 and 0.725 for flat BM25. It's ahead on NDCG (95% bootstrap interval 0.026 to 0.132), but the P@10, AP, and MRR intervals cross zero. The term sets are the same, but not the weighting: the baselines get full-weight expansions and no synonym phrase bonus. Calling 0.070 field weighting overstates it. Equalizing expansion weights and dropping that bonus cuts the gap to 0.046, with an interval from -0.0004 to 0.099. Correction is a separate within-system effect worth 0.141. Title-only still beats the full model, and stemming drags "operations" into "os."</p>
+<p class="abstract">Aggie Course Scout is a fielded BM25F search engine over 10,277 published Texas A&amp;M course descriptions. It runs entirely in the browser on GitHub Pages, with no backend and no tracking. I crawled 383 department pages from the 2026-2027 catalog, parsed structured records, built a four-field index, and compared BM25F with TF-IDF and flat BM25 on 25 pooled queries. Both baselines get the same correction and synonym terms, and NDCG uses a global ideal. BM25F scores 0.776 P@10 and 0.801 NDCG@10 against 0.740 and 0.725 for flat BM25. It's ahead on NDCG (95% bootstrap interval 0.026 to 0.132), but the P@10, AP, and MRR intervals cross zero. The term sets are the same, but not the weighting: the baselines get full-weight expansions and no synonym phrase bonus. Calling 0.076 field weighting overstates it. Equalizing expansion weights and dropping that bonus cuts the gap to 0.046, with an interval from -0.0004 to 0.099. Correction is a separate within-system effect worth 0.139. Title-only still beats the full model, and stemming drags "operations" into "os."</p>
 
 <h2>1. Why this tool exists</h2>
 <p>Course search at TAMU is split in a bad way. The catalog publishes descriptions in one place, the schedule of classes in another, and degree audits somewhere else. Students who half-remember a title ("that networks class") get a department list and a browser find box. Advisors get the same. The catalog's own search is a general site search, not a course search, so a query like <code>security</code> can surface policy pages before it surfaces CSCE 465.</p>
@@ -147,20 +148,20 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 
 <h2>6. How I tested it</h2>
 <p>The first version of this evaluation compared BM25F with correction and synonym expansion against baselines that had neither. That inflated the headline. Every condition below gets the same corrected and expanded terms. The weighting differs: the baselines score every term at full weight, while BM25F discounts expansions and gives multi-word synonym phrases a bonus the baselines lack. One condition equalizes both so the comparison can be separated from the recipe.</p>
-<p>I wrote 25 queries in four buckets: 7 known-item (a code or exact title), 7 exploratory topic queries, 5 misspellings, and 6 acronym or synonym queries. For each query I pooled the top 10 from two baselines and seven BM25F conditions. That produced 514 unique query-document pairs. The design follows pooled test-collection evaluation (Sanderson, 2010). Each pair got a grade from the actual record: 2 when the requested code or intent phrase was in the title, 1 when the phrase appeared in the description, 0 otherwise. The labels are rule-generated, with four applied overrides out of 514 pairs in <code>eval/overrides.csv</code>. The rule reuses the query string, so it mostly measures lexical title match, not topical relevance.</p>
+<p>I wrote 25 queries in four buckets: 7 known-item (a code or exact title), 7 exploratory topic queries, 5 misspellings, and 6 acronym or synonym queries. For each query I pooled the top 10 from two baselines and eight BM25F conditions. That produced 516 unique query-document pairs. The design follows pooled test-collection evaluation (Sanderson, 2010). Each pair got a grade from the actual record: 2 when the requested code or intent phrase was in the title, 1 when the phrase appeared in the description, 0 otherwise. The labels are rule-generated, with four applied overrides out of 516 pairs in <code>eval/overrides.csv</code>. The rule reuses the query string, so it mostly measures lexical title match, not topical relevance.</p>
 <p>Relevance is binary at grade 1 or higher for P@10, AP@10, and MRR. NDCG@10 uses gains of 0, 1, and 2 (Järvelin and Kekäläinen, 2002). The ideal DCG for NDCG comes from every judged document for that query, sorted by grade. The earlier version used each system's own top ten as its ideal, which ignored recall and produced 13 perfect scores. AP@10 divides by min(10, judged relevant) for the query, not by all relevant documents. Because this is a pooled evaluation, every metric is computed only over documents some system retrieved, and unpooled documents count as 0.</p>
 <p>Browser latency came from 75 searches in headless Chromium against a local server, three passes over the 25 queries, measured inside the page around the ranking call. The hosted site uses the same query code and index as the Python evaluator, and a 25-query parity test compares their result ids.</p>
 
 <h2>7. What the numbers say</h2>
-<p>With the same terms on both sides, BM25F is ahead on NDCG: 0.801 against 0.725 for flat BM25 and 0.674 for TF-IDF. The gap is 0.070, not the 0.301 in the first draft. Some of that gap isn't field weighting: the baselines get expansion terms at full query weight and no phrase bonus. Equalizing both cuts the gap to 0.046. Elsewhere it's a tie or a loss. P@10 is 0.776 against 0.740, but the paired interval crosses zero. AP@10 is 0.773 against 0.725, also with an interval across zero. MRR edges forward, 0.871 against 0.853, but its interval crosses zero. NDCG is the only metric with a paired bootstrap interval above zero (0.026 to 0.132) and a sign test under 0.05 (p = 0.004, 18 wins, 4 losses).</p>
+<p>With the same terms on both sides, BM25F is ahead on NDCG: 0.801 against 0.725 for flat BM25 and 0.674 for TF-IDF. The gap is 0.076, not the 0.301 in the first draft. Some of that gap isn't field weighting: the baselines get expansion terms at full query weight and no phrase bonus. Equalizing both cuts the gap to 0.046. Elsewhere it's a tie or a loss. P@10 is 0.776 against 0.740, but the paired interval crosses zero. AP@10 is 0.773 against 0.725, also with an interval across zero. MRR edges forward, 0.871 against 0.853, but its interval crosses zero. NDCG is the only metric with a paired bootstrap interval above zero (0.026 to 0.132) and a sign test under 0.05 (p = 0.004, 18 wins, 4 losses).</p>
 <table>
   <thead><tr><th>Condition</th><th class="num">P@10</th><th class="num">NDCG@10</th><th class="num">AP@10</th><th class="num">MRR</th></tr></thead>
   <tbody>
   <tr><td>TF-IDF, same terms</td><td class="num">0.700</td><td class="num">0.674</td><td class="num">0.670</td><td class="num">0.794</td></tr>
   <tr><td>Flat BM25, same terms</td><td class="num">0.740</td><td class="num">0.725</td><td class="num">0.725</td><td class="num">0.853</td></tr>
   <tr class="win"><td><strong>BM25F, full</strong></td><td class="num"><strong>0.776</strong></td><td class="num"><strong>0.801</strong></td><td class="num"><strong>0.773</strong></td><td class="num"><strong>0.871</strong></td></tr>
-  <tr><td>BM25F, no correction</td><td class="num">0.660</td><td class="num">0.660</td><td class="num">0.644</td><td class="num">0.743</td></tr>
-  <tr><td>BM25F, no synonyms</td><td class="num">0.720</td><td class="num">0.744</td><td class="num">0.719</td><td class="num">0.808</td></tr>
+  <tr><td>BM25F, no correction</td><td class="num">0.660</td><td class="num">0.662</td><td class="num">0.644</td><td class="num">0.743</td></tr>
+  <tr><td>BM25F, no synonyms</td><td class="num">0.728</td><td class="num">0.744</td><td class="num">0.719</td><td class="num">0.808</td></tr>
   <tr><td>BM25F, no synonyms or correction</td><td class="num">0.612</td><td class="num">0.606</td><td class="num">0.590</td><td class="num">0.680</td></tr>
   <tr><td>BM25F, title only</td><td class="num">0.716</td><td class="num">0.806</td><td class="num">0.716</td><td class="num">0.873</td></tr>
   <tr><td>BM25F, no department field</td><td class="num">0.744</td><td class="num">0.777</td><td class="num">0.730</td><td class="num">0.872</td></tr>
@@ -204,35 +205,38 @@ idf(t) = ln(1 + (N − df(t) + 0.5) / (df(t) + 0.5))
 <figcaption>Figure 2. Global-ideal NDCG@10 by category, TF-IDF (light) against BM25F (dark). BM25F is ahead in every bucket. The typo margin is the smallest.</figcaption>
 </figure>
 <p>Latency was p50 12.0 ms and p95 24.2 ms over 75 searches. The worst single call was 172 ms on a cold first query. The gzipped index is 2.2 MB and the page is ready in a few hundred milliseconds on localhost.</p>
-<p>The field-weight story gets weaker once the expansion weights match. The equalized recipe is only 0.046 NDCG ahead, with an interval that touches zero. On the shipped recipe, a title-only ranker beats the full model on NDCG, 0.806 to 0.801, while giving up P@10. Equal weights get higher P@10, AP@10, and MRR but about the same NDCG. Removing the department field costs 0.022 NDCG. On the 14 non-typo, non-synonym queries, full BM25F scores 0.801 against flat BM25's 0.725. The 2.0 department weight isn't isolated; the 0.022 effect is small and untested.</p>
+<p>The field-weight story gets weaker once the expansion weights match. The equalized recipe is only 0.046 NDCG ahead, with an interval that touches zero. On the shipped recipe, a title-only ranker beats the full model on NDCG, 0.806 to 0.801, while giving up P@10. Equal weights get higher P@10, AP@10, and MRR but about the same NDCG. Removing the department field costs 0.024 NDCG. On the 14 non-typo, non-synonym queries, full BM25F scores 0.794 against flat BM25's 0.716. The 2.0 department weight isn't isolated; the 0.024 effect is small and untested.</p>
 
 <h2>8. Where it breaks</h2>
 <p><strong>Stemming conflates operating with operations.</strong> The stemmer maps both to <code>oper</code>. For <code>os</code>, SCMT 661 Operations Strategy lands at rank 3, above Unix System Administration. It isn't an operating systems course.</p>
-<p><strong>Software is a modifier, not a topic.</strong> The top results for "software engineering" include four software courses that aren't engineering courses. CSCE 429 Software Development and CSCE 713 Software Security are both manual grade-1 overrides, and CSCE 713 sits at rank 5. The query parser treats "software" and "engineering" as independent terms, so a course with one strong term but not the phrase still scores. Requiring the phrase by default when two content words appear together would help.</p>
+<p><strong>Software is a modifier, not a topic.</strong> The top results for "software engineering" include four software courses that aren't about engineering practice. CSCE 429 Software Development and CSCE 713 Software Security are both manual grade-1 overrides, and CSCE 713 sits at rank 6. The query parser treats "software" and "engineering" as independent terms, so a course with one strong term but not the phrase still scores. Requiring the phrase by default when two content words appear together would help.</p>
 <p><strong>The broad security sense wins.</strong> "computer security" puts CSCE 465 first, which is right, then CSCE 413 Software Security and MARA 360 Maritime Cybersecurity. Query "security" alone returns LAW 706 Securities Regulation first because "securities" tokenizes to the same stem as "security." That's a defensible false friend, not a bug I can fix without a sense model.</p>
-<p><strong>Correction and ranking are two different comparisons.</strong> The 0.070 gap is BM25F against flat BM25 with the same terms but heavier baseline expansion weights and no BM25F phrase bonus, so it's a ranking-recipe comparison. The 0.141 no-correction effect is within BM25F, where the corrector is removed from a system that otherwise has it. Synonyms account for 0.059. Those numbers aren't pieces of the 0.070, and the abstract used to imply they were.</p>
-<p><strong>The known-item bucket isn't a strict known-item test.</strong> Six records get grade 2 for CSCE 310. The grade rule now matches "microeconomic" by word boundary, so ECON 323 and ECON 607 get the grade 2 they deserve for the microeconomics query. But CSCE 110 Programming I doesn't appear in the full BM25F top ten at all, even though it gets grade 2. The bucket is really "short query, sometimes with a code."</p>
+<p><strong>Correction and ranking are two different comparisons.</strong> The 0.076 gap is BM25F against flat BM25 with the same terms but heavier baseline expansion weights and no BM25F phrase bonus, so it's a ranking-recipe comparison. The 0.139 no-correction effect is within BM25F, where the corrector is removed from a system that otherwise has it. Synonyms account for 0.057. Those numbers aren't pieces of the 0.076, and the abstract used to imply they were.</p>
+<p><strong>The known-item bucket isn't a strict known-item test.</strong> Four records get grade 2 for CSCE 310. The grade rule now matches "microeconomic" by word boundary, so ECON 323 and ECON 607 get the grade 2 they deserve for the microeconomics query. But CSCE 110 Programming I doesn't appear in the full BM25F top ten at all, even though it gets grade 2. The bucket is really "short query, sometimes with a code."</p>
 <p><strong>Cross-level duplicates count twice.</strong> There are 96 code pairs with identical text across undergraduate and graduate levels. Five duplicate slots appear in the BM25F top ten across four queries. P@10 is inflated by roughly 0.02 overall.</p>
-<p><strong>The pool is small.</strong> One grader, 25 queries, 514 pairs, no confidence intervals. The typo bucket has five queries. A second grader would probably move NDCG by several points. The judgments are reproducible from <code>eval/judgments.csv</code>, but they aren't gold-standard TREC judgments.</p>
+<p><strong>The pool is small.</strong> One grader, 25 queries, 516 pairs, wide intervals from 25 queries. The typo bucket has five queries. A second grader would probably move NDCG by several points. The judgments are reproducible from <code>eval/judgments.csv</code>, but they aren't gold-standard TREC judgments.</p>
 
 <h2>9. What it can't do</h2>
 <ul>
   <li>The catalog is a snapshot, not a live feed. A course added after 2026-11-22 is missing.</li>
-  <li>No schedule data, seat counts, instructors, or modality. Those live in a different system.</li>
   <li>College is hand-mapped at the prefix level and 36 records are unplaced.</li>
   <li>Prerequisites are extracted with a regex; free-text prereqs with unusual punctuation can truncate.</li>
-  <li>The browser index exposes full descriptions, so a first load downloads 2.2 MB.</li>
   <li>Evaluation is pooled and single-grader. Known-item labels are weak and duplicate cross-level records are counted twice.</li>
   <li>The corrector is worth more than the ranking changes, so this isn't clean evidence for BM25F field weights.</li>
   <li>The query set is STEM-heavy and never tests filters, quoted phrases, or negation; those features have UI tests, not retrieval metrics.</li>
 </ul>
 
 <h2>10. What I'd do next</h2>
-
-
+<ul class="next">
+  <li>Index title bigrams so "operating system" beats "operations strategy."</li>
+  <li>Collapse the 96 duplicate cross-level codes and retune weights.</li>
+  <li>Get a second grader and report agreement on 50 pairs.</li>
+  <li>Add 75 queries, including zero-result and filter-only ones.</li>
+  <li>Replace the phrase scan with a positional index.</li>
+</ul>
 
 <h2>11. Takeaway</h2>
-<p>BM25F is ahead on NDCG, ties on P@10, AP, and MRR. That's the shape of the result, not a blowout. The title-only variant beats it on NDCG, and duplicates barely move the gap (0.799 to 0.723 after collapsing them).</p>
+<p>BM25F is ahead on NDCG, ties on P@10, AP, and MRR. That's the shape of the result, not a blowout. The title-only variant beats it on NDCG, and duplicates barely move the gap (0.075 after collapsing them).</p>
 <p>So the honest takeaway is narrower than the first draft: the shipped recipe is ahead on NDCG, but equalizing the expansion weights cuts the gap to 0.046 and its interval touches zero. The product's correction and interface do more visible work than the weights. But the interval is wide and the other metrics won't back a stronger claim.</p>
 
 <h2>References</h2>

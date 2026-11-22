@@ -47,7 +47,7 @@ python3 evaluate.py              # writes eval/judgments.csv and eval/results/
 python3 latency.py               # writes eval/results/latency.json
 ```
 
-The 25 queries are in `eval/queries.json`. The judgments are pooled from two baselines and seven BM25F conditions, then graded 0/1/2 from the actual records. Every system gets the same correction and synonym terms, though not the same weights unless the equalized condition sets them. NDCG uses a global ideal from the full judged pool. Current results:
+The 25 queries are in `eval/queries.json`. The judgments are pooled from two baselines and eight BM25F conditions, then graded 0/1/2 from the actual records. Every system gets the same correction and synonym terms, though not the same weights unless the equalized condition sets them. NDCG uses a global ideal from the full judged pool. Current results:
 
 | Condition | P@10 | NDCG@10 | AP@10 | MRR |
 |---|---:|---:|---:|---:|
@@ -60,7 +60,7 @@ The 25 queries are in `eval/queries.json`. The judgments are pooled from two bas
 | BM25F, title only | 0.716 | 0.806 | 0.716 | 0.873 |
 | BM25F, equal expansions | 0.752 | 0.771 | 0.754 | 0.853 |
 
-The field-weight result is weak: title-only beats the full model on NDCG. The 0.070 gap is the field-weighting comparison with terms held constant; the 0.141 correction effect is a separate within-system comparison, and the equalized gap is 0.046. The report covers that and the other failures.
+The field-weight result is weak: title-only beats the full model on NDCG. The 0.076 gap is a ranking-recipe comparison with terms held constant; the 0.139 correction effect is a separate within-system comparison, and the equalized gap is 0.046. The report covers that and the other failures.
 
 ## Tests
 
