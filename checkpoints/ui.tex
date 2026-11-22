@@ -17,9 +17,9 @@
 Maroon and cream, drawn from TAMU print materials but kept quiet. Results read like catalog cards: serif title, small metadata, highlighted snippet, rank score. The search syntax is visible under the box instead of hidden in a help page. Department, level, credit, and college facets come from the current filtered set. The detail drawer shows the full description, prerequisites, and the term-level ranking table over a dimmed page.
 
 \section*{Desktop results}
-\includegraphics[width=0.82\linewidth]{../web/assets/screenshots/desktop-results.png}
+\includegraphics[width=0.56\linewidth]{../web/assets/screenshots/desktop-results.png}
 
-{\footnotesize The query \texttt{dental hygiene} returns 176 records. Clinical Dental Hygiene I is first, and the snippet marks both terms. Department facets show names, not codes. The College of Dentistry facet advertises 159 and returns 159. Credit buckets are 0, 1-2, 3, 4, and 5+, and each count matches the records it returns.}
+{\footnotesize The query \texttt{dental hygiene college:college-of-dentistry} returns 159. The College of Dentistry facet is selected and advertises the same 159. Masthead, H1, and the search field are in frame. Credit buckets are 0, 1-2, 3, 4, and 5+, and each count matches the records it returns.}
 
 \section*{Empty, loading, and error states}
 \begin{minipage}[t]{0.32\linewidth}
@@ -37,14 +37,14 @@ Maroon and cream, drawn from TAMU print materials but kept quiet. Results read l
 
 \newpage
 \section*{Mobile layout and detail panel}
-\begin{minipage}[t]{0.28\linewidth}
+\begin{minipage}[t]{0.24\linewidth}
 \includegraphics[width=\linewidth]{../web/assets/screenshots/mobile-results.png}
 \end{minipage}\hfill
-\begin{minipage}[t]{0.36\linewidth}
+\begin{minipage}[t]{0.31\linewidth}
 \includegraphics[width=\linewidth]{../web/assets/screenshots/detail-drawer.png}
 \end{minipage}
 
-{\footnotesize Left: 390 px viewport after Enter. The page scrolls to the result summary, the facet list is capped at 42 vh, and there is no horizontal scroll. Right: desktop detail panel over a backdrop, with the duplicate description removed and Close held at the top.}
+{\footnotesize Left: 390 px viewport with the masthead and search box visible. The facet list is capped at 42 vh, so the summary follows without a 1,400 px wall. Right: detail panel with a visible dimmed backdrop strip, Close held at the top, and the duplicate description removed.}
 
 \section*{What the audit changed}
 College is now a parsed filter, field, and filtered facet. Credit filters compare both bounds and the facet counts use the same bucket predicate as the results. Initial and zero-result empty states span the grid instead of falling into the 230 px sidebar. A query typed during index load survives and runs on ready. The error state stays visible through typing and retries the index. Mobile jumps to results after a search. The drawer restores focus, traps Tab, and closes from the backdrop or Escape.
