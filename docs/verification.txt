@@ -1,10 +1,10 @@
 Verification log, Aggie Course Scout, 2026-11-22
 
-Code under test: b63e3a4. The verification file was added after that commit and changes docs only.
+Code under test: 47f2054. The verification file was added after that commit and changes docs only.
 
 1. Full test suite
 Command: .venv/bin/python -m pytest tests/ -q
-Result: 47 passed in 36.16s
+Result: 47 passed in 36.30s
 Suites: tokenizer, Python/JS stemmer parity, BM25 math, phrase adjacency,
 query parser, filters, negation, suggestion, index hash, index/corpus binding,
 Python/JS search parity, CLI search, Playwright desktop, typo, facet, empty, mobile.
@@ -12,7 +12,7 @@ Python/JS search parity, CLI search, Playwright desktop, typo, facet, empty, mob
 2. Clean checkout
 Command: git clone https://github.com/clmoon2/aggie-course-scout.git /tmp/opencode/clean-check
 then fresh venv, pip install -r requirements.txt, pytest tests/ -q
-Result: 47 passed in 36.16s
+Result: 47 passed in 36.30s
 
 3. Live page, logged out browser context
 URL: https://clmoon2.github.io/aggie-course-scout/
@@ -26,7 +26,7 @@ URL: https://clmoon2.github.io/aggie-course-scout/report.html
 HTTP: 200
 
 5. Pages workflow
-Run: 45009063478
+Run: 45011081500
 Conclusion: success
 Duration: 39 seconds
 
