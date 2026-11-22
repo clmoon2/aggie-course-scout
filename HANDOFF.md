@@ -29,13 +29,13 @@ Status: complete, tested, deployed, and tagged. Built 2026-11-22.
 ## Hashes
 
 ```
-a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2  data/processed/courses.jsonl
-02b9388dcb708f96a22384a7fc4acd3821b3d8a3a6b64ce7345a755e85cb4fd8  web/data/index.json.gz
-f9bf530bdf65526cf9e9de7281383e16a9325cb01ad12944df8d1b95696c5c25  docs/report.pdf
+8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e  data/processed/courses.jsonl
+4cd7031c4e6aa2c018c63eae1e6d81351a800cf5580f95ec4be3ca79a415fc6c  web/data/index.json.gz
+5430dddd054846d92d02fc3d63b66d40811ed6ea26db9291362fc0347023f6a3  docs/report.pdf
 13f40c2a87ce06892ccee1fc59cd7e27fd025f2abe0dccd07ad1e285923a3ce4  checkpoints/CSCE470_Project_Proposal_Carlos_Luna-Pena.pdf
-9aee824b394b36b9418bfb3c6f8fe93eb3fd5b5d2f498140896156dba504ecee  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
-63b2cca5ba533a4dc13e1b39a532320415b6247f805840543e6dc63b27122d83  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
-3d7ba3cb7f23e7c8ae7996ee2b7e3f44b33e16721db1a68aa9041b717f768ee3  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
+6c20e94cac138d38dbea7ba24072591a332d5ea0851ade4d579890158751a688  checkpoints/CSCE470_Project_Data_Carlos_Luna-Pena.pdf
+a6a1eececfee9f4ce521f8b1d83d3fa2f1758a14faca52d9df43566e9f42a49c  checkpoints/CSCE470_Project_UI_Carlos_Luna-Pena.pdf
+cf01e8033a76f926f4528e644399b0279b30883d2bdade2e08a77599b92b0fc7  slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf
 ```
 
 ## Verification evidence
@@ -47,8 +47,8 @@ f9bf530bdf65526cf9e9de7281383e16a9325cb01ad12944df8d1b95696c5c25  docs/report.pd
 - Pages workflow: run 45000890495, conclusion success, 39 seconds.
 - Release: tag `v0.2-core` pushed and release published.
 - Search CLI: `python3 src/query.py "CSCE 310" --limit 3 --json` returns CSCE 310 first.
-- Data: 383 pages, 0 HTTP errors, 10,082 records. Manifest has one row per request.
-- Latency: 75 samples, p50 10.9 ms, p95 22.8 ms, cold max 254 ms.
+- Data: 383 pages, 0 HTTP errors, 10,275 records. Manifest has one row per request.
+- Latency: 75 samples, p50 15.4 ms, p95 24.5 ms, cold max 456 ms.
 
 The commit hash before the final handoff commit is `cce6de6`. The handoff and verification files are documentation only.
 
@@ -57,7 +57,7 @@ The commit hash before the final handoff commit is `cce6de6`. The handoff and ve
 1. Open the live site and the report logged out.
 2. Confirm the release tag is visible.
 3. Post the Canvas texts below in the matching checkpoint assignment. The checkpoint boxes are late, so each text says that.
-4. Do not post the evaluation as "BM25F wins everywhere." Known-item NDCG is a 0.005 loss to flat BM25 and the report says so.
+4. Do not post the evaluation as "BM25F wins everywhere." Known-item NDCG is a 0.003 loss to flat BM25 and the report says so.
 
 ## Canvas: proposal checkpoint
 
@@ -65,11 +65,11 @@ Late proposal for my CSCE 470 project, Aggie Course Scout. It is a search engine
 
 ## Canvas: data checkpoint
 
-Late data checkpoint. I crawled the 2026-2027 TAMU undergraduate and graduate catalog course-description indexes: 383 department pages, 4 workers, 0.2 second delay, three retries, robots.txt respected. All 383 returned 200. I parsed 10,082 unique course records with code, title, credits, description, prerequisites, department, college, and level. HTML is stripped and records are deduplicated by level plus code. The output JSONL has SHA-256 a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2 and a manifest with every page hash and status. One-page data PDF attached. Limits: snapshot only, no schedule data, college is hand-mapped, and the count is 10,082, above my proposed range. Repo: https://github.com/clmoon2/aggie-course-scout.
+Late data checkpoint. I crawled the 2026-2027 TAMU undergraduate and graduate catalog course-description indexes: 383 department pages, 4 workers, 0.2 second delay, three retries, robots.txt respected. All 383 returned 200. I parsed 10,275 unique course records with code, title, credits, description, prerequisites, department, college, and level. HTML is stripped and records are deduplicated by level plus code. The output JSONL has SHA-256 8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e and a manifest with every page hash and status. One-page data PDF attached. Limits: snapshot only, no schedule data, college is hand-mapped, and the count is 10,275, above my proposed range. Repo: https://github.com/clmoon2/aggie-course-scout.
 
 ## Canvas: core release
 
-Late core release checkpoint, tagged v0.2-core. The crawl, four-field index, browser query layer, UI, and evaluation are working. BM25F uses title 3.0, department 2.0, description 1.0, prerequisite 0.5 with k1 1.2 and b 0.75. The query layer has phrases, dept/level/credits filters, negation, synonym expansion, spelling suggestions, facets, snippets, and a why panel. Evaluation is 25 queries and 514 pooled judgments. BM25F gets P@10 0.824 and NDCG@10 0.967, flat BM25 gets 0.532 and 0.665. Known-item is a near tie and BM25F actually loses by 0.005 NDCG there. Tests: 24 passing, including a clean-checkout run. Tag and release notes: https://github.com/clmoon2/aggie-course-scout/releases/tag/v0.2-core. Live: https://clmoon2.github.io/aggie-course-scout/.
+Late core release checkpoint, tagged v0.2-core. The crawl, four-field index, browser query layer, UI, and evaluation are working. BM25F uses title 3.0, department 2.0, description 1.0, prerequisite 0.5 with k1 1.2 and b 0.75. The query layer has phrases, dept/level/credits filters, negation, synonym expansion, spelling suggestions, facets, snippets, and a why panel. Evaluation is 25 queries and 513 pooled judgments. BM25F gets P@10 0.828 and NDCG@10 0.963, flat BM25 gets 0.520 and 0.663. Known-item is a near tie and BM25F actually loses by 0.003 NDCG there. Tests: 24 passing, including a clean-checkout run. Tag and release notes: https://github.com/clmoon2/aggie-course-scout/releases/tag/v0.2-core. Live: https://clmoon2.github.io/aggie-course-scout/.
 
 ## Canvas: UI checkpoint
 
@@ -77,7 +77,7 @@ Late UI checkpoint, two pages with desktop, mobile, and detail screenshots. The 
 
 ## Canvas: final submission
 
-Final submission for Aggie Course Scout, a solo BM25F search engine over 10,082 public TAMU catalog records. Live site: https://clmoon2.github.io/aggie-course-scout/. Report: https://clmoon2.github.io/aggie-course-scout/report.html. Repo: https://github.com/clmoon2/aggie-course-scout. The project includes the crawl and manifest, a four-field index, a browser query layer, a static UI, 25 queries with 514 pooled judgments, three baselines, four ablations, a 7-page report, a 10-slide deck with notes, and 24 passing tests. BM25F gets NDCG@10 0.967 against 0.665 for flat BM25, but the win is concentrated in typo and synonym queries. Known-item NDCG is a 0.005 loss to flat BM25. Browser latency is p50 10.9 ms and p95 22.8 ms. Report PDF: docs/report.pdf. Slides: slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf. Everything is public and logged out.
+Final submission for Aggie Course Scout, a solo BM25F search engine over 10,275 public TAMU catalog records. Live site: https://clmoon2.github.io/aggie-course-scout/. Report: https://clmoon2.github.io/aggie-course-scout/report.html. Repo: https://github.com/clmoon2/aggie-course-scout. The project includes the crawl and manifest, a four-field index, a browser query layer, a static UI, 25 queries with 513 pooled judgments, three baselines, four ablations, a 7-page report, a 10-slide deck with notes, and 24 passing tests. BM25F gets NDCG@10 0.963 against 0.663 for flat BM25, but the win is concentrated in typo and synonym queries. Known-item NDCG is a 0.003 loss to flat BM25. Browser latency is p50 15.4 ms and p95 24.5 ms. Report PDF: docs/report.pdf. Slides: slides/CSCE470_Project_Slides_Carlos_Luna-Pena.pdf. Everything is public and logged out.
 
 ## Known limits
 
@@ -89,7 +89,7 @@ Final submission for Aggie Course Scout, a solo BM25F search engine over 10,082 
 - The `os` acronym over-expands because "operating" and "operations" share a stem.
 - Department weight is not supported by the ablation.
 - The live site has no production query log. Latency is local headless Chrome.
-- Index first load is 2.1 MB gzipped.
+- Index first load is 2.2 MB gzipped.
 
 ## File map
 

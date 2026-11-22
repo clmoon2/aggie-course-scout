@@ -7,22 +7,22 @@ This is the core search release. It is the first tagged version with the full cr
 
 ## What works
 
-- 383 department pages crawled, 10,082 unique course records, 0 HTTP errors.
+- 383 department pages crawled, 10,275 unique course records, 0 HTTP errors.
 - Four-field BM25F index with title, department, description, and prerequisite postings.
 - Python and JavaScript stemmers with a parity test.
 - Query parser for phrases, `dept:`, `level:`, `credits:`, negation, synonyms, and spelling suggestions.
 - Static UI with facets, snippets, detail drawer, why panel, and loading, empty, and error states.
-- 25-query pooled evaluation with 514 judgments and four ablations.
+- 25-query pooled evaluation with 513 judgments and four ablations.
 - 24 passing Python, CLI, and Playwright tests.
 
 ## Results at this tag
 
-BM25F scored P@10 0.824 and NDCG@10 0.967. Flat BM25 scored 0.532 and 0.665. BM25F loses known-item NDCG to flat BM25 by 0.005. Browser p50 is 10.9 ms and p95 is 22.8 ms.
+BM25F scored P@10 0.828 and NDCG@10 0.963. Flat BM25 scored 0.520 and 0.663. BM25F loses known-item NDCG to flat BM25 by 0.003. Browser p50 is 15.4 ms and p95 is 24.5 ms.
 
 ## Data
 
 `data/processed/courses.jsonl` SHA-256:
-`a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2`
+`8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e`
 
 Index gzip SHA-256 is in `web/data/index_stats.json`.
 

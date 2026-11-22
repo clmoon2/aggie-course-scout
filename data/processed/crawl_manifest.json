@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T07:52:24.392942+00:00",
+  "generated_at": "2026-11-22T08:09:02.347137+00:00",
   "user_agent": "AggieCourseScout/1.0 (CSCE 470 class project; clmoon2@tamu.edu)",
   "workers": 4,
   "delay_seconds": 0.2,
@@ -9,10 +9,13 @@
   ],
   "pages_requested": 383,
   "pages_ok": 383,
+  "pages_with_block": 376,
+  "pages_with_records": 376,
+  "pages_empty": 7,
   "pages_404": 0,
   "pages_error": 0,
-  "courses_unique": 10082,
-  "courses_output_sha256": "a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2",
+  "courses_unique": 10275,
+  "courses_output_sha256": "8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e",
   "output": "data/processed/courses.jsonl",
   "rows": [
     {
@@ -23,8 +26,9 @@
       "bytes": 246847,
       "sha256": "31cb4570ee1a1c2774e79d5cb9280a341090bf140b8b2eed3ee0f38e9adc3916",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.738288+00:00"
+      "fetched_at": "2026-11-22T08:08:24.755659+00:00"
     },
     {
       "level": "graduate",
@@ -34,8 +38,9 @@
       "bytes": 267433,
       "sha256": "7ed8bad61bfee9c880ad99a0a7389f5382074bd1f31b9f6e8c8bc927f40be2a8",
       "courses": 41,
+      "blocks": 41,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.932201+00:00"
+      "fetched_at": "2026-11-22T08:08:24.755515+00:00"
     },
     {
       "level": "graduate",
@@ -45,8 +50,9 @@
       "bytes": 252092,
       "sha256": "07d0b4e5500a3ffa71ed4c6fbf7e73438d67518bc8f4d221c453a1e8b3c9d6be",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.007501+00:00"
+      "fetched_at": "2026-11-22T08:08:25.141971+00:00"
     },
     {
       "level": "graduate",
@@ -56,8 +62,9 @@
       "bytes": 273198,
       "sha256": "c6bff6a481ce6dedda933bdcac4bb06a388e814f470d88bc65c5e8ee3e31da02",
       "courses": 41,
+      "blocks": 41,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.007632+00:00"
+      "fetched_at": "2026-11-22T08:08:25.142119+00:00"
     },
     {
       "level": "graduate",
@@ -67,8 +74,9 @@
       "bytes": 245922,
       "sha256": "395eb22cefeccb667d36cbdfa6d47bdf68988ae0cdee78b635351dfd21e6fa64",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.564498+00:00"
+      "fetched_at": "2026-11-22T08:08:25.560128+00:00"
     },
     {
       "level": "graduate",
@@ -78,8 +86,9 @@
       "bytes": 269535,
       "sha256": "48f6f96015e4d43aed2c84ceaeb1c96465bb78e79b4b3f3d83a9b3d890afb0ab",
       "courses": 37,
+      "blocks": 37,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.630579+00:00"
+      "fetched_at": "2026-11-22T08:08:25.559981+00:00"
     },
     {
       "level": "graduate",
@@ -89,8 +98,9 @@
       "bytes": 244073,
       "sha256": "be9f7f181d64eba285a2c3f930dba22c485b39247d842522e9e015c21232f250",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.372879+00:00"
+      "fetched_at": "2026-11-22T08:08:25.950634+00:00"
     },
     {
       "level": "graduate",
@@ -100,8 +110,9 @@
       "bytes": 266456,
       "sha256": "76d28a4c2be66069d6409088ea243290d35e1fafb06db4909cd0a3018a83be8f",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.778515+00:00"
+      "fetched_at": "2026-11-22T08:08:25.950740+00:00"
     },
     {
       "level": "graduate",
@@ -111,8 +122,9 @@
       "bytes": 248824,
       "sha256": "fdd7a0e118b6b7d7c15078cce889a86ded4566dcd53925173c355329e51d2b60",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:04.145587+00:00"
+      "fetched_at": "2026-11-22T08:08:26.346231+00:00"
     },
     {
       "level": "graduate",
@@ -122,8 +134,9 @@
       "bytes": 248420,
       "sha256": "d7f38be2c2a2ee6629242b5434548e4640781d7d86cd22d8db9c089747c2a8de",
       "courses": 8,
+      "blocks": 8,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:03.900349+00:00"
+      "fetched_at": "2026-11-22T08:08:26.349722+00:00"
     },
     {
       "level": "graduate",
@@ -133,8 +146,9 @@
       "bytes": 275765,
       "sha256": "0d3b8fed896a412d83c2422c1c686231781200ed2f7173368eb3e24496ce6edc",
       "courses": 45,
+      "blocks": 45,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:04.299130+00:00"
+      "fetched_at": "2026-11-22T08:08:26.702900+00:00"
     },
     {
       "level": "graduate",
@@ -144,8 +158,9 @@
       "bytes": 274343,
       "sha256": "f45f0fcf1d1a165efbf519518bbe48047a87d6bdc7132617d5b7d64ee660ddf0",
       "courses": 42,
+      "blocks": 42,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:04.375058+00:00"
+      "fetched_at": "2026-11-22T08:08:26.702995+00:00"
     },
     {
       "level": "graduate",
@@ -155,8 +170,9 @@
       "bytes": 270549,
       "sha256": "4f11313f2f73b7a4e0d3b65228ec70cca5e7a1ff8f17131ca94b6514f018e939",
       "courses": 43,
+      "blocks": 43,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:04.375197+00:00"
+      "fetched_at": "2026-11-22T08:08:27.082999+00:00"
     },
     {
       "level": "graduate",
@@ -166,8 +182,9 @@
       "bytes": 252367,
       "sha256": "810c086f309a123bb77080c3cccb2f92de1d84b82d4fff40988ae3735bb93a65",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:04.633099+00:00"
+      "fetched_at": "2026-11-22T08:08:27.082894+00:00"
     },
     {
       "level": "graduate",
@@ -177,8 +194,9 @@
       "bytes": 255509,
       "sha256": "ac1e9cb3fa7cc194e2bc459c583b8e192f8de2d85c4480c869b819f74d3c73be",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:04.904205+00:00"
+      "fetched_at": "2026-11-22T08:08:27.478642+00:00"
     },
     {
       "level": "graduate",
@@ -188,8 +206,9 @@
       "bytes": 258000,
       "sha256": "915e47a878abebba33d2373f886faa593ee81905905bc386f7ad279b2b8b9266",
       "courses": 26,
+      "blocks": 26,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.132849+00:00"
+      "fetched_at": "2026-11-22T08:08:27.478550+00:00"
     },
     {
       "level": "graduate",
@@ -199,8 +218,9 @@
       "bytes": 260720,
       "sha256": "eaeffe1796364d09c57351654fdc9764a3983496dce294c6bf2f3736c923da04",
       "courses": 28,
+      "blocks": 28,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.378629+00:00"
+      "fetched_at": "2026-11-22T08:08:27.839888+00:00"
     },
     {
       "level": "graduate",
@@ -210,8 +230,9 @@
       "bytes": 255546,
       "sha256": "2f7429791e7ba0bd278e5f61c117b8c6190baac5c1cfba3df7f7ec6fc7907886",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.067360+00:00"
+      "fetched_at": "2026-11-22T08:08:27.839793+00:00"
     },
     {
       "level": "graduate",
@@ -221,8 +242,9 @@
       "bytes": 263345,
       "sha256": "e68439b41ca0b68905a9715b851fa0cee05ef3f83c49000e51065f680a56d478",
       "courses": 30,
+      "blocks": 30,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.450869+00:00"
+      "fetched_at": "2026-11-22T08:08:28.231190+00:00"
     },
     {
       "level": "graduate",
@@ -232,8 +254,9 @@
       "bytes": 246558,
       "sha256": "35a59f754a5f5f7840028d87dbe15aa1b79da69e1baf67168f7e695d5fd4bc98",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.686090+00:00"
+      "fetched_at": "2026-11-22T08:08:28.231341+00:00"
     },
     {
       "level": "graduate",
@@ -243,8 +266,9 @@
       "bytes": 259114,
       "sha256": "8cb1dd948f7becbf63d0e95eaea320124db33a1577e66943cf677af46f0b2b87",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.616405+00:00"
+      "fetched_at": "2026-11-22T08:08:28.579694+00:00"
     },
     {
       "level": "graduate",
@@ -254,8 +278,9 @@
       "bytes": 247426,
       "sha256": "2c6883a833e777d1db0949cdb16accaa795c0350089ce7c89816cc7f97873cb5",
       "courses": 8,
+      "blocks": 8,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.856701+00:00"
+      "fetched_at": "2026-11-22T08:08:28.579591+00:00"
     },
     {
       "level": "graduate",
@@ -265,8 +290,9 @@
       "bytes": 267935,
       "sha256": "3378e1203a4eb3c45eb5f333522e2c986ee8cd8eb54c98d4dc96636aafa40c9f",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.921708+00:00"
+      "fetched_at": "2026-11-22T08:08:28.956950+00:00"
     },
     {
       "level": "graduate",
@@ -276,8 +302,9 @@
       "bytes": 256194,
       "sha256": "67dc8fee8722e0e69bbc037566139aa39d5814d410ad49425cb062d6fe78dda3",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:05.992374+00:00"
+      "fetched_at": "2026-11-22T08:08:28.957373+00:00"
     },
     {
       "level": "graduate",
@@ -287,8 +314,9 @@
       "bytes": 249690,
       "sha256": "21d730eca97193b8a6a3d0ea1c3694bf73a75cf6c1cb692feadb4ce0d6337dbe",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.094292+00:00"
+      "fetched_at": "2026-11-22T08:08:29.295562+00:00"
     },
     {
       "level": "graduate",
@@ -298,8 +326,9 @@
       "bytes": 247426,
       "sha256": "f6725d53fb7d9908e327af4d92752e9538b4d28c50753526e6f81f1a352c8fec",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.320488+00:00"
+      "fetched_at": "2026-11-22T08:08:29.295459+00:00"
     },
     {
       "level": "graduate",
@@ -309,8 +338,9 @@
       "bytes": 244907,
       "sha256": "f0c29a3b5db4f29841aeb27fdb1422f4acd3755c3228d6b030643ef2d104a1fb",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.254120+00:00"
+      "fetched_at": "2026-11-22T08:08:29.662071+00:00"
     },
     {
       "level": "graduate",
@@ -320,8 +350,9 @@
       "bytes": 266025,
       "sha256": "738ce13d60efedc279745e09fffeca1fb991e18230222fb5a1f5d38d24abf1b8",
       "courses": 41,
+      "blocks": 41,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.320580+00:00"
+      "fetched_at": "2026-11-22T08:08:29.662467+00:00"
     },
     {
       "level": "graduate",
@@ -331,8 +362,9 @@
       "bytes": 267968,
       "sha256": "8f4945a0f9a8a6acaa0c3c27161c76e840fd4a4293398e5c4e34c233c7272664",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.488788+00:00"
+      "fetched_at": "2026-11-22T08:08:30.065752+00:00"
     },
     {
       "level": "graduate",
@@ -342,8 +374,9 @@
       "bytes": 243575,
       "sha256": "a71b4c21642dc7acb4931139ac65d43955a9d07409ca4beb94c0e5c2b482d56b",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.750616+00:00"
+      "fetched_at": "2026-11-22T08:08:30.065655+00:00"
     },
     {
       "level": "graduate",
@@ -353,8 +386,9 @@
       "bytes": 243996,
       "sha256": "07b53ed36e3dbc83827ea60e5e310fb616a332c47d5ac8d8129a5feed257b550",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.682776+00:00"
+      "fetched_at": "2026-11-22T08:08:30.465243+00:00"
     },
     {
       "level": "graduate",
@@ -364,8 +398,9 @@
       "bytes": 263618,
       "sha256": "ecab66b3a6a2170bd9c3e94f95b8f43160c2e2c283af9bdcf699ae933f593492",
       "courses": 35,
+      "blocks": 35,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.836665+00:00"
+      "fetched_at": "2026-11-22T08:08:30.429292+00:00"
     },
     {
       "level": "graduate",
@@ -375,8 +410,9 @@
       "bytes": 260094,
       "sha256": "55102fb80f1b2f7d916777018abad50d5526698b4c40b028b47cdfd9078fbf0b",
       "courses": 26,
+      "blocks": 26,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:06.970612+00:00"
+      "fetched_at": "2026-11-22T08:08:30.771806+00:00"
     },
     {
       "level": "graduate",
@@ -386,8 +422,9 @@
       "bytes": 258759,
       "sha256": "e69e829122dadc74f260425d289ee93648c68e412cfa323d753e4e7bf079e61b",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.175886+00:00"
+      "fetched_at": "2026-11-22T08:08:30.771900+00:00"
     },
     {
       "level": "graduate",
@@ -397,8 +434,9 @@
       "bytes": 303038,
       "sha256": "d665e8ab2d34f0fcfc439ad6c8e72e8199999fd022d0903ecece5ab7c45c1aa2",
       "courses": 82,
+      "blocks": 82,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.175095+00:00"
+      "fetched_at": "2026-11-22T08:08:31.123287+00:00"
     },
     {
       "level": "graduate",
@@ -408,8 +446,9 @@
       "bytes": 296174,
       "sha256": "0487f2156113a3ee5aab93fe2a024cdce81e85b1527474c92358788ea41c829e",
       "courses": 79,
+      "blocks": 79,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.324866+00:00"
+      "fetched_at": "2026-11-22T08:08:31.123446+00:00"
     },
     {
       "level": "graduate",
@@ -419,8 +458,9 @@
       "bytes": 249996,
       "sha256": "a07ae1da0f6dd705f3ea96b90bcb5e948d10a58ddab76cda61bb8db442089fd2",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.440107+00:00"
+      "fetched_at": "2026-11-22T08:08:31.542304+00:00"
     },
     {
       "level": "graduate",
@@ -430,8 +470,9 @@
       "bytes": 244976,
       "sha256": "bf1dcb5b23427c91a38e61357211bbdb9315a5de754fbac8641e9cb1e958fd38",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.721407+00:00"
+      "fetched_at": "2026-11-22T08:08:31.542213+00:00"
     },
     {
       "level": "graduate",
@@ -441,8 +482,9 @@
       "bytes": 264385,
       "sha256": "b707f1e3417f25bcb38e5cb6bc6edf5690e66a09619b35d17cae74f7774f2bfe",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.650703+00:00"
+      "fetched_at": "2026-11-22T08:08:31.954218+00:00"
     },
     {
       "level": "graduate",
@@ -452,8 +494,9 @@
       "bytes": 286002,
       "sha256": "78173daad4e049141f12325f3dd5749b33b43822c8d5398338d505377a0bfc5c",
       "courses": 71,
+      "blocks": 71,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.095908+00:00"
+      "fetched_at": "2026-11-22T08:08:31.953692+00:00"
     },
     {
       "level": "graduate",
@@ -463,8 +506,9 @@
       "bytes": 244604,
       "sha256": "95a53eff539d8585af48203c79df4b0294d1970f4bc43915bd14d1779ef66041",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.881997+00:00"
+      "fetched_at": "2026-11-22T08:08:32.378156+00:00"
     },
     {
       "level": "graduate",
@@ -474,8 +518,9 @@
       "bytes": 245887,
       "sha256": "14b90584157d4ea9a2ca56abdec5ddfb199ee8a7e6e89a5b75cf0b5496cf1a53",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:07.978958+00:00"
+      "fetched_at": "2026-11-22T08:08:32.378247+00:00"
     },
     {
       "level": "graduate",
@@ -485,8 +530,9 @@
       "bytes": 266244,
       "sha256": "ffa719fb25d234cb77582339222c6ac04fd16ae61af9d1a93171e243907bde90",
       "courses": 35,
+      "blocks": 35,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.096418+00:00"
+      "fetched_at": "2026-11-22T08:08:32.747503+00:00"
     },
     {
       "level": "graduate",
@@ -496,8 +542,9 @@
       "bytes": 309316,
       "sha256": "d7646dda78522fa7c97816c23ac936e05bde57f7226f19dc2a22443a0f5fd587",
       "courses": 99,
+      "blocks": 99,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.251497+00:00"
+      "fetched_at": "2026-11-22T08:08:32.747616+00:00"
     },
     {
       "level": "graduate",
@@ -507,8 +554,9 @@
       "bytes": 249637,
       "sha256": "fadc92569aa1c680e78198ab4085869754886d2e0819cc9c89292e9548a4354c",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.444482+00:00"
+      "fetched_at": "2026-11-22T08:08:33.227303+00:00"
     },
     {
       "level": "graduate",
@@ -518,8 +566,9 @@
       "bytes": 261472,
       "sha256": "f6e7184fb0b0335518c7aa8e706e6379cb02f7dd5b1baeeb9cdc63184cb1ad32",
       "courses": 30,
+      "blocks": 30,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.909720+00:00"
+      "fetched_at": "2026-11-22T08:08:33.227201+00:00"
     },
     {
       "level": "graduate",
@@ -529,8 +578,9 @@
       "bytes": 269063,
       "sha256": "823acdf8b8ae21a7ba0bbd2facd9636b22fe86665dfe8b4fb84df5f7c7442cd2",
       "courses": 50,
+      "blocks": 50,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.517665+00:00"
+      "fetched_at": "2026-11-22T08:08:33.687944+00:00"
     },
     {
       "level": "graduate",
@@ -540,8 +590,9 @@
       "bytes": 291900,
       "sha256": "6894e7f76098b452db8c1e9f744a9f592ffad2893abc7560a33a83da7a6e0328",
       "courses": 85,
+      "blocks": 85,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.647079+00:00"
+      "fetched_at": "2026-11-22T08:08:33.688104+00:00"
     },
     {
       "level": "graduate",
@@ -551,8 +602,9 @@
       "bytes": 255244,
       "sha256": "b057dfb718f2a738d2795a78781a6316e51080061a52bc616e42d3a1dd218622",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.762323+00:00"
+      "fetched_at": "2026-11-22T08:08:34.127676+00:00"
     },
     {
       "level": "graduate",
@@ -562,8 +614,9 @@
       "bytes": 247915,
       "sha256": "d89e1694bdc4c5867aea203a81cdc53b8b738e9dfa9e2bb4be345cac8b022f5d",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:08.910069+00:00"
+      "fetched_at": "2026-11-22T08:08:34.141832+00:00"
     },
     {
       "level": "graduate",
@@ -573,8 +626,9 @@
       "bytes": 259862,
       "sha256": "5a5d233e3ab8d80a04ed90176c44d773073d9e5666d13a129e138146d541627e",
       "courses": 33,
+      "blocks": 33,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.050910+00:00"
+      "fetched_at": "2026-11-22T08:08:34.593294+00:00"
     },
     {
       "level": "graduate",
@@ -584,8 +638,9 @@
       "bytes": 250443,
       "sha256": "53e41449898a59de0490e2fdba521d9e828897252f07cd9be9d9808ce7c526f9",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.154176+00:00"
+      "fetched_at": "2026-11-22T08:08:34.593632+00:00"
     },
     {
       "level": "graduate",
@@ -595,8 +650,9 @@
       "bytes": 259218,
       "sha256": "3408be7472395d4a9f2c9a289ac1ff039e647171e5091512af9980be2238132e",
       "courses": 30,
+      "blocks": 30,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.323761+00:00"
+      "fetched_at": "2026-11-22T08:08:35.034785+00:00"
     },
     {
       "level": "graduate",
@@ -606,8 +662,9 @@
       "bytes": 262569,
       "sha256": "ae93003f0310bc91d295ea9fb3f1dac29dcc53c88883428d04acb5a7e7ba5be2",
       "courses": 37,
+      "blocks": 37,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.689677+00:00"
+      "fetched_at": "2026-11-22T08:08:35.034653+00:00"
     },
     {
       "level": "graduate",
@@ -617,8 +674,9 @@
       "bytes": 245736,
       "sha256": "c7fdb3a6ec82cb6d93aca9610540634eaf6f0fb9cb189307bb4efc22696d11ac",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.486363+00:00"
+      "fetched_at": "2026-11-22T08:08:35.480534+00:00"
     },
     {
       "level": "graduate",
@@ -628,8 +686,9 @@
       "bytes": 270098,
       "sha256": "4d1745a3f005ce9f00ea3d24c2df4d7e44bb5b2c8cbfd1fc71ff4fa01b64fc03",
       "courses": 41,
+      "blocks": 41,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.615335+00:00"
+      "fetched_at": "2026-11-22T08:08:35.480688+00:00"
     },
     {
       "level": "graduate",
@@ -639,8 +698,9 @@
       "bytes": 257870,
       "sha256": "8e7e05cfce785313ebdeada8a56fa0ef4dbe88f8ac80cde9a2bd0146b7b6126d",
       "courses": 23,
+      "blocks": 23,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.690256+00:00"
+      "fetched_at": "2026-11-22T08:08:35.874853+00:00"
     },
     {
       "level": "graduate",
@@ -650,8 +710,9 @@
       "bytes": 261245,
       "sha256": "bffcc426a642c3bd8372a2e8952f9046eb2756ca442a26e71ca3315ce287ec78",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:09.941574+00:00"
+      "fetched_at": "2026-11-22T08:08:35.874758+00:00"
     },
     {
       "level": "graduate",
@@ -661,8 +722,9 @@
       "bytes": 275752,
       "sha256": "4f9123e21fb89cc6b8ad6774dcb66238884af356afa3e9ab9bef52f6b428de75",
       "courses": 50,
+      "blocks": 50,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.015559+00:00"
+      "fetched_at": "2026-11-22T08:08:36.336699+00:00"
     },
     {
       "level": "graduate",
@@ -672,8 +734,9 @@
       "bytes": 244796,
       "sha256": "b355865e9251e46451e36dca329c8fab5a1dfa9649455d9371f777dfb20dcd1f",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.523817+00:00"
+      "fetched_at": "2026-11-22T08:08:36.336522+00:00"
     },
     {
       "level": "graduate",
@@ -683,8 +746,9 @@
       "bytes": 247249,
       "sha256": "d44919e18299267d0c1009b7b29ed06bd08cdca2f8ce71f3f314c40434ebe076",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.180325+00:00"
+      "fetched_at": "2026-11-22T08:08:36.780145+00:00"
     },
     {
       "level": "graduate",
@@ -694,8 +758,9 @@
       "bytes": 284994,
       "sha256": "6ed8a19b2e797fc1975ade2d04e1fc0e168eeeca9bfd7044aabb7fbe350d326d",
       "courses": 54,
+      "blocks": 54,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.524166+00:00"
+      "fetched_at": "2026-11-22T08:08:36.780308+00:00"
     },
     {
       "level": "graduate",
@@ -705,8 +770,9 @@
       "bytes": 253814,
       "sha256": "7bb9bbb758781dee569a355b6db2adb8533287150de4792fddd5b6affc18b022",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.454457+00:00"
+      "fetched_at": "2026-11-22T08:08:37.168021+00:00"
     },
     {
       "level": "graduate",
@@ -716,8 +782,9 @@
       "bytes": 244263,
       "sha256": "79ed31513e1dd616dbe0f255801691ecece8a74fbf4ddd45bb032c75d3800918",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.676641+00:00"
+      "fetched_at": "2026-11-22T08:08:37.168124+00:00"
     },
     {
       "level": "graduate",
@@ -727,8 +794,9 @@
       "bytes": 258016,
       "sha256": "636051e3cf3dd9d69d4baef103ea3a61eaab997d075bd0cf5cef3f7fe6e7370f",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.854239+00:00"
+      "fetched_at": "2026-11-22T08:08:37.593130+00:00"
     },
     {
       "level": "graduate",
@@ -737,9 +805,10 @@
       "status": 200,
       "bytes": 262870,
       "sha256": "226a0b4f6cee5c66d5b8668ed6a8bbbfb6d66cce1122e887dd9dc4096f9b24de",
-      "courses": 26,
+      "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.922512+00:00"
+      "fetched_at": "2026-11-22T08:08:37.593022+00:00"
     },
     {
       "level": "graduate",
@@ -749,8 +818,9 @@
       "bytes": 258211,
       "sha256": "0f0f5667d6a02b3c7636423378ade201411ac5e2f51c130c966311f5fcfbac59",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:10.992436+00:00"
+      "fetched_at": "2026-11-22T08:08:37.972316+00:00"
     },
     {
       "level": "graduate",
@@ -760,8 +830,9 @@
       "bytes": 262276,
       "sha256": "116b88f025b9f70e0d82cab18a4f801bc8225d0a90d63e30db4d7c9a0a9fe1f3",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.082558+00:00"
+      "fetched_at": "2026-11-22T08:08:37.972194+00:00"
     },
     {
       "level": "graduate",
@@ -771,8 +842,9 @@
       "bytes": 253279,
       "sha256": "253a7db6aa6f59c5e0c95392a2bec53558b7559db0b279b2b93a9ad86460df5b",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.281491+00:00"
+      "fetched_at": "2026-11-22T08:08:38.367965+00:00"
     },
     {
       "level": "graduate",
@@ -782,8 +854,9 @@
       "bytes": 246496,
       "sha256": "088714a5181ef9abd4ebe054a8bcdcc59e789fe38967d6d41b9b9fadc8133ec2",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.351817+00:00"
+      "fetched_at": "2026-11-22T08:08:38.368099+00:00"
     },
     {
       "level": "graduate",
@@ -793,8 +866,9 @@
       "bytes": 243920,
       "sha256": "f330ffa0518acd03591fe2a77940652515fe5419ea9968518ce282b79f692173",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.411321+00:00"
+      "fetched_at": "2026-11-22T08:08:38.732153+00:00"
     },
     {
       "level": "graduate",
@@ -804,8 +878,9 @@
       "bytes": 267320,
       "sha256": "ac876dd5ca14bbe5a062602e91f438896ad595de702e5d74b1b364ea6c0a0cd7",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.514643+00:00"
+      "fetched_at": "2026-11-22T08:08:38.732302+00:00"
     },
     {
       "level": "graduate",
@@ -815,8 +890,9 @@
       "bytes": 244556,
       "sha256": "241bf8637d6bbe9be0f092809b9aebd975b099dab719dd421e403e6e5e65e38c",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.749246+00:00"
+      "fetched_at": "2026-11-22T08:08:39.084747+00:00"
     },
     {
       "level": "graduate",
@@ -826,8 +902,9 @@
       "bytes": 254329,
       "sha256": "6b6a021f7fa675b61a8a2525ac8220319a5a6a5cab23f6fc423b4c23ee497e02",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.683979+00:00"
+      "fetched_at": "2026-11-22T08:08:39.084660+00:00"
     },
     {
       "level": "graduate",
@@ -837,8 +914,9 @@
       "bytes": 258628,
       "sha256": "72c148ff2b7d3e5e9976324863774bb59541e2468b9150cc5f93b78f42dafe6d",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.752272+00:00"
+      "fetched_at": "2026-11-22T08:08:39.485333+00:00"
     },
     {
       "level": "graduate",
@@ -848,8 +926,9 @@
       "bytes": 260459,
       "sha256": "4777da7a3d7c4cf7cfbdb7ba8d60d1c0f895f7806fb976d8ede25da578111ed1",
       "courses": 31,
+      "blocks": 31,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:11.922173+00:00"
+      "fetched_at": "2026-11-22T08:08:39.485442+00:00"
     },
     {
       "level": "graduate",
@@ -859,8 +938,9 @@
       "bytes": 261977,
       "sha256": "02a7c5faba0d5a5cadaa1372fa943865839fa8a3183961c91d1deced211add53",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.210201+00:00"
+      "fetched_at": "2026-11-22T08:08:39.906768+00:00"
     },
     {
       "level": "graduate",
@@ -870,8 +950,9 @@
       "bytes": 256404,
       "sha256": "1fdd12a77f22010d8deb061c305d27f6470053d111b3b15069c152f4bb6e6c5d",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.210293+00:00"
+      "fetched_at": "2026-11-22T08:08:39.906863+00:00"
     },
     {
       "level": "graduate",
@@ -881,8 +962,9 @@
       "bytes": 243946,
       "sha256": "cdcc4f30dec7fd91195103cab8437ab0d68aaaee82f065082d79c19dcd5d2586",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.142788+00:00"
+      "fetched_at": "2026-11-22T08:08:40.334409+00:00"
     },
     {
       "level": "graduate",
@@ -892,8 +974,9 @@
       "bytes": 247595,
       "sha256": "c1902f411049813055ee910eb99de9e22fafa82c39543b95e853478b6b6ffc49",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.385675+00:00"
+      "fetched_at": "2026-11-22T08:08:40.334319+00:00"
     },
     {
       "level": "graduate",
@@ -903,8 +986,9 @@
       "bytes": 247727,
       "sha256": "4a6cddc256090e18181f5ef4ffd10da151144dc27f45597523c573062b77cf54",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.680073+00:00"
+      "fetched_at": "2026-11-22T08:08:40.711870+00:00"
     },
     {
       "level": "graduate",
@@ -914,8 +998,9 @@
       "bytes": 252109,
       "sha256": "808e176867ef52a3e3cc954e20bf49ba6c67cd5e69f52974b5b5f8912b25a929",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.680160+00:00"
+      "fetched_at": "2026-11-22T08:08:40.711968+00:00"
     },
     {
       "level": "graduate",
@@ -925,8 +1010,9 @@
       "bytes": 294712,
       "sha256": "99f308b392878afe2cf7e56503f0204120621a77c93c1a90eeae7e5bfa43f8c4",
       "courses": 72,
+      "blocks": 72,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.599000+00:00"
+      "fetched_at": "2026-11-22T08:08:41.069287+00:00"
     },
     {
       "level": "graduate",
@@ -936,8 +1022,9 @@
       "bytes": 310009,
       "sha256": "9a77ca63894ccba98cd29f2e872099785a3e029de3a97d8a3516f0a6cbcab55b",
       "courses": 111,
+      "blocks": 111,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:12.851919+00:00"
+      "fetched_at": "2026-11-22T08:08:41.069433+00:00"
     },
     {
       "level": "graduate",
@@ -947,8 +1034,9 @@
       "bytes": 270462,
       "sha256": "48e302b570b4faf10b50902182031c305fdd72f44072e8d02d8436562a9e89c5",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.042293+00:00"
+      "fetched_at": "2026-11-22T08:08:41.517347+00:00"
     },
     {
       "level": "graduate",
@@ -958,8 +1046,9 @@
       "bytes": 264594,
       "sha256": "3653f5111405282e2c7bba4cbd6852d9b7258644b33d989157b618f35fa04137",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.117624+00:00"
+      "fetched_at": "2026-11-22T08:08:41.517243+00:00"
     },
     {
       "level": "graduate",
@@ -969,8 +1058,9 @@
       "bytes": 243572,
       "sha256": "d00febab328bcfe8c4f2057b7b83fa04213e8c1fcdf2909bf14480a905c44a23",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.117527+00:00"
+      "fetched_at": "2026-11-22T08:08:41.923567+00:00"
     },
     {
       "level": "graduate",
@@ -980,8 +1070,9 @@
       "bytes": 259405,
       "sha256": "c2791d1adf4509f99e2bda860e04f0ab38cb0f8f9600b32b4d4938070f65f872",
       "courses": 23,
+      "blocks": 23,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.292968+00:00"
+      "fetched_at": "2026-11-22T08:08:41.923671+00:00"
     },
     {
       "level": "graduate",
@@ -991,8 +1082,9 @@
       "bytes": 261203,
       "sha256": "7116a014d893c2a42e608eddcc4a4119c2afdac81ec26fd092e5b148ab919ae5",
       "courses": 30,
+      "blocks": 30,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.576604+00:00"
+      "fetched_at": "2026-11-22T08:08:42.258010+00:00"
     },
     {
       "level": "graduate",
@@ -1002,8 +1094,9 @@
       "bytes": 256593,
       "sha256": "6fb7d6d2f43c86dc67199edb02ddabf9c3747065875b6b569518bfcb4a19b3c8",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.504328+00:00"
+      "fetched_at": "2026-11-22T08:08:42.258449+00:00"
     },
     {
       "level": "graduate",
@@ -1012,9 +1105,10 @@
       "status": 200,
       "bytes": 421448,
       "sha256": "cfda74c426c4dbbc252d9e08cfdb9c6b53711d2e718f2cc44f5a91292e6eea12",
-      "courses": 124,
+      "courses": 282,
+      "blocks": 282,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.577376+00:00"
+      "fetched_at": "2026-11-22T08:08:42.599364+00:00"
     },
     {
       "level": "graduate",
@@ -1024,8 +1118,9 @@
       "bytes": 252251,
       "sha256": "d4a94661fae500b1c931e6bcd4b7fee0f8772cf486dd55df461a9370d8899dc9",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.880561+00:00"
+      "fetched_at": "2026-11-22T08:08:42.598145+00:00"
     },
     {
       "level": "graduate",
@@ -1035,8 +1130,9 @@
       "bytes": 251581,
       "sha256": "34724878ae0b66a42a531432d14dfcedc6f4349065926cb9105fa017f8957f28",
       "courses": 15,
+      "blocks": 15,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:13.939653+00:00"
+      "fetched_at": "2026-11-22T08:08:43.113125+00:00"
     },
     {
       "level": "graduate",
@@ -1046,8 +1142,9 @@
       "bytes": 244711,
       "sha256": "f22a6c9665e2aa71640a16904276ab0e2876448ce65d22fd80769947e64d7de5",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.012981+00:00"
+      "fetched_at": "2026-11-22T08:08:43.113019+00:00"
     },
     {
       "level": "graduate",
@@ -1057,8 +1154,9 @@
       "bytes": 257467,
       "sha256": "a8a8e42988a780b56f2c82085e500623d735aefd2b964e8538d99b7a189c72d8",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.117746+00:00"
+      "fetched_at": "2026-11-22T08:08:43.490279+00:00"
     },
     {
       "level": "graduate",
@@ -1068,8 +1166,9 @@
       "bytes": 254344,
       "sha256": "fc077c04d995fbf9f03624aae26561edaed9e02436034f317b4430025172abce",
       "courses": 17,
+      "blocks": 17,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.410471+00:00"
+      "fetched_at": "2026-11-22T08:08:43.490595+00:00"
     },
     {
       "level": "graduate",
@@ -1079,8 +1178,9 @@
       "bytes": 258847,
       "sha256": "dcc90a7ff21c0d43eba46965177354197072542f66a07f0e22cebc0ab9b29b2a",
       "courses": 24,
+      "blocks": 24,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.340555+00:00"
+      "fetched_at": "2026-11-22T08:08:43.898371+00:00"
     },
     {
       "level": "graduate",
@@ -1090,8 +1190,9 @@
       "bytes": 293116,
       "sha256": "45da27c997fd52dc1dbf5492e96aaf7229bb4b4ce2042d8e18132ffcf31f46c7",
       "courses": 72,
+      "blocks": 72,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.482291+00:00"
+      "fetched_at": "2026-11-22T08:08:44.022690+00:00"
     },
     {
       "level": "graduate",
@@ -1101,8 +1202,9 @@
       "bytes": 246658,
       "sha256": "8caf9ed93ef0044562670c4ed61fb22c71db1d0d98ef0f9f1bce84eb0b8cc6df",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.597296+00:00"
+      "fetched_at": "2026-11-22T08:08:44.287255+00:00"
     },
     {
       "level": "graduate",
@@ -1112,8 +1214,9 @@
       "bytes": 290779,
       "sha256": "3651db7315d43d9d63a983783c6c87bde1065e29c1a196075006f874081f891a",
       "courses": 70,
+      "blocks": 70,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.761180+00:00"
+      "fetched_at": "2026-11-22T08:08:44.287435+00:00"
     },
     {
       "level": "graduate",
@@ -1123,8 +1226,9 @@
       "bytes": 277058,
       "sha256": "90c74c7df98fdbca90dbfe3c488424d0af98dc6beffe87a81d9ca62aab22c108",
       "courses": 56,
+      "blocks": 56,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.843954+00:00"
+      "fetched_at": "2026-11-22T08:08:44.822796+00:00"
     },
     {
       "level": "graduate",
@@ -1133,9 +1237,10 @@
       "status": 200,
       "bytes": 249241,
       "sha256": "cb03ac9faa32d3857b0d1d4513981bbabbbe376d5e8ab5c676581a449ee7c59b",
-      "courses": 7,
+      "courses": 8,
+      "blocks": 8,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:14.844099+00:00"
+      "fetched_at": "2026-11-22T08:08:44.711941+00:00"
     },
     {
       "level": "graduate",
@@ -1145,8 +1250,9 @@
       "bytes": 251779,
       "sha256": "0d2af3d69381744677dfbe99e9a57f09e123cab4f7a189485b55f20767c3db5a",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.027503+00:00"
+      "fetched_at": "2026-11-22T08:08:44.855234+00:00"
     },
     {
       "level": "graduate",
@@ -1156,8 +1262,9 @@
       "bytes": 255710,
       "sha256": "5aba38539af45dd8f95ec936f3960c0708f55f64a85c8ba3fcc0356e94255bf3",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.325824+00:00"
+      "fetched_at": "2026-11-22T08:08:45.264401+00:00"
     },
     {
       "level": "graduate",
@@ -1167,8 +1274,9 @@
       "bytes": 270615,
       "sha256": "4b316335cf95b31bba9cb6fedc34c2a32eadcc439901098fa44aa99e365abda7",
       "courses": 44,
+      "blocks": 44,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.300437+00:00"
+      "fetched_at": "2026-11-22T08:08:45.606351+00:00"
     },
     {
       "level": "graduate",
@@ -1178,8 +1286,9 @@
       "bytes": 261454,
       "sha256": "154c1cd9596f34d3f28d39222196a31d508c779454743befdb745e2a329da430",
       "courses": 28,
+      "blocks": 28,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.247128+00:00"
+      "fetched_at": "2026-11-22T08:08:45.528793+00:00"
     },
     {
       "level": "graduate",
@@ -1189,8 +1298,9 @@
       "bytes": 244772,
       "sha256": "8ce8399665a137d464a69d8ff20306b3fe0b84af5ca6fd6f8627ac6a4279a805",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.499918+00:00"
+      "fetched_at": "2026-11-22T08:08:45.743425+00:00"
     },
     {
       "level": "graduate",
@@ -1200,8 +1310,9 @@
       "bytes": 263484,
       "sha256": "dab330ce2e1f80cc1e18b22552e81894a85627a5a2c3b5a64ba3fe5fd0663386",
       "courses": 28,
+      "blocks": 28,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.750233+00:00"
+      "fetched_at": "2026-11-22T08:08:46.068557+00:00"
     },
     {
       "level": "graduate",
@@ -1211,8 +1322,9 @@
       "bytes": 247036,
       "sha256": "22a362e577aa0af3b0beb6c224f2a1eab1f5317e0d06e0942cd709bb5b391d6d",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.704003+00:00"
+      "fetched_at": "2026-11-22T08:08:46.068657+00:00"
     },
     {
       "level": "graduate",
@@ -1222,8 +1334,9 @@
       "bytes": 259441,
       "sha256": "79663284e9786d8c54b351922d0eaa81675c24744ce082187e8932bbc9b04300",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.774435+00:00"
+      "fetched_at": "2026-11-22T08:08:46.445731+00:00"
     },
     {
       "level": "graduate",
@@ -1232,9 +1345,10 @@
       "status": 200,
       "bytes": 250934,
       "sha256": "e83d04704870b62c7a9b08dfa6edb687fed4f76b02bba990b37840f9792617b3",
-      "courses": 11,
+      "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:15.949567+00:00"
+      "fetched_at": "2026-11-22T08:08:46.445890+00:00"
     },
     {
       "level": "graduate",
@@ -1244,8 +1358,9 @@
       "bytes": 246221,
       "sha256": "22f859df7d4c0b5722b3f3c2dfee61885e2618d1d868697187b69dc276fb0570",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.164594+00:00"
+      "fetched_at": "2026-11-22T08:08:46.897076+00:00"
     },
     {
       "level": "graduate",
@@ -1255,8 +1370,9 @@
       "bytes": 252322,
       "sha256": "419db6c51a317a4e235d637251da4ff0bc1d8ed60b8a1c5bb06c7e7c3cfb46f3",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.164701+00:00"
+      "fetched_at": "2026-11-22T08:08:46.897186+00:00"
     },
     {
       "level": "graduate",
@@ -1266,8 +1382,9 @@
       "bytes": 254537,
       "sha256": "c47bd43280e7d42f5637a4cf090072fac8bd41f5b7a8c2c2fdef0ea937710701",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.310556+00:00"
+      "fetched_at": "2026-11-22T08:08:47.296981+00:00"
     },
     {
       "level": "graduate",
@@ -1277,8 +1394,9 @@
       "bytes": 269990,
       "sha256": "d840085141ce554dabfcae98500bc8f8bf71f4c5606019a50b2d4b9daa2fe0d9",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.421434+00:00"
+      "fetched_at": "2026-11-22T08:08:47.297098+00:00"
     },
     {
       "level": "graduate",
@@ -1288,8 +1406,9 @@
       "bytes": 271716,
       "sha256": "f0fd7123ef3e7a037303270b09efb55db0a1f7696998da188c1953ccfba68a9e",
       "courses": 40,
+      "blocks": 40,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.669550+00:00"
+      "fetched_at": "2026-11-22T08:08:47.717984+00:00"
     },
     {
       "level": "graduate",
@@ -1299,8 +1418,9 @@
       "bytes": 259808,
       "sha256": "52fdfcccba3eaa0ddacda065787984ba74445ded9bd1207dd13f36f30d4dbe6e",
       "courses": 26,
+      "blocks": 26,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.602606+00:00"
+      "fetched_at": "2026-11-22T08:08:47.718145+00:00"
     },
     {
       "level": "graduate",
@@ -1310,8 +1430,9 @@
       "bytes": 248223,
       "sha256": "7969043b1d4e270c8d1b60c31b902e0d924b6a9c524218d8278ab971e2d7bd05",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.729634+00:00"
+      "fetched_at": "2026-11-22T08:08:48.094374+00:00"
     },
     {
       "level": "graduate",
@@ -1321,8 +1442,9 @@
       "bytes": 265457,
       "sha256": "1f0877d8a6a46e02ffa82003b96e7c9df45acbb216ff089d9cf529d1651728bb",
       "courses": 28,
+      "blocks": 28,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.848873+00:00"
+      "fetched_at": "2026-11-22T08:08:48.094492+00:00"
     },
     {
       "level": "graduate",
@@ -1332,8 +1454,9 @@
       "bytes": 255739,
       "sha256": "a28f22d7c1aeb45dbdcd8f41c80cba200b4c013a1c38ce4738dbb9faef12cbac",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:16.986204+00:00"
+      "fetched_at": "2026-11-22T08:08:48.479090+00:00"
     },
     {
       "level": "graduate",
@@ -1343,8 +1466,9 @@
       "bytes": 267001,
       "sha256": "89a6953d9352c8ad490fe99a621c61d92f3c3c4bc2fa5ff1e39c8ef0dae6d084",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.060457+00:00"
+      "fetched_at": "2026-11-22T08:08:48.479201+00:00"
     },
     {
       "level": "graduate",
@@ -1354,8 +1478,9 @@
       "bytes": 281652,
       "sha256": "7b81f5ccb45fcbec57a1d03f6aff1b18c9543472a04b28fab30ef5246dd1ff89",
       "courses": 42,
+      "blocks": 42,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.131443+00:00"
+      "fetched_at": "2026-11-22T08:08:48.854071+00:00"
     },
     {
       "level": "graduate",
@@ -1365,8 +1490,9 @@
       "bytes": 255240,
       "sha256": "f67748b05887317d8c6545c5f022f09412bc1f9399423ce0a193011a32677db8",
       "courses": 17,
+      "blocks": 17,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.236759+00:00"
+      "fetched_at": "2026-11-22T08:08:48.854223+00:00"
     },
     {
       "level": "graduate",
@@ -1376,8 +1502,9 @@
       "bytes": 252469,
       "sha256": "95c8db3d361a8bf799f48aa8297fc4b0387acad1c2b4a50012b44a367aaece87",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.449953+00:00"
+      "fetched_at": "2026-11-22T08:08:49.283549+00:00"
     },
     {
       "level": "graduate",
@@ -1387,8 +1514,9 @@
       "bytes": 258612,
       "sha256": "4c182582c03480d7f61e9167bcf9822f86f39fb824b7056b19794f3097148f7c",
       "courses": 33,
+      "blocks": 33,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.379500+00:00"
+      "fetched_at": "2026-11-22T08:08:49.283446+00:00"
     },
     {
       "level": "graduate",
@@ -1398,8 +1526,9 @@
       "bytes": 257970,
       "sha256": "3747012e56e11790b5a4c062ea5ab322dc2cd74f75ddab594c621f2f4ef1bd3e",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.510341+00:00"
+      "fetched_at": "2026-11-22T08:08:49.854276+00:00"
     },
     {
       "level": "graduate",
@@ -1409,8 +1538,9 @@
       "bytes": 274323,
       "sha256": "e3303ab45353edfed9c9157af58278faf921dc6e1603ab4565e85fe68223aede",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.622294+00:00"
+      "fetched_at": "2026-11-22T08:08:49.658215+00:00"
     },
     {
       "level": "graduate",
@@ -1420,8 +1550,9 @@
       "bytes": 258026,
       "sha256": "9794018e421e80b00d4f1417069a2a929a75122b84929e54dd3bd12a4e84a325",
       "courses": 30,
+      "blocks": 30,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.767032+00:00"
+      "fetched_at": "2026-11-22T08:08:50.034668+00:00"
     },
     {
       "level": "graduate",
@@ -1431,8 +1562,9 @@
       "bytes": 261521,
       "sha256": "7dd4fe3c892cc580707b62c8919b6ee0b4ea17bda8d1b053ab555f9529347c4c",
       "courses": 31,
+      "blocks": 31,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.839677+00:00"
+      "fetched_at": "2026-11-22T08:08:50.034780+00:00"
     },
     {
       "level": "graduate",
@@ -1442,8 +1574,9 @@
       "bytes": 245590,
       "sha256": "0faf4889e9c9b69758a8717c130ebdee2e0d070073b564b396a0b76e3cdccb1b",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:17.839773+00:00"
+      "fetched_at": "2026-11-22T08:08:50.421704+00:00"
     },
     {
       "level": "graduate",
@@ -1453,8 +1586,9 @@
       "bytes": 287209,
       "sha256": "91c532b9507074522de41b0613d24bfdd5c1a8291aa888085a529b9c7a5c2690",
       "courses": 62,
+      "blocks": 62,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.012810+00:00"
+      "fetched_at": "2026-11-22T08:08:50.422551+00:00"
     },
     {
       "level": "graduate",
@@ -1464,8 +1598,9 @@
       "bytes": 292447,
       "sha256": "280837bce292e2bafbd92fe94095bcd8b5df64ae49a1cffd1705fb5f4eb8d0c8",
       "courses": 64,
+      "blocks": 64,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.176996+00:00"
+      "fetched_at": "2026-11-22T08:08:50.830511+00:00"
     },
     {
       "level": "graduate",
@@ -1475,8 +1610,9 @@
       "bytes": 248492,
       "sha256": "916ddef087fcd2deaab76fd69d9cbd3e4551acc9ee4bccb8fac8abe8e71a97db",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.264719+00:00"
+      "fetched_at": "2026-11-22T08:08:50.830381+00:00"
     },
     {
       "level": "graduate",
@@ -1486,8 +1622,9 @@
       "bytes": 253108,
       "sha256": "44fdd03f47e4e7e3b220ee23865e9b6d9775517c26b7abe28821a761d454a8c1",
       "courses": 17,
+      "blocks": 17,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.348688+00:00"
+      "fetched_at": "2026-11-22T08:08:51.241247+00:00"
     },
     {
       "level": "graduate",
@@ -1497,8 +1634,9 @@
       "bytes": 279772,
       "sha256": "1f9065dbb876b4d524c2b0c563935ce2579ef393e0c3aa63ffce6a768785fb97",
       "courses": 67,
+      "blocks": 67,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.582328+00:00"
+      "fetched_at": "2026-11-22T08:08:51.241363+00:00"
     },
     {
       "level": "graduate",
@@ -1508,8 +1646,9 @@
       "bytes": 274459,
       "sha256": "71c4991aa1511aecbf425e0ca90abf95193370575ea0a2a455eee881aed08e8e",
       "courses": 48,
+      "blocks": 48,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.637759+00:00"
+      "fetched_at": "2026-11-22T08:08:51.682025+00:00"
     },
     {
       "level": "graduate",
@@ -1519,8 +1658,9 @@
       "bytes": 306200,
       "sha256": "10c8c6a31c27d5a2b3fb92ab560353e8548a4217028af8f9b62a8ccaeda8fce9",
       "courses": 76,
+      "blocks": 76,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.632134+00:00"
+      "fetched_at": "2026-11-22T08:08:51.682157+00:00"
     },
     {
       "level": "graduate",
@@ -1530,8 +1670,9 @@
       "bytes": 263133,
       "sha256": "0c89c859bc8b7be673d995fd4f8d6af65852637bef1e71e1bf20b5d11cefbc7a",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:18.902651+00:00"
+      "fetched_at": "2026-11-22T08:08:52.145891+00:00"
     },
     {
       "level": "graduate",
@@ -1541,8 +1682,9 @@
       "bytes": 259141,
       "sha256": "14aa3e2f5e01252ca3c93ae2fe6850c080fe5279568dbf4aabf39c00ca3af390",
       "courses": 26,
+      "blocks": 26,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.088277+00:00"
+      "fetched_at": "2026-11-22T08:08:52.145752+00:00"
     },
     {
       "level": "graduate",
@@ -1552,8 +1694,9 @@
       "bytes": 252752,
       "sha256": "129a292d241d7d8598add6a43f0b8f738fd70650217f6108ee0dcfb8908d5db5",
       "courses": 19,
+      "blocks": 19,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.160015+00:00"
+      "fetched_at": "2026-11-22T08:08:52.551947+00:00"
     },
     {
       "level": "graduate",
@@ -1563,8 +1706,9 @@
       "bytes": 274495,
       "sha256": "04f462c8d601d22703eceb1b61f932771915c39e49dfadac8467391c241c2c3f",
       "courses": 46,
+      "blocks": 46,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.159830+00:00"
+      "fetched_at": "2026-11-22T08:08:52.819486+00:00"
     },
     {
       "level": "graduate",
@@ -1574,8 +1718,9 @@
       "bytes": 254332,
       "sha256": "e2473fa1499a7df210669af925c8f7344e3ef294047c3a7122d7f63ecf52779d",
       "courses": 15,
+      "blocks": 15,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.334413+00:00"
+      "fetched_at": "2026-11-22T08:08:52.819588+00:00"
     },
     {
       "level": "graduate",
@@ -1585,8 +1730,9 @@
       "bytes": 277874,
       "sha256": "6555a2558545c71b085d7a70c735bf62cccd82732a88ccde7913a244b0ae295e",
       "courses": 44,
+      "blocks": 44,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.488195+00:00"
+      "fetched_at": "2026-11-22T08:08:53.384934+00:00"
     },
     {
       "level": "graduate",
@@ -1596,8 +1742,9 @@
       "bytes": 262216,
       "sha256": "7fa1cb92f21b0ae9c0ce45061906419e7f64bd7a78f69a4a730a045b54d04380",
       "courses": 34,
+      "blocks": 34,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.571443+00:00"
+      "fetched_at": "2026-11-22T08:08:53.240655+00:00"
     },
     {
       "level": "graduate",
@@ -1607,8 +1754,9 @@
       "bytes": 255845,
       "sha256": "a1896d29f5c37b40001deb0a295ba2bb8ac2d0bd1ff5741f8db9e87a45dac9ab",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.571547+00:00"
+      "fetched_at": "2026-11-22T08:08:54.069458+00:00"
     },
     {
       "level": "graduate",
@@ -1618,8 +1766,9 @@
       "bytes": 260626,
       "sha256": "c8fe588d88331285ba19e053ed0facfa4867ae4bcb05f8888534bbd9819c015f",
       "courses": 31,
+      "blocks": 31,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.733883+00:00"
+      "fetched_at": "2026-11-22T08:08:53.706510+00:00"
     },
     {
       "level": "graduate",
@@ -1629,8 +1778,9 @@
       "bytes": 257394,
       "sha256": "87d7a9cd8cc58e1f5601f267cf56723d44a48507b64d564639c842342976efad",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.892285+00:00"
+      "fetched_at": "2026-11-22T08:08:53.820026+00:00"
     },
     {
       "level": "graduate",
@@ -1640,8 +1790,9 @@
       "bytes": 276037,
       "sha256": "902328b9dfbc54021428c19efc7d25328224d19fe52bebd357948b9ce36cb9b7",
       "courses": 62,
+      "blocks": 62,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:19.966300+00:00"
+      "fetched_at": "2026-11-22T08:08:54.191807+00:00"
     },
     {
       "level": "graduate",
@@ -1651,8 +1802,9 @@
       "bytes": 282924,
       "sha256": "a4f16d240a22ab120a5902760d4c471ccca2e7b08d2a7beb79b398ae3f3bd261",
       "courses": 59,
+      "blocks": 59,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.020167+00:00"
+      "fetched_at": "2026-11-22T08:08:54.541688+00:00"
     },
     {
       "level": "graduate",
@@ -1662,8 +1814,9 @@
       "bytes": 248622,
       "sha256": "5b54351c3b356f892f2cdd8944b4cf08b9acb73ca6900692e20c227888240e99",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.127437+00:00"
+      "fetched_at": "2026-11-22T08:08:54.541787+00:00"
     },
     {
       "level": "graduate",
@@ -1673,8 +1826,9 @@
       "bytes": 250515,
       "sha256": "05856010d31f742b0d501156dd209cf998c4e161b7c059dc3ef87efb0c5e536d",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.289946+00:00"
+      "fetched_at": "2026-11-22T08:08:54.883553+00:00"
     },
     {
       "level": "graduate",
@@ -1684,8 +1838,9 @@
       "bytes": 248905,
       "sha256": "073ad89ac7d253bd03d1015468043aa9eb459944dcd668108791063d5c18f673",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.359080+00:00"
+      "fetched_at": "2026-11-22T08:08:55.010181+00:00"
     },
     {
       "level": "graduate",
@@ -1695,8 +1850,9 @@
       "bytes": 243572,
       "sha256": "9fd8b793373053712cda47881b0896edeb638701dd3dd6c14607ae1c9219f395",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.425944+00:00"
+      "fetched_at": "2026-11-22T08:08:55.340721+00:00"
     },
     {
       "level": "graduate",
@@ -1706,8 +1862,9 @@
       "bytes": 270482,
       "sha256": "2715915f7414ba60fc533c018b6cefc334b78d40091ce149260f812a747b9da5",
       "courses": 42,
+      "blocks": 42,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.527344+00:00"
+      "fetched_at": "2026-11-22T08:08:55.340885+00:00"
     },
     {
       "level": "graduate",
@@ -1717,8 +1874,9 @@
       "bytes": 255061,
       "sha256": "9a970d5b69ebdc56eabb2b2d5a0446e1f9104e90acf2922b99976b242cb866bc",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.799692+00:00"
+      "fetched_at": "2026-11-22T08:08:55.752547+00:00"
     },
     {
       "level": "graduate",
@@ -1728,8 +1886,9 @@
       "bytes": 271264,
       "sha256": "147225e5e24b96572f5f26e4d26dfbd6058f80e644a0b312de16144fa937376b",
       "courses": 41,
+      "blocks": 41,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.887068+00:00"
+      "fetched_at": "2026-11-22T08:08:55.752655+00:00"
     },
     {
       "level": "graduate",
@@ -1739,8 +1898,9 @@
       "bytes": 243620,
       "sha256": "d5dad5767b2ca04d529875f5445e9c7d2b28449568cce2f3c5a8b87b9730fdc8",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.749889+00:00"
+      "fetched_at": "2026-11-22T08:08:56.117210+00:00"
     },
     {
       "level": "graduate",
@@ -1750,8 +1910,9 @@
       "bytes": 253342,
       "sha256": "833a09d726e8ba679fd1a8b7e876be4cb994bdb29e274abd15c1e0598f9dd2b6",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:20.998951+00:00"
+      "fetched_at": "2026-11-22T08:08:56.624300+00:00"
     },
     {
       "level": "graduate",
@@ -1761,8 +1922,9 @@
       "bytes": 262962,
       "sha256": "24efca4e9650c471f983283715e56f80b7513cb990a70e8a92fe1a554dd9285f",
       "courses": 38,
+      "blocks": 38,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.148168+00:00"
+      "fetched_at": "2026-11-22T08:08:56.318429+00:00"
     },
     {
       "level": "graduate",
@@ -1772,8 +1934,9 @@
       "bytes": 249753,
       "sha256": "d1fd434d7f1cce7bce15f1fb213add1b7d48a8c1b01ae58742bf7219337a072d",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.220877+00:00"
+      "fetched_at": "2026-11-22T08:08:57.061895+00:00"
     },
     {
       "level": "graduate",
@@ -1783,8 +1946,9 @@
       "bytes": 249448,
       "sha256": "4e88718810c29394b28d1cab55ea98773a6d12292b3fafa814f28183775bcabe",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.220969+00:00"
+      "fetched_at": "2026-11-22T08:08:56.624934+00:00"
     },
     {
       "level": "graduate",
@@ -1794,8 +1958,9 @@
       "bytes": 257083,
       "sha256": "f99e42aabac6eba5bf513a0cb9f102320b123457b9f53216d7aadd396e5cf7e7",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.394417+00:00"
+      "fetched_at": "2026-11-22T08:08:57.002119+00:00"
     },
     {
       "level": "graduate",
@@ -1805,8 +1970,9 @@
       "bytes": 244388,
       "sha256": "842407fd29d3e9c65166b42bc82b6c22ac1d6996afc412c1f1dcc54170136925",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.583987+00:00"
+      "fetched_at": "2026-11-22T08:08:58.047308+00:00"
     },
     {
       "level": "graduate",
@@ -1816,8 +1982,9 @@
       "bytes": 255333,
       "sha256": "689be03d07916f6d5713d6129e9f266bb4fd5a87ea6dc32176591e3e00cd01a0",
       "courses": 24,
+      "blocks": 24,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.706171+00:00"
+      "fetched_at": "2026-11-22T08:08:57.342686+00:00"
     },
     {
       "level": "graduate",
@@ -1827,8 +1994,9 @@
       "bytes": 253379,
       "sha256": "712cace40c88a5aad62e681c55ae116e8eda45491a5508fa9156f6e55578f7bd",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.653619+00:00"
+      "fetched_at": "2026-11-22T08:08:57.486681+00:00"
     },
     {
       "level": "graduate",
@@ -1838,8 +2006,9 @@
       "bytes": 254186,
       "sha256": "dd75ffea8143c52a055488d779a31dec177f90aa5de51decf3d6ebfc7a2eb633",
       "courses": 17,
+      "blocks": 17,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.823374+00:00"
+      "fetched_at": "2026-11-22T08:08:58.142114+00:00"
     },
     {
       "level": "graduate",
@@ -1849,8 +2018,9 @@
       "bytes": 283828,
       "sha256": "11d32b4dd83017921be207a7ac76a0f235782a81f34ddd5d2e047381b3f05854",
       "courses": 53,
+      "blocks": 53,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.057466+00:00"
+      "fetched_at": "2026-11-22T08:08:57.784602+00:00"
     },
     {
       "level": "graduate",
@@ -1860,8 +2030,9 @@
       "bytes": 275599,
       "sha256": "f024f2a620c5e39f1134c3d737d4b98946f63c2c51078268eb3f803eda5f8382",
       "courses": 47,
+      "blocks": 47,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:21.985370+00:00"
+      "fetched_at": "2026-11-22T08:08:58.379898+00:00"
     },
     {
       "level": "graduate",
@@ -1871,8 +2042,9 @@
       "bytes": 244889,
       "sha256": "169814a0107b0035c2f242fbbcb47977d4e5f751268fb3641ff028a1809c8ec2",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.057553+00:00"
+      "fetched_at": "2026-11-22T08:08:58.660366+00:00"
     },
     {
       "level": "graduate",
@@ -1882,8 +2054,9 @@
       "bytes": 245347,
       "sha256": "0a0a368f3ff32993871345ba7bee616b56f61fee2c671af25c0b4c46d60c5b2d",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.214771+00:00"
+      "fetched_at": "2026-11-22T08:08:59.029248+00:00"
     },
     {
       "level": "graduate",
@@ -1893,8 +2066,9 @@
       "bytes": 252608,
       "sha256": "85038ed3577d4c3c4d5a22816bb2257ab7e2c8c89c9a1574c46e7b280dd216d7",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.366817+00:00"
+      "fetched_at": "2026-11-22T08:08:58.660971+00:00"
     },
     {
       "level": "graduate",
@@ -1904,8 +2078,9 @@
       "bytes": 245758,
       "sha256": "6aded46c2dc855ac6c52d86d2a2eb2ba99ee88704a018fc4affbc31dfb37f0d4",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.434268+00:00"
+      "fetched_at": "2026-11-22T08:08:59.029595+00:00"
     },
     {
       "level": "graduate",
@@ -1915,8 +2090,9 @@
       "bytes": 248637,
       "sha256": "fef60106e63800b5fa6abd6fdaf12f423c8802a680c86920d4212b64104b4e0b",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.500943+00:00"
+      "fetched_at": "2026-11-22T08:08:59.443069+00:00"
     },
     {
       "level": "graduate",
@@ -1926,8 +2102,9 @@
       "bytes": 276130,
       "sha256": "bb65751e5410b810edea2a533990b6461fbbb95df0d8914bcc7d6d99ee85bf8b",
       "courses": 51,
+      "blocks": 51,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.910129+00:00"
+      "fetched_at": "2026-11-22T08:08:59.468413+00:00"
     },
     {
       "level": "graduate",
@@ -1937,8 +2114,9 @@
       "bytes": 282287,
       "sha256": "89f5088ff806c30f8fbae1686641d98d350d047a77e31a2db1502119b25c0efc",
       "courses": 54,
+      "blocks": 54,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.740072+00:00"
+      "fetched_at": "2026-11-22T08:08:59.859006+00:00"
     },
     {
       "level": "graduate",
@@ -1948,8 +2126,9 @@
       "bytes": 259200,
       "sha256": "07ce876987d2bae5b47fe998e2114fa8baa8594e8cd11397dacd7be852dd6bdc",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.910801+00:00"
+      "fetched_at": "2026-11-22T08:08:59.908120+00:00"
     },
     {
       "level": "graduate",
@@ -1959,8 +2138,9 @@
       "bytes": 253933,
       "sha256": "18cdbfeb0f92448267d4efae7c72f9976e8ac51a44420caded058d5c323b7ca7",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:22.966589+00:00"
+      "fetched_at": "2026-11-22T08:09:00.468570+00:00"
     },
     {
       "level": "graduate",
@@ -1970,8 +2150,9 @@
       "bytes": 244527,
       "sha256": "9e31f63060439dc2e6f109589bf46fca085b280da4a243ae5b924306dd9e5209",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.193566+00:00"
+      "fetched_at": "2026-11-22T08:09:00.267800+00:00"
     },
     {
       "level": "graduate",
@@ -1981,8 +2162,9 @@
       "bytes": 251617,
       "sha256": "7a01bc1ae0b46c99709cb8bc8cacbfd983ef2c3ad4bd5347cc6a4b1f92432eec",
       "courses": 15,
+      "blocks": 15,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.444856+00:00"
+      "fetched_at": "2026-11-22T08:09:00.465837+00:00"
     },
     {
       "level": "graduate",
@@ -1992,8 +2174,9 @@
       "bytes": 257364,
       "sha256": "b0c5ff36464176325dc065d2eb32c94854649451967d7a531ad8a526965ff566",
       "courses": 24,
+      "blocks": 24,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.375615+00:00"
+      "fetched_at": "2026-11-22T08:09:00.902376+00:00"
     },
     {
       "level": "graduate",
@@ -2003,8 +2186,9 @@
       "bytes": 252529,
       "sha256": "4310c84b3fe5dc10a6625d675b1e450daa652666de47730086c1d862c1af1e2d",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.690565+00:00"
+      "fetched_at": "2026-11-22T08:09:00.903042+00:00"
     },
     {
       "level": "graduate",
@@ -2014,8 +2198,9 @@
       "bytes": 252799,
       "sha256": "69328192d578224645ecccd1b2a1c729f91b9530f658a5c4a4e43cf7d43de03c",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.614926+00:00"
+      "fetched_at": "2026-11-22T08:09:01.262807+00:00"
     },
     {
       "level": "graduate",
@@ -2025,8 +2210,9 @@
       "bytes": 258427,
       "sha256": "be9c673ecb6230658a8f8a26e05a977a287640eaeec02d6c02ea1e7a64b599ff",
       "courses": 24,
+      "blocks": 24,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.904826+00:00"
+      "fetched_at": "2026-11-22T08:09:01.533653+00:00"
     },
     {
       "level": "graduate",
@@ -2036,8 +2222,9 @@
       "bytes": 243635,
       "sha256": "198c6599c3b27e095cfc038d3adac3347398cdd60757000b53c8f10e315b2f49",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:23.904959+00:00"
+      "fetched_at": "2026-11-22T08:09:01.894130+00:00"
     },
     {
       "level": "graduate",
@@ -2047,8 +2234,9 @@
       "bytes": 251498,
       "sha256": "98dbb7cf9eedc1cfe066d99c31eeafe146910ba14076377e20a8c2d9a7d1ac66",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:24.050794+00:00"
+      "fetched_at": "2026-11-22T08:09:01.533559+00:00"
     },
     {
       "level": "graduate",
@@ -2058,8 +2246,9 @@
       "bytes": 246905,
       "sha256": "2264d9e33f3844ff5632fdaace06b65bde39d94f9cdac5380efb76078ec893e9",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:24.163570+00:00"
+      "fetched_at": "2026-11-22T08:09:01.894728+00:00"
     },
     {
       "level": "undergraduate",
@@ -2069,8 +2258,9 @@
       "bytes": 245359,
       "sha256": "c43606393062b02ac39702a8c19f5e2d223583af9bb8c09355b6b9bcea215081",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:40.623811+00:00"
+      "fetched_at": "2026-11-22T08:07:47.317600+00:00"
     },
     {
       "level": "undergraduate",
@@ -2080,8 +2270,9 @@
       "bytes": 258975,
       "sha256": "bdf117a45d337b95fdb1f1f62093c7588569c37452e97492489dae7329cb7360",
       "courses": 25,
+      "blocks": 25,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:40.828894+00:00"
+      "fetched_at": "2026-11-22T08:07:47.581693+00:00"
     },
     {
       "level": "undergraduate",
@@ -2091,8 +2282,9 @@
       "bytes": 284582,
       "sha256": "2218e825fa853f84294eadf2e2941dde26a0becb83a1ba885fe2aea9336c74ad",
       "courses": 49,
+      "blocks": 49,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:40.686430+00:00"
+      "fetched_at": "2026-11-22T08:07:47.699268+00:00"
     },
     {
       "level": "undergraduate",
@@ -2102,8 +2294,9 @@
       "bytes": 252981,
       "sha256": "c10727dff3afd35dc0f6f9c8aa21b798504899c3576ef34ba1c368095a7cb640",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:40.829700+00:00"
+      "fetched_at": "2026-11-22T08:07:47.409736+00:00"
     },
     {
       "level": "undergraduate",
@@ -2113,8 +2306,9 @@
       "bytes": 274456,
       "sha256": "393574f23a5085e8e76d2b46881c9f0db432171a61a045d54c9b30e95561e114",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.001879+00:00"
+      "fetched_at": "2026-11-22T08:07:47.883755+00:00"
     },
     {
       "level": "undergraduate",
@@ -2124,8 +2318,9 @@
       "bytes": 263897,
       "sha256": "c0c6226241517f0f222a27b1c77f4756b359d32ede81de7e4378af7d39452a62",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.071041+00:00"
+      "fetched_at": "2026-11-22T08:07:47.938918+00:00"
     },
     {
       "level": "undergraduate",
@@ -2135,8 +2330,9 @@
       "bytes": 288144,
       "sha256": "a620605024186714d1bb641d2b2cec9c3c5417ee263a0a8f41f2f5e184e1af59",
       "courses": 51,
+      "blocks": 51,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.214603+00:00"
+      "fetched_at": "2026-11-22T08:07:48.194648+00:00"
     },
     {
       "level": "undergraduate",
@@ -2146,8 +2342,9 @@
       "bytes": 248629,
       "sha256": "e250ed13ad90dae50a75cff3c76d6f7006d1fefbbc15ea6deb402bc1af87c712",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.330442+00:00"
+      "fetched_at": "2026-11-22T08:07:49.031571+00:00"
     },
     {
       "level": "undergraduate",
@@ -2157,8 +2354,9 @@
       "bytes": 256701,
       "sha256": "fa893963f32ce11c6e1f5fa3b6b568516a1d701b383c0014b720d0b50b47df34",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.393934+00:00"
+      "fetched_at": "2026-11-22T08:07:48.555384+00:00"
     },
     {
       "level": "undergraduate",
@@ -2168,8 +2366,9 @@
       "bytes": 266225,
       "sha256": "0eac5819822d1314167a2fcda22c20fe9dd0486e6159f8eafc8cbb567f741308",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.461046+00:00"
+      "fetched_at": "2026-11-22T08:07:48.794033+00:00"
     },
     {
       "level": "undergraduate",
@@ -2179,8 +2378,9 @@
       "bytes": 257236,
       "sha256": "f9b974f3a3fa641571b3a00103693886bcfe5d0e54b4a3457c83333d39e3b973",
       "courses": 23,
+      "blocks": 23,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.567399+00:00"
+      "fetched_at": "2026-11-22T08:07:48.727427+00:00"
     },
     {
       "level": "undergraduate",
@@ -2190,8 +2390,9 @@
       "bytes": 259047,
       "sha256": "b77bb0b1e4a0aae68e1e2ce8e029f4b6474f97ed54697260fd05b30dc8502e02",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.683308+00:00"
+      "fetched_at": "2026-11-22T08:07:49.031677+00:00"
     },
     {
       "level": "undergraduate",
@@ -2201,8 +2402,9 @@
       "bytes": 298177,
       "sha256": "4c56967f32a127ad866457923fd07bd2af6f62b6e2aedc6eebb3e9f639f11664",
       "courses": 74,
+      "blocks": 74,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.750115+00:00"
+      "fetched_at": "2026-11-22T08:07:49.340189+00:00"
     },
     {
       "level": "undergraduate",
@@ -2212,8 +2414,9 @@
       "bytes": 351741,
       "sha256": "0e85a9aa997c4e30739fa888f158b297faf2f381dd41fb79b69346debdcc574a",
       "courses": 69,
+      "blocks": 69,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.822105+00:00"
+      "fetched_at": "2026-11-22T08:07:49.473881+00:00"
     },
     {
       "level": "undergraduate",
@@ -2223,8 +2426,9 @@
       "bytes": 252389,
       "sha256": "2eedc04d5e59d1a0a45f7ef4d274fec49d972cedda00f94500e89014bc52ca7a",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:41.936009+00:00"
+      "fetched_at": "2026-11-22T08:07:49.709200+00:00"
     },
     {
       "level": "undergraduate",
@@ -2234,8 +2438,9 @@
       "bytes": 277726,
       "sha256": "91a852b424b1cce5d4c7ba3bf2db3665eeb5482701ecb231b9fd0fc2a57f27c8",
       "courses": 48,
+      "blocks": 48,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.045475+00:00"
+      "fetched_at": "2026-11-22T08:07:49.709381+00:00"
     },
     {
       "level": "undergraduate",
@@ -2245,8 +2450,9 @@
       "bytes": 261566,
       "sha256": "d27a96cfa5277161f1365b669c5c5b1179b43fa670dc0823c91e8e1cec383757",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.120180+00:00"
+      "fetched_at": "2026-11-22T08:07:50.249690+00:00"
     },
     {
       "level": "undergraduate",
@@ -2256,8 +2462,9 @@
       "bytes": 251873,
       "sha256": "643e59fb5b89abd68c2bbaaaa0fcf801b9ba697bbbaa2cff5b31a177769e4eb8",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.184924+00:00"
+      "fetched_at": "2026-11-22T08:07:50.025599+00:00"
     },
     {
       "level": "undergraduate",
@@ -2267,8 +2474,9 @@
       "bytes": 272553,
       "sha256": "5beda5e1f7a9504c3dbf37a68fbb8aa4270a2f9f2780bfff3150d7879699bc40",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.284971+00:00"
+      "fetched_at": "2026-11-22T08:07:50.325661+00:00"
     },
     {
       "level": "undergraduate",
@@ -2278,8 +2486,9 @@
       "bytes": 248399,
       "sha256": "fe82f117affbc2c581f2b86c1bd2ba0451ca7ed1fcc61cd33335d4b76e595cb5",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.425926+00:00"
+      "fetched_at": "2026-11-22T08:07:50.410582+00:00"
     },
     {
       "level": "undergraduate",
@@ -2289,8 +2498,9 @@
       "bytes": 250245,
       "sha256": "7547069b04828a055bff56e088563a0bca92b7dcd0d090c3a4a3a5055468c625",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.491819+00:00"
+      "fetched_at": "2026-11-22T08:07:50.652787+00:00"
     },
     {
       "level": "undergraduate",
@@ -2300,8 +2510,9 @@
       "bytes": 253141,
       "sha256": "39a46feba135665477950ceb051b58cfc13ca0107f61249ef752e9ea820437a5",
       "courses": 17,
+      "blocks": 17,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.551772+00:00"
+      "fetched_at": "2026-11-22T08:07:50.653393+00:00"
     },
     {
       "level": "undergraduate",
@@ -2311,8 +2522,9 @@
       "bytes": 264654,
       "sha256": "3384e3267bf197373f918f3f94b031f7aed984059b8e6240947beec06c12b733",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.652138+00:00"
+      "fetched_at": "2026-11-22T08:07:51.348897+00:00"
     },
     {
       "level": "undergraduate",
@@ -2322,8 +2534,9 @@
       "bytes": 246117,
       "sha256": "e0c3c02b6d6b7b7cd375cfaeca23b4ca9a0f0c0b1ecaad89390d0d2921230c3f",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.815258+00:00"
+      "fetched_at": "2026-11-22T08:07:50.984234+00:00"
     },
     {
       "level": "undergraduate",
@@ -2333,8 +2546,9 @@
       "bytes": 275258,
       "sha256": "aeb833da46dda2f3fb84088d0c05c1f18cf36d58ea3d4456f4313ac0c31ca88e",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.887206+00:00"
+      "fetched_at": "2026-11-22T08:07:51.245509+00:00"
     },
     {
       "level": "undergraduate",
@@ -2344,8 +2558,9 @@
       "bytes": 248842,
       "sha256": "4c12e84b3232f00da3425916e8451fd2b83e279ef3501c5f80301726606aa0d5",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:42.983628+00:00"
+      "fetched_at": "2026-11-22T08:07:51.594784+00:00"
     },
     {
       "level": "undergraduate",
@@ -2355,8 +2570,9 @@
       "bytes": 258218,
       "sha256": "3469572fe33edd26ffd4f74b7435f92935033ddb092ec9d519b0a89efbca71f3",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.106290+00:00"
+      "fetched_at": "2026-11-22T08:07:51.594369+00:00"
     },
     {
       "level": "undergraduate",
@@ -2366,8 +2582,9 @@
       "bytes": 269319,
       "sha256": "fa19c9fbc8a4fed3f9a3a3667e5a7d5755e5e00f8170f91055f042da7b553cb5",
       "courses": 28,
+      "blocks": 28,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.236888+00:00"
+      "fetched_at": "2026-11-22T08:07:51.917017+00:00"
     },
     {
       "level": "undergraduate",
@@ -2377,8 +2594,9 @@
       "bytes": 261478,
       "sha256": "0e0f902425a2fb76f63bfb6895c98fe879cb1ed86cbc63599e801a7990683c84",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.308795+00:00"
+      "fetched_at": "2026-11-22T08:07:52.038734+00:00"
     },
     {
       "level": "undergraduate",
@@ -2388,8 +2606,9 @@
       "bytes": 295962,
       "sha256": "99c9fc12bda64c5ed4c739a27db152cc82b14226f10f64dc06856f96b04213ea",
       "courses": 61,
+      "blocks": 61,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.309293+00:00"
+      "fetched_at": "2026-11-22T08:07:52.233116+00:00"
     },
     {
       "level": "undergraduate",
@@ -2399,8 +2618,9 @@
       "bytes": 292501,
       "sha256": "7c9b397254d962430f4468bd6ef86d03fae81cb19cf101be3bf4206f4cfae6d0",
       "courses": 61,
+      "blocks": 61,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.487516+00:00"
+      "fetched_at": "2026-11-22T08:07:52.374438+00:00"
     },
     {
       "level": "undergraduate",
@@ -2410,8 +2630,9 @@
       "bytes": 245174,
       "sha256": "20ed969a8b2dd98d07bca10bfa99bc00a2d63dbe3e0d705c6e141f60a722c1be",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.632695+00:00"
+      "fetched_at": "2026-11-22T08:07:52.374536+00:00"
     },
     {
       "level": "undergraduate",
@@ -2421,8 +2642,9 @@
       "bytes": 246554,
       "sha256": "047a76d3340ddc2a12ccd05d10562a36e0e023fbfde3c738f73e6408f55174c8",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.691163+00:00"
+      "fetched_at": "2026-11-22T08:07:52.678345+00:00"
     },
     {
       "level": "undergraduate",
@@ -2432,8 +2654,9 @@
       "bytes": 263982,
       "sha256": "ab4e6a0ac75433c0acb4db06bf9d86369cee7a27af73991eb162007002eff714",
       "courses": 33,
+      "blocks": 33,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.754224+00:00"
+      "fetched_at": "2026-11-22T08:07:52.678485+00:00"
     },
     {
       "level": "undergraduate",
@@ -2443,8 +2666,9 @@
       "bytes": 252239,
       "sha256": "5113b102928297415dcc1b7862dc15c4afb274e8676a9a2ace6c78ec442bef82",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:43.871328+00:00"
+      "fetched_at": "2026-11-22T08:07:52.977316+00:00"
     },
     {
       "level": "undergraduate",
@@ -2454,8 +2678,9 @@
       "bytes": 245785,
       "sha256": "54448e682957ec3da6518aaa1dbd848c6587c23605d8442e0c661eb76c973c9f",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.034135+00:00"
+      "fetched_at": "2026-11-22T08:07:52.977408+00:00"
     },
     {
       "level": "undergraduate",
@@ -2465,8 +2690,9 @@
       "bytes": 285498,
       "sha256": "222a20617a92406c1a3d4d0ba0afde3e2eded6476c72fe22b8cbd0b6f56d5aee",
       "courses": 48,
+      "blocks": 48,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.083749+00:00"
+      "fetched_at": "2026-11-22T08:07:53.285472+00:00"
     },
     {
       "level": "undergraduate",
@@ -2476,8 +2702,9 @@
       "bytes": 280512,
       "sha256": "d096babab6ddbc06b1f6901a5fdbff40031da7258dc70762b28363dbd0d8deb4",
       "courses": 46,
+      "blocks": 46,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.172580+00:00"
+      "fetched_at": "2026-11-22T08:07:53.287984+00:00"
     },
     {
       "level": "undergraduate",
@@ -2487,8 +2714,9 @@
       "bytes": 251808,
       "sha256": "6bc937c3fee7f407f531cf78286c99f0b6dfa604f4c385957b33185e41ff59c3",
       "courses": 15,
+      "blocks": 15,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.629646+00:00"
+      "fetched_at": "2026-11-22T08:07:53.610028+00:00"
     },
     {
       "level": "undergraduate",
@@ -2498,8 +2726,9 @@
       "bytes": 268177,
       "sha256": "9aa9581b078d996747bb086814f5e04009df98575bb2e168d3294b2c452d1445",
       "courses": 35,
+      "blocks": 35,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.366429+00:00"
+      "fetched_at": "2026-11-22T08:07:53.643855+00:00"
     },
     {
       "level": "undergraduate",
@@ -2509,8 +2738,9 @@
       "bytes": 246957,
       "sha256": "89d5cdce6793dbb9495456dbb29304e1c19eb6c104dc838f8b3621e0114246c9",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.435401+00:00"
+      "fetched_at": "2026-11-22T08:07:53.940638+00:00"
     },
     {
       "level": "undergraduate",
@@ -2520,8 +2750,9 @@
       "bytes": 446633,
       "sha256": "1b2f38403b902ebc5087c92851ba93dad79295882ddf3965b19534872063a730",
       "courses": 87,
+      "blocks": 87,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.549341+00:00"
+      "fetched_at": "2026-11-22T08:07:53.941768+00:00"
     },
     {
       "level": "undergraduate",
@@ -2531,8 +2762,9 @@
       "bytes": 280956,
       "sha256": "063300f00a08452518076f5ea048f360a3c4d33c345cfd02d7f5a1a957a4a7ce",
       "courses": 53,
+      "blocks": 53,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.781432+00:00"
+      "fetched_at": "2026-11-22T08:07:54.283947+00:00"
     },
     {
       "level": "undergraduate",
@@ -2542,8 +2774,9 @@
       "bytes": 305384,
       "sha256": "6cb860bb2d5e01108e33d517fe585a352e402b958192c7ffe8a351e525ce532f",
       "courses": 69,
+      "blocks": 69,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.842383+00:00"
+      "fetched_at": "2026-11-22T08:07:54.284520+00:00"
     },
     {
       "level": "undergraduate",
@@ -2553,8 +2786,9 @@
       "bytes": 244605,
       "sha256": "039d379f51ab3cbe46d7dab9570543beb9f6ef7b0ea1b1e288056ca7f25d73aa",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:44.941647+00:00"
+      "fetched_at": "2026-11-22T08:07:54.614726+00:00"
     },
     {
       "level": "undergraduate",
@@ -2564,8 +2798,9 @@
       "bytes": 255754,
       "sha256": "9b1400a041254f33fb386357e1fe3124c4be707b005d0b83a6c8cd9e7fd348f4",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.037072+00:00"
+      "fetched_at": "2026-11-22T08:07:54.614823+00:00"
     },
     {
       "level": "undergraduate",
@@ -2575,8 +2810,9 @@
       "bytes": 245440,
       "sha256": "17021f796a07f56261414cb97c6a6afd5a7f4a5133c9d98786f047df11f0e006",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.299218+00:00"
+      "fetched_at": "2026-11-22T08:07:54.953308+00:00"
     },
     {
       "level": "undergraduate",
@@ -2586,8 +2822,9 @@
       "bytes": 299708,
       "sha256": "01ba417a00802dfbf8e383e041edf645e0cc6f2d2b108b2e3a9b3ce474439e93",
       "courses": 56,
+      "blocks": 56,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.219718+00:00"
+      "fetched_at": "2026-11-22T08:07:54.953482+00:00"
     },
     {
       "level": "undergraduate",
@@ -2597,8 +2834,9 @@
       "bytes": 249445,
       "sha256": "d5b9c612ccad853ef5b94ebedd1134623002c93ade8d0d074c4cb1717b144c01",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.494246+00:00"
+      "fetched_at": "2026-11-22T08:07:55.298882+00:00"
     },
     {
       "level": "undergraduate",
@@ -2608,8 +2846,9 @@
       "bytes": 258732,
       "sha256": "af0d2a8744900ab27f5482e078f15e67755796912069b5658105fc84e206b4be",
       "courses": 19,
+      "blocks": 19,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.797969+00:00"
+      "fetched_at": "2026-11-22T08:07:55.298979+00:00"
     },
     {
       "level": "undergraduate",
@@ -2619,8 +2858,9 @@
       "bytes": 245255,
       "sha256": "1df1da48bbc245129c23b90072a8f615b89e67e57ee1ee823ada148dc8d3161f",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.575620+00:00"
+      "fetched_at": "2026-11-22T08:07:55.608094+00:00"
     },
     {
       "level": "undergraduate",
@@ -2630,8 +2870,9 @@
       "bytes": 283167,
       "sha256": "2cc329dc34cf496f8b5eae355fca31e5bb8c2ac43d7d38f4e9174227c57a6f82",
       "courses": 58,
+      "blocks": 58,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.722311+00:00"
+      "fetched_at": "2026-11-22T08:07:55.813405+00:00"
     },
     {
       "level": "undergraduate",
@@ -2640,9 +2881,10 @@
       "status": 200,
       "bytes": 258580,
       "sha256": "520c13c5cf4c6b0b998b6ffbe02441411f470e038d18c44410fc3dc5a9beb775",
-      "courses": 0,
+      "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.866446+00:00"
+      "fetched_at": "2026-11-22T08:07:55.954589+00:00"
     },
     {
       "level": "undergraduate",
@@ -2652,8 +2894,9 @@
       "bytes": 256183,
       "sha256": "7481a27fd8e771f342f3052761e0b7958180559e46a8aa17e62e1ca8834eb3ae",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:45.965613+00:00"
+      "fetched_at": "2026-11-22T08:07:56.226034+00:00"
     },
     {
       "level": "undergraduate",
@@ -2663,8 +2906,9 @@
       "bytes": 286571,
       "sha256": "d316a05df3700d5ce83cdb63f49861da7b8ef7d7878cef63adf5bba008a42428",
       "courses": 58,
+      "blocks": 58,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.106660+00:00"
+      "fetched_at": "2026-11-22T08:07:56.142624+00:00"
     },
     {
       "level": "undergraduate",
@@ -2674,8 +2918,9 @@
       "bytes": 248264,
       "sha256": "fd5f6dc5126ee863822a7df1fded59413b1adcfd257d272adcb495d80821b797",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.230083+00:00"
+      "fetched_at": "2026-11-22T08:07:56.470570+00:00"
     },
     {
       "level": "undergraduate",
@@ -2685,8 +2930,9 @@
       "bytes": 313159,
       "sha256": "27ae85728c4505096f8eafb6f53ace3517cee56b251f47b733989724cd6b3e32",
       "courses": 79,
+      "blocks": 79,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.186288+00:00"
+      "fetched_at": "2026-11-22T08:07:56.662950+00:00"
     },
     {
       "level": "undergraduate",
@@ -2696,8 +2942,9 @@
       "bytes": 247678,
       "sha256": "e16835a922daed9f1deeb1a3608fcca49a52566a6e9ab9f3e4ceb19d9745b8d8",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.370943+00:00"
+      "fetched_at": "2026-11-22T08:07:56.822952+00:00"
     },
     {
       "level": "undergraduate",
@@ -2707,8 +2954,9 @@
       "bytes": 244504,
       "sha256": "cfbd923a9c01a1bc587238c2cafe7e84cdcc4c9c0ee5a46e2256bf4bcf1f5a0b",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.503973+00:00"
+      "fetched_at": "2026-11-22T08:07:56.823047+00:00"
     },
     {
       "level": "undergraduate",
@@ -2718,8 +2966,9 @@
       "bytes": 248494,
       "sha256": "4c9c0c1f4d19bbfd2f4c5273b51cd35abc0d7d51d7128e0552b7d15da6bbb002",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.564417+00:00"
+      "fetched_at": "2026-11-22T08:07:57.148908+00:00"
     },
     {
       "level": "undergraduate",
@@ -2729,8 +2978,9 @@
       "bytes": 279760,
       "sha256": "f0d842fc424bd8849646ee63cec7497c4c02a485ddcda4943b241925b63e5e0a",
       "courses": 40,
+      "blocks": 40,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.625087+00:00"
+      "fetched_at": "2026-11-22T08:07:57.149401+00:00"
     },
     {
       "level": "undergraduate",
@@ -2740,8 +2990,9 @@
       "bytes": 250091,
       "sha256": "c9bb5700887136fe960e4bf4f9aa9f66fd4a0062bb700ea237932f6156f95ef9",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.556193+00:00"
+      "fetched_at": "2026-11-22T08:07:57.535203+00:00"
     },
     {
       "level": "undergraduate",
@@ -2751,8 +3002,9 @@
       "bytes": 258985,
       "sha256": "d8ac246f632a6dd1f659cdf519142e66909c44b0a97b6b898551b6583b78a344",
       "courses": 24,
+      "blocks": 24,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.078714+00:00"
+      "fetched_at": "2026-11-22T08:07:57.535091+00:00"
     },
     {
       "level": "undergraduate",
@@ -2762,8 +3014,9 @@
       "bytes": 244342,
       "sha256": "9e08979f8b5492990feb6cdf0665539335eeeddc13fa240ac23c7ba44008c057",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:46.861611+00:00"
+      "fetched_at": "2026-11-22T08:07:57.908408+00:00"
     },
     {
       "level": "undergraduate",
@@ -2773,8 +3026,9 @@
       "bytes": 244127,
       "sha256": "8d455e67d6755a4a5a137252791b2f3642a98310e2543f8a13faf96522ae59d1",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.016437+00:00"
+      "fetched_at": "2026-11-22T08:07:57.908315+00:00"
     },
     {
       "level": "undergraduate",
@@ -2784,8 +3038,9 @@
       "bytes": 326685,
       "sha256": "e723b1f7c7f919accd83c33295cbef7de1620bdedc1fe0beee13455ce3d6c2a9",
       "courses": 116,
+      "blocks": 116,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.280846+00:00"
+      "fetched_at": "2026-11-22T08:07:58.241153+00:00"
     },
     {
       "level": "undergraduate",
@@ -2795,8 +3050,9 @@
       "bytes": 260784,
       "sha256": "376bb2c1291b5ce7ab8c760df247da7a1716743b761c94ecf846dec77bd0b354",
       "courses": 25,
+      "blocks": 26,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.421134+00:00"
+      "fetched_at": "2026-11-22T08:07:58.305540+00:00"
     },
     {
       "level": "undergraduate",
@@ -2806,8 +3062,9 @@
       "bytes": 248305,
       "sha256": "eb91391cdafbe26aeb22899c9ee1dcdee9135bd5754644fc9c0d94dd905a299e",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.486799+00:00"
+      "fetched_at": "2026-11-22T08:07:58.655447+00:00"
     },
     {
       "level": "undergraduate",
@@ -2817,8 +3074,9 @@
       "bytes": 244635,
       "sha256": "2751ea5bdd17e8c9d392ac5105f3c859676f1e868812505493024e211df922b0",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.657429+00:00"
+      "fetched_at": "2026-11-22T08:07:58.655538+00:00"
     },
     {
       "level": "undergraduate",
@@ -2828,8 +3086,9 @@
       "bytes": 247416,
       "sha256": "8f6ca0e66602c2923175a81eb3c25d7ac843d6a955175595cd2bd8851cbde301",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.738754+00:00"
+      "fetched_at": "2026-11-22T08:07:59.032373+00:00"
     },
     {
       "level": "undergraduate",
@@ -2839,8 +3098,9 @@
       "bytes": 271857,
       "sha256": "f19b5f12993014f38a9529db828660815104a7a467df6d191cb80dcec1fc8daa",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.917914+00:00"
+      "fetched_at": "2026-11-22T08:07:59.032513+00:00"
     },
     {
       "level": "undergraduate",
@@ -2850,8 +3110,9 @@
       "bytes": 245150,
       "sha256": "81289b22ae3753eb747e02863b6500ac38bf9451bf50bbf7b45a3336857f0d9d",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:47.990234+00:00"
+      "fetched_at": "2026-11-22T08:07:59.616381+00:00"
     },
     {
       "level": "undergraduate",
@@ -2861,8 +3122,9 @@
       "bytes": 245545,
       "sha256": "16b0d8f8f181272bb4b772bbc58a6d931f3e2c9d9bbf902e97baa2f3b2151d28",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.222351+00:00"
+      "fetched_at": "2026-11-22T08:07:59.434504+00:00"
     },
     {
       "level": "undergraduate",
@@ -2872,8 +3134,9 @@
       "bytes": 251802,
       "sha256": "3d0a73abcbadba4ad4faec169910e388bfb1e9be35a71cece3c15d132f47d7a3",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.155654+00:00"
+      "fetched_at": "2026-11-22T08:07:59.784472+00:00"
     },
     {
       "level": "undergraduate",
@@ -2883,8 +3146,9 @@
       "bytes": 269936,
       "sha256": "d16c4dd0a02131c1beb0b7269c7b643bb2c8643f7af29870f581761fb9ce8103",
       "courses": 28,
+      "blocks": 28,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.398940+00:00"
+      "fetched_at": "2026-11-22T08:07:59.784573+00:00"
     },
     {
       "level": "undergraduate",
@@ -2894,8 +3158,9 @@
       "bytes": 244759,
       "sha256": "4bb86224c5d039a611603e00473440b4b2dc9ebea0090048bd89b254a7293f78",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.467210+00:00"
+      "fetched_at": "2026-11-22T08:08:00.185241+00:00"
     },
     {
       "level": "undergraduate",
@@ -2905,8 +3170,9 @@
       "bytes": 250322,
       "sha256": "38485f5ac01e4e5957f163a03677961a4cb04aa4c46807cb713a98df3b6a033e",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.535146+00:00"
+      "fetched_at": "2026-11-22T08:08:00.185341+00:00"
     },
     {
       "level": "undergraduate",
@@ -2916,8 +3182,9 @@
       "bytes": 265880,
       "sha256": "4a0771a6716b03b9e0913ce077c92b086a7e470c80926b322f97ec56713b4cfb",
       "courses": 23,
+      "blocks": 23,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.639139+00:00"
+      "fetched_at": "2026-11-22T08:08:00.611884+00:00"
     },
     {
       "level": "undergraduate",
@@ -2927,8 +3194,9 @@
       "bytes": 278220,
       "sha256": "66d05d79e4957cbab67d465373650ae846b50b133d0d45055de8c8cdd6f9dd9a",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.792379+00:00"
+      "fetched_at": "2026-11-22T08:08:00.568063+00:00"
     },
     {
       "level": "undergraduate",
@@ -2938,8 +3206,9 @@
       "bytes": 278425,
       "sha256": "0afcfec59eea5bc20011008cc4723f47935379e55167d56e0d2fa0aad66a95d9",
       "courses": 42,
+      "blocks": 42,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.866425+00:00"
+      "fetched_at": "2026-11-22T08:08:00.948497+00:00"
     },
     {
       "level": "undergraduate",
@@ -2949,8 +3218,9 @@
       "bytes": 253361,
       "sha256": "0be6e1e5181b67159f143301627b9359093553b6481792b6da2b68bf03695085",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:48.866530+00:00"
+      "fetched_at": "2026-11-22T08:08:00.948346+00:00"
     },
     {
       "level": "undergraduate",
@@ -2960,8 +3230,9 @@
       "bytes": 266385,
       "sha256": "bc5f8fe78ba6b99b85d593e5bfe6da8aaaae9c2a7b99045a095c8f37878a754a",
       "courses": 30,
+      "blocks": 30,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.106692+00:00"
+      "fetched_at": "2026-11-22T08:08:01.343738+00:00"
     },
     {
       "level": "undergraduate",
@@ -2971,8 +3242,9 @@
       "bytes": 256699,
       "sha256": "92f8a2a83fc23d811ec27af8eaea500a097f2d794b67522a1ac71ed1f662b4e8",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.182533+00:00"
+      "fetched_at": "2026-11-22T08:08:01.343221+00:00"
     },
     {
       "level": "undergraduate",
@@ -2982,8 +3254,9 @@
       "bytes": 249081,
       "sha256": "25d6ca8ad3ae44b667db53f0672c608905978e5c481eb0ab52d5329a0381252e",
       "courses": 9,
+      "blocks": 9,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.254235+00:00"
+      "fetched_at": "2026-11-22T08:08:01.744826+00:00"
     },
     {
       "level": "undergraduate",
@@ -2993,8 +3266,9 @@
       "bytes": 267911,
       "sha256": "d69229f7e6da30b4377625d6b0e8555904d784b8c90f7f08adec6baee8a74eed",
       "courses": 33,
+      "blocks": 33,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.335437+00:00"
+      "fetched_at": "2026-11-22T08:08:01.745493+00:00"
     },
     {
       "level": "undergraduate",
@@ -3004,8 +3278,9 @@
       "bytes": 244151,
       "sha256": "717ad0ddfac9e5ddf3d3483c0eb38962652482d86ec605d78c42b1a070a43d1a",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.531360+00:00"
+      "fetched_at": "2026-11-22T08:08:02.133888+00:00"
     },
     {
       "level": "undergraduate",
@@ -3015,8 +3290,9 @@
       "bytes": 246001,
       "sha256": "8233d15808bafc3c29d1c48384678949b117d46c2bf9b509d917a307192766bb",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.532446+00:00"
+      "fetched_at": "2026-11-22T08:08:02.616373+00:00"
     },
     {
       "level": "undergraduate",
@@ -3026,8 +3302,9 @@
       "bytes": 270513,
       "sha256": "2ef440080ee5bbc7ab5fc52d140f47950fb7ea5981e3123aae08662625537b76",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.689724+00:00"
+      "fetched_at": "2026-11-22T08:08:02.373242+00:00"
     },
     {
       "level": "undergraduate",
@@ -3037,8 +3314,9 @@
       "bytes": 280162,
       "sha256": "406542c518418a52ed61982507f6287b0a5ccee1aac53abf0cee905a414c69ca",
       "courses": 54,
+      "blocks": 54,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.763736+00:00"
+      "fetched_at": "2026-11-22T08:08:02.918274+00:00"
     },
     {
       "level": "undergraduate",
@@ -3048,8 +3326,9 @@
       "bytes": 284600,
       "sha256": "6a8e13a49931148f63fbfc6da5e46faedd21055a10b673a570895e3599f9c85c",
       "courses": 43,
+      "blocks": 43,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:49.944101+00:00"
+      "fetched_at": "2026-11-22T08:08:02.732931+00:00"
     },
     {
       "level": "undergraduate",
@@ -3059,8 +3338,9 @@
       "bytes": 252738,
       "sha256": "78cd10d61ec851338f01e6dae02d7610b3fbdcaa93ef798a6035bc54c3d62774",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.015861+00:00"
+      "fetched_at": "2026-11-22T08:08:03.112962+00:00"
     },
     {
       "level": "undergraduate",
@@ -3070,8 +3350,9 @@
       "bytes": 258818,
       "sha256": "6ab6d2c722b2c12e8d743d538b7c26d10a9d2bda9eb84a7a386caf1b4867cc82",
       "courses": 25,
+      "blocks": 25,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.080132+00:00"
+      "fetched_at": "2026-11-22T08:08:03.418368+00:00"
     },
     {
       "level": "undergraduate",
@@ -3081,8 +3362,9 @@
       "bytes": 262459,
       "sha256": "b8a9434a0381ef688a08615b8ed8fe9bf60cf3ee9b633d2883ad52aaf9ce43e0",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.179182+00:00"
+      "fetched_at": "2026-11-22T08:08:03.419121+00:00"
     },
     {
       "level": "undergraduate",
@@ -3092,8 +3374,9 @@
       "bytes": 244346,
       "sha256": "1a1a435b197a33aee54b9f9140a15f8dfd00928adb232d6bf5bcdb05be16d13c",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.513280+00:00"
+      "fetched_at": "2026-11-22T08:08:03.814169+00:00"
     },
     {
       "level": "undergraduate",
@@ -3103,8 +3386,9 @@
       "bytes": 253044,
       "sha256": "2ad8a3c383c18ff3811e2428ba6318d52bd3acc185d57e51a59501f313410804",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.389410+00:00"
+      "fetched_at": "2026-11-22T08:08:03.814782+00:00"
     },
     {
       "level": "undergraduate",
@@ -3114,8 +3398,9 @@
       "bytes": 248334,
       "sha256": "5d0fcd034b5e36ec127905a69a45ed79d7c72f43521d974dc484dd9834492316",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.462271+00:00"
+      "fetched_at": "2026-11-22T08:08:04.174268+00:00"
     },
     {
       "level": "undergraduate",
@@ -3125,8 +3410,9 @@
       "bytes": 243621,
       "sha256": "93763a1ca739b3639e1f6cfc8548d3a6064a42e3de408f15dea564e18aebd9d2",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.628770+00:00"
+      "fetched_at": "2026-11-22T08:08:04.229856+00:00"
     },
     {
       "level": "undergraduate",
@@ -3136,8 +3422,9 @@
       "bytes": 253858,
       "sha256": "e2cd65c8c5df8d149876346c00d1c3f848f7904b70741c69d8e2afcdd574815d",
       "courses": 16,
+      "blocks": 16,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.828921+00:00"
+      "fetched_at": "2026-11-22T08:08:04.560048+00:00"
     },
     {
       "level": "undergraduate",
@@ -3147,8 +3434,9 @@
       "bytes": 360384,
       "sha256": "8172427c6af68fb271dde1bd627a7df2111fc24eee3d7704c36f2931287856ce",
       "courses": 130,
+      "blocks": 130,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.896108+00:00"
+      "fetched_at": "2026-11-22T08:08:04.560230+00:00"
     },
     {
       "level": "undergraduate",
@@ -3158,8 +3446,9 @@
       "bytes": 268885,
       "sha256": "4f07c34b28b7a1bd66431326d9b06424d292f206e2144f63cf69c1e12ef1ede3",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:50.895461+00:00"
+      "fetched_at": "2026-11-22T08:08:04.945929+00:00"
     },
     {
       "level": "undergraduate",
@@ -3169,8 +3458,9 @@
       "bytes": 277605,
       "sha256": "c08db83075fbc877a1a71d51bbdd67a3cb91c81f92f91000042497e18e809ef3",
       "courses": 51,
+      "blocks": 51,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.092058+00:00"
+      "fetched_at": "2026-11-22T08:08:04.945125+00:00"
     },
     {
       "level": "undergraduate",
@@ -3180,8 +3470,9 @@
       "bytes": 252339,
       "sha256": "7c4153453ac570534ec66106922feab6306c76cd32c8b985101ff230168a2d86",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.286645+00:00"
+      "fetched_at": "2026-11-22T08:08:05.372663+00:00"
     },
     {
       "level": "undergraduate",
@@ -3191,8 +3482,9 @@
       "bytes": 280458,
       "sha256": "d7cd852129820f6ff4f7aff9cfe0cf45f18eff74b7144dc9efc7dc1557815015",
       "courses": 49,
+      "blocks": 49,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.357467+00:00"
+      "fetched_at": "2026-11-22T08:08:05.372827+00:00"
     },
     {
       "level": "undergraduate",
@@ -3202,8 +3494,9 @@
       "bytes": 245679,
       "sha256": "aff04caf9c9306d3d5f723493170724a21c42bd82d8dbf41ad9596463a9fca2a",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.357555+00:00"
+      "fetched_at": "2026-11-22T08:08:05.825905+00:00"
     },
     {
       "level": "undergraduate",
@@ -3213,8 +3506,9 @@
       "bytes": 257180,
       "sha256": "bdca59342a8ba4ec09a5b7e384f32ff03eddee3b792b106bb6fc7a9855e8a414",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.535695+00:00"
+      "fetched_at": "2026-11-22T08:08:05.825809+00:00"
     },
     {
       "level": "undergraduate",
@@ -3224,8 +3518,9 @@
       "bytes": 261362,
       "sha256": "0efcf4365ae3442b0c0a921a8c2d5b51cd5bfd049253e3c2777c7ac715ad68c9",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.679606+00:00"
+      "fetched_at": "2026-11-22T08:08:06.210337+00:00"
     },
     {
       "level": "undergraduate",
@@ -3235,8 +3530,9 @@
       "bytes": 248196,
       "sha256": "6e66363f61459eebe077696ea2e6366936edf958f458acd59ab6b8a08c70d260",
       "courses": 8,
+      "blocks": 8,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.754814+00:00"
+      "fetched_at": "2026-11-22T08:08:06.210430+00:00"
     },
     {
       "level": "undergraduate",
@@ -3246,8 +3542,9 @@
       "bytes": 273313,
       "sha256": "84e385dfa63ca97cf8367cb838afff309f5db39205071bd7a04febb6c5172199",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.754965+00:00"
+      "fetched_at": "2026-11-22T08:08:06.627787+00:00"
     },
     {
       "level": "undergraduate",
@@ -3257,8 +3554,9 @@
       "bytes": 273393,
       "sha256": "b6018fc22687e709d36611f89d18097df85fbffd868f4a9316d3c41e2265d59e",
       "courses": 35,
+      "blocks": 35,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:51.939243+00:00"
+      "fetched_at": "2026-11-22T08:08:06.627633+00:00"
     },
     {
       "level": "undergraduate",
@@ -3268,8 +3566,9 @@
       "bytes": 285971,
       "sha256": "5d105b1a782fdb75d8fa72cb50a84525f46002ea8c51382535f28c4940cdf309",
       "courses": 61,
+      "blocks": 61,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.224393+00:00"
+      "fetched_at": "2026-11-22T08:08:07.219727+00:00"
     },
     {
       "level": "undergraduate",
@@ -3279,8 +3578,9 @@
       "bytes": 254001,
       "sha256": "d81a76d1a9b0e1fd45424a5e869481dd9b6db7f73686c0a84f278c13193299c5",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.162259+00:00"
+      "fetched_at": "2026-11-22T08:08:07.237372+00:00"
     },
     {
       "level": "undergraduate",
@@ -3290,8 +3590,9 @@
       "bytes": 250305,
       "sha256": "d936e1ab68be4fa6436f8f9b4e71df8ef9898e2c59ebbfbc85a436dd12b8d702",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.274791+00:00"
+      "fetched_at": "2026-11-22T08:08:07.707375+00:00"
     },
     {
       "level": "undergraduate",
@@ -3301,8 +3602,9 @@
       "bytes": 255583,
       "sha256": "0026584a837a6d5330a28a231bde614588ec3ef1e23dc246c82d5cd3078d21fe",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.772066+00:00"
+      "fetched_at": "2026-11-22T08:08:07.707469+00:00"
     },
     {
       "level": "undergraduate",
@@ -3312,8 +3614,9 @@
       "bytes": 249708,
       "sha256": "d34e433da292bb276271f4bed6c2ac932db8b5ac7696d6a6eeec00c32afa1e5b",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.471886+00:00"
+      "fetched_at": "2026-11-22T08:08:08.049146+00:00"
     },
     {
       "level": "undergraduate",
@@ -3323,8 +3626,9 @@
       "bytes": 333352,
       "sha256": "7f7d881038e385f2121bcf7707b7c2ca55e9e666ff4c3bc75568aefec68cf3d8",
       "courses": 40,
+      "blocks": 40,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.683190+00:00"
+      "fetched_at": "2026-11-22T08:08:08.049055+00:00"
     },
     {
       "level": "undergraduate",
@@ -3334,8 +3638,9 @@
       "bytes": 248623,
       "sha256": "202e2b94f9151b872c271f185f84f56e61f75ed0b316fbcb6755c1276970f8aa",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:52.945817+00:00"
+      "fetched_at": "2026-11-22T08:08:08.452055+00:00"
     },
     {
       "level": "undergraduate",
@@ -3345,8 +3650,9 @@
       "bytes": 282027,
       "sha256": "c74c098b04e1806e0fe6d226f9f5611834d5d7c19b0d06e07bef09e915272f90",
       "courses": 51,
+      "blocks": 51,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.010773+00:00"
+      "fetched_at": "2026-11-22T08:08:08.451213+00:00"
     },
     {
       "level": "undergraduate",
@@ -3356,8 +3662,9 @@
       "bytes": 250722,
       "sha256": "1bd5aaca8b80f09d787ccbf3e8d34bddc3050e52cff79e184b20675f30a1c07c",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.410297+00:00"
+      "fetched_at": "2026-11-22T08:08:08.842594+00:00"
     },
     {
       "level": "undergraduate",
@@ -3367,8 +3674,9 @@
       "bytes": 256872,
       "sha256": "f90b7bbbe2d7fc716589ec3e65f0b5467e198eaa5aebe82b3f8113ae831f3236",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.483364+00:00"
+      "fetched_at": "2026-11-22T08:08:08.842504+00:00"
     },
     {
       "level": "undergraduate",
@@ -3378,8 +3686,9 @@
       "bytes": 247606,
       "sha256": "f2c65b6718076075cd3a89a304e4d15bd4604de761030f4e872449fad6da6080",
       "courses": 8,
+      "blocks": 8,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.280625+00:00"
+      "fetched_at": "2026-11-22T08:08:09.240877+00:00"
     },
     {
       "level": "undergraduate",
@@ -3389,8 +3698,9 @@
       "bytes": 251735,
       "sha256": "4ab0fcf81bd9b03187f95c1884162dcf5edf7d4bef1825fe64cb1fb79c957b61",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.483944+00:00"
+      "fetched_at": "2026-11-22T08:08:09.241000+00:00"
     },
     {
       "level": "undergraduate",
@@ -3400,8 +3710,9 @@
       "bytes": 251384,
       "sha256": "be509dae7e29c67c8eced2c221ffba80709c2f1d55f7d84ed50f0274f6ec04bb",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.707762+00:00"
+      "fetched_at": "2026-11-22T08:08:09.578269+00:00"
     },
     {
       "level": "undergraduate",
@@ -3411,8 +3722,9 @@
       "bytes": 263279,
       "sha256": "da451693bf595617b45b4f68294639c8d64221768fdeac603ce06528254b0a0d",
       "courses": 31,
+      "blocks": 31,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.032026+00:00"
+      "fetched_at": "2026-11-22T08:08:09.578376+00:00"
     },
     {
       "level": "undergraduate",
@@ -3422,8 +3734,9 @@
       "bytes": 277202,
       "sha256": "a0cc14100e94afd8ecd8d9015c9b41f72ffb7543269a75a38f38799695fae65c",
       "courses": 42,
+      "blocks": 42,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:53.949796+00:00"
+      "fetched_at": "2026-11-22T08:08:09.984914+00:00"
     },
     {
       "level": "undergraduate",
@@ -3433,8 +3746,9 @@
       "bytes": 284353,
       "sha256": "018e6dcab805fc127f04dbcf9f45e796986d3f621104ddad262db2020bf06be6",
       "courses": 49,
+      "blocks": 49,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.430592+00:00"
+      "fetched_at": "2026-11-22T08:08:09.985051+00:00"
     },
     {
       "level": "undergraduate",
@@ -3444,8 +3758,9 @@
       "bytes": 244060,
       "sha256": "2f16b7bd7023a1dc1a8206f7aa801c34e2e73d08b54c31a516a944c8e06d282a",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.101158+00:00"
+      "fetched_at": "2026-11-22T08:08:11.351132+00:00"
     },
     {
       "level": "undergraduate",
@@ -3455,8 +3770,9 @@
       "bytes": 267616,
       "sha256": "6b646f902818bbba929a5134c67f1b029f070043ae652be15dc251bb02b3bf2c",
       "courses": 35,
+      "blocks": 35,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.352942+00:00"
+      "fetched_at": "2026-11-22T08:08:10.363320+00:00"
     },
     {
       "level": "undergraduate",
@@ -3466,8 +3782,9 @@
       "bytes": 281416,
       "sha256": "55d312b6dfff55730888f340a879bb6b55865be4ffb65d5cb7db8b3e5497193a",
       "courses": 40,
+      "blocks": 40,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.607161+00:00"
+      "fetched_at": "2026-11-22T08:08:10.646892+00:00"
     },
     {
       "level": "undergraduate",
@@ -3477,8 +3794,9 @@
       "bytes": 246418,
       "sha256": "4127d52db276a171a7ba20ddeaa71bac75054628b7988759da6f0f35bf6c6aec",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.945404+00:00"
+      "fetched_at": "2026-11-22T08:08:10.872073+00:00"
     },
     {
       "level": "undergraduate",
@@ -3488,8 +3806,9 @@
       "bytes": 248583,
       "sha256": "61d432929768ef0a64b7eae9f93120e92b6b3796ff358f88204cc1c4011f5776",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.811413+00:00"
+      "fetched_at": "2026-11-22T08:08:11.124891+00:00"
     },
     {
       "level": "undergraduate",
@@ -3499,8 +3818,9 @@
       "bytes": 254270,
       "sha256": "892c4084015c10b20a876c0d7a88c48b1e39ae87c7f441a2714723f8539a6272",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:54.878654+00:00"
+      "fetched_at": "2026-11-22T08:08:11.537236+00:00"
     },
     {
       "level": "undergraduate",
@@ -3510,8 +3830,9 @@
       "bytes": 317917,
       "sha256": "43dae0af278e05f79de25d83e6e36dc353c59792d173a5f29a919d5ac60a2ffd",
       "courses": 75,
+      "blocks": 75,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:55.791273+00:00"
+      "fetched_at": "2026-11-22T08:08:11.710410+00:00"
     },
     {
       "level": "undergraduate",
@@ -3521,8 +3842,9 @@
       "bytes": 302595,
       "sha256": "3cdb25f02f5da7956c939f70f4cf8e9dfc62d037c45c7b4e4d6ee3859dd82482",
       "courses": 73,
+      "blocks": 73,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:55.568789+00:00"
+      "fetched_at": "2026-11-22T08:08:11.726441+00:00"
     },
     {
       "level": "undergraduate",
@@ -3532,8 +3854,9 @@
       "bytes": 249187,
       "sha256": "fb2d83d5342d9a36952849327d5bb13783a1e04933e3c74630f1f4997f94458f",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:55.182440+00:00"
+      "fetched_at": "2026-11-22T08:08:12.229777+00:00"
     },
     {
       "level": "undergraduate",
@@ -3543,8 +3866,9 @@
       "bytes": 245433,
       "sha256": "5fda105c252dd823cbcbd46d1184f644952bbaa566e8fe51e7a1efbff22ef253",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:55.266286+00:00"
+      "fetched_at": "2026-11-22T08:08:12.229859+00:00"
     },
     {
       "level": "undergraduate",
@@ -3554,8 +3878,9 @@
       "bytes": 270924,
       "sha256": "6fbabe63d4eeda9baddf16a79e1dfe4bcca53f7203fa077873d8ee27cfc0a792",
       "courses": 34,
+      "blocks": 34,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:55.496585+00:00"
+      "fetched_at": "2026-11-22T08:08:12.476562+00:00"
     },
     {
       "level": "undergraduate",
@@ -3565,8 +3890,9 @@
       "bytes": 245090,
       "sha256": "d94ad3db0ac554aa93d8afdfe207e810bed91bcf92f073cefbd54bbba7075ac4",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.011303+00:00"
+      "fetched_at": "2026-11-22T08:08:12.735597+00:00"
     },
     {
       "level": "undergraduate",
@@ -3576,8 +3902,9 @@
       "bytes": 268919,
       "sha256": "364bac52fb4a1f37c7b6956adaf49ba4d9e04fa5f66f340379a44f1d33548841",
       "courses": 39,
+      "blocks": 39,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:55.932823+00:00"
+      "fetched_at": "2026-11-22T08:08:12.829270+00:00"
     },
     {
       "level": "undergraduate",
@@ -3587,8 +3914,9 @@
       "bytes": 249381,
       "sha256": "55e8ac133f0a8ea70c5f736759749cc1412da6602077ae0f3174f70831ca3f82",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.011438+00:00"
+      "fetched_at": "2026-11-22T08:08:13.040470+00:00"
     },
     {
       "level": "undergraduate",
@@ -3598,8 +3926,9 @@
       "bytes": 271638,
       "sha256": "8f22fbbfde63595e4d9b6701cc35b6cfad7cbfcd21a57f2c9b08fa6451536548",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.185631+00:00"
+      "fetched_at": "2026-11-22T08:08:13.154787+00:00"
     },
     {
       "level": "undergraduate",
@@ -3609,8 +3938,9 @@
       "bytes": 246889,
       "sha256": "979632b1ffd9630178ad2465ba48c963e02559b16071f67273e5d6e074dc6d53",
       "courses": 6,
+      "blocks": 6,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.401286+00:00"
+      "fetched_at": "2026-11-22T08:08:13.392826+00:00"
     },
     {
       "level": "undergraduate",
@@ -3620,8 +3950,9 @@
       "bytes": 281624,
       "sha256": "572662f36feb1fdd0c2c38e533b4df3385867ae5865cabca714b5f557be9eae5",
       "courses": 43,
+      "blocks": 43,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.471191+00:00"
+      "fetched_at": "2026-11-22T08:08:13.713153+00:00"
     },
     {
       "level": "undergraduate",
@@ -3631,8 +3962,9 @@
       "bytes": 251776,
       "sha256": "d52463b20eefa3a65f006277d0d49ded891127111aec2bdf2d2ea6b8e27fad66",
       "courses": 13,
+      "blocks": 13,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.697037+00:00"
+      "fetched_at": "2026-11-22T08:08:13.727298+00:00"
     },
     {
       "level": "undergraduate",
@@ -3642,8 +3974,9 @@
       "bytes": 268828,
       "sha256": "e08a093e85594077bc09d6a1704444f3817589b1cb6a30572702ab1dbd8aa4ab",
       "courses": 34,
+      "blocks": 34,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.620856+00:00"
+      "fetched_at": "2026-11-22T08:08:14.102884+00:00"
     },
     {
       "level": "undergraduate",
@@ -3653,8 +3986,9 @@
       "bytes": 284672,
       "sha256": "a386e1b91a0a3a360c0fce257b7854bec7b58f908709f2c8fd2b6f121f16f737",
       "courses": 68,
+      "blocks": 68,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.842245+00:00"
+      "fetched_at": "2026-11-22T08:08:14.103635+00:00"
     },
     {
       "level": "undergraduate",
@@ -3664,8 +3998,9 @@
       "bytes": 248620,
       "sha256": "ce96dc05b1780cb03b78b3f080ee600bfd1611397bc1fd867315f44ee4c9b638",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.923524+00:00"
+      "fetched_at": "2026-11-22T08:08:14.596121+00:00"
     },
     {
       "level": "undergraduate",
@@ -3675,8 +4010,9 @@
       "bytes": 253758,
       "sha256": "656c0121a61dd5052847a062b5e2b3a19f406d5384b14571bee1c9dd94271ca0",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:56.991221+00:00"
+      "fetched_at": "2026-11-22T08:08:14.469010+00:00"
     },
     {
       "level": "undergraduate",
@@ -3686,8 +4022,9 @@
       "bytes": 250759,
       "sha256": "9a9fb00cd9d5a821777f204007a579f14cdaf072aae5e46c841a4168f5d4bdc0",
       "courses": 8,
+      "blocks": 8,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.095077+00:00"
+      "fetched_at": "2026-11-22T08:08:14.815953+00:00"
     },
     {
       "level": "undergraduate",
@@ -3697,8 +4034,9 @@
       "bytes": 270370,
       "sha256": "9ea20bc6494e31c19931731a96277b9011e0d3e8beff3846641a72c16c29a32c",
       "courses": 34,
+      "blocks": 34,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.359964+00:00"
+      "fetched_at": "2026-11-22T08:08:14.816052+00:00"
     },
     {
       "level": "undergraduate",
@@ -3708,8 +4046,9 @@
       "bytes": 282427,
       "sha256": "4191c456b45416425d8a53041be299b7204f84398721409b9b50f29c2db61c41",
       "courses": 44,
+      "blocks": 44,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.286002+00:00"
+      "fetched_at": "2026-11-22T08:08:15.162995+00:00"
     },
     {
       "level": "undergraduate",
@@ -3719,8 +4058,9 @@
       "bytes": 274866,
       "sha256": "db4e8b99efc283b9fdc4aef56fb19dbfa92803c0a4226ca04c1bde55ac8895ab",
       "courses": 40,
+      "blocks": 40,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.435556+00:00"
+      "fetched_at": "2026-11-22T08:08:15.302242+00:00"
     },
     {
       "level": "undergraduate",
@@ -3730,8 +4070,9 @@
       "bytes": 250819,
       "sha256": "34f21f625826dee9b5103feb0bcfa97ec5c56b11f9182b191aa893f3e217a632",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.548315+00:00"
+      "fetched_at": "2026-11-22T08:08:15.586204+00:00"
     },
     {
       "level": "undergraduate",
@@ -3741,8 +4082,9 @@
       "bytes": 269867,
       "sha256": "886ddc3e914eed9105ae49fb855e8b2fb2bfacf809650892453b87d91eaf4324",
       "courses": 34,
+      "blocks": 34,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.792133+00:00"
+      "fetched_at": "2026-11-22T08:08:15.586308+00:00"
     },
     {
       "level": "undergraduate",
@@ -3752,8 +4094,9 @@
       "bytes": 293828,
       "sha256": "8d57617d5432e3ebeba4a98ea0d5c9bf2912722e8d11aea93e61dabd84e2017d",
       "courses": 31,
+      "blocks": 31,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.715078+00:00"
+      "fetched_at": "2026-11-22T08:08:15.915285+00:00"
     },
     {
       "level": "undergraduate",
@@ -3763,8 +4106,9 @@
       "bytes": 358031,
       "sha256": "7309d716562469fb8a4a9af479a6b56b8aa89549f3d1b23ddbc1b1535f69e830",
       "courses": 124,
+      "blocks": 124,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:57.793351+00:00"
+      "fetched_at": "2026-11-22T08:08:16.021874+00:00"
     },
     {
       "level": "undergraduate",
@@ -3774,8 +4118,9 @@
       "bytes": 264262,
       "sha256": "53f17616d3968513f0be7b9f5ed1cde180375cc55a4feeca9044d27379520511",
       "courses": 38,
+      "blocks": 38,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.102228+00:00"
+      "fetched_at": "2026-11-22T08:08:16.351399+00:00"
     },
     {
       "level": "undergraduate",
@@ -3785,8 +4130,9 @@
       "bytes": 278637,
       "sha256": "d90a365844929182937976d1898134d23f92118f171025aebbf3642a7dced36e",
       "courses": 40,
+      "blocks": 40,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.184797+00:00"
+      "fetched_at": "2026-11-22T08:08:16.413014+00:00"
     },
     {
       "level": "undergraduate",
@@ -3796,8 +4142,9 @@
       "bytes": 278730,
       "sha256": "d1bd6db2a6c98234f019e7015dd6dc1d1c3cf23a1131fc78ab3a0554dbcdd2ad",
       "courses": 54,
+      "blocks": 54,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.184915+00:00"
+      "fetched_at": "2026-11-22T08:08:16.676898+00:00"
     },
     {
       "level": "undergraduate",
@@ -3807,8 +4154,9 @@
       "bytes": 280603,
       "sha256": "67cdc6f72e9fa0a7d69c7de770c5f79470a0d2494491c626feae9d951449601c",
       "courses": 53,
+      "blocks": 53,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.374925+00:00"
+      "fetched_at": "2026-11-22T08:08:17.056842+00:00"
     },
     {
       "level": "undergraduate",
@@ -3818,8 +4166,9 @@
       "bytes": 276903,
       "sha256": "2d39b267f59436d19a9b9929d7ca8dc944257bb415c798b9984b8ac490bb7305",
       "courses": 46,
+      "blocks": 46,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.584242+00:00"
+      "fetched_at": "2026-11-22T08:08:17.057763+00:00"
     },
     {
       "level": "undergraduate",
@@ -3829,8 +4178,9 @@
       "bytes": 247425,
       "sha256": "84ba953932ff2ae41271c144cc55ed8071b6a34200616209f3b0b6b890f4c1f2",
       "courses": 7,
+      "blocks": 7,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.662861+00:00"
+      "fetched_at": "2026-11-22T08:08:17.508560+00:00"
     },
     {
       "level": "undergraduate",
@@ -3840,8 +4190,9 @@
       "bytes": 286050,
       "sha256": "17b55ea952c2fb9311697b29e1641cf8f2cf4be27ea532f58ebdcb13adb0505e",
       "courses": 66,
+      "blocks": 66,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.659374+00:00"
+      "fetched_at": "2026-11-22T08:08:17.509090+00:00"
     },
     {
       "level": "undergraduate",
@@ -3851,8 +4202,9 @@
       "bytes": 245029,
       "sha256": "e61358ab2cec06e31715a536b2a56efa0bd6956f4ce9ea44fa0c36c8d09de1e0",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:58.847589+00:00"
+      "fetched_at": "2026-11-22T08:08:17.923590+00:00"
     },
     {
       "level": "undergraduate",
@@ -3862,8 +4214,9 @@
       "bytes": 259305,
       "sha256": "c7fe042e2d5eb02decf9f8fd5c6526be9190e51658462217d5957e9232e0ceb0",
       "courses": 27,
+      "blocks": 27,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.052159+00:00"
+      "fetched_at": "2026-11-22T08:08:18.061294+00:00"
     },
     {
       "level": "undergraduate",
@@ -3873,8 +4226,9 @@
       "bytes": 266760,
       "sha256": "e4f78ab135009f6c5c58adba8f22ce5e00108f96e8aeaae2509c2319b89a0c40",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.123003+00:00"
+      "fetched_at": "2026-11-22T08:08:18.107536+00:00"
     },
     {
       "level": "undergraduate",
@@ -3884,8 +4238,9 @@
       "bytes": 256883,
       "sha256": "2b5324d730c55e29f9d525212eeaf9f9300964bb63ec41bcef1bf6652abf0b68",
       "courses": 18,
+      "blocks": 18,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.123129+00:00"
+      "fetched_at": "2026-11-22T08:08:18.429358+00:00"
     },
     {
       "level": "undergraduate",
@@ -3895,8 +4250,9 @@
       "bytes": 252602,
       "sha256": "d57abe43c0d9ca4a4a9454ce67ca0cfadce0904250fbd6ec58e30c7c9d14012c",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.292358+00:00"
+      "fetched_at": "2026-11-22T08:08:18.429498+00:00"
     },
     {
       "level": "undergraduate",
@@ -3906,8 +4262,9 @@
       "bytes": 281775,
       "sha256": "b852e672eded4278f3067b904d7db3968549f5b4328f534b9050c63deeadf6e0",
       "courses": 41,
+      "blocks": 41,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.422374+00:00"
+      "fetched_at": "2026-11-22T08:08:18.819368+00:00"
     },
     {
       "level": "undergraduate",
@@ -3917,8 +4274,9 @@
       "bytes": 245375,
       "sha256": "d866d37c011c948b60be7afa9392bbb08ab92635c3b916ac73acf9b49be7fbed",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.499442+00:00"
+      "fetched_at": "2026-11-22T08:08:18.818841+00:00"
     },
     {
       "level": "undergraduate",
@@ -3928,8 +4286,9 @@
       "bytes": 255919,
       "sha256": "95a3a0212829da71c77220f185cd464e19f3b77d537df74ab7dd86d2cc1aad14",
       "courses": 21,
+      "blocks": 21,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.566932+00:00"
+      "fetched_at": "2026-11-22T08:08:19.225503+00:00"
     },
     {
       "level": "undergraduate",
@@ -3939,8 +4298,9 @@
       "bytes": 286648,
       "sha256": "d4faa061684c1c033ae1c8a06dd6e9517656e22cfdbe235db40cdf825242b0a5",
       "courses": 60,
+      "blocks": 60,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.670931+00:00"
+      "fetched_at": "2026-11-22T08:08:19.225346+00:00"
     },
     {
       "level": "undergraduate",
@@ -3950,8 +4310,9 @@
       "bytes": 261217,
       "sha256": "1329de73b4047804881a1901eebda73e526b59102000b7369c0bada2cf7e1ef0",
       "courses": 24,
+      "blocks": 24,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.900287+00:00"
+      "fetched_at": "2026-11-22T08:08:19.621901+00:00"
     },
     {
       "level": "undergraduate",
@@ -3961,8 +4322,9 @@
       "bytes": 271830,
       "sha256": "4a1807d73eb7a6bcc21013fe1f334b77242fce6fcd765393f2f1ce87f243c895",
       "courses": 43,
+      "blocks": 43,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.827356+00:00"
+      "fetched_at": "2026-11-22T08:08:19.622056+00:00"
     },
     {
       "level": "undergraduate",
@@ -3972,8 +4334,9 @@
       "bytes": 248281,
       "sha256": "8e1c7df2c8db448b4a1e9147285ef25238f251bb7d8221190dad576d0aba8f77",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:51:59.900379+00:00"
+      "fetched_at": "2026-11-22T08:08:20.028299+00:00"
     },
     {
       "level": "undergraduate",
@@ -3983,8 +4346,9 @@
       "bytes": 251996,
       "sha256": "a810405ce3876225781772dbf1ba736fdd9526605475d73e6fdbb9dc4bf7ae5d",
       "courses": 12,
+      "blocks": 12,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.081501+00:00"
+      "fetched_at": "2026-11-22T08:08:20.028430+00:00"
     },
     {
       "level": "undergraduate",
@@ -3994,8 +4358,9 @@
       "bytes": 294761,
       "sha256": "7562c44f9dc7b71ebe8cb22f1f753ec2bdb7a58c29b82ebb4d5f41cf10851c72",
       "courses": 58,
+      "blocks": 58,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.350492+00:00"
+      "fetched_at": "2026-11-22T08:08:20.418025+00:00"
     },
     {
       "level": "undergraduate",
@@ -4005,8 +4370,9 @@
       "bytes": 251689,
       "sha256": "dfc39e5dc7122e479349557edbadb607f89ca8a338a77695da918945b634714d",
       "courses": 14,
+      "blocks": 14,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.462921+00:00"
+      "fetched_at": "2026-11-22T08:08:20.418133+00:00"
     },
     {
       "level": "undergraduate",
@@ -4016,8 +4382,9 @@
       "bytes": 280597,
       "sha256": "7d9f3e1f8553dcb003b8940160560248402a498932c87698ffe7240643805ab5",
       "courses": 45,
+      "blocks": 45,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.303856+00:00"
+      "fetched_at": "2026-11-22T08:08:20.824355+00:00"
     },
     {
       "level": "undergraduate",
@@ -4027,8 +4394,9 @@
       "bytes": 256848,
       "sha256": "47f56bad970b80ec5979a577181db12add13d17a39d701420b0d6c618e8f0959",
       "courses": 17,
+      "blocks": 17,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.567708+00:00"
+      "fetched_at": "2026-11-22T08:08:20.824235+00:00"
     },
     {
       "level": "undergraduate",
@@ -4038,8 +4406,9 @@
       "bytes": 255464,
       "sha256": "dcefb76546f1199b4904d59363164ef9ecdae8264f2967eb9374d94e8f9b254c",
       "courses": 10,
+      "blocks": 10,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.776609+00:00"
+      "fetched_at": "2026-11-22T08:08:21.234137+00:00"
     },
     {
       "level": "undergraduate",
@@ -4049,8 +4418,9 @@
       "bytes": 278461,
       "sha256": "ba0608074b1f8775b3f41dfb5c4fa11295f5266f2fe9f5f116506acdf3935b6e",
       "courses": 42,
+      "blocks": 42,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.854700+00:00"
+      "fetched_at": "2026-11-22T08:08:21.233975+00:00"
     },
     {
       "level": "undergraduate",
@@ -4060,8 +4430,9 @@
       "bytes": 275099,
       "sha256": "9750647d42df1ad16546ff949504d30fc4a3420ad76c7e3d5e0c32ae9359521c",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:00.854842+00:00"
+      "fetched_at": "2026-11-22T08:08:21.797049+00:00"
     },
     {
       "level": "undergraduate",
@@ -4071,8 +4442,9 @@
       "bytes": 246245,
       "sha256": "12e42db86960a7770e8c4a8e50716b7134850299ccf4685d2b522daccd8d7c3f",
       "courses": 5,
+      "blocks": 5,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.153979+00:00"
+      "fetched_at": "2026-11-22T08:08:21.604975+00:00"
     },
     {
       "level": "undergraduate",
@@ -4082,8 +4454,9 @@
       "bytes": 244247,
       "sha256": "5194f6a0a20cc44f6e65e87f8a1a4ced0a5f730c91fc61f7ca69338d1a33d94b",
       "courses": 1,
+      "blocks": 1,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.154068+00:00"
+      "fetched_at": "2026-11-22T08:08:21.929408+00:00"
     },
     {
       "level": "undergraduate",
@@ -4093,8 +4466,9 @@
       "bytes": 252323,
       "sha256": "911aedfa083650e2f855aeaeb88d8661c0a5022b4b0c098be141bee53843e71b",
       "courses": 11,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.285408+00:00"
+      "fetched_at": "2026-11-22T08:08:22.085899+00:00"
     },
     {
       "level": "undergraduate",
@@ -4104,8 +4478,9 @@
       "bytes": 263222,
       "sha256": "751d201b6b2bc70b111ec363ba5fdcac1f425b47e91c5ced76e9a5b91421794f",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.390529+00:00"
+      "fetched_at": "2026-11-22T08:08:22.331778+00:00"
     },
     {
       "level": "undergraduate",
@@ -4115,8 +4490,9 @@
       "bytes": 248950,
       "sha256": "b36a1db80352ac0a85baee45d03eab8e892345794d09d5cb0c7ad4ab21bc0973",
       "courses": 10,
+      "blocks": 11,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.583639+00:00"
+      "fetched_at": "2026-11-22T08:08:22.331884+00:00"
     },
     {
       "level": "undergraduate",
@@ -4126,8 +4502,9 @@
       "bytes": 266501,
       "sha256": "20b5a2f627ac945e7fcc9fde96139121f1f9f6c7f10251ef8cbf22de89d56cb7",
       "courses": 36,
+      "blocks": 36,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.583790+00:00"
+      "fetched_at": "2026-11-22T08:08:22.752816+00:00"
     },
     {
       "level": "undergraduate",
@@ -4137,8 +4514,9 @@
       "bytes": 266110,
       "sha256": "fb55aaab8ddd5d33191e8fe26304fa1db25baa1228569df0b27df359149c5fbd",
       "courses": 29,
+      "blocks": 29,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.724423+00:00"
+      "fetched_at": "2026-11-22T08:08:22.752975+00:00"
     },
     {
       "level": "undergraduate",
@@ -4148,8 +4526,9 @@
       "bytes": 297358,
       "sha256": "604f2f481894a1c62eab5de8b5b7a46763829f806ad26ccde75d781c716e7404",
       "courses": 70,
+      "blocks": 70,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:01.839367+00:00"
+      "fetched_at": "2026-11-22T08:08:23.143149+00:00"
     },
     {
       "level": "undergraduate",
@@ -4159,8 +4538,9 @@
       "bytes": 245031,
       "sha256": "f71666ca45f3225c455753ee9d7fe37538d6c91c7916b339e3ad9da78afbd5c1",
       "courses": 3,
+      "blocks": 3,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.144218+00:00"
+      "fetched_at": "2026-11-22T08:08:23.142297+00:00"
     },
     {
       "level": "undergraduate",
@@ -4170,8 +4550,9 @@
       "bytes": 244538,
       "sha256": "3eeca2c5b1177629ab467e3aa82fb2ab3616c9b0fc90806fbbb0c3f68571b29c",
       "courses": 2,
+      "blocks": 2,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.077493+00:00"
+      "fetched_at": "2026-11-22T08:08:23.569676+00:00"
     },
     {
       "level": "undergraduate",
@@ -4181,8 +4562,9 @@
       "bytes": 260046,
       "sha256": "71d3ec3fc7fa8183965d009c310de5b3f1d01ae27bb5fe10bf4963e4ee11c540",
       "courses": 20,
+      "blocks": 20,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.144132+00:00"
+      "fetched_at": "2026-11-22T08:08:23.570183+00:00"
     },
     {
       "level": "undergraduate",
@@ -4192,8 +4574,9 @@
       "bytes": 266107,
       "sha256": "fa57724e0b1d50b9e855599c002d9bfcee2014cd5c5b6e8885b77c4334a71ffb",
       "courses": 32,
+      "blocks": 32,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.319791+00:00"
+      "fetched_at": "2026-11-22T08:08:23.967914+00:00"
     },
     {
       "level": "undergraduate",
@@ -4203,8 +4586,9 @@
       "bytes": 243654,
       "sha256": "8079919424ca62dfee0cde233bb4114853c6c1ee147eaca3a51015fcad382477",
       "courses": 0,
+      "blocks": 0,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.501755+00:00"
+      "fetched_at": "2026-11-22T08:08:23.967804+00:00"
     },
     {
       "level": "undergraduate",
@@ -4214,8 +4598,9 @@
       "bytes": 299109,
       "sha256": "af7fb6135e6d847b473d173683289f64f26f5dc66aec657d4420d7131fd070d6",
       "courses": 44,
+      "blocks": 44,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.564788+00:00"
+      "fetched_at": "2026-11-22T08:08:24.351499+00:00"
     },
     {
       "level": "undergraduate",
@@ -4225,8 +4610,9 @@
       "bytes": 245065,
       "sha256": "d7c157682fdb1a276ae8cf7255b1def92a768f23939138368d0b583510be04dd",
       "courses": 4,
+      "blocks": 4,
       "error": null,
-      "fetched_at": "2026-11-22T07:52:02.564663+00:00"
+      "fetched_at": "2026-11-22T08:08:24.351604+00:00"
     }
   ]
 }

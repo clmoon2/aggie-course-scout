@@ -2,39 +2,37 @@ qid,doc_id,code,title,grade,pooled_from
 k1,undergraduate:CLAS-121,CLAS 121,Beginning Latin I,0,tfidf|flat_bm25
 k1,undergraduate:GERM-121,GERM 121,Beginning German Abroad I,0,tfidf|flat_bm25
 k1,graduate:CSCE-603,CSCE 603,Database Systems and Applications,1,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k1,undergraduate:GERM-122,GERM 122,Beginning German Abroad II,0,tfidf|flat_bm25
 k1,undergraduate:CSCE-121,CSCE 121,Introduction to Program Design and Concepts,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k1,undergraduate:KINE-121,KINE 121,Physical and Motor Fitness Assessment,0,tfidf|flat_bm25
+k1,undergraduate:GERM-122,GERM 122,Beginning German Abroad II,0,tfidf|flat_bm25
 k1,graduate:CSCE-691,CSCE 691,Research,0,tfidf|flat_bm25|ablate_title_only
+k1,undergraduate:KINE-121,KINE 121,Physical and Motor Fitness Assessment,0,tfidf|flat_bm25
 k1,graduate:CSCE-612,CSCE 612,Applied Networks and Distributed Processing,1,tfidf|flat_bm25
-k1,undergraduate:MLSC-121,MLSC 121,Introduction to the United States Army I,0,tfidf|flat_bm25
-k1,graduate:CSCE-689,CSCE 689,Special Topics in,1,tfidf
-k1,graduate:CSCE-611,CSCE 611,Operating Systems,0,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k1,graduate:CSCE-611,CSCE 611,Operating Systems,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k1,undergraduate:CSCE-481,CSCE 481,Seminar,1,tfidf|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
+k1,undergraduate:MLSC-121,MLSC 121,Introduction to the United States Army I,0,flat_bm25
 k1,undergraduate:CSCE-221,CSCE 221,Data Structures and Algorithms,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k1,undergraduate:CSCE-421,CSCE 421,Machine Learning,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k1,graduate:CSCE-681,CSCE 681,Seminar,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 k1,graduate:CSCE-654,CSCE 654,Supercomputing,1,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k1,graduate:CSCE-631,CSCE 631,Intelligent Agents,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k1,graduate:CSCE-633,CSCE 633,Machine Learning,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k1,graduate:CSCE-645,CSCE 645,Geometric Modeling,0,bm25f|ablate_equal_weights|ablate_no_synonyms
-k1,undergraduate:CSCE-481,CSCE 481,Seminar,1,ablate_title_only|ablate_no_dept
 k1,undergraduate:CSCE-110,CSCE 110,Programming I,1,ablate_title_only
 k1,undergraduate:CSCE-291,CSCE 291,Research,1,ablate_title_only
 k1,undergraduate:CSCE-491,CSCE 491,Research,1,ablate_title_only
 k1,undergraduate:CSCE-181,CSCE 181,Introduction to Computing,1,ablate_title_only
 k1,undergraduate:CSCE-201,CSCE 201,Fundamentals of Cybersecurity,0,ablate_title_only
+k1,undergraduate:ISEN-230,ISEN 230,Informatics for Industrial Engineers,1,ablate_equal_weights
 k1,graduate:CSCE-662,CSCE 662,Distributed Processing Systems,0,ablate_equal_weights
 k2,undergraduate:CSCE-310,CSCE 310,Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k2,graduate:CSCE-603,CSCE 603,Database Systems and Applications,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k2,undergraduate:ITSV-316,ITSV 316,Database Systems Administration and Application,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k2,graduate:CSCE-608,CSCE 608,Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k2,undergraduate:ISTM-315,ISTM 315,Database Programming,1,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k2,graduate:ISTM-615,ISTM 615,Business Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
-k2,undergraduate:ISTM-615,ISTM 615,Business Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k2,graduate:ISTM-615,ISTM 615,Business Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k2,undergraduate:ISTM-615,ISTM 615,Business Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 k2,graduate:CSCE-662,CSCE 662,Distributed Processing Systems,1,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k2,graduate:CSCE-611,CSCE 611,Operating Systems,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 k2,undergraduate:LTPS-311,LTPS 311,Database Learning Management for Learning Technology and Performance Systems,1,tfidf|flat_bm25|ablate_no_dept
-k2,graduate:ISTM-622,ISTM 622,Advanced Data Management,1,tfidf
-k2,graduate:CSCE-611,CSCE 611,Operating Systems,0,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 k2,graduate:CSCE-670,CSCE 670,Information Storage and Retrieval,0,bm25f|ablate_equal_weights|ablate_no_synonyms
 k2,undergraduate:CSCE-410,CSCE 410,Operating Systems,0,ablate_title_only
 k2,undergraduate:CSCE-438,CSCE 438,Distributed Systems,0,ablate_title_only
@@ -42,65 +40,65 @@ k2,undergraduate:CSCE-462,CSCE 462,Microcomputer Systems,0,ablate_title_only
 k2,undergraduate:BUSN-208,BUSN 208,Business Application Development,1,ablate_equal_weights
 k2,undergraduate:ISEN-311,ISEN 311,Introduction to Data Analytics and Engineering,1,ablate_equal_weights
 k3,undergraduate:MATH-151,MATH 151,Engineering Mathematics I,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k3,undergraduate:MATH-171,MATH 171,Calculus I,1,tfidf|flat_bm25|bm25f|ablate_no_synonyms
-k3,graduate:MATH-629,MATH 629,History of Mathematics,0,tfidf|ablate_no_dept|ablate_equal_weights
+k3,undergraduate:MATH-171,MATH 171,Calculus I,1,tfidf|flat_bm25|bm25f|ablate_equal_weights|ablate_no_synonyms
+k3,graduate:MATH-629,MATH 629,History of Mathematics,0,tfidf|ablate_no_dept
+k3,undergraduate:MATH-147,MATH 147,Calculus I for Biological Sciences,1,tfidf|bm25f|ablate_no_synonyms
+k3,undergraduate:MATH-200,MATH 200,Horizons of Mathematics,0,tfidf|flat_bm25|ablate_no_dept
 k3,graduate:MATH-664,MATH 664,Seminar in Applied Mathematics,0,tfidf|flat_bm25
 k3,graduate:MATH-669,MATH 669,Seminar in Mathematical Biology,0,tfidf|flat_bm25
-k3,undergraduate:MATH-200,MATH 200,Horizons of Mathematics,0,tfidf|flat_bm25|bm25f|ablate_no_dept
-k3,undergraduate:MATH-147,MATH 147,Calculus I for Biological Sciences,1,tfidf|bm25f|ablate_no_synonyms
 k3,undergraduate:MATH-251,MATH 251,Engineering Mathematics III,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k3,graduate:MATH-696,MATH 696,Mathematical Communication and Technology,0,tfidf
+k3,undergraduate:MATH-307,MATH 307,Mathematical Methods for Material Scientists and Engineers,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k3,undergraduate:MATH-401,MATH 401,Advanced Engineering Mathematics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k3,undergraduate:MATH-152,MATH 152,Engineering Mathematics II,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k3,undergraduate:MATH-136,MATH 136,Mathematics for Teachers II,0,flat_bm25
-k3,undergraduate:MATH-135,MATH 135,Mathematics for Teachers I,0,flat_bm25|ablate_title_only
-k3,undergraduate:MATH-307,MATH 307,Mathematical Methods for Material Scientists and Engineers,0,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k3,undergraduate:MATH-396,MATH 396,Communications in Mathematics,0,flat_bm25
+k3,graduate:MATH-619,MATH 619,Applied Probability,0,bm25f|ablate_equal_weights|ablate_no_synonyms
 k3,undergraduate:MATH-205,MATH 205,Critical Reading and Writing in Mathematics,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k3,undergraduate:MATH-442,MATH 442,Mathematical Modeling,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k3,undergraduate:MATH-442,MATH 442,Mathematical Modeling,0,bm25f|ablate_no_dept|ablate_equal_weights
 k3,undergraduate:MATH-281,MATH 281,Seminar in Mathematics,0,ablate_title_only
+k3,undergraduate:MATH-135,MATH 135,Mathematics for Teachers I,0,ablate_title_only
 k3,undergraduate:MATH-167,MATH 167,Explorations in Mathematics,0,ablate_title_only
 k3,undergraduate:MATH-168,MATH 168,Finite Mathematics,0,ablate_title_only
 k3,undergraduate:MATH-170,MATH 170,Freshman Mathematics Laboratory,0,ablate_title_only|ablate_no_dept
 k3,undergraduate:CSCE-222,CSCE 222,Discrete Structures for Computing,0,ablate_equal_weights
-k3,graduate:MATH-619,MATH 619,Applied Probability,0,ablate_equal_weights
 k3,undergraduate:MATH-142,MATH 142,Business Calculus,1,ablate_no_synonyms
 k4,graduate:CSCE-611,CSCE 611,Operating Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k4,undergraduate:CSCE-410,CSCE 410,Operating Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k4,graduate:AERO-651,AERO 651,Human Spaceflight Operations,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k4,undergraduate:AERO-451,AERO 451,Human Spaceflight Operations,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k4,graduate:SCMT-661,SCMT 661,Operations Strategy,1,tfidf|flat_bm25|ablate_equal_weights
-k4,graduate:MEID-834,MEID 834,Health Systems Science - Appreciation of Hospital Operations,0,tfidf|flat_bm25|ablate_title_only
-k4,graduate:MSCI-622,MSCI 622,Aerospace Medical Operations,0,tfidf
 k4,graduate:ECEN-716,ECEN 716,Smart Power Distribution Systems Analysis and Operation,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
-k4,graduate:CVEN-618,CVEN 618,Traffic Engineering: Operations,0,tfidf
 k4,graduate:AAMD-606,AAMD 606,Military and Special Operations,0,tfidf
+k4,graduate:MSCI-622,MSCI 622,Aerospace Medical Operations,0,tfidf
+k4,graduate:MEID-834,MEID 834,Health Systems Science - Appreciation of Hospital Operations,0,tfidf|flat_bm25|ablate_title_only
+k4,graduate:CVEN-618,CVEN 618,Traffic Engineering: Operations,0,tfidf
 k4,graduate:ECEN-715,ECEN 715,Physical and Economical Operations of Sustainable Energy Systems,0,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k4,undergraduate:ECEN-415,ECEN 415,Physical and Economical Operations of Sustainable Energy Systems,0,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k4,graduate:ACCT-648,ACCT 648,Accounting Information Systems,0,flat_bm25|ablate_equal_weights
-k4,undergraduate:ECEN-460,ECEN 460,Power System Operation and Control,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
-k4,undergraduate:ISEN-340,ISEN 340,Operations Research II,0,bm25f|ablate_no_synonyms
 k4,graduate:ISEN-630,ISEN 630,Human Operator in Complex Systems,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
+k4,undergraduate:ISEN-340,ISEN 340,Operations Research II,0,bm25f|ablate_no_synonyms
+k4,undergraduate:ECEN-460,ECEN 460,Power System Operation and Control,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 k4,undergraduate:MTDE-450,MTDE 450,Flow Assurance Operability of Subsea Systems,0,ablate_title_only
 k4,graduate:SSEN-650,SSEN 650,Flow Assurance and Operability of Subsea Systems,0,ablate_title_only
 k4,undergraduate:SCMT-364,SCMT 364,Operations Management,0,ablate_no_dept
 k4,undergraduate:ITSV-303,ITSV 303,Unix System Administration Practices,1,ablate_equal_weights
 k4,undergraduate:IDIS-344,IDIS 344,Distributor Information and Control Systems,0,ablate_equal_weights
-k5,undergraduate:GEOG-392,GEOG 392,GIS Programming,1,tfidf
 k5,undergraduate:ECEN-209,ECEN 209,Introduction to Computer Programming and Algorithms,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k5,undergraduate:ALEC-372,ALEC 372,Designing and Delivering Effective Youth Programs,1,tfidf
+k5,undergraduate:GEOG-392,GEOG 392,GIS Programming,1,tfidf
 k5,undergraduate:PHYS-150,PHYS 150,Introduction for Programming for Physics,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k5,graduate:CSCE-706,CSCE 706,Structured Programming in C,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k5,undergraduate:ALEC-372,ALEC 372,Designing and Delivering Effective Youth Programs,1,tfidf
 k5,undergraduate:BMEN-207,BMEN 207,Computing for Biomedical Engineering,1,tfidf|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k5,undergraduate:VIST-173,VIST 173,Foundations of Visual Computing II,1,tfidf|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k5,graduate:CSCE-706,CSCE 706,Structured Programming in C,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k5,graduate:EDHP-638,EDHP 638,Accreditation and Program Evaluation,0,tfidf
-k5,graduate:ALEC-670,ALEC 670,Youth Development Programs and Services,1,tfidf|flat_bm25|ablate_equal_weights
+k5,graduate:ALEC-670,ALEC 670,Youth Development Programs and Services,1,tfidf|flat_bm25
 k5,graduate:RPTS-670,RPTS 670,Youth Development Programs and Services,1,tfidf|flat_bm25
+k5,undergraduate:CSCE-313,CSCE 313,Introduction to Computer Systems,1,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k5,undergraduate:CSCE-111,CSCE 111,Introduction to Computer Science Concepts and Programming,1,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 k5,undergraduate:ECEN-210,ECEN 210,Computer Programming and Algorithms,1,flat_bm25
-k5,undergraduate:CSCE-313,CSCE 313,Introduction to Computer Systems,1,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k5,graduate:VIZA-701,VIZA 701,Introduction to Research in Visual Computing and Interactive Media,0,flat_bm25
-k5,graduate:VIZA-669,VIZA 669,Introduction to Deep Learning for Visual Computing and Interactive Media,1,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k5,undergraduate:AGEC-105,AGEC 105,Introduction to Agricultural Economics,0,flat_bm25
 k5,undergraduate:CSCE-121,CSCE 121,Introduction to Program Design and Concepts,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
+k5,graduate:VIZA-669,VIZA 669,Introduction to Deep Learning for Visual Computing and Interactive Media,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k5,graduate:HIST-630,HIST 630,Programming for Historians,1,bm25f|ablate_no_dept|ablate_no_synonyms
 k5,graduate:CSCE-708,CSCE 708,Introduction to Computer Science Concepts and Programming,1,ablate_title_only
 k5,undergraduate:CSCE-110,CSCE 110,Programming I,2,ablate_title_only
@@ -110,16 +108,17 @@ k5,undergraduate:CSCE-314,CSCE 314,Programming Languages,1,ablate_title_only
 k5,undergraduate:CSCE-315,CSCE 315,Programming Studio,1,ablate_title_only
 k5,undergraduate:VIST-172,VIST 172,Foundations of Visual Computing,1,ablate_equal_weights
 k5,undergraduate:ESET-269,ESET 269,Embedded Systems Development in C,1,ablate_equal_weights
+k5,undergraduate:PHYS-102,PHYS 102,Physics Orientation,0,ablate_equal_weights
 k6,undergraduate:CHEM-222,CHEM 222,Elements of Organic and Biological Chemistry,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k6,graduate:CHEM-646,CHEM 646,Physical Organic Chemistry,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k6,graduate:ATMO-606,ATMO 606,Atmospheric Chemistry I,1,tfidf
 k6,undergraduate:CHEM-446,CHEM 446,Organic Chemistry III,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k6,graduate:CHEM-629,CHEM 629,Main Group Chemistry,1,tfidf
+k6,graduate:ATMO-606,ATMO 606,Atmospheric Chemistry I,1,tfidf
 k6,undergraduate:CHEM-242,CHEM 242,Elementary Organic Chemistry Laboratory,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k6,undergraduate:CHEM-257,CHEM 257,Organic Chemistry I - Structure and Function,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k6,undergraduate:CHEM-237,CHEM 237,Organic Chemistry Laboratory,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k6,graduate:CHEM-633,CHEM 633,Principles of Inorganic Chemistry,2,tfidf
+k6,graduate:CHEM-629,CHEM 629,Main Group Chemistry,1,tfidf
 k6,undergraduate:CHEM-362,CHEM 362,Descriptive Inorganic Chemistry,2,tfidf
+k6,undergraduate:CHEM-120,CHEM 120,Fundamentals of Chemistry II,1,tfidf
 k6,undergraduate:CHEM-231,CHEM 231,Techniques of Organic Chemistry,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k6,undergraduate:CHEM-227,CHEM 227,Organic Chemistry I,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k6,undergraduate:CHEM-228,CHEM 228,Organic Chemistry II,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
@@ -128,8 +127,8 @@ k7,graduate:ECON-629,ECON 629,Microeconomic Theory I,1,tfidf|flat_bm25|bm25f|abl
 k7,graduate:ECON-631,ECON 631,Microeconomic Theory III,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k7,graduate:ECON-649,ECON 649,Industrial Organization I,1,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k7,graduate:ECON-630,ECON 630,Microeconomic Theory II,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-k7,graduate:AGEC-662,AGEC 662,Applied Econometric Methods in Agriculture and Resources II,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k7,graduate:ECON-607,ECON 607,Foundations of Microeconomic Theory,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+k7,graduate:AGEC-662,AGEC 662,Applied Econometric Methods in Agriculture and Resources II,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k7,graduate:ECON-632,ECON 632,Microeconomic Theory IV,0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k7,undergraduate:PSAA-350,PSAA 350,Economics of Public Policy,1,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 k7,undergraduate:ECON-315,ECON 315,Sports Economics,1,tfidf|flat_bm25
@@ -142,14 +141,14 @@ k7,graduate:BIOL-627,BIOL 627,Principles of Neuroscience I,0,ablate_title_only
 k7,undergraduate:DCED-306,DCED 306,Choreographic Principles,0,ablate_title_only
 e1,graduate:CVEN-723,CVEN 723,Machine Intelligence and Applications in Civil Engineering,1,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e1,undergraduate:ECEN-250,ECEN 250,Machine Learning for Electrical Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e1,graduate:ENTC-663,ENTC 663,Machine Elements in Mechanical Design Applications II,0,tfidf
 e1,undergraduate:BUSN-460,BUSN 460,Machine Learning and Predictive Modeling for Business Applications,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e1,graduate:ENTC-663,ENTC 663,Machine Elements in Mechanical Design Applications II,0,tfidf
 e1,graduate:CSCE-633,CSCE 633,Machine Learning,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e1,graduate:ECEN-611,ECEN 611,General Theory of Electromechanical Motion Devices,0,tfidf
 e1,graduate:STAT-618,STAT 618,Statistical Aspect of Machine Learning II: Modern Techniques,2,tfidf|flat_bm25|ablate_equal_weights
+e1,graduate:ECEN-611,ECEN 611,General Theory of Electromechanical Motion Devices,0,tfidf
+e1,undergraduate:STAT-447,STAT 447,Machine Learning for Computational Biology,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e1,graduate:ANLY-656,ANLY 656,Machine Learning and Advanced Analytics Applications,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e1,graduate:TCMT-637,TCMT 637,Artificial Intelligence and Machine Learning for Technical Managers and Leaders,2,tfidf|flat_bm25|ablate_equal_weights
-e1,undergraduate:STAT-447,STAT 447,Machine Learning for Computational Biology,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e1,graduate:ANLY-626,ANLY 626,"Time Series, Machine Learning and Visualization",2,flat_bm25|ablate_equal_weights
 e1,graduate:PETE-687,PETE 687,Machine Learning for Petroleum Engineers Using Python,2,flat_bm25|ablate_equal_weights
 e1,undergraduate:CSCE-421,CSCE 421,Machine Learning,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
@@ -160,35 +159,33 @@ e1,graduate:ECEN-740,ECEN 740,Machine Learning Engineering,2,ablate_title_only
 e1,undergraduate:AERO-446,AERO 446,Machine Learning for Aerospace Engineers,2,ablate_title_only
 e1,undergraduate:ECEN-429,ECEN 429,Machine Learning for Signal Processing,2,ablate_title_only
 e1,undergraduate:MEEN-423,MEEN 423,Machine Learning for Mechanical Engineers,2,ablate_title_only
-e2,graduate:LAW-706,LAW 706,Securities Regulation,0,tfidf|flat_bm25|ablate_no_dept|ablate_equal_weights
+e2,graduate:LAW-706,LAW 706,Securities Regulation,0,tfidf|flat_bm25|ablate_no_dept
+e2,graduate:LAW-7492,LAW 7492,Securities Regulation,0,tfidf|flat_bm25|ablate_no_dept
 e2,graduate:INTA-744,INTA 744,European Security,2,tfidf|flat_bm25|ablate_title_only
 e2,graduate:INTA-650,INTA 650,National Security Law,2,tfidf|flat_bm25|ablate_no_dept
 e2,undergraduate:CSCE-465,CSCE 465,Computer and Network Security,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e2,graduate:INTA-659,INTA 659,Transnational Security Issues,2,tfidf|flat_bm25
 e2,undergraduate:ECEN-426,ECEN 426,Security of Embedded Systems,2,tfidf|flat_bm25|ablate_no_dept
+e2,graduate:INTA-659,INTA 659,Transnational Security Issues,2,tfidf|flat_bm25
 e2,graduate:ISTM-655,ISTM 655,Security Management and Compliance,2,tfidf
 e2,undergraduate:ISTM-655,ISTM 655,Security Management and Compliance,2,tfidf
-e2,graduate:NUEN-652,NUEN 652,Nuclear Security System Design,2,tfidf
 e2,graduate:PSAA-654,PSAA 654,"U.S. Border Security: Policies, Strategies and Issues",2,tfidf|flat_bm25
-e2,graduate:INTA-651,INTA 651,National Security Policy,2,flat_bm25
 e2,undergraduate:SCMT-375,SCMT 375,Supply Chain Security,2,flat_bm25
-e2,graduate:SCMT-675,SCMT 675,Supply Chain Security,2,flat_bm25
-e2,undergraduate:CSCE-413,CSCE 413,Software Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
-e2,undergraduate:MARA-360,MARA 360,Maritime Cybersecurity Issues,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e2,graduate:INTA-651,INTA 651,National Security Policy,2,flat_bm25
+e2,graduate:CSCE-713,CSCE 713,Software Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
 e2,graduate:CSCE-715,CSCE 715,Secure Authentication Systems,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e2,graduate:CSCE-765,CSCE 765,Network Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e2,undergraduate:CSCE-413,CSCE 413,Software Security,2,bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e2,graduate:CSCE-665,CSCE 665,Advanced Networking and Security,2,bm25f|ablate_equal_weights|ablate_no_synonyms
+e2,undergraduate:MARA-360,MARA 360,Maritime Cybersecurity Issues,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e2,undergraduate:CSCE-313,CSCE 313,Introduction to Computer Systems,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e2,undergraduate:CSCE-449,CSCE 449,Applied Cryptography,1,bm25f|ablate_equal_weights|ablate_no_synonyms
+e2,undergraduate:CSCE-449,CSCE 449,Applied Cryptography,1,bm25f|ablate_no_synonyms
 e2,undergraduate:CSCE-463,CSCE 463,Computer Networks,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e2,graduate:ACCT-644,ACCT 644,Control and Audit of Information Systems,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e2,undergraduate:CSCE-120,CSCE 120,Program Design and Concepts,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e2,undergraduate:CSCE-201,CSCE 201,Fundamentals of Cybersecurity,2,bm25f|ablate_no_synonyms
-e2,graduate:CSCE-713,CSCE 713,Software Security,2,ablate_title_only
-e2,graduate:CSCE-765,CSCE 765,Network Security,2,ablate_title_only
 e2,graduate:CYBR-630,CYBR 630,Hardware Security,2,ablate_title_only
 e2,graduate:ECEN-759,ECEN 759,Hardware Security,2,ablate_title_only
 e2,graduate:FINC-665,FINC 665,Derivative Securities,0,ablate_title_only
 e2,graduate:INTA-607,INTA 607,Eurasian Security,2,ablate_title_only
 e2,graduate:INTA-620,INTA 620,International Security,2,ablate_title_only
+e2,graduate:ACCT-644,ACCT 644,Control and Audit of Information Systems,1,ablate_no_dept|ablate_equal_weights
 e3,undergraduate:CSCE-310,CSCE 310,Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e3,undergraduate:ITSV-316,ITSV 316,Database Systems Administration and Application,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e3,graduate:CSCE-608,CSCE 608,Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
@@ -197,41 +194,41 @@ e3,graduate:ISTM-615,ISTM 615,Business Database Systems,2,tfidf|flat_bm25|bm25f|
 e3,undergraduate:ISTM-615,ISTM 615,Business Database Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e3,graduate:CSCE-603,CSCE 603,Database Systems and Applications,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e3,undergraduate:LTPS-311,LTPS 311,Database Learning Management for Learning Technology and Performance Systems,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
-e3,graduate:ISTM-622,ISTM 622,Advanced Data Management,1,tfidf
-e3,undergraduate:ISTM-622,ISTM 622,Advanced Data Management,1,tfidf|bm25f|ablate_equal_weights|ablate_no_synonyms
+e3,graduate:ISTM-622,ISTM 622,Advanced Data Management,1,tfidf|bm25f|ablate_equal_weights|ablate_no_synonyms
+e3,undergraduate:ISTM-622,ISTM 622,Advanced Data Management,1,tfidf|bm25f|ablate_no_synonyms
 e3,graduate:CSCE-662,CSCE 662,Distributed Processing Systems,1,flat_bm25|ablate_no_dept
 e3,undergraduate:GEOG-475,GEOG 475,Advanced Topics in GIS (Geographic Information Systems),1,flat_bm25
-e3,undergraduate:ISTM-705,ISTM 705,Information Management for Decision Making,1,bm25f|ablate_equal_weights|ablate_no_synonyms
 e3,graduate:STAT-624,STAT 624,Databases and Computational Tools Used in Big Data,2,ablate_title_only
 e3,graduate:AERO-666,AERO 666,Systems Analysis,0,ablate_title_only
-e3,undergraduate:ISTM-415,ISTM 415,Information Systems Capstone Project,1,ablate_no_dept|ablate_equal_weights
+e3,undergraduate:ISTM-415,ISTM 415,Information Systems Capstone Project,1,ablate_no_dept
+e3,graduate:ISTM-705,ISTM 705,Information Management for Decision Making,1,ablate_equal_weights
+e3,undergraduate:ISTM-705,ISTM 705,Information Management for Decision Making,1,ablate_equal_weights
 e4,undergraduate:ECEN-424,ECEN 424,Fundamentals of Networking,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e4,graduate:ECEN-602,ECEN 602,Computer Communication and Networking,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e4,undergraduate:ITSV-274,ITSV 274,Foundations of Networking,2,tfidf|ablate_title_only
 e4,undergraduate:CSCE-463,CSCE 463,Computer Networks,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e4,graduate:HBEH-658,HBEH 658,Advanced Social Network Analysis in Health,2,tfidf|flat_bm25
 e4,graduate:HLTH-658,HLTH 658,Advanced Social Network Analysis in Health,2,tfidf|flat_bm25
+e4,graduate:HBEH-658,HBEH 658,Advanced Social Network Analysis in Health,2,tfidf|flat_bm25
 e4,graduate:ISTM-610,ISTM 610,Network and Cloud Infrastructure,2,tfidf
 e4,undergraduate:ISTM-610,ISTM 610,Network and Cloud Infrastructure,2,tfidf
-e4,graduate:CSCE-665,CSCE 665,Advanced Networking and Security,2,tfidf|flat_bm25|ablate_title_only
-e4,graduate:CSCE-765,CSCE 765,Network Security,2,tfidf|ablate_title_only
+e4,graduate:CSCE-765,CSCE 765,Network Security,2,tfidf|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e4,graduate:CSCE-665,CSCE 665,Advanced Networking and Security,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
 e4,undergraduate:ECEN-423,ECEN 423,Computer and Wireless Networks,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e4,undergraduate:CSCE-465,CSCE 465,Computer and Network Security,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e4,graduate:CSCE-612,CSCE 612,Applied Networks and Distributed Processing,2,flat_bm25|bm25f|ablate_no_dept|ablate_no_synonyms
-e4,undergraduate:HLTH-240,HLTH 240,Computer Technology in Health and Kinesiology,1,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e4,graduate:CSCE-612,CSCE 612,Applied Networks and Distributed Processing,2,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e4,undergraduate:HLTH-240,HLTH 240,Computer Technology in Health and Kinesiology,1,flat_bm25|ablate_no_dept
 e4,undergraduate:CSCE-313,CSCE 313,Introduction to Computer Systems,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e4,undergraduate:CSCE-201,CSCE 201,Fundamentals of Cybersecurity,1,bm25f|ablate_no_synonyms
-e4,undergraduate:MMET-383,MMET 383,Manufacturing Information Systems,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e4,graduate:CSCE-636,CSCE 636,Deep Learning,1,bm25f|ablate_equal_weights|ablate_no_synonyms
 e4,graduate:ECEN-620,ECEN 620,Network Theory,2,ablate_title_only
-e4,graduate:ECEN-621,ECEN 621,Mobile Wireless Networks,2,ablate_title_only|ablate_equal_weights
+e4,graduate:ECEN-621,ECEN 621,Mobile Wireless Networks,2,ablate_title_only
+e4,undergraduate:MMET-383,MMET 383,Manufacturing Information Systems,1,ablate_no_dept
 e4,graduate:STAT-636,STAT 636,Multivariate Analysis and Statistical Learning for Network Data,2,ablate_no_dept
-e4,graduate:CSCE-636,CSCE 636,Deep Learning,1,ablate_equal_weights
 e5,graduate:CSCE-606,CSCE 606,Software Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:CSCE-429,CSCE 429,"Software Development, Globalization and Culture Abroad",0,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:CSCE-431,CSCE 431,Software Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:CSCE-413,CSCE 413,Software Security,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
-e5,undergraduate:MARE-112,MARE 112,Graphics for Engineering Technology,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,graduate:CSCE-713,CSCE 713,Software Security,1,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_equal_weights|ablate_no_synonyms
+e5,undergraduate:MARE-112,MARE 112,Graphics for Engineering Technology,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,graduate:GEOG-676,GEOG 676,GIS Programming,0,tfidf
 e5,undergraduate:CSCE-331,CSCE 331,Foundations of Software Engineering,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:ISTM-415,ISTM 415,Information Systems Capstone Project,0,tfidf
@@ -239,25 +236,25 @@ e5,graduate:ISTM-601,ISTM 601,Fundamentals of Business Programming,1,tfidf
 e5,graduate:CVEN-658,CVEN 658,Civil Engineering Applications of GIS,0,flat_bm25
 e5,undergraduate:MARE-111,MARE 111,Methods in Engineering Technology,0,flat_bm25
 e5,undergraduate:MEEN-442,MEEN 442,Computer Aided Engineering,0,flat_bm25|ablate_no_dept|ablate_equal_weights
-e5,graduate:CSCE-652,CSCE 652,Software Reverse Engineering,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 e5,undergraduate:CSCE-451,CSCE 451,Software Reverse Engineering,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
+e5,graduate:CSCE-652,CSCE 652,Software Reverse Engineering,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 e5,undergraduate:ESET-369,ESET 369,Embedded Systems Software,0,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e5,undergraduate:ESET-469,ESET 469,Embedded Real Time Software Development,0,ablate_title_only
 e5,undergraduate:CHEN-320,CHEN 320,Numerical Analysis for Chemical Engineers,0,ablate_no_dept|ablate_equal_weights
 e6,undergraduate:MXET-450,MXET 450,Artificial Intelligence for Mechatronics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e6,graduate:TCMT-637,TCMT 637,Artificial Intelligence and Machine Learning for Technical Managers and Leaders,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e6,undergraduate:PHIL-383,PHIL 383,Ethics of Artificial Intelligence,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e6,graduate:LDTC-649,LDTC 649,Teaching and Learning with Artificial Intelligence,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e6,graduate:MEID-837,MEID 837,Artificial Intelligence with Clinical Applications,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+e6,graduate:LDTC-649,LDTC 649,Teaching and Learning with Artificial Intelligence,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e6,graduate:INTA-714,INTA 714,Defense Intelligence,0,tfidf
 e6,undergraduate:ALEC-474,ALEC 474,Positive Youth Development in the Age of Artificial Intelligence,2,tfidf|flat_bm25
 e6,undergraduate:PVFA-409,PVFA 409,Artificial Intelligence in the Arts Capstone,2,tfidf|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-e6,graduate:CSCE-634,CSCE 634,Intelligent User Interfaces,1,tfidf
 e6,graduate:INTA-738,INTA 738,Geospatial Intelligence,0,tfidf
+e6,graduate:CSCE-634,CSCE 634,Intelligent User Interfaces,1,tfidf
 e6,undergraduate:MSTC-245,MSTC 245,Survey of Artificial Intelligence in Music,2,flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e6,graduate:ISTM-657,ISTM 657,Blockchain and Artificial Intelligence Business Transformation,2,flat_bm25
 e6,undergraduate:ISTM-657,ISTM 657,Blockchain and Artificial Intelligence Business Transformation,2,flat_bm25
-e6,graduate:POSC-635,POSC 635,Applied Artificial Intelligence in Livestock Systems,2,flat_bm25
+e6,undergraduate:PVFA-301,PVFA 301,"Artificial Intelligence, Ethics and Social Impact in the Arts",2,flat_bm25
 e6,undergraduate:CSCE-420,CSCE 420,Artificial Intelligence,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 e6,graduate:CSCE-625,CSCE 625,Artificial Intelligence,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 e6,undergraduate:DCED-307,DCED 307,Artificial Intelligence in Dance Composition,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
@@ -268,8 +265,8 @@ e6,graduate:BUAD-655,BUAD 655,Automating Business Story Telling Using Artificial
 e6,graduate:ENTC-644,ENTC 644,Embedded Intelligent System Design,0,ablate_equal_weights
 e7,undergraduate:MMET-105,MMET 105,Engineering Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,graduate:LAND-655,LAND 655,Landscape Architectural Graphic Communication,1,tfidf|flat_bm25
-e7,undergraduate:MMET-307,MMET 307,Computer Design Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,undergraduate:HORT-332,HORT 332,Horticulture Landscape Graphics,2,tfidf|flat_bm25
+e7,undergraduate:MMET-307,MMET 307,Computer Design Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 e7,undergraduate:ENGL-220,ENGL 220,Graphic Novel,0,tfidf|ablate_title_only
 e7,undergraduate:ARTS-303,ARTS 303,Graphic Design I,1,tfidf|flat_bm25|ablate_title_only
 e7,undergraduate:CSCE-441,CSCE 441,Computer Graphics,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
@@ -313,31 +310,32 @@ t2,undergraduate:ISTM-622,ISTM 622,Advanced Data Management,1,ablate_equal_weigh
 t2,graduate:ISTM-705,ISTM 705,Information Management for Decision Making,1,ablate_equal_weights
 t3,undergraduate:ISEN-440,ISEN 440,Systems Thinking,0,tfidf|flat_bm25
 t3,graduate:MPHY-614,MPHY 614,Medical Physiology II,0,tfidf
-t3,graduate:ISEN-640,ISEN 640,Systems Thinking and Analysis,0,tfidf|flat_bm25
 t3,graduate:BIOL-628,BIOL 628,Principles of Neuroscience II,0,tfidf
 t3,graduate:NRSC-602,NRSC 602,Principles of Neuroscience II,0,tfidf
 t3,graduate:CVEN-638,CVEN 638,Computer Integrated Construction Engineering Systems,0,tfidf
 t3,graduate:VIZA-626,VIZA 626,Generative Art and Design,0,tfidf
-t3,graduate:NUEN-608,NUEN 608,Fast Spectrum Systems and Applications,0,tfidf
-t3,graduate:ISTM-620,ISTM 620,Systems Analysis and Design,0,tfidf|flat_bm25
 t3,undergraduate:MXET-340,MXET 340,Advanced Embedded Systems for Mechatronics,1,tfidf|ablate_equal_weights
-t3,graduate:MEEN-655,MEEN 655,Design of Nonlinear Control Systems,0,flat_bm25
+t3,graduate:ISEN-640,ISEN 640,Systems Thinking and Analysis,0,tfidf|flat_bm25
+t3,graduate:NUEN-608,NUEN 608,Fast Spectrum Systems and Applications,0,tfidf
+t3,undergraduate:MARE-445,MARE 445,Marine Navigation Systems,0,tfidf
+t3,graduate:ISTM-620,ISTM 620,Systems Analysis and Design,0,flat_bm25
 t3,undergraduate:ISTM-620,ISTM 620,Systems Analysis and Design,0,flat_bm25
+t3,graduate:MEEN-655,MEEN 655,Design of Nonlinear Control Systems,0,flat_bm25
 t3,graduate:ENTC-644,ENTC 644,Embedded Intelligent System Design,0,flat_bm25
-t3,graduate:ECEN-667,ECEN 667,Power System Stability,0,flat_bm25
-t3,graduate:ECEN-666,ECEN 666,Power System Faults and Protective Relaying,0,flat_bm25
-t3,graduate:OCNG-604,OCNG 604,Ocean Observing Systems,0,flat_bm25
 t3,undergraduate:MATH-150,MATH 150,"Functions, Trigonometry and Linear Systems",0,flat_bm25
+t3,graduate:ECEN-667,ECEN 667,Power System Stability,0,flat_bm25
+t3,graduate:OCNG-604,OCNG 604,Ocean Observing Systems,0,flat_bm25
+t3,graduate:ENGY-626,ENGY 626,Safety in Energy Systems,0,flat_bm25
 t3,undergraduate:CSCE-410,CSCE 410,Operating Systems,2,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 t3,graduate:CSCE-611,CSCE 611,Operating Systems,2,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+t3,graduate:ISEN-630,ISEN 630,Human Operator in Complex Systems,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t3,undergraduate:ECEN-460,ECEN 460,Power System Operation and Control,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t3,graduate:ECEN-716,ECEN 716,Smart Power Distribution Systems Analysis and Operation,0,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-t3,graduate:ISEN-630,ISEN 630,Human Operator in Complex Systems,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t3,undergraduate:ECEN-415,ECEN 415,Physical and Economical Operations of Sustainable Energy Systems,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t3,graduate:ECEN-715,ECEN 715,Physical and Economical Operations of Sustainable Energy Systems,0,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
+t3,undergraduate:ISEN-340,ISEN 340,Operations Research II,0,bm25f|ablate_no_synonyms
 t3,undergraduate:ITSV-303,ITSV 303,Unix System Administration Practices,1,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 t3,undergraduate:IDIS-344,IDIS 344,Distributor Information and Control Systems,0,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-t3,undergraduate:ISEN-340,ISEN 340,Operations Research II,0,bm25f|ablate_no_synonyms
 t3,undergraduate:MTDE-450,MTDE 450,Flow Assurance Operability of Subsea Systems,0,ablate_title_only
 t3,graduate:SSEN-650,SSEN 650,Flow Assurance and Operability of Subsea Systems,0,ablate_title_only
 t3,graduate:MEID-834,MEID 834,Health Systems Science - Appreciation of Hospital Operations,0,ablate_title_only
@@ -346,15 +344,15 @@ t3,graduate:NUEN-614,NUEN 614,Probabilistic Risk Assessment Techniques in Nuclea
 t3,undergraduate:AERO-451,AERO 451,Human Spaceflight Operations,0,ablate_equal_weights
 t3,graduate:AERO-651,AERO 651,Human Spaceflight Operations,0,ablate_equal_weights
 t4,graduate:ECEN-743,ECEN 743,Reinforcement Learning,0,tfidf|flat_bm25
-t4,graduate:EHRD-630,EHRD 630,Adult Learning,0,tfidf|flat_bm25
 t4,graduate:CSCE-633,CSCE 633,Machine Learning,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 t4,undergraduate:PBSI-340,PBSI 340,Learning,0,tfidf
+t4,graduate:EHRD-630,EHRD 630,Adult Learning,0,tfidf|flat_bm25
 t4,graduate:EDCI-671,EDCI 671,How People Learn Science,0,tfidf|flat_bm25
 t4,graduate:EHRD-673,EHRD 673,Introduction to Distance Learning,0,tfidf|flat_bm25
 t4,graduate:CSCE-642,CSCE 642,Deep Reinforcement Learning,0,tfidf
 t4,graduate:NRSC-606,NRSC 606,Learning,0,tfidf
 t4,graduate:PBSI-606,PBSI 606,Learning,0,tfidf
-t4,graduate:PETE-687,PETE 687,Machine Learning for Petroleum Engineers Using Python,2,tfidf|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+t4,undergraduate:PBSI-606,PBSI 606,Learning,0,tfidf
 t4,graduate:EDAD-654,EDAD 654,Organizational Learning,0,flat_bm25
 t4,graduate:MEID-624,MEID 624,Service Learning,0,flat_bm25
 t4,graduate:EPSY-673,EPSY 673,Learning Theories,0,flat_bm25
@@ -365,6 +363,7 @@ t4,undergraduate:CSCE-421,CSCE 421,Machine Learning,2,bm25f|ablate_title_only|ab
 t4,undergraduate:ECEN-427,ECEN 427,Machine Learning,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t4,undergraduate:STAT-421,STAT 421,Machine Learning,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t4,undergraduate:BUSN-460,BUSN 460,Machine Learning and Predictive Modeling for Business Applications,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+t4,graduate:PETE-687,PETE 687,Machine Learning for Petroleum Engineers Using Python,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 t4,graduate:ECEN-744,ECEN 744,Scientific Machine Learning,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 t4,graduate:ANLY-656,ANLY 656,Machine Learning and Advanced Analytics Applications,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 t4,graduate:ECEN-740,ECEN 740,Machine Learning Engineering,2,ablate_title_only
@@ -457,22 +456,22 @@ s4,undergraduate:CSCE-451,CSCE 451,Software Reverse Engineering,1,ablate_title_o
 s4,graduate:CSCE-652,CSCE 652,Software Reverse Engineering,0,ablate_no_synonyms
 s4,undergraduate:ITSV-274,ITSV 274,Foundations of Networking,1,ablate_no_synonyms
 s5,graduate:LAW-706,LAW 706,Securities Regulation,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+s5,graduate:LAW-7492,LAW 7492,Securities Regulation,0,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 s5,graduate:INTA-744,INTA 744,European Security,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 s5,graduate:INTA-650,INTA 650,National Security Law,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-s5,graduate:INTA-659,INTA 659,Transnational Security Issues,2,tfidf|flat_bm25|ablate_equal_weights
 s5,undergraduate:ECEN-426,ECEN 426,Security of Embedded Systems,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+s5,graduate:INTA-659,INTA 659,Transnational Security Issues,2,tfidf|flat_bm25
 s5,graduate:ISTM-655,ISTM 655,Security Management and Compliance,2,tfidf
 s5,undergraduate:ISTM-655,ISTM 655,Security Management and Compliance,2,tfidf
-s5,graduate:NUEN-652,NUEN 652,Nuclear Security System Design,2,tfidf
 s5,graduate:PSAA-654,PSAA 654,"U.S. Border Security: Policies, Strategies and Issues",2,tfidf|flat_bm25|ablate_equal_weights
-s5,graduate:SCMT-675,SCMT 675,Supply Chain Security,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-s5,graduate:INTA-651,INTA 651,National Security Policy,2,flat_bm25
+s5,graduate:NUEN-652,NUEN 652,Nuclear Security System Design,2,tfidf
 s5,undergraduate:SCMT-375,SCMT 375,Supply Chain Security,2,flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+s5,graduate:INTA-651,INTA 651,National Security Policy,2,flat_bm25
 s5,graduate:INTA-661,INTA 661,North Atlantic Treaty Organization (NATO) - From Military Alliance to Collective Security,2,flat_bm25
 s5,undergraduate:CSCE-465,CSCE 465,Computer and Network Security,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
+s5,graduate:SCMT-675,SCMT 675,Supply Chain Security,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 s5,graduate:CSCE-713,CSCE 713,Software Security,2,bm25f|ablate_title_only|ablate_no_dept|ablate_no_synonyms
 s5,undergraduate:MART-401,MART 401,Maritime Security,2,bm25f|ablate_no_dept|ablate_no_synonyms
-s5,undergraduate:ESET-415,ESET 415,Advanced Network Systems and Security,2,bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 s5,undergraduate:CSCE-413,CSCE 413,Software Security,2,ablate_title_only
 s5,graduate:CSCE-765,CSCE 765,Network Security,2,ablate_title_only
 s5,graduate:CYBR-630,CYBR 630,Hardware Security,2,ablate_title_only
@@ -481,22 +480,23 @@ s5,graduate:FINC-665,FINC 665,Derivative Securities,0,ablate_title_only
 s5,graduate:INTA-607,INTA 607,Eurasian Security,2,ablate_title_only
 s5,graduate:INTA-620,INTA 620,International Security,2,ablate_title_only
 s5,graduate:ISTM-645,ISTM 645,IT Security Controls,2,ablate_title_only
+s5,undergraduate:ESET-415,ESET 415,Advanced Network Systems and Security,2,ablate_equal_weights
 s6,graduate:INTA-647,INTA 647,State Building and State Failure in the Developing World,0,tfidf|flat_bm25|ablate_no_synonyms
 s6,undergraduate:STAT-302,STAT 302,Statistical Methods,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 s6,undergraduate:STAT-303,STAT 303,Statistical Methods,2,tfidf|flat_bm25|bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
-s6,undergraduate:STAT-201,STAT 201,Elementary Statistical Inference,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights
+s6,undergraduate:STAT-201,STAT 201,Elementary Statistical Inference,2,tfidf|flat_bm25|bm25f|ablate_no_dept|ablate_equal_weights|ablate_no_synonyms
 s6,graduate:LAW-764,LAW 764,Introduction to the United States Legal System,0,tfidf|flat_bm25
 s6,graduate:INTA-707,INTA 707,The Politics of Modern Egypt,0,tfidf
+s6,undergraduate:POLS-207,POLS 207,State and Local Government,0,tfidf|flat_bm25
 s6,graduate:ECEN-671,ECEN 671,Solid State Devices,0,tfidf|flat_bm25
 s6,graduate:PSAA-617,PSAA 617,U.S. State and Local Government: Institutions and Policy,0,tfidf|flat_bm25
-s6,undergraduate:POLS-207,POLS 207,State and Local Government,0,tfidf|flat_bm25
 s6,graduate:MEEN-602,MEEN 602,Modeling and Analysis of Mechanical Systems,0,tfidf
 s6,undergraduate:HIST-374,HIST 374,The United States After World War II,0,flat_bm25
 s6,graduate:STAT-674,STAT 674,Time Series Analysis II,0,flat_bm25|ablate_no_synonyms
-s6,graduate:STAT-641,STAT 641,The Methods of Statistics I,2,bm25f|ablate_no_dept|ablate_equal_weights
 s6,undergraduate:STAT-404,STAT 404,Statistical Computing,2,bm25f|ablate_title_only|ablate_no_dept|ablate_equal_weights
-s6,graduate:STAT-692,STAT 692,Statistical Consulting,2,bm25f|ablate_no_dept|ablate_equal_weights
+s6,graduate:STAT-641,STAT 641,The Methods of Statistics I,2,bm25f|ablate_no_dept|ablate_equal_weights
 s6,graduate:STAT-620,STAT 620,Asymptotic Statistics,2,bm25f|ablate_no_dept|ablate_equal_weights
+s6,graduate:STAT-692,STAT 692,Statistical Consulting,2,bm25f|ablate_no_dept|ablate_equal_weights
 s6,undergraduate:STAT-182,STAT 182,Foundations of Statistics,2,bm25f|ablate_title_only|ablate_no_dept
 s6,graduate:STAT-693,STAT 693,Statistical Consulting and Ethics,2,bm25f|ablate_no_dept|ablate_equal_weights
 s6,undergraduate:STAT-415,STAT 415,Mathematical Statistics II,2,bm25f|ablate_equal_weights
@@ -512,4 +512,3 @@ s6,graduate:STAT-607,STAT 607,Sampling,0,ablate_no_synonyms
 s6,graduate:STAT-615,STAT 615,Stochastic Processes,0,ablate_no_synonyms
 s6,graduate:STAT-652,STAT 652,Statistics in Research II,2,ablate_no_synonyms
 s6,graduate:STAT-608,STAT 608,Regression Analysis,0,ablate_no_synonyms
-s6,graduate:STAT-647,STAT 647,Spatial Statistics,2,ablate_no_synonyms

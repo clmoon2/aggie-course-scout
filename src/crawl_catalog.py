@@ -36,7 +36,7 @@ INDEXES = [
     ("undergraduate", f"{BASE}/undergraduate/course-descriptions/"),
     ("graduate", f"{BASE}/graduate/course-descriptions/"),
 ]
-CODE_RE = re.compile(r"^([A-Z]{2,5})\s*(\d{3}[A-Z]?)\b")
+CODE_RE = re.compile(r"^([A-Z]{2,5})\s*(\d{3,4}[A-Z]?)\b")
 CREDIT_RE = re.compile(r"Credits?\s+(\d+(?:\s*(?:to|-)\s*\d+)?)", re.I)
 DEPT_RE = re.compile(r"^([A-Z]{2,5})\s*-\s*(.+?)\s*\(([A-Z]{2,5})\)")
 
@@ -76,7 +76,11 @@ def parse_page(html: str, level: str, dept_code: str, url: str) -> list[dict]:
     h1 = soup.select_one("h1.page-title")
     page_title = clean(h1.get_text(" ")) if h1 else ""
     m = DEPT_RE.match(page_title)
-    dept_name = m.group(2) if m else dept_code
+    if m:
+        dept_name = m.group(2)
+    else:
+        m2 = re.match(r"^([A-Z]{2,5})\s*-\s*(.+)$", page_title)
+        dept_name = clean(m2.group(2)) if m2 else dept_code
     out = []
     for block in soup.select(".courseblock"):
         title_el = block.select_one(".courseblocktitle")
@@ -90,6 +94,7 @@ def parse_page(html: str, level: str, dept_code: str, url: str) -> list[dict]:
         subject, number = cm.groups()
         code = f"{subject} {number}"
         title = clean(title_text[cm.end():]).strip(" .:-")
+        title = re.sub(r"^(?:/\s*[A-Z]{2,5}\s*\d{3,4}[A-Z]?\s*)+", "", title).strip(" .:-")
         if not title:
             continue
         hours_el = desc_el.select_one(".hours")
@@ -100,6 +105,7 @@ def parse_page(html: str, level: str, dept_code: str, url: str) -> list[dict]:
                 credits = hm.group(1).replace(" ", "")
             hours_el.decompose()
         body = clean(desc_el.get_text(" "))
+        body = re.sub(r"^\([A-Z]{2,5}\s*\d{3,4}[A-Z]?\)\s*", "", body)
         prereq = ""
         coreq = ""
         pm = re.search(r"Prerequisites?(?:\s*\([^)]*\))?\s*:\s*(.*)", body, re.I)
@@ -113,8 +119,6 @@ def parse_page(html: str, level: str, dept_code: str, url: str) -> list[dict]:
         # Drop trailing meeting/hour boilerplate that survived.
         body = re.sub(r"\s*\d+\s+(?:Lecture|Lab|Other|Recitation|Seminar)\s+Hours?\.", "", body, flags=re.I)
         body = clean(body).strip(" .")
-        if not body:
-            continue
         num = int(re.match(r"\d+", number).group(0))
         out.append({
             "id": f"{level}:{code.replace(' ', '-')}",
@@ -129,7 +133,7 @@ def parse_page(html: str, level: str, dept_code: str, url: str) -> list[dict]:
             "department": dept_name,
             "dept_code": dept_code.upper(),
             "college": "",
-            "course_level": num // 100,
+            "course_level": (num // 1000 if num >= 1000 else num // 100),
             "url": url,
             "source_title": page_title,
         })
@@ -141,7 +145,7 @@ def fetch_one(level: str, dept: str, session: requests.Session) -> dict:
     raw_path = RAW / level / f"{dept}.html.gz"
     raw_path.parent.mkdir(parents=True, exist_ok=True)
     row = {"level": level, "dept": dept, "url": url, "status": None, "bytes": 0,
-           "sha256": None, "courses": 0, "error": None, "fetched_at": None}
+           "sha256": None, "courses": 0, "blocks": 0, "error": None, "fetched_at": None}
     if not check_robots(url, session):
         row["error"] = "robots-disallowed"
         return row
@@ -161,6 +165,7 @@ def fetch_one(level: str, dept: str, session: requests.Session) -> dict:
             row["fetched_at"] = datetime.now(timezone.utc).isoformat()
             with gzip.open(raw_path, "wb") as f:
                 f.write(data)
+            row["blocks"] = len(BeautifulSoup(html, "html.parser").select(".courseblock"))
             parsed = parse_page(html, level, dept, url)
             with lock:
                 for rec in parsed:
@@ -230,6 +235,9 @@ def main() -> int:
         "indexes": [u for _, u in INDEXES],
         "pages_requested": len(jobs),
         "pages_ok": sum(1 for r in manifest_rows if r["status"] == 200 and not r["error"]),
+        "pages_with_block": sum(1 for r in manifest_rows if r.get("blocks", 0) > 0),
+        "pages_with_records": sum(1 for r in manifest_rows if r.get("courses", 0) > 0),
+        "pages_empty": sum(1 for r in manifest_rows if r["status"] == 200 and r.get("blocks", 0) == 0),
         "pages_404": sum(1 for r in manifest_rows if r["status"] == 404),
         "pages_error": sum(1 for r in manifest_rows if r["error"] and r["status"] != 404),
         "courses_unique": len(records),

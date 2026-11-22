@@ -44,12 +44,12 @@ Judged pairs: 514
 
 8. Latency
 Command: .venv/bin/python src/latency.py
-75 samples, p50 10.9 ms, p95 22.8 ms, cold max 254 ms
+75 samples, p50 15.4 ms, p95 24.5 ms, cold max 456 ms
 Output: eval/results/latency.json
 
 9. Data
-383 pages requested, 383 HTTP 200, 0 errors, 10,082 unique records
-courses.jsonl SHA-256 a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2
+383 pages requested, 383 HTTP 200, 0 errors, 10,275 unique records
+courses.jsonl SHA-256 8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e
 
 10. Hash check
 sha256sum on all submission PDFs matches HANDOFF.md.

@@ -33,13 +33,13 @@ The catalog publishes course descriptions, but its search is a general site sear
 The person I keep picturing is a sophomore two weeks before registration who remembers a networks class and not the number, so she gets a long department list and a browser find box. I've run that search myself and given up halfway. Advisors do the same lookup by hand today. The project is also a worked example for the course: a real corpus, a working ranking function, and an interface that shows which field produced each score.
 
 \section*{What already exists}
-General search engines index catalog pages but optimize for pages, not course records. They have no department filter and no field-level explanation. The catalog's site search has the same page-level problem. Grade-distribution sites answer who teaches a course and how grades fall, not what the course is about. None of these publish relevance judgments.
+General search engines index catalog pages but optimize for pages, not course records. They have no department filter and no field-level explanation. The catalog does have a course-search page with a subject filter, and it can put CSCE 465 in the top ten for \texttt{security}, but it is exact-match and has no level, credit, or prerequisite facets. Grade-distribution sites answer who teaches a course and how grades fall, not what the course is about. None of these publish relevance judgments.
 
 The ranking model comes from BM25F, the field-weighted form of BM25 used in structured document retrieval. I'm borrowing the model and writing a small, inspectable implementation rather than wrapping a search framework.
 
 \section*{How I'm building it}
 \begin{enumerate}[leftmargin=1.3em,itemsep=1pt]
-  \item Crawl the undergraduate and graduate course-description indexes with Python, requests, and BeautifulSoup. I use four workers and a 0.2 second delay, retry on failure, respect robots.txt, and keep every raw page.
+  \item Crawl the undergraduate and graduate course-description indexes with Python, requests, and BeautifulSoup, targeting roughly 6,000 to 9,000 records. I use four workers and a 0.2 second delay, retry on failure, respect robots.txt, and keep every raw page.
   \item Parse code, title, credits, description, prerequisites, department, college, and level. Strip HTML, dedupe by level plus code, and write JSONL with a SHA-256 and crawl manifest.
   \item Build a four-field inverted index with a shared Python and JavaScript tokenizer and conservative Porter stemmer. Export a gzipped JSON index.
   \item Implement BM25F with $k_1=1.2$, $b=0.75$, and field weights 3.0 title, 2.0 department, 1.0 description, 0.5 prerequisite. Add phrases, filters, negation, synonyms, edit-distance suggestions, facets, snippets, and the why panel.

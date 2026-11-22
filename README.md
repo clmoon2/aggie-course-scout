@@ -8,11 +8,11 @@ Report: https://clmoon2.github.io/aggie-course-scout/report.html
 
 ## What it does
 
-- Searches 10,082 undergraduate and graduate course records from the 2026-2027 catalog.
+- Searches 10,275 undergraduate and graduate course records from the 2026-2027 catalog.
 - Supports quoted phrases, `dept:`, `level:`, `credits:` filters, and `-` negation.
 - Expands common acronyms (ml, ai, db, os, security, stats) and suggests spelling fixes.
 - Shows facets, highlighted snippets, and a term-by-term why-this-ranked panel.
-- Runs with no backend. The index is a 2.1 MB gzipped asset.
+- Runs with no backend. The index is a 2.2 MB gzipped asset.
 
 ## Quick start
 
@@ -51,12 +51,12 @@ The 25 queries are in `eval/queries.json`. The judgments are pooled from TF-IDF,
 
 | Condition | P@10 | NDCG@10 | MAP | MRR |
 |---|---:|---:|---:|---:|
-| TF-IDF | 0.532 | 0.662 | 0.479 | 0.651 |
-| Flat BM25 | 0.532 | 0.665 | 0.496 | 0.652 |
-| BM25F | 0.824 | 0.967 | 0.792 | 0.980 |
-| BM25F, no synonyms | 0.768 | 0.911 | 0.726 | 0.940 |
+| TF-IDF | 0.516 | 0.665 | 0.463 | 0.646 |
+| Flat BM25 | 0.520 | 0.663 | 0.482 | 0.656 |
+| BM25F | 0.828 | 0.963 | 0.789 | 0.973 |
+| BM25F, no synonyms | 0.772 | 0.920 | 0.728 | 0.933 |
 
-Known-item NDCG is a tie with flat BM25 (0.919 vs 0.925). The report covers that and the other failures.
+Known-item NDCG is a tie with flat BM25 (0.922 vs 0.924). The report covers that and the other failures.
 
 ## Tests
 
@@ -83,7 +83,7 @@ docs/           release notes
 
 College is not printed on department pages, so it is mapped by hand from department prefixes. 536 records in professional or unplaced prefixes use "Other/Professional." Descriptions are the published catalog text, stripped of HTML. Prerequisites are regex-extracted and can truncate on unusual punctuation.
 
-Output hash: `a2cfbcece529332fce6cb4117953be9bbd250385843fec6a0650d0291c4f8ca2`.
+Output hash: `8eed36cec66a5f6e94893e502f6828c7b3cc67c4206d07b3d0e4f53adf54e38e`.
 
 ## License
 
